@@ -2,6 +2,7 @@
 layout: post
 title:  Post Pertama
 categories: Blogging
+comments: true
 ---
 Bismillah alhamdulillah. Setelah sebelumnya punya beberapa blog tidak terurus, mudah-mudahan kali ini bisa menjadi tempat berbagi semua ilmu yang saya punya, bukan cuma tempat tulis-tulis ga jelas seperti blog-blog sebelumnya, Hahaha..
 

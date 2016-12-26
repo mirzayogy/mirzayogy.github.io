@@ -2,6 +2,8 @@
 layout: post
 title:  Install Jekyll di Windows
 categories: Blogging
+date:   2016-12-25 23:01:41 +0800
+comments: true
 ---
 Install jekyll
 Install chocolatey dengan buka cmd dengan run as administrator

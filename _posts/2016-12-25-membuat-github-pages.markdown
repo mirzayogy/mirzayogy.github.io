@@ -2,6 +2,8 @@
 layout: post
 title:  Membuat GitHub Pages
 categories: Blogging
+date:   2016-12-25 23:00:41 +0800
+comments: true
 ---
 1.	Daftar GitHub
 2.	Buat repository baru dengan nama “username.github.io”
