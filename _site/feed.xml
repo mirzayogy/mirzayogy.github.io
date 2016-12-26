@@ -1,24 +1,5 @@
-<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xml" href="http://localhost:4000/feed.xslt.xml"?><feed xmlns="http://www.w3.org/2005/Atom"><generator uri="http://jekyllrb.com" version="3.3.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2016-12-25T03:44:21+08:00</updated><id>http://localhost:4000//</id><title type="html">Learn, Practice, Share</title><subtitle>Website tempat belajar, praktek, dan membagikan pengalamannya.
-</subtitle><entry><title type="html">Membuat GitHub Pages</title><link href="http://localhost:4000/blogging/2016/12/25/membuat-github-pages.html" rel="alternate" type="text/html" title="Membuat GitHub Pages" /><published>2016-12-25T00:00:00+08:00</published><updated>2016-12-25T00:00:00+08:00</updated><id>http://localhost:4000/blogging/2016/12/25/membuat-github-pages</id><content type="html" xml:base="http://localhost:4000/blogging/2016/12/25/membuat-github-pages.html">&lt;ol&gt;
-  &lt;li&gt;Daftar GitHub&lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Buat repository baru dengan nama “username.github.io”&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;Download GitHub for windows di https://pages.github.com/&lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Kembali ke halaman GitHub klik Set up in Desktop&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;Pilih folder yang diinginkan&lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Hasil pada GitHub&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Buat sebuah file index.html dan simpan dalam folder&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;Isi summary dengan “commit pertama” klik “commit to master” kemudian “publish”&lt;/li&gt;
-  &lt;li&gt;Buka pada browser “username.github.io”&lt;/li&gt;
-&lt;/ol&gt;</content><summary type="html">Daftar GitHub
-  Buat repository baru dengan nama “username.github.io”</summary></entry><entry><title type="html">Install Jekyll di Windows</title><link href="http://localhost:4000/blogging/2016/12/25/install-jekyll.html" rel="alternate" type="text/html" title="Install Jekyll di Windows" /><published>2016-12-25T00:00:00+08:00</published><updated>2016-12-25T00:00:00+08:00</updated><id>http://localhost:4000/blogging/2016/12/25/install-jekyll</id><content type="html" xml:base="http://localhost:4000/blogging/2016/12/25/install-jekyll.html">&lt;p&gt;Install jekyll
+<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xml" href="http://localhost:4000/feed.xslt.xml"?><feed xmlns="http://www.w3.org/2005/Atom"><generator uri="http://jekyllrb.com" version="3.3.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2016-12-26T16:17:31+08:00</updated><id>http://localhost:4000//</id><title type="html">Learn, Practice, Share</title><subtitle>Website tempat belajar, praktek, dan membagikan pengalamannya.
+</subtitle><entry><title type="html">Install Jekyll di Windows</title><link href="http://localhost:4000/blogging/2016/12/25/install-jekyll.html" rel="alternate" type="text/html" title="Install Jekyll di Windows" /><published>2016-12-25T23:01:41+08:00</published><updated>2016-12-25T23:01:41+08:00</updated><id>http://localhost:4000/blogging/2016/12/25/install-jekyll</id><content type="html" xml:base="http://localhost:4000/blogging/2016/12/25/install-jekyll.html">&lt;p&gt;Install jekyll
 Install chocolatey dengan buka cmd dengan run as administrator&lt;/p&gt;
 
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;@powershell -NoProfile -ExecutionPolicy Bypass -Command &quot;iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))&quot; &amp;amp;&amp;amp; SET &quot;PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin&quot;
@@ -102,7 +83,26 @@ Buka di halaman&lt;/p&gt;
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;https://username.github.io/
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;</content><summary type="html">Install jekyll
-Install chocolatey dengan buka cmd dengan run as administrator</summary></entry><entry><title type="html">Post Pertama</title><link href="http://localhost:4000/blogging/2016/12/24/post-pertama.html" rel="alternate" type="text/html" title="Post Pertama" /><published>2016-12-24T00:00:00+08:00</published><updated>2016-12-24T00:00:00+08:00</updated><id>http://localhost:4000/blogging/2016/12/24/post-pertama</id><content type="html" xml:base="http://localhost:4000/blogging/2016/12/24/post-pertama.html">&lt;p&gt;Bismillah alhamdulillah. Setelah sebelumnya punya beberapa blog tidak terurus, mudah-mudahan kali ini bisa menjadi tempat berbagi semua ilmu yang saya punya, bukan cuma tempat tulis-tulis ga jelas seperti blog-blog sebelumnya, Hahaha..&lt;/p&gt;
+Install chocolatey dengan buka cmd dengan run as administrator</summary></entry><entry><title type="html">Membuat GitHub Pages</title><link href="http://localhost:4000/blogging/2016/12/25/membuat-github-pages.html" rel="alternate" type="text/html" title="Membuat GitHub Pages" /><published>2016-12-25T23:00:41+08:00</published><updated>2016-12-25T23:00:41+08:00</updated><id>http://localhost:4000/blogging/2016/12/25/membuat-github-pages</id><content type="html" xml:base="http://localhost:4000/blogging/2016/12/25/membuat-github-pages.html">&lt;ol&gt;
+  &lt;li&gt;Daftar GitHub&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Buat repository baru dengan nama “username.github.io”&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Download GitHub for windows di https://pages.github.com/&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Kembali ke halaman GitHub klik Set up in Desktop&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Pilih folder yang diinginkan&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Hasil pada GitHub&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Buat sebuah file index.html dan simpan dalam folder&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Isi summary dengan “commit pertama” klik “commit to master” kemudian “publish”&lt;/li&gt;
+  &lt;li&gt;Buka pada browser “username.github.io”&lt;/li&gt;
+&lt;/ol&gt;</content><summary type="html">Daftar GitHub
+  Buat repository baru dengan nama “username.github.io”</summary></entry><entry><title type="html">Post Pertama</title><link href="http://localhost:4000/blogging/2016/12/24/post-pertama.html" rel="alternate" type="text/html" title="Post Pertama" /><published>2016-12-24T00:00:00+08:00</published><updated>2016-12-24T00:00:00+08:00</updated><id>http://localhost:4000/blogging/2016/12/24/post-pertama</id><content type="html" xml:base="http://localhost:4000/blogging/2016/12/24/post-pertama.html">&lt;p&gt;Bismillah alhamdulillah. Setelah sebelumnya punya beberapa blog tidak terurus, mudah-mudahan kali ini bisa menjadi tempat berbagi semua ilmu yang saya punya, bukan cuma tempat tulis-tulis ga jelas seperti blog-blog sebelumnya, Hahaha..&lt;/p&gt;
 
 &lt;p&gt;Meskipun telat tapi saya merasa tetap perlu untuk bikin blog. Tujuan utamanya adalah untuk mencatat apa-apa saja yang sudah saya pelajari, supaya lebih mudah mengingatnya apabila terlupa. Sebelumnya pernah pakai Evernote di android dan PC tapi terasa kurang nyaman, dan susah untuk membagikannya. Makin tua makin mudah lupa cuy!! Selain itu juga perlu wadah untuk membagikan materi bagi mahasiswa.&lt;/p&gt;
 
