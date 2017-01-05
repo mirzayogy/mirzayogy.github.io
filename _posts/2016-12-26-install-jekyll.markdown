@@ -2,7 +2,7 @@
 layout: post
 title:  Install Jekyll di Windows
 categories: Blogging
-date:   2016-12-25 23:01:41 +0800
+date:   2016-12-26 23:01:41 +0800
 comments: true
 ---
 Install jekyll

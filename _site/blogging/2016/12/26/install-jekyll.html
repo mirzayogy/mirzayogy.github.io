@@ -6,11 +6,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Maven Webapp</title>
-  <meta name="description" content="Buat project baru">
+  <title>Install Jekyll di Windows</title>
+  <meta name="description" content="Install jekyll Install chocolatey dengan buka cmd dengan run as administrator">
 
   <link rel="stylesheet" href="/assets/main.css">
-  <link rel="canonical" href="http://localhost:4000/java/2016/12/31/maven-webapp.html">
+  <link rel="canonical" href="http://localhost:4000/blogging/2016/12/26/install-jekyll.html">
   <link rel="alternate" type="application/rss+xml" title="Learn, Practice, Share" href="/feed.xml">
   
   
@@ -61,91 +61,96 @@
         <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
 
   <header class="post-header">
-    <h1 class="post-title" itemprop="name headline">Maven Webapp</h1>
-    <p class="post-meta"><time datetime="2016-12-31T23:00:41+08:00" itemprop="datePublished">Dec 31, 2016</time></p>
+    <h1 class="post-title" itemprop="name headline">Install Jekyll di Windows</h1>
+    <p class="post-meta"><time datetime="2016-12-26T23:01:41+08:00" itemprop="datePublished">Dec 26, 2016</time></p>
   </header>
 
   <div class="post-content" itemprop="articleBody">
-    <ol>
-  <li>
-    <p>Buat project baru</p>
+    <p>Install jekyll
+Install chocolatey dengan buka cmd dengan run as administrator</p>
 
-    <div class="highlighter-rouge"><pre class="highlight"><code>mvn archetype:generate -DgroupId=mirza.belajar -DartifactId=nama-aplikasi
+<div class="highlighter-rouge"><pre class="highlight"><code>@powershell -NoProfile -ExecutionPolicy Bypass -Command "iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))" &amp;&amp; SET "PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin"
 </code></pre>
-    </div>
-  </li>
-  <li>Input “912“ untuk memilih archetype-webapp</li>
-  <li>Pilih Versinya</li>
-  <li>Pilih Versi kita</li>
-  <li>Konfirmasi “Y”</li>
-  <li>
-    <p>Copy file “web.xml“ dari folder</p>
+</div>
 
-    <div class="highlighter-rouge"><pre class="highlight"><code>\apache-tomcat-8.5.5\webapps\ROOT\WEB-INF 
+<p>Tutup cmd, buka ulang as administrator</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>choco install ruby –y
 </code></pre>
-    </div>
+</div>
 
-    <p>ke</p>
+<p>Tutup cmd, buka ulang as administrator</p>
 
-    <div class="highlighter-rouge"><pre class="highlight"><code>\nama-aplikasi\src\main\webapp\WEB-INF
+<div class="highlighter-rouge"><pre class="highlight"><code>gem install bundler
 </code></pre>
-    </div>
-  </li>
-  <li>Edit file “index.jsp“ sesuai html yang diinginkan</li>
-  <li>
-    <p>Run dengan perintah</p>
+</div>
 
-    <div class="highlighter-rouge"><pre class="highlight"><code>mvn clean package tomcat:run
+<p>Jika tidak ada masalah ketika menginstall bundler maka langsung install bundler, jika ada masalah maka Install RailsInstaller dari website berikut</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>http://railsinstaller.org/en
 </code></pre>
-    </div>
-  </li>
-  <li>
-    <p>Buka di</p>
+</div>
 
-    <div class="highlighter-rouge"><pre class="highlight"><code>http://localhost:8080/nama-aplikasi/
+<p>Download file <code class="highlighter-rouge">cacert.pem</code> dari website berikut</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>http://curl.haxx.se/ca/cacert.pem
 </code></pre>
-    </div>
-  </li>
-  <li>
-    <p>tekan tombol Ctrl+C untuk menghentikan aplikasi</p>
-  </li>
-  <li>Tambahkan dependency servlet dan mysql</li>
-</ol>
+</div>
 
-<figure class="highlight"><pre><code class="language-java" data-lang="java">	<span class="o">&lt;</span><span class="n">dependency</span><span class="o">&gt;</span>
-		<span class="o">&lt;</span><span class="n">groupId</span><span class="o">&gt;</span><span class="n">javax</span><span class="o">.</span><span class="na">servlet</span><span class="o">&lt;/</span><span class="n">groupId</span><span class="o">&gt;</span>
-		<span class="o">&lt;</span><span class="n">artifactId</span><span class="o">&gt;</span><span class="n">servlet</span><span class="o">-</span><span class="n">api</span><span class="o">&lt;/</span><span class="n">artifactId</span><span class="o">&gt;</span>
-		<span class="o">&lt;</span><span class="n">version</span><span class="o">&gt;</span><span class="mf">2.5</span><span class="o">&lt;/</span><span class="n">version</span><span class="o">&gt;</span>
-		<span class="o">&lt;</span><span class="n">scope</span><span class="o">&gt;</span><span class="n">provided</span><span class="o">&lt;/</span><span class="n">scope</span><span class="o">&gt;</span>
-	<span class="o">&lt;/</span><span class="n">dependency</span><span class="o">&gt;</span>
-	<span class="o">&lt;</span><span class="n">dependency</span><span class="o">&gt;</span>
-		<span class="o">&lt;</span><span class="n">groupId</span><span class="o">&gt;</span><span class="n">mysql</span><span class="o">&lt;/</span><span class="n">groupId</span><span class="o">&gt;</span>
-		<span class="o">&lt;</span><span class="n">artifactId</span><span class="o">&gt;</span><span class="n">mysql</span><span class="o">-</span><span class="n">connector</span><span class="o">-</span><span class="n">java</span><span class="o">&lt;/</span><span class="n">artifactId</span><span class="o">&gt;</span>
-		<span class="o">&lt;</span><span class="n">version</span><span class="o">&gt;</span><span class="mf">5.1</span><span class="o">.</span><span class="mi">40</span><span class="o">&lt;/</span><span class="n">version</span><span class="o">&gt;</span>
-	<span class="o">&lt;/</span><span class="n">dependency</span><span class="o">&gt;</span>
-	</code></pre></figure>
+<p>Letakkan di folder</p>
 
-<div id="disqus_thread"></div>
-<script>
+<div class="highlighter-rouge"><pre class="highlight"><code>C:\RailsInstaller\
+</code></pre>
+</div>
 
-/**
-*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
-/*
-var disqus_config = function () {
-this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
-this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-};
-*/
-(function() { // DON'T EDIT BELOW THIS LINE
-var d = document, s = d.createElement('script');
-s.src = '//mirzayogy.disqus.com/embed.js';
-s.setAttribute('data-timestamp', +new Date());
-(d.head || d.body).appendChild(s);
-})();
-</script>
+<p>Atur environment variable, bisa dengan perintah</p>
 
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<div class="highlighter-rouge"><pre class="highlight"><code>set SSL_CERT_FILE=C:\RailsInstaller\cacert.pem 
+</code></pre>
+</div>
+
+<p>Install bundler dengan perintah</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>gem install bundler
+</code></pre>
+</div>
+
+<p>Install Jekyll dengan perintah</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>gem install jekyll
+</code></pre>
+</div>
+
+<p>Pindah ke folder yang ingin disimpan</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>jekyll new username.github.io
+cd username.github.io
+</code></pre>
+</div>
+
+<p>Hapus file index.html jika sebelumnya anda membuat file tersebut</p>
+
+<p>Untuk menjalankannya secara local jalankan</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>jekyll serve
+</code></pre>
+</div>
+
+<p>Buka dengan browser</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>http://127.0.0.1:4000
+</code></pre>
+</div>
+
+<p>Untuk deploynya jalankan GitHub for desktop Tuliskan summary commit misalkan <code class="highlighter-rouge">commit pertama</code>, kemudian tekan tombol <code class="highlighter-rouge">commit to master</code></p>
+
+<p>Tekan tombol <code class="highlighter-rouge">sync</code>
+Buka di halaman</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>https://username.github.io/
+</code></pre>
+</div>
+
 
   </div>
 

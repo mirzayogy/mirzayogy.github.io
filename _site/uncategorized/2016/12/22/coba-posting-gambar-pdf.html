@@ -6,11 +6,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Install Jekyll di Windows</title>
-  <meta name="description" content="Install jekyll Install chocolatey dengan buka cmd dengan run as administrator">
+  <title>Coba Posting Gambar dan PDF</title>
+  <meta name="description" content="Coba posting gambar">
 
   <link rel="stylesheet" href="/assets/main.css">
-  <link rel="canonical" href="http://localhost:4000/blogging/2016/12/25/install-jekyll.html">
+  <link rel="canonical" href="http://localhost:4000/uncategorized/2016/12/22/coba-posting-gambar-pdf.html">
   <link rel="alternate" type="application/rss+xml" title="Learn, Practice, Share" href="/feed.xml">
   
   
@@ -61,96 +61,16 @@
         <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
 
   <header class="post-header">
-    <h1 class="post-title" itemprop="name headline">Install Jekyll di Windows</h1>
-    <p class="post-meta"><time datetime="2016-12-25T23:01:41+08:00" itemprop="datePublished">Dec 25, 2016</time></p>
+    <h1 class="post-title" itemprop="name headline">Coba Posting Gambar dan PDF</h1>
+    <p class="post-meta"><time datetime="2016-12-22T09:28:41+08:00" itemprop="datePublished">Dec 22, 2016</time></p>
   </header>
 
   <div class="post-content" itemprop="articleBody">
-    <p>Install jekyll
-Install chocolatey dengan buka cmd dengan run as administrator</p>
+    <p>Coba posting gambar</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>@powershell -NoProfile -ExecutionPolicy Bypass -Command "iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))" &amp;&amp; SET "PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin"
-</code></pre>
-</div>
+<p><img src="http://localhost:4000/assets/kucing.png" alt="Miaww" /></p>
 
-<p>Tutup cmd, buka ulang as administrator</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>choco install ruby –y
-</code></pre>
-</div>
-
-<p>Tutup cmd, buka ulang as administrator</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>gem install bundler
-</code></pre>
-</div>
-
-<p>Jika tidak ada masalah ketika menginstall bundler maka langsung install bundler, jika ada masalah maka Install RailsInstaller dari website berikut</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>http://railsinstaller.org/en
-</code></pre>
-</div>
-
-<p>Download file <code class="highlighter-rouge">cacert.pem</code> dari website berikut</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>http://curl.haxx.se/ca/cacert.pem
-</code></pre>
-</div>
-
-<p>Letakkan di folder</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>C:\RailsInstaller\
-</code></pre>
-</div>
-
-<p>Atur environment variable, bisa dengan perintah</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>set SSL_CERT_FILE=C:\RailsInstaller\cacert.pem 
-</code></pre>
-</div>
-
-<p>Install bundler dengan perintah</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>gem install bundler
-</code></pre>
-</div>
-
-<p>Install Jekyll dengan perintah</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>gem install jekyll
-</code></pre>
-</div>
-
-<p>Pindah ke folder yang ingin disimpan</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>jekyll new username.github.io
-cd username.github.io
-</code></pre>
-</div>
-
-<p>Hapus file index.html jika sebelumnya anda membuat file tersebut</p>
-
-<p>Untuk menjalankannya secara local jalankan</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>jekyll serve
-</code></pre>
-</div>
-
-<p>Buka dengan browser</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>http://127.0.0.1:4000
-</code></pre>
-</div>
-
-<p>Untuk deploynya jalankan GitHub for desktop Tuliskan summary commit misalkan <code class="highlighter-rouge">commit pertama</code>, kemudian tekan tombol <code class="highlighter-rouge">commit to master</code></p>
-
-<p>Tekan tombol <code class="highlighter-rouge">sync</code>
-Buka di halaman</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>https://username.github.io/
-</code></pre>
-</div>
-
+<p>Melampirkan <a href="http://localhost:4000/assets/Blog_dengan_jekyll.pdf">File PDF</a> langsung.</p>
 
   </div>
 
