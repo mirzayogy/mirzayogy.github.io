@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Modul Praktikum Java [Unfinished]"
+title:  "Modul Praktikum Java 19 Oktober 2017"
 date:   2017-01-06 09:28:41 +0800
 categories: java
 ---
