@@ -6,4 +6,5 @@ categories: java
 ---
 Berikut file untuk modul praktikum pertemuan 1 19 Oktober 2017
 
-1. [Basic]({{ site.url }}/assets/Praktikum-Java-1.pdf) 
+[Modul]({{ site.url }}/assets/Praktikum-Java-1.pdf) 
+[GitHub](https://github.com/mirzayogyk/PraktekJavaWeb)
