@@ -13,3 +13,26 @@ Terinspirasi oleh blog [Endy Muhardin](http://software.endy.muhardin.com) yang s
 [Jekyll](https://jekyllrb.com) mampu mengubah text biasa menjadi web statis, persis seperti yang saya inginkan memang supaya simple dan gak pusing mbacanya. Tapi nampaknya untuk mengoperasikannya lebih pas kalau pakai linux ketimbang windows. Lah sayanya punya dual boot sih buat Windows 10 dan Ubuntu, tapi rasanya susah banget lepas dari windows apalagi lagi rame-ramenya Master League PES 2017 Season Ke-4, jadi cari-cari tutorialnya deh bagaimana cara install Jekyll di Windows dan nantinya akan dibagikan di blog ini
 
 Semoga setelah gunting pita ini bisa lanjut bloggingnya jangan sampai terbengkalai lagi
+
+<div id="disqus_thread"></div>
+<script>
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+     */
+    /*
+    var disqus_config = function () {
+        this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    */
+    (function() {  // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        
+        s.src = 'https://mirzayogy.disqus.com/embed.js';
+        
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
