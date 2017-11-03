@@ -1,5 +1,50 @@
-<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xml" href="http://localhost:4000/feed.xslt.xml"?><feed xmlns="http://www.w3.org/2005/Atom"><generator uri="http://jekyllrb.com" version="3.3.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2017-11-03T11:22:33+08:00</updated><id>http://localhost:4000//</id><title type="html">Learn, Practice, Share</title><subtitle>Website tempat belajar, praktek, dan membagikan pengalamannya.
-</subtitle><entry><title type="html">Modul Praktikum Java Web</title><link href="http://localhost:4000/java/2017/10/19/modul-praktikum-java-1.1.html" rel="alternate" type="text/html" title="Modul Praktikum Java Web" /><published>2017-10-19T16:25:41+08:00</published><updated>2017-10-19T16:25:41+08:00</updated><id>http://localhost:4000/java/2017/10/19/modul-praktikum-java-1.1</id><content type="html" xml:base="http://localhost:4000/java/2017/10/19/modul-praktikum-java-1.1.html">&lt;p&gt;Praktikum Java pada kali ini menggunakan java web. Modul terbagi menjadi 3 (tiga) bagian, bagian pertama adalah pengenalan komponen web,
+<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xml" href="http://localhost:4000/feed.xslt.xml"?><feed xmlns="http://www.w3.org/2005/Atom"><generator uri="http://jekyllrb.com" version="3.3.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2017-11-03T12:43:01+08:00</updated><id>http://localhost:4000//</id><title type="html">Learn, Practice, Share</title><subtitle>Website tempat belajar, praktek, dan membagikan pengalamannya.
+</subtitle><entry><title type="html">Ikut Google Developers Training</title><link href="http://localhost:4000/android/2017/11/02/ikut-google-developers-training.html" rel="alternate" type="text/html" title="Ikut Google Developers Training" /><published>2017-11-02T11:25:41+08:00</published><updated>2017-11-02T11:25:41+08:00</updated><id>http://localhost:4000/android/2017/11/02/ikut-google-developers-training</id><content type="html" xml:base="http://localhost:4000/android/2017/11/02/ikut-google-developers-training.html">&lt;p&gt;Android merupakan platform yang sangat populer pada jaman now. Hal ini tentu menjadi faktor utama kenapa banyak orang ingin belajar membuat aplikasi android.&lt;/p&gt;
+
+&lt;p&gt;Ada beberapa cara untuk membuat aplikasi yang bisa berjalan pada platform Android, diantaranya:&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;Menggunakan Android Studio &lt;a href=&quot;https://developer.android.com/studio/install.html&quot;&gt;Source&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Menggunakan Eclipse dengan plugin ADT, namun cara ini tidak lagi di-support oleh Google sejak Juni 2015 &lt;a href=&quot;https://developer.android.com/studio/tools/sdk/eclipse-adt.html&quot;&gt;Source&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Menggunakan Delphi, namun Delphi tidak gratis &lt;a href=&quot;https://www.embarcadero.com/products/delphi&quot;&gt;Source&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Menggunakan  framework &lt;a href=&quot;https://www.meteor.com/&quot;&gt;Meteor&lt;/a&gt;, &lt;a href=&quot;https://ionicframework.com/&quot;&gt;Ionic&lt;/a&gt;, dll&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Alhamdulillah saya sudah pernah ikut training dasar dari &lt;a href=&quot;http://etraining.seamolec.org/&quot;&gt;Seamolec&lt;/a&gt; dan &lt;a href=&quot;https://www.facebook.com/hasnurcentre.hasnurcentre.7&quot;&gt;BCTI&lt;/a&gt; namun masih pengen liat gimana si kalo Google yang ngajarin. Jadilah buka website
+&lt;a href=&quot;https://developers.google.com/training/android/&quot;&gt;Google Developer&lt;/a&gt;. Disini terdapat 4 (empat) tingkatan yaitu:&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;For new programmers&lt;/li&gt;
+  &lt;li&gt;For developers&lt;/li&gt;
+  &lt;li&gt;Learn design skills&lt;/li&gt;
+  &lt;li&gt;Dive into deeper topics&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Saya ambil bagian For new programmers, biar aja sekalian dari paling awal kalau mungkin ada yang terlewat dan belum saya pelajari. Dan sekaligus mempelajari cara mengajarnya. Bagian ini mengarahkan saya kepada Course di &lt;a href=&quot;https://www.udacity.com/course/android-basics-user-interface--ud834&quot;&gt;Udacity&lt;/a&gt; dan bagusnya lagi course ini FREE alias GRATIS YAAAAY !! Ada banyak course di Udacity yang mana sebagian besar berkolaborasi dengan perusahaan besar, contohnya untuk course Android ini berkolaborasi oleh Google, Artificial Intelligence yang berkolaborasi oleh IBM Watson, Amazon Alexa, dan DiDi (Ubernya China), dan banyak lagi.&lt;/p&gt;
+
+&lt;p&gt;Saya akan bagikan pengalaman videonya dalam Bahasa Indonesia, yang mana saya yakin ini cukup penting supaya ga ada alasan lagi bagi mahasiswa yang ingin belajar namun terkendala bahasa. Stay tune.&lt;/p&gt;
+
+&lt;div id=&quot;disqus_thread&quot;&gt;&lt;/div&gt;
+&lt;script&gt;
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+     */
+    /*
+    var disqus_config = function () {
+        this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    */
+    (function() {  // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        
+        s.src = 'https://mirzayogy.disqus.com/embed.js';
+        
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+&lt;/script&gt;
+
+&lt;noscript&gt;Please enable JavaScript to view the &lt;a href=&quot;https://disqus.com/?ref_noscript&quot; rel=&quot;nofollow&quot;&gt;comments powered by Disqus.&lt;/a&gt;&lt;/noscript&gt;</content><summary type="html">Android merupakan platform yang sangat populer pada jaman now. Hal ini tentu menjadi faktor utama kenapa banyak orang ingin belajar membuat aplikasi android.</summary></entry><entry><title type="html">Modul Praktikum Java Web</title><link href="http://localhost:4000/java/2017/10/19/modul-praktikum-java-1.1.html" rel="alternate" type="text/html" title="Modul Praktikum Java Web" /><published>2017-10-19T16:25:41+08:00</published><updated>2017-10-19T16:25:41+08:00</updated><id>http://localhost:4000/java/2017/10/19/modul-praktikum-java-1.1</id><content type="html" xml:base="http://localhost:4000/java/2017/10/19/modul-praktikum-java-1.1.html">&lt;p&gt;Praktikum Java pada kali ini menggunakan java web. Modul terbagi menjadi 3 (tiga) bagian, bagian pertama adalah pengenalan komponen web,
 bagian kedua adalah koneksi dan insert data ke dalam database MySQL, sedangkan bagian ketiga adalah menampilkan data dari tabel MySQL.
 Berikut file modul dan hasil akhirnya:&lt;/p&gt;
 &lt;ol&gt;
