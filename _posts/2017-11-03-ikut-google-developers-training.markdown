@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Ikut Google Developers Training"
-date:   2017-11-03 16:25:41 +0800
+date:   2017-11-03 11:25:41 +0800
 categories: android
 comments : true
 ---
