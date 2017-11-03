@@ -6,11 +6,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Post Pertama</title>
-  <meta name="description" content="Bismillah alhamdulillah. Setelah sebelumnya punya beberapa blog tidak terurus, mudah-mudahan kali ini bisa menjadi tempat berbagi semua ilmu yang saya punya,...">
+  <title>Android Basics - User Interface - Building Layouts: Part 1</title>
+  <meta name="description" content="Course Android Basics - User Interface dari Udacity ini terdiri dari 4 bagian Building Layouts Part 1 Pengenalan terhadap eXtensible Markup Language (XML) ya...">
 
   <link rel="stylesheet" href="/assets/main.css">
-  <link rel="canonical" href="http://localhost:4000/blogging/2016/12/24/post-pertama.html">
+  <link rel="canonical" href="http://localhost:4000/android/2017/11/03/android-basics-user-interface1.html">
   <link rel="alternate" type="application/rss+xml" title="Learn, Practice, Share" href="/feed.xml">
   
   
@@ -61,20 +61,78 @@
         <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
 
   <header class="post-header">
-    <h1 class="post-title" itemprop="name headline">Post Pertama</h1>
-    <p class="post-meta"><time datetime="2016-12-24T00:00:00+08:00" itemprop="datePublished">Dec 24, 2016</time></p>
+    <h1 class="post-title" itemprop="name headline">Android Basics - User Interface - Building Layouts: Part 1</h1>
+    <p class="post-meta"><time datetime="2017-11-03T12:46:41+08:00" itemprop="datePublished">Nov 3, 2017</time></p>
   </header>
 
   <div class="post-content" itemprop="articleBody">
-    <p>Bismillah alhamdulillah. Setelah sebelumnya punya beberapa blog tidak terurus, mudah-mudahan kali ini bisa menjadi tempat berbagi semua ilmu yang saya punya, bukan cuma tempat tulis-tulis ga jelas seperti blog-blog sebelumnya, Hahaha..</p>
+    <p>Course Android Basics - User Interface dari Udacity ini terdiri dari 4 bagian</p>
+<ol>
+  <li>Building Layouts Part 1
+Pengenalan terhadap eXtensible Markup Language (XML) yang menjadi layout untuk aplikasi Android</li>
+  <li>Building Layouts Part 2
+ Mengajarkan tentang grouping layout dan desain</li>
+  <li>Practice Set: Building Layouts
+ Mulai menggunakan android studio untuk praktek layout</li>
+  <li>Project
+ Membuat project Sederhana</li>
+</ol>
 
-<p>Meskipun telat tapi saya merasa tetap perlu untuk bikin blog. Tujuan utamanya adalah untuk mencatat apa-apa saja yang sudah saya pelajari, supaya lebih mudah mengingatnya apabila terlupa. Sebelumnya pernah pakai Evernote di android dan PC tapi terasa kurang nyaman, dan susah untuk membagikannya. Makin tua makin mudah lupa cuy!! Selain itu juga perlu wadah untuk membagikan materi bagi mahasiswa.</p>
+<p>Bagian pertama mengenalkan kepada view yang dimiliki android diantaranya ada 3 (tiga) view yaitu TextView yang berfungsi untuk menampilkan tulisan, ImageView untuk menampilkan gambar, dan Button.. ya.. Tombol
+<img src="http://localhost:4000/assets/01Beginner.01Inteface.01LayoutsP1.001.png" alt="Miaww" /></p>
 
-<p>Terinspirasi oleh blog <a href="http://software.endy.muhardin.com">Endy Muhardin</a> yang sering saya tongkrongin maka makin kuat keinginan untuk bikin blog. Maka saya coba deh ikutin tutorialnya bikin blog menggunakan Jekyll.</p>
+<p>View pada Android dituliskan dengan CamelCase yang berarti Punuk Onta, karena setiap kata diawali dengan huruf besar makanya disebut mirip dengan punuk onta.</p>
 
-<p><a href="https://jekyllrb.com">Jekyll</a> mampu mengubah text biasa menjadi web statis, persis seperti yang saya inginkan memang supaya simple dan gak pusing mbacanya. Tapi nampaknya untuk mengoperasikannya lebih pas kalau pakai linux ketimbang windows. Lah sayanya punya dual boot sih buat Windows 10 dan Ubuntu, tapi rasanya susah banget lepas dari windows apalagi lagi rame-ramenya Master League PES 2017 Season Ke-4, jadi cari-cari tutorialnya deh bagaimana cara install Jekyll di Windows dan nantinya akan dibagikan di blog ini</p>
+<p>Sintaks adalah aturan yang mendefinisikan bagaimana menulis bahasa dengan benar, dalam hal ini XML. Jika komponen yang ditulis tidak sesuai dengan sintaks, maka komponen tidak akan muncul pada layar. Berikut sintaks penulisan XML
+<img src="http://localhost:4000/assets/01Beginner.01Inteface.01LayoutsP1.002.png" alt="Miaww1" /></p>
 
-<p>Semoga setelah gunting pita ini bisa lanjut bloggingnya jangan sampai terbengkalai lagi</p>
+<p>Perhatikan tulisan berwarna hijau menunjukkan nama komponennya yang diawali oleh opening angle bracket (&lt;) dan diakhiri dengan garis miring dan closing angle bracket (/&gt;) yang mana disebut dengan Self Closing Tag. Tulisan berwarna biru adalah atribut dari komponen, dan yang berwarna merah dan selalu menggunakan tanda petik (“) adalah nilai dari atributnya misalkan</p>
+
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;TextView</span>
+    <span class="na">android:text=</span><span class="s">"Ini Nilai Atribut"</span>
+<span class="nt">/&gt;</span></code></pre></figure>
+
+<p>Untuk latihan bisa pada <a href="http://labs.udacity.com/android-visualizer/#/android/text-view">LINK INI</a> yang perlu diperhatikan bahwa tools ini hanya untuk latihan, dan tidak memiliki fitur selengkap android studio.</p>
+
+<p>Coba tuliskan perintah berikut kemudian ganti-ganti nilai atributnya</p>
+
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;TextView</span>
+    <span class="na">android:text=</span><span class="s">"Happy Birthday!"</span>
+    <span class="na">android:background=</span><span class="s">"#9C27B0"</span>
+    <span class="na">android:textColor=</span><span class="s">"#FFFFFF"</span>
+    <span class="na">android:textSize=</span><span class="s">"24sp"</span>
+    <span class="na">android:layout_width=</span><span class="s">"150dp"</span>
+    <span class="na">android:layout_height=</span><span class="s">"75dp"</span> <span class="nt">/&gt;</span></code></pre></figure>
+
+<p><a href="https://drive.google.com/file/d/0B5XIkMkayHgRMVljUVIyZzNmQUU/view">LINK</a> Contoh Android Views</p>
+
+<p><a href="https://material.io/guidelines/style/color.html#">LINK</a> Kombinasi Warna</p>
+
+<p><a href="https://material.io/guidelines/style/typography.html#">LINK</a> Kombinasi ukuran Text</p>
+
+<p>Nilai atribut android:layout_width dan android:layout_width dapat kita isi dengan “wrap_content” untuk membungkusnya sesuai dengan ukuran isi atau besarnya font</p>
+
+<p>Coba tuliskan perintah berikut bandingkan dengan hasil source code sebelumnya</p>
+
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;TextView</span>
+    <span class="na">android:text=</span><span class="s">"Happy Birthday!"</span>
+    <span class="na">android:background=</span><span class="s">"#9C27B0"</span>
+    <span class="na">android:textColor=</span><span class="s">"#FFFFFF"</span>
+    <span class="na">android:textSize=</span><span class="s">"24sp"</span>
+    <span class="na">android:layout_width=</span><span class="s">"wrap_content"</span>
+    <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span> <span class="nt">/&gt;</span></code></pre></figure>
+
+<p>Untuk ImageView bisa dicoba source code berikut</p>
+
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;ImageView</span>
+    <span class="na">android:src=</span><span class="s">"@drawable/cake"</span>
+    <span class="na">android:layout_width=</span><span class="s">"wrap_content"</span>
+    <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+    <span class="na">android:scaleType=</span><span class="s">"center"</span><span class="nt">/&gt;</span></code></pre></figure>
+
+<p>Gambar cake yang disediakan sangat besar sehingga yang tampak hanya bagian Agar gambar cake terlihat jelas nilai pada android:scaleType bisa diganti menjadi “centerCrop”</p>
+
+<p>Untuk mengganti gambar bisa dilihat pada tombol “AVAILABLE IMAGES” pada bagian bawah kemudian ganti sesui dengan nama gambarnya contoh</p>
 
 <div id="disqus_thread"></div>
 <script>
@@ -99,6 +157,7 @@
 </script>
 
 <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+
 
   </div>
 

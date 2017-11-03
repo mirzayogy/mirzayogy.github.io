@@ -1,5 +1,104 @@
-<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xml" href="http://localhost:4000/feed.xslt.xml"?><feed xmlns="http://www.w3.org/2005/Atom"><generator uri="http://jekyllrb.com" version="3.3.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2017-11-03T12:43:01+08:00</updated><id>http://localhost:4000//</id><title type="html">Learn, Practice, Share</title><subtitle>Website tempat belajar, praktek, dan membagikan pengalamannya.
-</subtitle><entry><title type="html">Ikut Google Developers Training</title><link href="http://localhost:4000/android/2017/11/02/ikut-google-developers-training.html" rel="alternate" type="text/html" title="Ikut Google Developers Training" /><published>2017-11-02T11:25:41+08:00</published><updated>2017-11-02T11:25:41+08:00</updated><id>http://localhost:4000/android/2017/11/02/ikut-google-developers-training</id><content type="html" xml:base="http://localhost:4000/android/2017/11/02/ikut-google-developers-training.html">&lt;p&gt;Android merupakan platform yang sangat populer pada jaman now. Hal ini tentu menjadi faktor utama kenapa banyak orang ingin belajar membuat aplikasi android.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xml" href="http://localhost:4000/feed.xslt.xml"?><feed xmlns="http://www.w3.org/2005/Atom"><generator uri="http://jekyllrb.com" version="3.3.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2017-11-03T15:33:38+08:00</updated><id>http://localhost:4000//</id><title type="html">Learn, Practice, Share</title><subtitle>Website tempat belajar, praktek, dan membagikan pengalamannya.
+</subtitle><entry><title type="html">Android Basics - User Interface - Building Layouts: Part 1</title><link href="http://localhost:4000/android/2017/11/03/android-basics-user-interface1.html" rel="alternate" type="text/html" title="Android Basics - User Interface - Building Layouts: Part 1" /><published>2017-11-03T12:46:41+08:00</published><updated>2017-11-03T12:46:41+08:00</updated><id>http://localhost:4000/android/2017/11/03/android-basics-user-interface1</id><content type="html" xml:base="http://localhost:4000/android/2017/11/03/android-basics-user-interface1.html">&lt;p&gt;Course Android Basics - User Interface dari Udacity ini terdiri dari 4 bagian&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;Building Layouts Part 1
+Pengenalan terhadap eXtensible Markup Language (XML) yang menjadi layout untuk aplikasi Android&lt;/li&gt;
+  &lt;li&gt;Building Layouts Part 2
+ Mengajarkan tentang grouping layout dan desain&lt;/li&gt;
+  &lt;li&gt;Practice Set: Building Layouts
+ Mulai menggunakan android studio untuk praktek layout&lt;/li&gt;
+  &lt;li&gt;Project
+ Membuat project Sederhana&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Bagian pertama mengenalkan kepada view yang dimiliki android diantaranya ada 3 (tiga) view yaitu TextView yang berfungsi untuk menampilkan tulisan, ImageView untuk menampilkan gambar, dan Button.. ya.. Tombol
+&lt;img src=&quot;http://localhost:4000/assets/01Beginner.01Inteface.01LayoutsP1.001.png&quot; alt=&quot;Miaww&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;View pada Android dituliskan dengan CamelCase yang berarti Punuk Onta, karena setiap kata diawali dengan huruf besar makanya disebut mirip dengan punuk onta.&lt;/p&gt;
+
+&lt;p&gt;Sintaks adalah aturan yang mendefinisikan bagaimana menulis bahasa dengan benar, dalam hal ini XML. Jika komponen yang ditulis tidak sesuai dengan sintaks, maka komponen tidak akan muncul pada layar. Berikut sintaks penulisan XML
+&lt;img src=&quot;http://localhost:4000/assets/01Beginner.01Inteface.01LayoutsP1.002.png&quot; alt=&quot;Miaww1&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Perhatikan tulisan berwarna hijau menunjukkan nama komponennya yang diawali oleh opening angle bracket (&amp;lt;) dan diakhiri dengan garis miring dan closing angle bracket (/&amp;gt;) yang mana disebut dengan Self Closing Tag. Tulisan berwarna biru adalah atribut dari komponen, dan yang berwarna merah dan selalu menggunakan tanda petik (“) adalah nilai dari atributnya misalkan&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-xml&quot; data-lang=&quot;xml&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;TextView&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;android:text=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Ini Nilai Atribut&quot;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Untuk latihan bisa pada &lt;a href=&quot;http://labs.udacity.com/android-visualizer/#/android/text-view&quot;&gt;LINK INI&lt;/a&gt; yang perlu diperhatikan bahwa tools ini hanya untuk latihan, dan tidak memiliki fitur selengkap android studio.&lt;/p&gt;
+
+&lt;p&gt;Coba tuliskan perintah berikut kemudian ganti-ganti nilai atributnya&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-xml&quot; data-lang=&quot;xml&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;TextView&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;android:text=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Happy Birthday!&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;android:background=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;#9C27B0&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;android:textColor=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;#FFFFFF&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;android:textSize=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;24sp&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;android:layout_width=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;150dp&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;android:layout_height=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;75dp&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://drive.google.com/file/d/0B5XIkMkayHgRMVljUVIyZzNmQUU/view&quot;&gt;LINK&lt;/a&gt; Contoh Android Views&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://material.io/guidelines/style/color.html#&quot;&gt;LINK&lt;/a&gt; Kombinasi Warna&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://material.io/guidelines/style/typography.html#&quot;&gt;LINK&lt;/a&gt; Kombinasi ukuran Text&lt;/p&gt;
+
+&lt;p&gt;Nilai atribut android:layout_width dan android:layout_width dapat kita isi dengan “wrap_content” untuk membungkusnya sesuai dengan ukuran isi atau besarnya font&lt;/p&gt;
+
+&lt;p&gt;Coba tuliskan perintah berikut bandingkan dengan hasil source code sebelumnya&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-xml&quot; data-lang=&quot;xml&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;TextView&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;android:text=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Happy Birthday!&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;android:background=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;#9C27B0&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;android:textColor=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;#FFFFFF&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;android:textSize=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;24sp&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;android:layout_width=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;wrap_content&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;android:layout_height=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;wrap_content&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Untuk ImageView bisa dicoba source code berikut&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-xml&quot; data-lang=&quot;xml&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;ImageView&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;android:src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;@drawable/cake&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;android:layout_width=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;wrap_content&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;android:layout_height=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;wrap_content&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;android:scaleType=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;center&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Gambar cake yang disediakan sangat besar sehingga yang tampak hanya bagian Agar gambar cake terlihat jelas nilai pada android:scaleType bisa diganti menjadi “centerCrop”&lt;/p&gt;
+
+&lt;p&gt;Untuk mengganti gambar bisa dilihat pada tombol “AVAILABLE IMAGES” pada bagian bawah kemudian ganti sesui dengan nama gambarnya contoh&lt;/p&gt;
+
+&lt;div id=&quot;disqus_thread&quot;&gt;&lt;/div&gt;
+&lt;script&gt;
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+     */
+    /*
+    var disqus_config = function () {
+        this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    */
+    (function() {  // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        
+        s.src = 'https://mirzayogy.disqus.com/embed.js';
+        
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+&lt;/script&gt;
+
+&lt;noscript&gt;Please enable JavaScript to view the &lt;a href=&quot;https://disqus.com/?ref_noscript&quot; rel=&quot;nofollow&quot;&gt;comments powered by Disqus.&lt;/a&gt;&lt;/noscript&gt;</content><summary type="html">Course Android Basics - User Interface dari Udacity ini terdiri dari 4 bagian
+
+  Building Layouts Part 1
+Pengenalan terhadap eXtensible Markup Language (XML) yang menjadi layout untuk aplikasi Android
+  Building Layouts Part 2
+ Mengajarkan tentang grouping layout dan desain
+  Practice Set: Building Layouts
+ Mulai menggunakan android studio untuk praktek layout
+  Project
+ Membuat project Sederhana</summary></entry><entry><title type="html">Ikut Google Developers Training</title><link href="http://localhost:4000/android/2017/11/02/ikut-google-developers-training.html" rel="alternate" type="text/html" title="Ikut Google Developers Training" /><published>2017-11-02T11:25:41+08:00</published><updated>2017-11-02T11:25:41+08:00</updated><id>http://localhost:4000/android/2017/11/02/ikut-google-developers-training</id><content type="html" xml:base="http://localhost:4000/android/2017/11/02/ikut-google-developers-training.html">&lt;p&gt;Android merupakan platform yang sangat populer pada jaman now. Hal ini tentu menjadi faktor utama kenapa banyak orang ingin belajar membuat aplikasi android.&lt;/p&gt;
 
 &lt;p&gt;Ada beberapa cara untuk membuat aplikasi yang bisa berjalan pada platform Android, diantaranya:&lt;/p&gt;
 &lt;ol&gt;
@@ -19,6 +118,15 @@
 &lt;/ol&gt;
 
 &lt;p&gt;Saya ambil bagian For new programmers, biar aja sekalian dari paling awal kalau mungkin ada yang terlewat dan belum saya pelajari. Dan sekaligus mempelajari cara mengajarnya. Bagian ini mengarahkan saya kepada Course di &lt;a href=&quot;https://www.udacity.com/course/android-basics-user-interface--ud834&quot;&gt;Udacity&lt;/a&gt; dan bagusnya lagi course ini FREE alias GRATIS YAAAAY !! Ada banyak course di Udacity yang mana sebagian besar berkolaborasi dengan perusahaan besar, contohnya untuk course Android ini berkolaborasi oleh Google, Artificial Intelligence yang berkolaborasi oleh IBM Watson, Amazon Alexa, dan DiDi (Ubernya China), dan banyak lagi.&lt;/p&gt;
+
+&lt;p&gt;Berdasarkan Course Udacity, Android Basics terdiri dari 5 Course&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;User Interface&lt;/li&gt;
+  &lt;li&gt;User Input&lt;/li&gt;
+  &lt;li&gt;Multiple App Screens&lt;/li&gt;
+  &lt;li&gt;Networking&lt;/li&gt;
+  &lt;li&gt;Data Storage&lt;/li&gt;
+&lt;/ol&gt;
 
 &lt;p&gt;Saya akan bagikan pengalaman videonya dalam Bahasa Indonesia, yang mana saya yakin ini cukup penting supaya ga ada alasan lagi bagi mahasiswa yang ingin belajar namun terkendala bahasa. Stay tune.&lt;/p&gt;
 
@@ -215,7 +323,31 @@ Install chocolatey dengan buka cmd dengan run as administrator</summary></entry>
 
 &lt;p&gt;&lt;a href=&quot;https://jekyllrb.com&quot;&gt;Jekyll&lt;/a&gt; mampu mengubah text biasa menjadi web statis, persis seperti yang saya inginkan memang supaya simple dan gak pusing mbacanya. Tapi nampaknya untuk mengoperasikannya lebih pas kalau pakai linux ketimbang windows. Lah sayanya punya dual boot sih buat Windows 10 dan Ubuntu, tapi rasanya susah banget lepas dari windows apalagi lagi rame-ramenya Master League PES 2017 Season Ke-4, jadi cari-cari tutorialnya deh bagaimana cara install Jekyll di Windows dan nantinya akan dibagikan di blog ini&lt;/p&gt;
 
-&lt;p&gt;Semoga setelah gunting pita ini bisa lanjut bloggingnya jangan sampai terbengkalai lagi&lt;/p&gt;</content><summary type="html">Bismillah alhamdulillah. Setelah sebelumnya punya beberapa blog tidak terurus, mudah-mudahan kali ini bisa menjadi tempat berbagi semua ilmu yang saya punya, bukan cuma tempat tulis-tulis ga jelas seperti blog-blog sebelumnya, Hahaha..</summary></entry><entry><title type="html">Coba Posting Gambar dan PDF</title><link href="http://localhost:4000/uncategorized/2016/12/22/coba-posting-gambar-pdf.html" rel="alternate" type="text/html" title="Coba Posting Gambar dan PDF" /><published>2016-12-22T09:28:41+08:00</published><updated>2016-12-22T09:28:41+08:00</updated><id>http://localhost:4000/uncategorized/2016/12/22/coba-posting-gambar-pdf</id><content type="html" xml:base="http://localhost:4000/uncategorized/2016/12/22/coba-posting-gambar-pdf.html">&lt;p&gt;Coba posting gambar&lt;/p&gt;
+&lt;p&gt;Semoga setelah gunting pita ini bisa lanjut bloggingnya jangan sampai terbengkalai lagi&lt;/p&gt;
+
+&lt;div id=&quot;disqus_thread&quot;&gt;&lt;/div&gt;
+&lt;script&gt;
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+     */
+    /*
+    var disqus_config = function () {
+        this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    */
+    (function() {  // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        
+        s.src = 'https://mirzayogy.disqus.com/embed.js';
+        
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+&lt;/script&gt;
+
+&lt;noscript&gt;Please enable JavaScript to view the &lt;a href=&quot;https://disqus.com/?ref_noscript&quot; rel=&quot;nofollow&quot;&gt;comments powered by Disqus.&lt;/a&gt;&lt;/noscript&gt;</content><summary type="html">Bismillah alhamdulillah. Setelah sebelumnya punya beberapa blog tidak terurus, mudah-mudahan kali ini bisa menjadi tempat berbagi semua ilmu yang saya punya, bukan cuma tempat tulis-tulis ga jelas seperti blog-blog sebelumnya, Hahaha..</summary></entry><entry><title type="html">Coba Posting Gambar dan PDF</title><link href="http://localhost:4000/uncategorized/2016/12/22/coba-posting-gambar-pdf.html" rel="alternate" type="text/html" title="Coba Posting Gambar dan PDF" /><published>2016-12-22T09:28:41+08:00</published><updated>2016-12-22T09:28:41+08:00</updated><id>http://localhost:4000/uncategorized/2016/12/22/coba-posting-gambar-pdf</id><content type="html" xml:base="http://localhost:4000/uncategorized/2016/12/22/coba-posting-gambar-pdf.html">&lt;p&gt;Coba posting gambar&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/kucing.png&quot; alt=&quot;Miaww&quot; /&gt;&lt;/p&gt;
 

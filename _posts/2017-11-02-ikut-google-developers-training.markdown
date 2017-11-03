@@ -22,6 +22,13 @@ Alhamdulillah saya sudah pernah ikut training dasar dari [Seamolec](http://etrai
 
 Saya ambil bagian For new programmers, biar aja sekalian dari paling awal kalau mungkin ada yang terlewat dan belum saya pelajari. Dan sekaligus mempelajari cara mengajarnya. Bagian ini mengarahkan saya kepada Course di [Udacity](https://www.udacity.com/course/android-basics-user-interface--ud834) dan bagusnya lagi course ini FREE alias GRATIS YAAAAY !! Ada banyak course di Udacity yang mana sebagian besar berkolaborasi dengan perusahaan besar, contohnya untuk course Android ini berkolaborasi oleh Google, Artificial Intelligence yang berkolaborasi oleh IBM Watson, Amazon Alexa, dan DiDi (Ubernya China), dan banyak lagi.
 
+Berdasarkan Course Udacity, Android Basics terdiri dari 5 Course
+1. User Interface
+2. User Input
+3. Multiple App Screens
+4. Networking
+5. Data Storage 
+
 Saya akan bagikan pengalaman videonya dalam Bahasa Indonesia, yang mana saya yakin ini cukup penting supaya ga ada alasan lagi bagi mahasiswa yang ingin belajar namun terkendala bahasa. Stay tune.
 
 <div id="disqus_thread"></div>
