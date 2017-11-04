@@ -45,11 +45,5 @@ Berikutnya tambahkan atau copy paste bagian
         android:textSize="24sp"  />
 {% endhighlight %}
 
-yang berfungsi untuk menambahkan `TextView` baru
-
-Anda bisa juga mencoba mengganti nilai atribut pada `ViewGroup`
-
-    android:orientation="vertical"
-
-menjadi `horizontal`
+yang berfungsi untuk menambahkan `TextView` baru. Anda bisa juga mencoba mengganti nilai atribut pada `android:orientation="vertical"` menjadi `horizontal`
 

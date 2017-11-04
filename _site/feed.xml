@@ -40,15 +40,7 @@
         &lt;span class=&quot;na&quot;&gt;android:layout_height=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;wrap_content&quot;&lt;/span&gt;
         &lt;span class=&quot;na&quot;&gt;android:textSize=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;24sp&quot;&lt;/span&gt;  &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;p&gt;yang berfungsi untuk menambahkan &lt;code class=&quot;highlighter-rouge&quot;&gt;TextView&lt;/code&gt; baru&lt;/p&gt;
-
-&lt;p&gt;Anda bisa juga mencoba mengganti nilai atribut pada &lt;code class=&quot;highlighter-rouge&quot;&gt;ViewGroup&lt;/code&gt;&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;android:orientation=&quot;vertical&quot;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;menjadi &lt;code class=&quot;highlighter-rouge&quot;&gt;horizontal&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;yang berfungsi untuk menambahkan &lt;code class=&quot;highlighter-rouge&quot;&gt;TextView&lt;/code&gt; baru. Anda bisa juga mencoba mengganti nilai atribut pada &lt;code class=&quot;highlighter-rouge&quot;&gt;android:orientation=&quot;vertical&quot;&lt;/code&gt; menjadi &lt;code class=&quot;highlighter-rouge&quot;&gt;horizontal&lt;/code&gt;&lt;/p&gt;
 
 </description>
 				<pubDate>Sat, 04 Nov 2017 12:46:41 +0800</pubDate>
