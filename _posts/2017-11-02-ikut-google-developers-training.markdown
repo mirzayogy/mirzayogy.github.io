@@ -11,14 +11,13 @@ tags:
 Android merupakan platform yang sangat populer pada jaman now. Hal ini tentu menjadi faktor utama kenapa banyak orang ingin belajar membuat aplikasi android.
 
 Ada beberapa cara untuk membuat aplikasi yang bisa berjalan pada platform Android, diantaranya:
-1. Menggunakan Android Studio [Source](https://developer.android.com/studio/install.html)
+1. Menggunakan [Android Studio](https://developer.android.com/studio/install.html)
 2. Menggunakan Eclipse dengan plugin ADT, namun cara ini tidak lagi di-support oleh Google sejak Juni 2015 [Source](https://developer.android.com/studio/tools/sdk/eclipse-adt.html)
-3. Menggunakan Delphi, namun Delphi tidak gratis [Source](https://www.embarcadero.com/products/delphi)
+3. Menggunakan [Delphi](https://www.embarcadero.com/products/delphi), namun Delphi tidak gratis 
 4. Menggunakan  framework [Meteor](https://www.meteor.com/), [Ionic](https://ionicframework.com/), dll
 5. Menggunakan [AppInventor](http://ai2.appinventor.mit.edu/)
 
-Alhamdulillah saya sudah pernah ikut training dasar dari [Seamolec](http://etraining.seamolec.org/) dan [BCTI](https://www.facebook.com/hasnurcentre.hasnurcentre.7) namun masih pengen liat gimana si kalo Google yang ngajarin. Jadilah buka website
-[Google Developer](https://developers.google.com/training/android/). Disini terdapat 4 (empat) tingkatan yaitu:
+Alhamdulillah saya sudah pernah ikut training dasar dari [Seamolec](http://etraining.seamolec.org/) dan [BCTI](https://www.facebook.com/hasnurcentre.hasnurcentre.7) namun masih pengen liat gimana si kalo Google yang ngajarin. Jadilah buka website [Google Developer](https://developers.google.com/training/android/). Disini terdapat 4 (empat) tingkatan yaitu:
 1. For new programmers
 2. For developers
 3. Learn design skills

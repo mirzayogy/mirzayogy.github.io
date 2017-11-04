@@ -7,6 +7,62 @@
 		<atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
 		
 			<item>
+				<title>Android Basics - User Interface - Building Layouts: Part 2</title>
+				<description>&lt;p&gt;Pada bagian pertama kita sudah membahas tentang &lt;code class=&quot;highlighter-rouge&quot;&gt;View&lt;/code&gt; dan Atributnya. Pada bagian kedua akan dibahas &lt;code class=&quot;highlighter-rouge&quot;&gt;ViewGroup&lt;/code&gt; yang merupakan tempat meletakkan beberapa atau banyak View.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/01Beginner.01Inteface.01LayoutsP2.001.png&quot; alt=&quot;Miaww&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Gambar yang berwarna hijau merupakan &lt;code class=&quot;highlighter-rouge&quot;&gt;ImageView&lt;/code&gt;, sedangkan yang biru adalah &lt;code class=&quot;highlighter-rouge&quot;&gt;TextView&lt;/code&gt; yang keduanya sudah dibahas pada bagian pertama. Bagian yang berwarna jingga dan merah merupakan &lt;code class=&quot;highlighter-rouge&quot;&gt;ViewGroup&lt;/code&gt; yang menampung &lt;code class=&quot;highlighter-rouge&quot;&gt;View&lt;/code&gt;. Pada gambar sebelah kiri nampak sebuah &lt;code class=&quot;highlighter-rouge&quot;&gt;ViewGroup&lt;/code&gt; menampung 1 (satu) &lt;code class=&quot;highlighter-rouge&quot;&gt;ImageView&lt;/code&gt; dan 2 (dua) &lt;code class=&quot;highlighter-rouge&quot;&gt;TextView&lt;/code&gt;, bagian tengah menampung masing-masing 1 (satu) &lt;code class=&quot;highlighter-rouge&quot;&gt;ImageView&lt;/code&gt; dan &lt;code class=&quot;highlighter-rouge&quot;&gt;TextView&lt;/code&gt; begitu pula pada bagian kanan.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;ViewGroup&lt;/code&gt; yang menampung &lt;code class=&quot;highlighter-rouge&quot;&gt;View&lt;/code&gt; disebut sebagai &lt;code class=&quot;highlighter-rouge&quot;&gt;parent&lt;/code&gt; sedangkan View-nya disebut &lt;code class=&quot;highlighter-rouge&quot;&gt;child&lt;/code&gt;, dan sesama view disebut sebagai &lt;code class=&quot;highlighter-rouge&quot;&gt;siblings&lt;/code&gt; atau saudara. &lt;code class=&quot;highlighter-rouge&quot;&gt;Parent&lt;/code&gt; dapat mengatur dimana letak &lt;code class=&quot;highlighter-rouge&quot;&gt;child&lt;/code&gt; dan bagaimana susunannya tergantung pada jenis &lt;code class=&quot;highlighter-rouge&quot;&gt;parent&lt;/code&gt; dan isian atributnya.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/01Beginner.01Inteface.01LayoutsP2.002.png&quot; alt=&quot;Miaww1&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/01Beginner.01Inteface.01LayoutsP2.003.png&quot; alt=&quot;Miaww1&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Contoh pertama adalah &lt;code class=&quot;highlighter-rouge&quot;&gt;LinearLayout&lt;/code&gt; yang bisa mengatur &lt;code class=&quot;highlighter-rouge&quot;&gt;child&lt;/code&gt; agar disusun secara &lt;code class=&quot;highlighter-rouge&quot;&gt;vertikal&lt;/code&gt; dari atas ke bawah atau secara &lt;code class=&quot;highlighter-rouge&quot;&gt;horizontal&lt;/code&gt; dari kiri ke kanan&lt;/p&gt;
+
+&lt;p&gt;Contoh kedua adalah &lt;code class=&quot;highlighter-rouge&quot;&gt;RelativeLayout&lt;/code&gt; yang bisa mengatur posisi &lt;code class=&quot;highlighter-rouge&quot;&gt;child&lt;/code&gt; berdasarkan posisi dari komponen lain. Gambar berikut menunjukkan bagaimana &lt;code class=&quot;highlighter-rouge&quot;&gt;TextView&lt;/code&gt; dapat diletakkan pada bagian bawah &lt;code class=&quot;highlighter-rouge&quot;&gt;parent&lt;/code&gt;nya sedangkan &lt;code class=&quot;highlighter-rouge&quot;&gt;ImageView&lt;/code&gt; diletakkan pada bagian atas &lt;code class=&quot;highlighter-rouge&quot;&gt;parent&lt;/code&gt;nya&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/01Beginner.01Inteface.01LayoutsP2.004.png&quot; alt=&quot;Miaww1&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Gambar berikut menunjukkan bagaimana &lt;code class=&quot;highlighter-rouge&quot;&gt;ImagetView&lt;/code&gt; dapat diletakkan pada sebelah kanan dari &lt;code class=&quot;highlighter-rouge&quot;&gt;parent&lt;/code&gt;nya, kemudian &lt;code class=&quot;highlighter-rouge&quot;&gt;TextView&lt;/code&gt; Birthday diletakkan pada sebelah kanan dari &lt;code class=&quot;highlighter-rouge&quot;&gt;ImageView&lt;/code&gt; dan terakhir &lt;code class=&quot;highlighter-rouge&quot;&gt;TextView&lt;/code&gt; January 1 diletakkan pada sebelah kanan dari &lt;code class=&quot;highlighter-rouge&quot;&gt;ImageView&lt;/code&gt; dan juga bagian bawah dari &lt;code class=&quot;highlighter-rouge&quot;&gt;TextView&lt;/code&gt; Birthday&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/01Beginner.01Inteface.01LayoutsP2.005.png&quot; alt=&quot;Miaww1&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Sekarang coba buka &lt;a href=&quot;http://labs.udacity.com/android-visualizer/#/android/linear-layout&quot;&gt;LINK INI&lt;/a&gt; untuk latihan menggunakan ViewGroup. Kemudian tambahkan&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;android:background=&quot;#f44336&quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;setelah coding &lt;code class=&quot;highlighter-rouge&quot;&gt;android:orientation=&quot;vertical&quot;&lt;/code&gt; supaya tampak ada dimana posisi sang &lt;code class=&quot;highlighter-rouge&quot;&gt;ViewGroup&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Berikutnya tambahkan atau copy paste bagian&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-xml&quot; data-lang=&quot;xml&quot;&gt;    &lt;span class=&quot;nt&quot;&gt;&amp;lt;TextView&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;android:text=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Patel &quot;&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;android:layout_width=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;wrap_content&quot;&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;android:layout_height=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;wrap_content&quot;&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;android:textSize=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;24sp&quot;&lt;/span&gt;  &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;yang berfungsi untuk menambahkan &lt;code class=&quot;highlighter-rouge&quot;&gt;TextView&lt;/code&gt; baru&lt;/p&gt;
+
+&lt;p&gt;Anda bisa juga mencoba mengganti nilai atribut pada &lt;code class=&quot;highlighter-rouge&quot;&gt;ViewGroup&lt;/code&gt;&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;android:orientation=&quot;vertical&quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;menjadi &lt;code class=&quot;highlighter-rouge&quot;&gt;horizontal&lt;/code&gt;&lt;/p&gt;
+
+</description>
+				<pubDate>Sat, 04 Nov 2017 12:46:41 +0800</pubDate>
+				<link>http://localhost:4000/2017/11/android-basics-user-interface2</link>
+				<guid isPermaLink="true">http://localhost:4000/2017/11/android-basics-user-interface2</guid>
+			</item>
+		
+			<item>
 				<title>Android Basics - User Interface - Building Layouts: Part 1</title>
 				<description>&lt;p&gt;Course Android Basics - User Interface dari Udacity ini terdiri dari 4 bagian&lt;/p&gt;
 &lt;ol&gt;
@@ -20,21 +76,23 @@ Pengenalan terhadap eXtensible Markup Language (XML) yang menjadi layout untuk a
  Membuat project Sederhana&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;p&gt;Bagian pertama mengenalkan kepada view yang dimiliki android diantaranya ada 3 (tiga) view yaitu TextView yang berfungsi untuk menampilkan tulisan, ImageView untuk menampilkan gambar, dan Button.. ya.. Tombol&lt;br /&gt;
-&lt;img src=&quot;http://localhost:4000/assets/01Beginner.01Inteface.01LayoutsP1.001.png&quot; alt=&quot;Miaww&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;Bagian pertama mengenalkan kepada view yang dimiliki android diantaranya ada 3 (tiga) view yaitu &lt;code class=&quot;highlighter-rouge&quot;&gt;TextView&lt;/code&gt; yang berfungsi untuk menampilkan tulisan, &lt;code class=&quot;highlighter-rouge&quot;&gt;ImageView&lt;/code&gt; untuk menampilkan gambar, dan &lt;code class=&quot;highlighter-rouge&quot;&gt;Button&lt;/code&gt;.. ya.. Tombol&lt;/p&gt;
 
-&lt;p&gt;View pada Android dituliskan dengan CamelCase yang berarti Punuk Onta, karena setiap kata diawali dengan huruf besar makanya disebut mirip dengan punuk onta.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/01Beginner.01Inteface.01LayoutsP1.001.png&quot; alt=&quot;Miaww&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;Sintaks adalah aturan yang mendefinisikan bagaimana menulis bahasa dengan benar, dalam hal ini XML. Jika komponen yang ditulis tidak sesuai dengan sintaks, maka komponen tidak akan muncul pada layar. Berikut sintaks penulisan XML&lt;br /&gt;
-&lt;img src=&quot;http://localhost:4000/assets/01Beginner.01Inteface.01LayoutsP1.002.png&quot; alt=&quot;Miaww1&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;View pada Android dituliskan dengan &lt;code class=&quot;highlighter-rouge&quot;&gt;CamelCase&lt;/code&gt; yang berarti Punuk Onta, karena setiap kata diawali dengan huruf besar makanya disebut mirip dengan punuk onta.&lt;/p&gt;
 
-&lt;p&gt;Perhatikan tulisan berwarna hijau menunjukkan nama komponennya yang diawali oleh opening angle bracket (&amp;lt;) dan diakhiri dengan garis miring dan closing angle bracket (/&amp;gt;) yang mana disebut dengan Self Closing Tag. Tulisan berwarna biru adalah atribut dari komponen, dan yang berwarna merah dan selalu menggunakan tanda petik (“) adalah nilai dari atributnya misalkan&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Sintaks&lt;/code&gt; adalah aturan yang mendefinisikan bagaimana menulis bahasa dengan benar, dalam hal ini XML. Jika komponen yang ditulis tidak sesuai dengan sintaks, maka komponen tidak akan muncul pada layar. Berikut sintaks penulisan XML&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/01Beginner.01Inteface.01LayoutsP1.002.png&quot; alt=&quot;Miaww1&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Perhatikan tulisan berwarna hijau menunjukkan nama komponennya yang diawali oleh &lt;code class=&quot;highlighter-rouge&quot;&gt;opening angle bracket (&amp;lt;)&lt;/code&gt; dan diakhiri dengan &lt;code class=&quot;highlighter-rouge&quot;&gt;garis miring&lt;/code&gt; dan &lt;code class=&quot;highlighter-rouge&quot;&gt;closing angle bracket (/&amp;gt;)&lt;/code&gt; yang mana disebut dengan &lt;code class=&quot;highlighter-rouge&quot;&gt;Self Closing Tag&lt;/code&gt;. Tulisan berwarna biru adalah atribut dari komponen, dan yang berwarna merah dan selalu menggunakan tanda petik (“) adalah nilai dari atributnya misalkan&lt;/p&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-xml&quot; data-lang=&quot;xml&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;TextView&lt;/span&gt;
     &lt;span class=&quot;na&quot;&gt;android:text=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Ini Nilai Atribut&quot;&lt;/span&gt;
 &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;p&gt;Untuk latihan bisa pada &lt;a href=&quot;http://labs.udacity.com/android-visualizer/#/android/text-view&quot;&gt;LINK INI&lt;/a&gt; yang perlu diperhatikan bahwa tools ini hanya untuk latihan, dan tidak memiliki fitur selengkap android studio.&lt;/p&gt;
+&lt;p&gt;Untuk latihan bisa dicoba pada &lt;a href=&quot;http://labs.udacity.com/android-visualizer/#/android/text-view&quot;&gt;LINK INI&lt;/a&gt; akan tetapi yang perlu diperhatikan bahwa tools ini hanya untuk latihan, dan tidak memiliki fitur selengkap android studio.&lt;/p&gt;
 
 &lt;p&gt;Coba tuliskan perintah berikut kemudian ganti-ganti nilai atributnya&lt;/p&gt;
 
@@ -46,13 +104,14 @@ Pengenalan terhadap eXtensible Markup Language (XML) yang menjadi layout untuk a
     &lt;span class=&quot;na&quot;&gt;android:layout_width=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;150dp&quot;&lt;/span&gt;
     &lt;span class=&quot;na&quot;&gt;android:layout_height=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;75dp&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;p&gt;&lt;a href=&quot;https://drive.google.com/file/d/0B5XIkMkayHgRMVljUVIyZzNmQUU/view&quot;&gt;LINK&lt;/a&gt; Contoh Android Views&lt;/p&gt;
+&lt;p&gt;Jika ingin mencoba &lt;code class=&quot;highlighter-rouge&quot;&gt;Views&lt;/code&gt; lainnya bisa dilihat contoh pada &lt;a href=&quot;https://drive.google.com/file/d/0B5XIkMkayHgRMVljUVIyZzNmQUU/view&quot;&gt;LINK INI&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&quot;https://material.io/guidelines/style/color.html#&quot;&gt;LINK&lt;/a&gt; Kombinasi Warna&lt;/p&gt;
+&lt;p&gt;Kombinasi warna pada menu maupun warna huruf sangat penting dalam perancangan tampilan aplikasi berikut &lt;a href=&quot;https://material.io/guidelines/style/color.html#&quot;&gt;LINK&lt;/a&gt; yang bisa dijadikan acuan untuk pemilihan warna&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&quot;https://material.io/guidelines/style/typography.html#&quot;&gt;LINK&lt;/a&gt; Kombinasi ukuran Text&lt;/p&gt;
+&lt;p&gt;Selain warna penentuan ukuran huruf juga penting untuk memperindah tampilan dan tidak mengganggu fokus pengguna, berikut &lt;br /&gt;
+&lt;a href=&quot;https://material.io/guidelines/style/typography.html#&quot;&gt;LINK&lt;/a&gt; yang membahas tentang ukuran huruf.&lt;/p&gt;
 
-&lt;p&gt;Nilai atribut android:layout_width dan android:layout_width dapat kita isi dengan “wrap_content” untuk membungkusnya sesuai dengan ukuran isi atau besarnya font&lt;/p&gt;
+&lt;p&gt;Nilai atribut &lt;code class=&quot;highlighter-rouge&quot;&gt;android:layout_width&lt;/code&gt; dan &lt;code class=&quot;highlighter-rouge&quot;&gt;android:layout_height&lt;/code&gt; dapat kita isi dengan &lt;code class=&quot;highlighter-rouge&quot;&gt;&quot;wrap_content&quot;&lt;/code&gt; untuk membungkusnya sesuai dengan ukuran isi atau besarnya font&lt;/p&gt;
 
 &lt;p&gt;Coba tuliskan perintah berikut bandingkan dengan hasil source code sebelumnya&lt;/p&gt;
 
@@ -64,7 +123,7 @@ Pengenalan terhadap eXtensible Markup Language (XML) yang menjadi layout untuk a
     &lt;span class=&quot;na&quot;&gt;android:layout_width=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;wrap_content&quot;&lt;/span&gt;
     &lt;span class=&quot;na&quot;&gt;android:layout_height=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;wrap_content&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;p&gt;Untuk ImageView bisa dicoba source code berikut&lt;/p&gt;
+&lt;p&gt;Views &lt;code class=&quot;highlighter-rouge&quot;&gt;ImageView&lt;/code&gt; bisa digunakan untuk menampilkan gambar, untuk mencoba bisa ditulis source code berikut&lt;/p&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-xml&quot; data-lang=&quot;xml&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;ImageView&lt;/span&gt;
     &lt;span class=&quot;na&quot;&gt;android:src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;@drawable/cake&quot;&lt;/span&gt;
@@ -72,9 +131,9 @@ Pengenalan terhadap eXtensible Markup Language (XML) yang menjadi layout untuk a
     &lt;span class=&quot;na&quot;&gt;android:layout_height=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;wrap_content&quot;&lt;/span&gt;
     &lt;span class=&quot;na&quot;&gt;android:scaleType=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;center&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;p&gt;Gambar cake yang disediakan sangat besar sehingga yang tampak hanya bagian Agar gambar cake terlihat jelas nilai pada android:scaleType bisa diganti menjadi “centerCrop”&lt;/p&gt;
+&lt;p&gt;Gambar &lt;code class=&quot;highlighter-rouge&quot;&gt;cake&lt;/code&gt; yang disediakan sangat besar sehingga yang tampak hanya bagian Agar gambar cake terlihat jelas nilai pada &lt;code class=&quot;highlighter-rouge&quot;&gt;android:scaleType&lt;/code&gt; bisa diganti menjadi &lt;code class=&quot;highlighter-rouge&quot;&gt;&quot;centerCrop&quot;&lt;/code&gt;&lt;/p&gt;
 
-&lt;p&gt;Untuk mengganti gambar bisa dilihat pada tombol “AVAILABLE IMAGES” pada bagian bawah kemudian ganti sesuai dengan nama gambarnya. Setelah gambar diganti, coba atur nilai atribut agar gambar selalu penuh (full bleed).&lt;/p&gt;
+&lt;p&gt;Untuk mengganti gambar bisa dilihat pada tombol &lt;code class=&quot;highlighter-rouge&quot;&gt;&quot;AVAILABLE IMAGES&quot;&lt;/code&gt; pada bagian bawah kemudian ganti sesuai dengan nama gambarnya. Setelah gambar diganti, coba atur nilai atribut agar gambar selalu penuh (&lt;code class=&quot;highlighter-rouge&quot;&gt;full bleed&lt;/code&gt;).&lt;/p&gt;
 
 &lt;p&gt;Happy Coding&lt;/p&gt;
 </description>
@@ -89,15 +148,14 @@ Pengenalan terhadap eXtensible Markup Language (XML) yang menjadi layout untuk a
 
 &lt;p&gt;Ada beberapa cara untuk membuat aplikasi yang bisa berjalan pada platform Android, diantaranya:&lt;/p&gt;
 &lt;ol&gt;
-  &lt;li&gt;Menggunakan Android Studio &lt;a href=&quot;https://developer.android.com/studio/install.html&quot;&gt;Source&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Menggunakan &lt;a href=&quot;https://developer.android.com/studio/install.html&quot;&gt;Android Studio&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;Menggunakan Eclipse dengan plugin ADT, namun cara ini tidak lagi di-support oleh Google sejak Juni 2015 &lt;a href=&quot;https://developer.android.com/studio/tools/sdk/eclipse-adt.html&quot;&gt;Source&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;Menggunakan Delphi, namun Delphi tidak gratis &lt;a href=&quot;https://www.embarcadero.com/products/delphi&quot;&gt;Source&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Menggunakan &lt;a href=&quot;https://www.embarcadero.com/products/delphi&quot;&gt;Delphi&lt;/a&gt;, namun Delphi tidak gratis&lt;/li&gt;
   &lt;li&gt;Menggunakan  framework &lt;a href=&quot;https://www.meteor.com/&quot;&gt;Meteor&lt;/a&gt;, &lt;a href=&quot;https://ionicframework.com/&quot;&gt;Ionic&lt;/a&gt;, dll&lt;/li&gt;
   &lt;li&gt;Menggunakan &lt;a href=&quot;http://ai2.appinventor.mit.edu/&quot;&gt;AppInventor&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;p&gt;Alhamdulillah saya sudah pernah ikut training dasar dari &lt;a href=&quot;http://etraining.seamolec.org/&quot;&gt;Seamolec&lt;/a&gt; dan &lt;a href=&quot;https://www.facebook.com/hasnurcentre.hasnurcentre.7&quot;&gt;BCTI&lt;/a&gt; namun masih pengen liat gimana si kalo Google yang ngajarin. Jadilah buka website&lt;br /&gt;
-&lt;a href=&quot;https://developers.google.com/training/android/&quot;&gt;Google Developer&lt;/a&gt;. Disini terdapat 4 (empat) tingkatan yaitu:&lt;/p&gt;
+&lt;p&gt;Alhamdulillah saya sudah pernah ikut training dasar dari &lt;a href=&quot;http://etraining.seamolec.org/&quot;&gt;Seamolec&lt;/a&gt; dan &lt;a href=&quot;https://www.facebook.com/hasnurcentre.hasnurcentre.7&quot;&gt;BCTI&lt;/a&gt; namun masih pengen liat gimana si kalo Google yang ngajarin. Jadilah buka website &lt;a href=&quot;https://developers.google.com/training/android/&quot;&gt;Google Developer&lt;/a&gt;. Disini terdapat 4 (empat) tingkatan yaitu:&lt;/p&gt;
 &lt;ol&gt;
   &lt;li&gt;For new programmers&lt;/li&gt;
   &lt;li&gt;For developers&lt;/li&gt;
