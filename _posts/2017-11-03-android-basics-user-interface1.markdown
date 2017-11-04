@@ -4,6 +4,9 @@ title:  "Android Basics - User Interface - Building Layouts: Part 1"
 date:   2017-11-03 12:46:41 +0800
 categories: android
 comments : true
+description: Bagian pertama dari Course Android Basics, Pengenalan Views, XML, attribute, dan modifikasinya
+tags: 
+ - android
 ---
 
 Course Android Basics - User Interface dari Udacity ini terdiri dari 4 bagian
@@ -79,28 +82,3 @@ Gambar cake yang disediakan sangat besar sehingga yang tampak hanya bagian Agar 
 Untuk mengganti gambar bisa dilihat pada tombol "AVAILABLE IMAGES" pada bagian bawah kemudian ganti sesuai dengan nama gambarnya. Setelah gambar diganti, coba atur nilai atribut agar gambar selalu penuh (full bleed).
 
 Happy Coding
-
-<div id="disqus_thread"></div>
-<script>
-    /**
-     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
-     */
-    /*
-    var disqus_config = function () {
-        this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
-        this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-    };
-    */
-    (function() {  // DON'T EDIT BELOW THIS LINE
-        var d = document, s = d.createElement('script');
-        
-        s.src = 'https://mirzayogy.disqus.com/embed.js';
-        
-        s.setAttribute('data-timestamp', +new Date());
-        (d.head || d.body).appendChild(s);
-    })();
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
-
-

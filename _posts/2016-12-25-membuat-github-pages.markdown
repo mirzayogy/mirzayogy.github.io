@@ -3,7 +3,10 @@ layout: post
 title:  Membuat GitHub Pages
 categories: Blogging
 date:   2016-12-25 23:00:41 +0800
+description: Cara Membuat GitHub pages dengan hosting yang gratis dan domain username.github.io
 comments: true
+tags:
+ - blogging
 ---
 Untuk membuat blog dengan Jekyll kita bisa menggunakan github sebagai host gratisnya. GitHub adalah layanan web untuk proyek-proyek yang bersifat open source, gampangnya ini sosmednya software developer buat bertukar coding gitu lah. Saya juga bikin supaya kekinian ihik ihik. Untuk pembuatan blognya yang dalam hal ini disebut sebagai github pages, repository harus dalam nama username.github.io username-nya ya diganti username akunnya lah. Langkah-langkahnya bisa dijelaskan sebagai berikut:
 

@@ -3,6 +3,7 @@ layout: post
 title:  "Coba Posting Gambar dan PDF"
 date:   2016-12-22 09:28:41 +0800
 categories: uncategorized
+published : false
 ---
 Coba posting gambar
 

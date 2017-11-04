@@ -1,22 +1,31 @@
-<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xml" href="http://localhost:4000/feed.xslt.xml"?><feed xmlns="http://www.w3.org/2005/Atom"><generator uri="http://jekyllrb.com" version="3.3.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2017-11-03T15:33:38+08:00</updated><id>http://localhost:4000//</id><title type="html">Learn, Practice, Share</title><subtitle>Website tempat belajar, praktek, dan membagikan pengalamannya.
-</subtitle><entry><title type="html">Android Basics - User Interface - Building Layouts: Part 1</title><link href="http://localhost:4000/android/2017/11/03/android-basics-user-interface1.html" rel="alternate" type="text/html" title="Android Basics - User Interface - Building Layouts: Part 1" /><published>2017-11-03T12:46:41+08:00</published><updated>2017-11-03T12:46:41+08:00</updated><id>http://localhost:4000/android/2017/11/03/android-basics-user-interface1</id><content type="html" xml:base="http://localhost:4000/android/2017/11/03/android-basics-user-interface1.html">&lt;p&gt;Course Android Basics - User Interface dari Udacity ini terdiri dari 4 bagian&lt;/p&gt;
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>Learn, Practice, Share</title>
+		<description>Software Developer</description>
+		<link>http://localhost:4000</link>
+		<atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
+		
+			<item>
+				<title>Android Basics - User Interface - Building Layouts: Part 1</title>
+				<description>&lt;p&gt;Course Android Basics - User Interface dari Udacity ini terdiri dari 4 bagian&lt;/p&gt;
 &lt;ol&gt;
-  &lt;li&gt;Building Layouts Part 1
+  &lt;li&gt;Building Layouts Part 1&lt;br /&gt;
 Pengenalan terhadap eXtensible Markup Language (XML) yang menjadi layout untuk aplikasi Android&lt;/li&gt;
-  &lt;li&gt;Building Layouts Part 2
+  &lt;li&gt;Building Layouts Part 2&lt;br /&gt;
  Mengajarkan tentang grouping layout dan desain&lt;/li&gt;
-  &lt;li&gt;Practice Set: Building Layouts
+  &lt;li&gt;Practice Set: Building Layouts&lt;br /&gt;
  Mulai menggunakan android studio untuk praktek layout&lt;/li&gt;
-  &lt;li&gt;Project
+  &lt;li&gt;Project&lt;br /&gt;
  Membuat project Sederhana&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;p&gt;Bagian pertama mengenalkan kepada view yang dimiliki android diantaranya ada 3 (tiga) view yaitu TextView yang berfungsi untuk menampilkan tulisan, ImageView untuk menampilkan gambar, dan Button.. ya.. Tombol
+&lt;p&gt;Bagian pertama mengenalkan kepada view yang dimiliki android diantaranya ada 3 (tiga) view yaitu TextView yang berfungsi untuk menampilkan tulisan, ImageView untuk menampilkan gambar, dan Button.. ya.. Tombol&lt;br /&gt;
 &lt;img src=&quot;http://localhost:4000/assets/01Beginner.01Inteface.01LayoutsP1.001.png&quot; alt=&quot;Miaww&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;View pada Android dituliskan dengan CamelCase yang berarti Punuk Onta, karena setiap kata diawali dengan huruf besar makanya disebut mirip dengan punuk onta.&lt;/p&gt;
 
-&lt;p&gt;Sintaks adalah aturan yang mendefinisikan bagaimana menulis bahasa dengan benar, dalam hal ini XML. Jika komponen yang ditulis tidak sesuai dengan sintaks, maka komponen tidak akan muncul pada layar. Berikut sintaks penulisan XML
+&lt;p&gt;Sintaks adalah aturan yang mendefinisikan bagaimana menulis bahasa dengan benar, dalam hal ini XML. Jika komponen yang ditulis tidak sesuai dengan sintaks, maka komponen tidak akan muncul pada layar. Berikut sintaks penulisan XML&lt;br /&gt;
 &lt;img src=&quot;http://localhost:4000/assets/01Beginner.01Inteface.01LayoutsP1.002.png&quot; alt=&quot;Miaww1&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Perhatikan tulisan berwarna hijau menunjukkan nama komponennya yang diawali oleh opening angle bracket (&amp;lt;) dan diakhiri dengan garis miring dan closing angle bracket (/&amp;gt;) yang mana disebut dengan Self Closing Tag. Tulisan berwarna biru adalah atribut dari komponen, dan yang berwarna merah dan selalu menggunakan tanda petik (“) adalah nilai dari atributnya misalkan&lt;/p&gt;
@@ -65,40 +74,18 @@ Pengenalan terhadap eXtensible Markup Language (XML) yang menjadi layout untuk a
 
 &lt;p&gt;Gambar cake yang disediakan sangat besar sehingga yang tampak hanya bagian Agar gambar cake terlihat jelas nilai pada android:scaleType bisa diganti menjadi “centerCrop”&lt;/p&gt;
 
-&lt;p&gt;Untuk mengganti gambar bisa dilihat pada tombol “AVAILABLE IMAGES” pada bagian bawah kemudian ganti sesui dengan nama gambarnya contoh&lt;/p&gt;
+&lt;p&gt;Untuk mengganti gambar bisa dilihat pada tombol “AVAILABLE IMAGES” pada bagian bawah kemudian ganti sesuai dengan nama gambarnya. Setelah gambar diganti, coba atur nilai atribut agar gambar selalu penuh (full bleed).&lt;/p&gt;
 
-&lt;div id=&quot;disqus_thread&quot;&gt;&lt;/div&gt;
-&lt;script&gt;
-    /**
-     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
-     */
-    /*
-    var disqus_config = function () {
-        this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
-        this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-    };
-    */
-    (function() {  // DON'T EDIT BELOW THIS LINE
-        var d = document, s = d.createElement('script');
-        
-        s.src = 'https://mirzayogy.disqus.com/embed.js';
-        
-        s.setAttribute('data-timestamp', +new Date());
-        (d.head || d.body).appendChild(s);
-    })();
-&lt;/script&gt;
-
-&lt;noscript&gt;Please enable JavaScript to view the &lt;a href=&quot;https://disqus.com/?ref_noscript&quot; rel=&quot;nofollow&quot;&gt;comments powered by Disqus.&lt;/a&gt;&lt;/noscript&gt;</content><summary type="html">Course Android Basics - User Interface dari Udacity ini terdiri dari 4 bagian
-
-  Building Layouts Part 1
-Pengenalan terhadap eXtensible Markup Language (XML) yang menjadi layout untuk aplikasi Android
-  Building Layouts Part 2
- Mengajarkan tentang grouping layout dan desain
-  Practice Set: Building Layouts
- Mulai menggunakan android studio untuk praktek layout
-  Project
- Membuat project Sederhana</summary></entry><entry><title type="html">Ikut Google Developers Training</title><link href="http://localhost:4000/android/2017/11/02/ikut-google-developers-training.html" rel="alternate" type="text/html" title="Ikut Google Developers Training" /><published>2017-11-02T11:25:41+08:00</published><updated>2017-11-02T11:25:41+08:00</updated><id>http://localhost:4000/android/2017/11/02/ikut-google-developers-training</id><content type="html" xml:base="http://localhost:4000/android/2017/11/02/ikut-google-developers-training.html">&lt;p&gt;Android merupakan platform yang sangat populer pada jaman now. Hal ini tentu menjadi faktor utama kenapa banyak orang ingin belajar membuat aplikasi android.&lt;/p&gt;
+&lt;p&gt;Happy Coding&lt;/p&gt;
+</description>
+				<pubDate>Fri, 03 Nov 2017 12:46:41 +0800</pubDate>
+				<link>http://localhost:4000/2017/11/android-basics-user-interface1</link>
+				<guid isPermaLink="true">http://localhost:4000/2017/11/android-basics-user-interface1</guid>
+			</item>
+		
+			<item>
+				<title>Ikut Google Developers Training</title>
+				<description>&lt;p&gt;Android merupakan platform yang sangat populer pada jaman now. Hal ini tentu menjadi faktor utama kenapa banyak orang ingin belajar membuat aplikasi android.&lt;/p&gt;
 
 &lt;p&gt;Ada beberapa cara untuk membuat aplikasi yang bisa berjalan pada platform Android, diantaranya:&lt;/p&gt;
 &lt;ol&gt;
@@ -106,9 +93,10 @@ Pengenalan terhadap eXtensible Markup Language (XML) yang menjadi layout untuk a
   &lt;li&gt;Menggunakan Eclipse dengan plugin ADT, namun cara ini tidak lagi di-support oleh Google sejak Juni 2015 &lt;a href=&quot;https://developer.android.com/studio/tools/sdk/eclipse-adt.html&quot;&gt;Source&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;Menggunakan Delphi, namun Delphi tidak gratis &lt;a href=&quot;https://www.embarcadero.com/products/delphi&quot;&gt;Source&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;Menggunakan  framework &lt;a href=&quot;https://www.meteor.com/&quot;&gt;Meteor&lt;/a&gt;, &lt;a href=&quot;https://ionicframework.com/&quot;&gt;Ionic&lt;/a&gt;, dll&lt;/li&gt;
+  &lt;li&gt;Menggunakan &lt;a href=&quot;http://ai2.appinventor.mit.edu/&quot;&gt;AppInventor&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;p&gt;Alhamdulillah saya sudah pernah ikut training dasar dari &lt;a href=&quot;http://etraining.seamolec.org/&quot;&gt;Seamolec&lt;/a&gt; dan &lt;a href=&quot;https://www.facebook.com/hasnurcentre.hasnurcentre.7&quot;&gt;BCTI&lt;/a&gt; namun masih pengen liat gimana si kalo Google yang ngajarin. Jadilah buka website
+&lt;p&gt;Alhamdulillah saya sudah pernah ikut training dasar dari &lt;a href=&quot;http://etraining.seamolec.org/&quot;&gt;Seamolec&lt;/a&gt; dan &lt;a href=&quot;https://www.facebook.com/hasnurcentre.hasnurcentre.7&quot;&gt;BCTI&lt;/a&gt; namun masih pengen liat gimana si kalo Google yang ngajarin. Jadilah buka website&lt;br /&gt;
 &lt;a href=&quot;https://developers.google.com/training/android/&quot;&gt;Google Developer&lt;/a&gt;. Disini terdapat 4 (empat) tingkatan yaitu:&lt;/p&gt;
 &lt;ol&gt;
   &lt;li&gt;For new programmers&lt;/li&gt;
@@ -129,70 +117,30 @@ Pengenalan terhadap eXtensible Markup Language (XML) yang menjadi layout untuk a
 &lt;/ol&gt;
 
 &lt;p&gt;Saya akan bagikan pengalaman videonya dalam Bahasa Indonesia, yang mana saya yakin ini cukup penting supaya ga ada alasan lagi bagi mahasiswa yang ingin belajar namun terkendala bahasa. Stay tune.&lt;/p&gt;
-
-&lt;div id=&quot;disqus_thread&quot;&gt;&lt;/div&gt;
-&lt;script&gt;
-    /**
-     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
-     */
-    /*
-    var disqus_config = function () {
-        this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
-        this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-    };
-    */
-    (function() {  // DON'T EDIT BELOW THIS LINE
-        var d = document, s = d.createElement('script');
-        
-        s.src = 'https://mirzayogy.disqus.com/embed.js';
-        
-        s.setAttribute('data-timestamp', +new Date());
-        (d.head || d.body).appendChild(s);
-    })();
-&lt;/script&gt;
-
-&lt;noscript&gt;Please enable JavaScript to view the &lt;a href=&quot;https://disqus.com/?ref_noscript&quot; rel=&quot;nofollow&quot;&gt;comments powered by Disqus.&lt;/a&gt;&lt;/noscript&gt;</content><summary type="html">Android merupakan platform yang sangat populer pada jaman now. Hal ini tentu menjadi faktor utama kenapa banyak orang ingin belajar membuat aplikasi android.</summary></entry><entry><title type="html">Modul Praktikum Java Web</title><link href="http://localhost:4000/java/2017/10/19/modul-praktikum-java-1.1.html" rel="alternate" type="text/html" title="Modul Praktikum Java Web" /><published>2017-10-19T16:25:41+08:00</published><updated>2017-10-19T16:25:41+08:00</updated><id>http://localhost:4000/java/2017/10/19/modul-praktikum-java-1.1</id><content type="html" xml:base="http://localhost:4000/java/2017/10/19/modul-praktikum-java-1.1.html">&lt;p&gt;Praktikum Java pada kali ini menggunakan java web. Modul terbagi menjadi 3 (tiga) bagian, bagian pertama adalah pengenalan komponen web,
-bagian kedua adalah koneksi dan insert data ke dalam database MySQL, sedangkan bagian ketiga adalah menampilkan data dari tabel MySQL.
+</description>
+				<pubDate>Thu, 02 Nov 2017 11:25:41 +0800</pubDate>
+				<link>http://localhost:4000/2017/11/ikut-google-developers-training</link>
+				<guid isPermaLink="true">http://localhost:4000/2017/11/ikut-google-developers-training</guid>
+			</item>
+		
+			<item>
+				<title>Modul Praktikum Java Web</title>
+				<description>&lt;p&gt;Praktikum Java pada kali ini menggunakan java web. Modul terbagi menjadi 3 (tiga) bagian, bagian pertama adalah pengenalan komponen web,&lt;br /&gt;
+bagian kedua adalah koneksi dan insert data ke dalam database MySQL, sedangkan bagian ketiga adalah menampilkan data dari tabel MySQL.&lt;br /&gt;
 Berikut file modul dan hasil akhirnya:&lt;/p&gt;
 &lt;ol&gt;
   &lt;li&gt;&lt;a href=&quot;https://www.dropbox.com/s/ffxzidhnarczqdh/Praktikum%20Java%20Web.docx?dl=0&quot;&gt;Modul&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://github.com/mirzayogyk/PraktekJavaWeb&quot;&gt;GitHub&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
-
-&lt;div id=&quot;disqus_thread&quot;&gt;&lt;/div&gt;
-&lt;script&gt;
-    /**
-     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
-     */
-    /*
-    var disqus_config = function () {
-        this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
-        this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-    };
-    */
-    (function() {  // DON'T EDIT BELOW THIS LINE
-        var d = document, s = d.createElement('script');
-        
-        s.src = 'https://mirzayogy.disqus.com/embed.js';
-        
-        s.setAttribute('data-timestamp', +new Date());
-        (d.head || d.body).appendChild(s);
-    })();
-&lt;/script&gt;
-
-&lt;noscript&gt;Please enable JavaScript to view the &lt;a href=&quot;https://disqus.com/?ref_noscript&quot; rel=&quot;nofollow&quot;&gt;comments powered by Disqus.&lt;/a&gt;&lt;/noscript&gt;</content><summary type="html">Praktikum Java pada kali ini menggunakan java web. Modul terbagi menjadi 3 (tiga) bagian, bagian pertama adalah pengenalan komponen web,
-bagian kedua adalah koneksi dan insert data ke dalam database MySQL, sedangkan bagian ketiga adalah menampilkan data dari tabel MySQL.
-Berikut file modul dan hasil akhirnya:
-
-  Modul
-  GitHub</summary></entry><entry><title type="html">Modul Praktikum Java [Unfinished]</title><link href="http://localhost:4000/java/2017/01/06/modul-praktikum-java-unfinished-Copy.html" rel="alternate" type="text/html" title="Modul Praktikum Java [Unfinished]" /><published>2017-01-06T09:28:41+08:00</published><updated>2017-01-06T09:28:41+08:00</updated><id>http://localhost:4000/java/2017/01/06/modul-praktikum-java-unfinished%20-%20Copy</id><content type="html" xml:base="http://localhost:4000/java/2017/01/06/modul-praktikum-java-unfinished-Copy.html">&lt;p&gt;Berikut file untuk modul praktikum&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;&lt;a href=&quot;http://localhost:4000/assets/Modul-Java-Basic.pdf&quot;&gt;Basic&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;http://localhost:4000/assets/Modul-Java-Proyek.pdf&quot;&gt;Proyek&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;</content><summary type="html">Berikut file untuk modul praktikum</summary></entry><entry><title type="html">Install Jekyll di Windows</title><link href="http://localhost:4000/blogging/2016/12/26/install-jekyll.html" rel="alternate" type="text/html" title="Install Jekyll di Windows" /><published>2016-12-26T23:01:41+08:00</published><updated>2016-12-26T23:01:41+08:00</updated><id>http://localhost:4000/blogging/2016/12/26/install-jekyll</id><content type="html" xml:base="http://localhost:4000/blogging/2016/12/26/install-jekyll.html">&lt;p&gt;Install jekyll
+</description>
+				<pubDate>Thu, 19 Oct 2017 16:25:41 +0800</pubDate>
+				<link>http://localhost:4000/2017/10/modul-praktikum-java-1.1</link>
+				<guid isPermaLink="true">http://localhost:4000/2017/10/modul-praktikum-java-1.1</guid>
+			</item>
+		
+			<item>
+				<title>Install Jekyll di Windows</title>
+				<description>&lt;p&gt;Install jekyll&lt;br /&gt;
 Install chocolatey dengan buka cmd dengan run as administrator&lt;/p&gt;
 
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;@powershell -NoProfile -ExecutionPolicy Bypass -Command &quot;iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))&quot; &amp;amp;&amp;amp; SET &quot;PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin&quot;
@@ -270,25 +218,34 @@ cd username.github.io
 
 &lt;p&gt;Untuk deploynya jalankan GitHub for desktop Tuliskan summary commit misalkan &lt;code class=&quot;highlighter-rouge&quot;&gt;commit pertama&lt;/code&gt;, kemudian tekan tombol &lt;code class=&quot;highlighter-rouge&quot;&gt;commit to master&lt;/code&gt;&lt;/p&gt;
 
-&lt;p&gt;Tekan tombol &lt;code class=&quot;highlighter-rouge&quot;&gt;sync&lt;/code&gt;
+&lt;p&gt;Tekan tombol &lt;code class=&quot;highlighter-rouge&quot;&gt;sync&lt;/code&gt;&lt;br /&gt;
 Buka di halaman&lt;/p&gt;
 
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;https://username.github.io/
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;</content><summary type="html">Install jekyll
-Install chocolatey dengan buka cmd dengan run as administrator</summary></entry><entry><title type="html">Membuat GitHub Pages</title><link href="http://localhost:4000/blogging/2016/12/25/membuat-github-pages.html" rel="alternate" type="text/html" title="Membuat GitHub Pages" /><published>2016-12-25T23:00:41+08:00</published><updated>2016-12-25T23:00:41+08:00</updated><id>http://localhost:4000/blogging/2016/12/25/membuat-github-pages</id><content type="html" xml:base="http://localhost:4000/blogging/2016/12/25/membuat-github-pages.html">&lt;p&gt;Untuk membuat blog dengan Jekyll kita bisa menggunakan github sebagai host gratisnya. GitHub adalah layanan web untuk proyek-proyek yang bersifat open source, gampangnya ini sosmednya software developer buat bertukar coding gitu lah. Saya juga bikin supaya kekinian ihik ihik. Untuk pembuatan blognya yang dalam hal ini disebut sebagai github pages, repository harus dalam nama username.github.io username-nya ya diganti username akunnya lah. Langkah-langkahnya bisa dijelaskan sebagai berikut:&lt;/p&gt;
+&lt;/div&gt;
+
+</description>
+				<pubDate>Mon, 26 Dec 2016 23:01:41 +0800</pubDate>
+				<link>http://localhost:4000/2016/12/install-jekyll</link>
+				<guid isPermaLink="true">http://localhost:4000/2016/12/install-jekyll</guid>
+			</item>
+		
+			<item>
+				<title>Membuat GitHub Pages</title>
+				<description>&lt;p&gt;Untuk membuat blog dengan Jekyll kita bisa menggunakan github sebagai host gratisnya. GitHub adalah layanan web untuk proyek-proyek yang bersifat open source, gampangnya ini sosmednya software developer buat bertukar coding gitu lah. Saya juga bikin supaya kekinian ihik ihik. Untuk pembuatan blognya yang dalam hal ini disebut sebagai github pages, repository harus dalam nama username.github.io username-nya ya diganti username akunnya lah. Langkah-langkahnya bisa dijelaskan sebagai berikut:&lt;/p&gt;
 
 &lt;ol&gt;
   &lt;li&gt;Daftar GitHub di &lt;a href=&quot;https://github.com/&quot;&gt;https://github.com/&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;
-    &lt;p&gt;Buat repository baru dengan nama &lt;code class=&quot;highlighter-rouge&quot;&gt;username.github.io&lt;/code&gt;
+    &lt;p&gt;Buat repository baru dengan nama &lt;code class=&quot;highlighter-rouge&quot;&gt;username.github.io&lt;/code&gt;&lt;br /&gt;
 &lt;img src=&quot;http://localhost:4000/assets/create-repo.png&quot; alt=&quot;Create Repo&quot; /&gt;&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;Download GitHub for windows di &lt;a href=&quot;https://pages.github.com/&quot;&gt;https://pages.github.com/&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;Kembali ke halaman GitHub klik Set up in Desktop
+  &lt;li&gt;Kembali ke halaman GitHub klik Set up in Desktop&lt;br /&gt;
 &lt;img src=&quot;http://localhost:4000/assets/setup-desktop.png&quot; alt=&quot;Setup Desktop&quot; /&gt;&lt;/li&gt;
   &lt;li&gt;Pilih folder yang diinginkan&lt;/li&gt;
-  &lt;li&gt;Hasil pada GitHub 
+  &lt;li&gt;Hasil pada GitHub &lt;br /&gt;
 &lt;img src=&quot;http://localhost:4000/assets/github-desktop.png&quot; alt=&quot;GitHub Desktop&quot; /&gt;&lt;/li&gt;
   &lt;li&gt;Buat sebuah file index.html dan simpan dalam folder repository yang sudah kita buat&lt;/li&gt;
 &lt;/ol&gt;
@@ -315,7 +272,16 @@ Install chocolatey dengan buka cmd dengan run as administrator</summary></entry>
 
 &lt;ol&gt;
   &lt;li&gt;Selanjutnya untuk menginstal Jekyll bisa dibaca di &lt;a href=&quot;http://mirzayogy.com/blogging/2016/12/26/install-jekyll.html&quot;&gt;SINI&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;</content><summary type="html">Untuk membuat blog dengan Jekyll kita bisa menggunakan github sebagai host gratisnya. GitHub adalah layanan web untuk proyek-proyek yang bersifat open source, gampangnya ini sosmednya software developer buat bertukar coding gitu lah. Saya juga bikin supaya kekinian ihik ihik. Untuk pembuatan blognya yang dalam hal ini disebut sebagai github pages, repository harus dalam nama username.github.io username-nya ya diganti username akunnya lah. Langkah-langkahnya bisa dijelaskan sebagai berikut:</summary></entry><entry><title type="html">Post Pertama</title><link href="http://localhost:4000/blogging/2016/12/24/post-pertama.html" rel="alternate" type="text/html" title="Post Pertama" /><published>2016-12-24T00:00:00+08:00</published><updated>2016-12-24T00:00:00+08:00</updated><id>http://localhost:4000/blogging/2016/12/24/post-pertama</id><content type="html" xml:base="http://localhost:4000/blogging/2016/12/24/post-pertama.html">&lt;p&gt;Bismillah alhamdulillah. Setelah sebelumnya punya beberapa blog tidak terurus, mudah-mudahan kali ini bisa menjadi tempat berbagi semua ilmu yang saya punya, bukan cuma tempat tulis-tulis ga jelas seperti blog-blog sebelumnya, Hahaha..&lt;/p&gt;
+&lt;/ol&gt;
+</description>
+				<pubDate>Sun, 25 Dec 2016 23:00:41 +0800</pubDate>
+				<link>http://localhost:4000/2016/12/membuat-github-pages</link>
+				<guid isPermaLink="true">http://localhost:4000/2016/12/membuat-github-pages</guid>
+			</item>
+		
+			<item>
+				<title>Post Pertama</title>
+				<description>&lt;p&gt;Bismillah alhamdulillah. Setelah sebelumnya punya beberapa blog tidak terurus, mudah-mudahan kali ini bisa menjadi tempat berbagi semua ilmu yang saya punya, bukan cuma tempat tulis-tulis ga jelas seperti blog-blog sebelumnya, Hahaha..&lt;/p&gt;
 
 &lt;p&gt;Meskipun telat tapi saya merasa tetap perlu untuk bikin blog. Tujuan utamanya adalah untuk mencatat apa-apa saja yang sudah saya pelajari, supaya lebih mudah mengingatnya apabila terlupa. Sebelumnya pernah pakai Evernote di android dan PC tapi terasa kurang nyaman, dan susah untuk membagikannya. Makin tua makin mudah lupa cuy!! Selain itu juga perlu wadah untuk membagikan materi bagi mahasiswa.&lt;/p&gt;
 
@@ -325,53 +291,11 @@ Install chocolatey dengan buka cmd dengan run as administrator</summary></entry>
 
 &lt;p&gt;Semoga setelah gunting pita ini bisa lanjut bloggingnya jangan sampai terbengkalai lagi&lt;/p&gt;
 
-&lt;div id=&quot;disqus_thread&quot;&gt;&lt;/div&gt;
-&lt;script&gt;
-    /**
-     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
-     */
-    /*
-    var disqus_config = function () {
-        this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
-        this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-    };
-    */
-    (function() {  // DON'T EDIT BELOW THIS LINE
-        var d = document, s = d.createElement('script');
-        
-        s.src = 'https://mirzayogy.disqus.com/embed.js';
-        
-        s.setAttribute('data-timestamp', +new Date());
-        (d.head || d.body).appendChild(s);
-    })();
-&lt;/script&gt;
-
-&lt;noscript&gt;Please enable JavaScript to view the &lt;a href=&quot;https://disqus.com/?ref_noscript&quot; rel=&quot;nofollow&quot;&gt;comments powered by Disqus.&lt;/a&gt;&lt;/noscript&gt;</content><summary type="html">Bismillah alhamdulillah. Setelah sebelumnya punya beberapa blog tidak terurus, mudah-mudahan kali ini bisa menjadi tempat berbagi semua ilmu yang saya punya, bukan cuma tempat tulis-tulis ga jelas seperti blog-blog sebelumnya, Hahaha..</summary></entry><entry><title type="html">Coba Posting Gambar dan PDF</title><link href="http://localhost:4000/uncategorized/2016/12/22/coba-posting-gambar-pdf.html" rel="alternate" type="text/html" title="Coba Posting Gambar dan PDF" /><published>2016-12-22T09:28:41+08:00</published><updated>2016-12-22T09:28:41+08:00</updated><id>http://localhost:4000/uncategorized/2016/12/22/coba-posting-gambar-pdf</id><content type="html" xml:base="http://localhost:4000/uncategorized/2016/12/22/coba-posting-gambar-pdf.html">&lt;p&gt;Coba posting gambar&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/kucing.png&quot; alt=&quot;Miaww&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Melampirkan &lt;a href=&quot;http://localhost:4000/assets/Blog_dengan_jekyll.pdf&quot;&gt;File PDF&lt;/a&gt; langsung.&lt;/p&gt;</content><summary type="html">Coba posting gambar</summary></entry><entry><title type="html">Coba Highlight</title><link href="http://localhost:4000/uncategorized/2016/12/22/coba-highlight.html" rel="alternate" type="text/html" title="Coba Highlight" /><published>2016-12-22T07:42:41+08:00</published><updated>2016-12-22T07:42:41+08:00</updated><id>http://localhost:4000/uncategorized/2016/12/22/coba-highlight</id><content type="html" xml:base="http://localhost:4000/uncategorized/2016/12/22/coba-highlight.html">&lt;p&gt;Highlight coding Delphi/pascal&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-pas&quot; data-lang=&quot;pas&quot;&gt;procedure HelloWorld
-begin
-  showmessage('Hello World');
-end;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;Highlight coding Java&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;HelloWorld&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[]&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;){&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Hello World&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-  &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;Highlight coding c++&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-cpp&quot; data-lang=&quot;cpp&quot;&gt;&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;main&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;cout&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Hello World&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;endl&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;	
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;Highlight coding php&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-php&quot; data-lang=&quot;php&quot;&gt;  echo &quot;Hello World&quot;;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;</content><summary type="html">Highlight coding Delphi/pascal</summary></entry><entry><title type="html">Coba Posting Baru</title><link href="http://localhost:4000/uncategorized/2016/12/22/coba-posting-baru.html" rel="alternate" type="text/html" title="Coba Posting Baru" /><published>2016-12-22T02:34:41+08:00</published><updated>2016-12-22T02:34:41+08:00</updated><id>http://localhost:4000/uncategorized/2016/12/22/coba-posting-baru</id><content type="html" xml:base="http://localhost:4000/uncategorized/2016/12/22/coba-posting-baru.html">&lt;p&gt;Kita coba posting sederhana saja&lt;/p&gt;</content><summary type="html">Kita coba posting sederhana saja</summary></entry></feed>
+</description>
+				<pubDate>Sat, 24 Dec 2016 09:28:41 +0800</pubDate>
+				<link>http://localhost:4000/2016/12/post-pertama</link>
+				<guid isPermaLink="true">http://localhost:4000/2016/12/post-pertama</guid>
+			</item>
+		
+	</channel>
+</rss>

@@ -4,6 +4,10 @@ title:  Install Jekyll di Windows
 categories: Blogging
 date:   2016-12-26 23:01:41 +0800
 comments: true
+description: Cara install Jekyll di Windows, memang ga semudah di Linux atau MacOS, but here you go
+tags: 
+ - jekyll
+ - blogging
 ---
 Install jekyll
 Install chocolatey dengan buka cmd dengan run as administrator

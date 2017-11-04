@@ -4,6 +4,9 @@ title:  "Ikut Google Developers Training"
 date:   2017-11-02 11:25:41 +0800
 categories: android
 comments : true
+description: Share pengalaman ikut Google Developer Training, yang mana gratis tis tis, ayo pada ikutan
+tags: 
+ - android
 ---
 Android merupakan platform yang sangat populer pada jaman now. Hal ini tentu menjadi faktor utama kenapa banyak orang ingin belajar membuat aplikasi android.
 
@@ -31,26 +34,3 @@ Berdasarkan Course Udacity, Android Basics terdiri dari 5 Course
 5. Data Storage 
 
 Saya akan bagikan pengalaman videonya dalam Bahasa Indonesia, yang mana saya yakin ini cukup penting supaya ga ada alasan lagi bagi mahasiswa yang ingin belajar namun terkendala bahasa. Stay tune.
-
-<div id="disqus_thread"></div>
-<script>
-    /**
-     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
-     */
-    /*
-    var disqus_config = function () {
-        this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
-        this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-    };
-    */
-    (function() {  // DON'T EDIT BELOW THIS LINE
-        var d = document, s = d.createElement('script');
-        
-        s.src = 'https://mirzayogy.disqus.com/embed.js';
-        
-        s.setAttribute('data-timestamp', +new Date());
-        (d.head || d.body).appendChild(s);
-    })();
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
