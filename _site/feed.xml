@@ -30,13 +30,7 @@
 
 &lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/01Beginner.01Inteface.01LayoutsP2.005.png&quot; alt=&quot;Miaww1&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;Sekarang coba buka &lt;a href=&quot;http://labs.udacity.com/android-visualizer/#/android/linear-layout&quot;&gt;LINK INI&lt;/a&gt; untuk latihan menggunakan ViewGroup. Kemudian tambahkan&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;android:background=&quot;#f44336&quot;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;setelah coding &lt;code class=&quot;highlighter-rouge&quot;&gt;android:orientation=&quot;vertical&quot;&lt;/code&gt; supaya tampak ada dimana posisi sang &lt;code class=&quot;highlighter-rouge&quot;&gt;ViewGroup&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Sekarang coba buka &lt;a href=&quot;http://labs.udacity.com/android-visualizer/#/android/linear-layout&quot;&gt;LINK INI&lt;/a&gt; untuk latihan menggunakan ViewGroup. Kemudian tambahkan &lt;code class=&quot;highlighter-rouge&quot;&gt;android:background=&quot;#f44336&quot;&lt;/code&gt; setelah coding &lt;code class=&quot;highlighter-rouge&quot;&gt;android:orientation=&quot;vertical&quot;&lt;/code&gt; supaya tampak ada dimana posisi sang &lt;code class=&quot;highlighter-rouge&quot;&gt;ViewGroup&lt;/code&gt;.&lt;/p&gt;
 
 &lt;p&gt;Berikutnya tambahkan atau copy paste bagian&lt;/p&gt;
 

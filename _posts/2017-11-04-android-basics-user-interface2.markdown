@@ -33,11 +33,7 @@ Gambar berikut menunjukkan bagaimana `ImagetView` dapat diletakkan pada sebelah 
 ![Miaww1]({{ site.url }}/assets/01Beginner.01Inteface.01LayoutsP2.005.png)
 
 
-Sekarang coba buka [LINK INI](http://labs.udacity.com/android-visualizer/#/android/linear-layout) untuk latihan menggunakan ViewGroup. Kemudian tambahkan 
-
-    android:background="#f44336"
-
-setelah coding `android:orientation="vertical"` supaya tampak ada dimana posisi sang `ViewGroup`.
+Sekarang coba buka [LINK INI](http://labs.udacity.com/android-visualizer/#/android/linear-layout) untuk latihan menggunakan ViewGroup. Kemudian tambahkan `android:background="#f44336"` setelah coding `android:orientation="vertical"` supaya tampak ada dimana posisi sang `ViewGroup`.
 
 Berikutnya tambahkan atau copy paste bagian
 
