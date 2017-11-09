@@ -2,8 +2,7 @@
 layout: post
 title:  "GitHub Sebagai Media Pengumpulan Tugas"
 date:   2017-11-09 12:46:41 +0700
-categories: spk
-published : true
+categories: perkuliahan
 comments : true
 description: GitHub merupakan wadah untuk berbagi source code, tapi kali ini saya gunakan sebagai media pengumpulan tugas yang berbentuk source code agar tidak memenuhi email dan lebih mudah dalam memantau perkembangannya, juga mengenalkan GitHub kepada mahasiswa
 tags: 
@@ -24,7 +23,27 @@ Ketikkan perintah berikut yang mana akan menandai bahwa folder tersebut merupaka
 git init
 {% endhighlight %}
 
-Ketikkan perintah berikut yang menghubungkan antara repository local dengan repository github
+Ketikkan perintah berikut yang menghubungkan antara repository local dengan repository github, copy dari `https` dari halaman github setelah berhasil membuat repository misalkan `https://github.com/mirzayogyk/repo_tugas.git`
+
 {% highlight %}
-git remote add origin "https_dari_github"
+git remote add origin "https://github.com/mirzayogyk/repo_tugas.git"
 {% endhighlight %}
+
+Buat file C++ dan simpan dalam folder repository local, kita bisa lihat status repository dengan mengetikkan
+
+{% highlight %}
+git status
+{% endhighlight %}
+
+Kita akan push file yang kita buat tadi, terlebih dahulu kita add dengan perintah 
+
+{% highlight %}
+git add -A
+{% endhighlight %}
+
+Kemudian kita commit dengan perintah
+
+{% highlight %}
+git commit -a -m "Commit Pertama"
+{% endhighlight %}
+
