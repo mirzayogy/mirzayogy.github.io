@@ -7,6 +7,15 @@
 		<atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
 		
 			<item>
+				<title>Modul Praktikum Delphi Project</title>
+				<description>&lt;p&gt;Silahkan di Download &lt;a href=&quot;http://localhost:4000/assets/MODUL Delphi Project 1.1.pdf&quot;&gt;File PDF&lt;/a&gt; langsung.&lt;/p&gt;
+</description>
+				<pubDate>Sat, 25 Nov 2017 16:25:41 +0800</pubDate>
+				<link>http://localhost:4000/2017/11/modul-delphi7-project</link>
+				<guid isPermaLink="true">http://localhost:4000/2017/11/modul-delphi7-project</guid>
+			</item>
+		
+			<item>
 				<title>GitHub Sebagai Media Pengumpulan Tugas</title>
 				<description>&lt;p&gt;GitHub merupakan wadah untuk berbagi source code, tapi kali ini saya gunakan sebagai media pengumpulan tugas yang berbentuk source code agar tidak memenuhi email saya dan lebih mudah dalam memantau perkembangan source code, juga mengenalkan GitHub kepada mahasiswa.&lt;/p&gt;
 

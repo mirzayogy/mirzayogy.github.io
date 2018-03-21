@@ -1,0 +1,13 @@
+---
+layout: post
+title:  "Praktek 01 PBO1"
+date:   2018-03-21 08:00:00 +0800
+categories: praktek
+comments : true
+published : true
+description: Praktek 01 PBO1, membuat Class, Attribute, Behavior, dan Object
+tags: 
+ - praktek pbo1
+---
+Pertanyaan bisa langsung di-comment disini, channel YouTube, atau grup Edmodo
+<iframe width="560" height="315" src="https://www.youtube.com/embed/D0vc76gYHAo" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
