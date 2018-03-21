@@ -7,6 +7,26 @@
 		<atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
 		
 			<item>
+				<title>Praktek 01 PBO1</title>
+				<description>&lt;p&gt;Pemrograman Berorientasi Objek (PBO) adalah sebuah paradigma pemrograman yang mendorong programmer untuk mengelola segala sesuatunya dengan objek. Objek sendiri pada dasarnya adalah variabel yang mampu menyimpan banyak data dengan berbagai macam tipe data. Jika dibandingkan dengan variabel primitif yang hanya mampu menyimpan 1 (satu) data dan 1 (satu) tipe data atau variabel array yang mampu menyimpan banyak data dengan 1 (satu) tipe data yang sama.&lt;/p&gt;
+
+&lt;p&gt;Salah satu bahasa pemrograman yang menerapkan PBO adalah Java. Untuk menulis program Java bisa saja hanya dengan notepad dan Java Development Kit (JDK), namun untuk mempermudah penulisan bisa digunakan Integrated Development Environment (IDE) yang membantu proses kompilasi, debugging, dan lainnya.&lt;/p&gt;
+
+&lt;p&gt;Langkah pertama menulis Java dengan NetBeans adalah membuat Project, dengan cara memilih File - New Project (Ctrl + Shift + N), kemudian pilih Categories: Java, Projects: Java Application, Next, kemudian tuliskan nama Project-nya dan pilih lokasi folder penyimpanannya, Finish.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;to be continues&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Berikut video pengerjaan praktek 01. Pertanyaan bisa langsung di-comment disini, channel YouTube, atau grup Edmodo&lt;/p&gt;
+&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/D0vc76gYHAo&quot; frameborder=&quot;0&quot; allow=&quot;autoplay; encrypted-media&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
+</description>
+				<pubDate>Wed, 21 Mar 2018 08:00:00 +0800</pubDate>
+				<link>http://localhost:4000/2018/03/praktek01-pbo1</link>
+				<guid isPermaLink="true">http://localhost:4000/2018/03/praktek01-pbo1</guid>
+			</item>
+		
+			<item>
 				<title>Modul Praktikum Delphi Project</title>
 				<description>&lt;p&gt;Silahkan di Download &lt;a href=&quot;http://localhost:4000/assets/MODUL Delphi Project 1.1.pdf&quot;&gt;File PDF&lt;/a&gt; langsung.&lt;/p&gt;
 </description>

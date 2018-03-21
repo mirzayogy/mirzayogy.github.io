@@ -9,5 +9,14 @@ description: Praktek 01 PBO1, membuat Class, Attribute, Behavior, dan Object
 tags: 
  - praktek pbo1
 ---
-Pertanyaan bisa langsung di-comment disini, channel YouTube, atau grup Edmodo
+
+Pemrograman Berorientasi Objek (PBO) adalah sebuah paradigma pemrograman yang mendorong programmer untuk mengelola segala sesuatunya dengan objek. Objek sendiri pada dasarnya adalah variabel yang mampu menyimpan banyak data dengan berbagai macam tipe data. Jika dibandingkan dengan variabel primitif yang hanya mampu menyimpan 1 (satu) data dan 1 (satu) tipe data atau variabel array yang mampu menyimpan banyak data dengan 1 (satu) tipe data yang sama.
+
+Salah satu bahasa pemrograman yang menerapkan PBO adalah Java. Untuk menulis program Java bisa saja hanya dengan notepad dan Java Development Kit (JDK), namun untuk mempermudah penulisan bisa digunakan Integrated Development Environment (IDE) yang membantu proses kompilasi, debugging, dan lainnya.
+
+Langkah pertama menulis Java dengan NetBeans adalah membuat Project, dengan cara memilih File - New Project (Ctrl + Shift + N), kemudian pilih Categories: Java, Projects: Java Application, Next, kemudian tuliskan nama Project-nya dan pilih lokasi folder penyimpanannya, Finish.
+
+- to be continues
+
+Berikut video pengerjaan praktek 01. Pertanyaan bisa langsung di-comment disini, channel YouTube, atau grup Edmodo
 <iframe width="560" height="315" src="https://www.youtube.com/embed/D0vc76gYHAo" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
