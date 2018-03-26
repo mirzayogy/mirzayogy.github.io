@@ -1,0 +1,24 @@
+---
+layout: post
+title:  "Praktek 02 PBO1"
+date:   2018-03-26 08:00:00 +0800
+categories: praktek
+comments : true
+published : true
+description: Praktek 02 PBO1 Membuat method dan constructor
+tags: 
+ - praktek pbo1
+---
+
+Setelah pada praktek sebelumnya sudah dikenalkan kepada Class, Attribute, Behavior, Object, dan cara menggunakanya, maka kita lanjutkan dengan lebih mendalam membahas masalah Behavior/Method
+
+Method/Behavior/Procedure/Function merupakan kumpulan perintah dengan beberapa fitur diantaranya adanya nilai balik (return value) dan penggunaan parameter. Begitu juga dengan Constructor yang mana merupakan method juga.
+
+Method dengan nilai balik harus memiliki perintah return di dalam blok programnya, nilai yang di return tidak boleh berupa null, sehingga jika yang direturn adalah variable baru maka pastikan variable tersebut sudah diinisialisasi nilainya.
+
+Method tanpa nilai balik tidak memiliki perintah return di dalam blok programnya, dan ditandai dengan identifier void yang menunjukkan bahwa nilai yang di return tidak ada.
+
+Constructor adalah method yang namanya sama persis dengan nama Class dan jalan ketika sebuah Object diciptakan. Constructor digunakan untuk memberikan nilai awal pada attribute ataupun statement lainnya. Sebagaimana juga method, Constructor bisa memiliki parameter, namun Constructor tidak boleh memiliki return value, dan tidak boleh diberi identifier void.
+
+Berikut video pengerjaan praktek 02. Pertanyaan bisa langsung di-comment disini, channel YouTube, atau grup Edmodo
+<iframe width="560" height="315" src="https://www.youtube.com/embed/-UWM7KG3siU" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
