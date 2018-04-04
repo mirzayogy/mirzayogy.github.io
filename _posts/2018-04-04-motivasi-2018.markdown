@@ -2,12 +2,12 @@
 layout: post
 title:  "Motivasi 2018"
 date:   2018-04-04 08:00:00 +0800
-categories: praktek
+categories: Blogging
 comments : true
 published : true
-description: Praktek 03 PBO1 Membuat Getter, Setter, dan Inheritance
+description: Pagi-pagi Kesamber Video Motivasi 2018
 tags: 
- - praktek pbo1
+ - blogging
 ---
 
 Generasi zaman now pada khususnya mahasiswa, banyak mendapat kritik dari generasi sebelumnya, sebutlah:
