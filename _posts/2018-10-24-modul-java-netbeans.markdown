@@ -4,6 +4,7 @@ title:  "Modul Praktikum Delphi Project"
 date:   2017-11-25 16:25:41 +0800
 categories: java
 comments : true
+published : true
 description: Modul untuk praktikum Java Netbeans Universitas Islam Kalimantan Muhammad Arsyad Al Banjari Banjarmasin.
 tags: 
  - java
