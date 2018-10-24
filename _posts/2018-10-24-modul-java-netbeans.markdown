@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Modul Praktikum Delphi Project"
-date:   2017-11-25 16:25:41 +0800
+date:   2018-10-24 08:25:41 +0800
 categories: java
 comments : true
 published : true
