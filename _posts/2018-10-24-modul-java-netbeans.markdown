@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Modul Praktikum Delphi Project"
+title:  "Modul Praktikum Java NetBeans"
 date:   2018-10-24 08:25:41 +0800
 categories: java
 comments : true
