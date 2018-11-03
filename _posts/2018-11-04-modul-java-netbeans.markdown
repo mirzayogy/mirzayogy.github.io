@@ -9,4 +9,4 @@ description: Modul untuk praktikum Java Netbeans Universitas Islam Kalimantan Mu
 tags: 
  - java
 ---
-Silahkan di Download [File PDF]({{ site.url }}/assets/Modul Java NetBeans 0.6.pdf) langsung.
+Silahkan di Download [File PDF]({{ site.url }}/assets/Modul Java NetBeans 0.7.pdf) langsung.
