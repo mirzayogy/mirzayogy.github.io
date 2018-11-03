@@ -1,7 +1,7 @@
 ---
 layout: post
-title:  "Modul Praktikum Java NetBeans"
-date:   2018-10-24 08:25:41 +0800
+title:  "[UPDATED v0.7] Modul Praktikum Java NetBeans"
+date:   2018-11-04 08:25:41 +0800
 categories: java
 comments : true
 published : true
