@@ -9,6 +9,12 @@ tags:
  - android
 ---
 
+Pada praktikum khusus semester 7 ini diharapkan sudah menguasai dasar pemrograman android, bisa dipelajari salah satunya dari playlist berikut
+<iframe width="560" height="315" src="https://www.youtube.com/watch?v=jlteXciXQJM&list=PLlBn2dsdFy7B3tXOrhBn7kfuWgSXDKXpk&index=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
+
+2. [GitHub](https://github.com/mirzayogyk/PraktekJavaWeb)
+
 Course Android Basics - User Interface dari Udacity ini terdiri dari 4 bagian
 1. Building Layouts Part 1
    Pengenalan terhadap eXtensible Markup Language (XML) yang menjadi layout untuk aplikasi Android
