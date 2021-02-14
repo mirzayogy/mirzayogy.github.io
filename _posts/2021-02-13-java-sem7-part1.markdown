@@ -228,5 +228,4 @@ public boolean delete() {
 
 And... that's about it for today. Aplikasi sudah mampu melakukan CRUD sederhana namun masih tanpa view visual.
 
-[Youtube](https://www.youtube.com/watch?v=FNS_zA36qtY)
-<iframe width="560" height="315" src="https://www.youtube.com/watch?v=FNS_zA36qtY" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/FNS_zA36qtY" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
