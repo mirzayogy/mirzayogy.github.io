@@ -467,7 +467,8 @@
 
 &lt;p&gt;And… that’s about it for today. Aplikasi sudah mampu melakukan CRUD sederhana namun masih tanpa view visual.&lt;/p&gt;
 
-&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://youtu.be/FNS_zA36qtY&quot; frameborder=&quot;0&quot; allow=&quot;autoplay; encrypted-media&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=FNS_zA36qtY&quot;&gt;Youtube&lt;/a&gt;&lt;/p&gt;
+&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/watch?v=FNS_zA36qtY&quot; frameborder=&quot;0&quot; allow=&quot;autoplay; encrypted-media&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
 </description>
 				<pubDate>Sat, 13 Feb 2021 12:46:41 +0800</pubDate>
 				<link>/2021/02/java-sem7-part1</link>
