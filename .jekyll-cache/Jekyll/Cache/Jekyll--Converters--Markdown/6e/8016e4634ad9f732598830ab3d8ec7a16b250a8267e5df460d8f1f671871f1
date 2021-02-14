@@ -1,0 +1,67 @@
+I"•<p>Pada praktikum khusus semester 7 ini diharapkan sudah menguasai dasar pemrograman android, bisa dipelajari diantaranya melalui playlist berikut</p>
+
+<p><a href="https://www.youtube.com/watch?v=jlteXciXQJM&amp;list=PLlBn2dsdFy7B3tXOrhBn7kfuWgSXDKXpk&amp;index=1" target="_blank">Playlist Android untuk Pemula</a></p>
+
+<p>Mengelola data bisa dengan menggunakan beberapa cara diantaranya</p>
+<ol>
+  <li>SharedPreferences untuk data kecil</li>
+  <li>SQLite untuk penyimpanan data local</li>
+  <li>Menggunakan Web Service / Web API sebagai backend</li>
+</ol>
+
+<p>Beberapa Web Service sederhana yang bisa digunakan sebagai latihan</p>
+<ol>
+  <li><a href="https://reqres.in/api/users?page=1" target="_blank">https://reqres.in/api/users?page=1</a></li>
+  <li><a href="https://randomuser.me/api/" target="_blank">https://randomuser.me/api/</a></li>
+  <li><a href="https://quote-api.dicoding.dev/list" target="_blank">https://quote-api.dicoding.dev/list</a></li>
+</ol>
+
+<p>Web service kompleks yang gratis sampai pemakaian tertentu</p>
+<ol>
+  <li><a href="https://www.football-data.org/" target="_blank">https://www.football-data.org/</a></li>
+  <li><a href="https://developers.themoviedb.org/3/getting-started/introduction" target="_blank">https://developers.themoviedb.org/3/getting-started/introduction</a></li>
+  <li><a href="https://openweathermap.org/api" target="_blank">https://openweathermap.org/api</a></li>
+</ol>
+
+<p>Dan tentu masih banyak Web Service lainnya yang bisa kita temui, seperti untuk pengiriman paket, pemesanan tiket, dan lainnya.</p>
+
+<p>Pada part 1 ini akan digunakan web service yang sederhana dulu agar bisa dipraktekkan cara menghubungkan aplikasi android dengan web service yang sudah ada</p>
+
+<p>Buat project baru pada Android Studio</p>
+
+<p>tambahkan pada <code class="language-plaintext highlighter-rouge">build.graddle.app</code></p>
+
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml">    plugins {
+        ...
+        id 'kotlin-android-extensions'
+        ...
+    }
+    ...
+    android{
+        ...
+        buildFeatures {
+        viewBinding = true
+        }
+    }
+    ...
+    dependencies{
+        ...
+        implementation "com.squareup.retrofit2:retrofit:2.9.0"
+        implementation "com.squareup.retrofit2:converter-moshi:2.9.0"
+        implementation "com.squareup.moshi:moshi-kotlin:1.9.3"
+        implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0"
+    }</code></pre></figure>
+
+<p><code class="language-plaintext highlighter-rouge">Retrofit</code> ini adalah HTTP client yang bisa digunakan untuk melakukan request, singkatnya untuk memanggil internet. Sedangkan <code class="language-plaintext highlighter-rouge">Moshi</code> digunakan sebagai penerjemah JSON yang didapat dari hasil request. Kedua dependency tadi dihubungkan melalui <code class="language-plaintext highlighter-rouge">retrofit:converter-moshi</code>. <code class="language-plaintext highlighter-rouge">Androidx Lifecycle</code> digunakan untuk mengimplementasikan <code class="language-plaintext highlighter-rouge">ViewModel</code> pada project kali ini.</p>
+
+<p>Project ini akan melakukan HTTP request atau menghubungkan diri dengan internet, maka perlu ditambahkan permission pada <code class="language-plaintext highlighter-rouge">AndroidManifest.xml</code></p>
+
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml">...
+<span class="nt">&lt;uses-permission</span> <span class="na">android:name=</span><span class="s">"android.permission.INTERNET"</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;application</span>
+    <span class="err">...</span>
+    <span class="nt">&gt;</span>
+<span class="nt">&lt;/application&gt;</span>
+...</code></pre></figure>
+
+:ET

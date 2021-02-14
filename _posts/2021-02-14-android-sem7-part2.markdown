@@ -3,13 +3,15 @@ layout: post
 title:  "Praktikum Android Semester 7: Part 1"
 date:   2021-02-13 19:00:00 +0800
 categories: android
+published: false
 comments : true
 description: Langkah-langkah pengerjaan Praktikum Android khusus untuk semester 7 Fakultas Teknologi Informasi, Universitas Islam Kalimantan Muhammad Arsyad Al Banjari Banjarmasin
 tags: 
- - android 
+ - android
  - retrofit
  - moshi
  - viewmodel
+ - recyclerview
  - 201-praktikum-7-android
 ---
 

@@ -2,11 +2,12 @@
 layout: post
 title:  "Praktikum Java Semester 7: Part 1"
 date:   2021-02-13 12:46:41 +0800
-categories: android
+categories: java
+published : false
 comments : true
 description: Langkah-langkah pengerjaan praktikum Java khusus untuk semester 7 Fakultas Teknologi Informasi, Universitas Islam Kalimantan Muhammad Arsyad Al Banjari Banjarmasin
 tags: 
- - android
+ - java
 ---
 
 Pada praktikum khusus semester 7 ini diharapkan sudah menguasai dasar pemrograman android, bisa dipelajari diantaranya melalui playlist berikut
