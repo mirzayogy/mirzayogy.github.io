@@ -1,0 +1,47 @@
+I"Q<p>GitHub merupakan wadah untuk berbagi source code, tapi kali ini saya gunakan sebagai media pengumpulan tugas yang berbentuk source code agar tidak memenuhi email saya dan lebih mudah dalam memantau perkembangan source code, juga mengenalkan GitHub kepada mahasiswa.</p>
+
+<p>Tutorial ini akan menjelaskan cara penggunaan Git bash, dan tidak akan menyenggol masalah github desktop karena mudah saja, hal ini berdasarkan komplain beberapa mahasiswa yang kerepotan karena Windows 32bit tidak bisa menggunakan github desktop.</p>
+
+<p>Untuk bisa menggunakan GitHub terlebih dahulu bisa mendaftar di <a href="https://github.com/">website</a>-nya, install juga git dari <a href="https://git-scm.com/download/win">sini</a>, untuk yang menggunakan windows 64bit akan lebih mudah menggunakan github desktop yang bisa didownload di <a href="https://desktop.github.com/">sini</a>. Setelah mendaftar jangan lupa verifikasi di email.</p>
+
+<p>Sign in pada GitHub kemudian buat repository baru dengan klik <code class="language-plaintext highlighter-rouge">New repository</code>. Berikan nama misalkan <code class="language-plaintext highlighter-rouge">repo_tugas</code> kemudian klik tombol <code class="language-plaintext highlighter-rouge">Create repository</code></p>
+
+<p>Untuk tugas Java Netbeans dan Android Studio bisa dibuat terlebih dahulu projectnya kemudian simpan, lalu buka foldernya, klik kanan tempat kosong pilih <code class="language-plaintext highlighter-rouge">Git bash here</code>. Pada tugas C++ bisa dibuat terlebih dahulu foldernya kemudian sama dengan sebelumnya, klik kanan. <code class="language-plaintext highlighter-rouge">Git bash here</code></p>
+
+<p>Ketikkan perintah berikut yang mana akan menandai bahwa folder tersebut merupakan sebuah repository</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">git init</code></pre></figure>
+
+<p>Ketikkan perintah berikut yang menghubungkan antara repository local dengan repository github, copy dari <code class="language-plaintext highlighter-rouge">https</code> dari halaman github setelah berhasil membuat repository misalkan <code class="language-plaintext highlighter-rouge">https://github.com/username/repo_tugas.git</code></p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">git remote add origin <span class="s2">"https://github.com/username/repo_tugas.git"</span></code></pre></figure>
+
+<p>Buat file C++ dan simpan dalam folder repository local, kita bisa lihat status repository dengan mengetikkan</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">git status</code></pre></figure>
+
+<p>Kita akan push file yang kita buat tadi, terlebih dahulu kita add dengan perintah</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">git add <span class="nt">-A</span></code></pre></figure>
+
+<p>Kemudian kita commit dengan perintah</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">git commit <span class="nt">-a</span> <span class="nt">-m</span> <span class="s2">"Commit Pertama"</span></code></pre></figure>
+
+<p>Jika ada perubahan file maka lakukkan <code class="language-plaintext highlighter-rouge">add</code> lagi, dan <code class="language-plaintext highlighter-rouge">commit</code> lagi seperti pada 2 (dua) perintah sebelumnya. Untuk melihat riwayat commit bisa dengan perintah</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">git log</code></pre></figure>
+
+<p>Terakhir untuk mengupload semua ke repository GitHub, lakukan dengan perintah</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">git push <span class="nt">-u</span> origin master</code></pre></figure>
+
+<p>Video bag.1</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/Siem8GQ54No" frameborder="0" allowfullscreen=""></iframe>
+
+<p>Video bag.2</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/ab370-bEWK8" frameborder="0" allowfullscreen=""></iframe>
+
+<p>Lebih lengkap di</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/xuB1Id2Wxak" frameborder="0" allowfullscreen=""></iframe>
+:ET

@@ -1,0 +1,16 @@
+I"æ<p>Specifier digunakan dalam PBO sebagai praktek dari Encapsulation, dimana method ataupun atribut bisa dibatasi penggunaannya sesuai dengan yang kita inginkan dengan ketentuan sebagai berikut</p>
+<ol>
+  <li>+ public : atribut/method bisa diakses oleh seluruh file</li>
+  <li># protected : atribut/method hanya bisa diakses oleh Class, Package yang sama, Subclass dalam package yang sama, Subclass dalam package yang berbeda</li>
+  <li>~ no specifier : atribut/method hanya bisa diakses oleh Class, Package yang sama, Subclass dalam package yang sama</li>
+  <li>- private : atribut/method hanya bisa diakses oleh Class itu sendiri</li>
+</ol>
+
+<p>Lantas pertanyaannya adalah, bagaimana memberikan atau mengambil nilai dari atribut yang bersifat private, maka bisa dibuat sebuah method yang bersifat public yang bisa mengakses atribut tersebut, dengan menggunakan method programmer bisa memberikan perintah tambahan sebelum suatu nilai dimasukkan kedalam suatu atribut. Method dibuat menggunakan getter and setter yang mana bisa digenerate otomatis oleh NetBeans dengan cara Klik Kanan + Insert Code.. + Getter and Setter kemudian pilih atribut yang akan dibuatkan method getter dan setternya.<br />
+Inheritance</p>
+
+<p>Inheritance yang berarti Pewarisan dalam Bahasa Indonesia adalah suatu fitur dari PBO yang mampu membuat turunan dari suatu Class, sehingga class asalnya akan disebut dengan PARENT CLASS atau SUPER CLASS, sedangkan class turunannya disebut dengan CHILD CLASS atau SUB CLASS. Fitur ini menjadikan sebuah sub class menjadi memiliki semua atribut dan method yang dimiliki oleh super class-nya, sehingga atribut dan method tidak perlu ditulis ulang. Pengecualian untuk CONSTRUCTOR tidak ikut diwariskan kepada sub class.</p>
+
+<p>Berikut video pengerjaan praktek 03. Pertanyaan bisa langsung di-comment disini, channel YouTube, atau grup Edmodo</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/LSAqQUiMIV4" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen=""></iframe>
+:ET

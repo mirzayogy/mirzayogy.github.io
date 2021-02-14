@@ -1,0 +1,32 @@
+I"Ë	<p>Android merupakan platform yang sangat populer pada jaman now. Hal ini tentu menjadi faktor utama kenapa banyak orang ingin belajar membuat aplikasi android.</p>
+
+<p>Ada beberapa cara untuk membuat aplikasi yang bisa berjalan pada platform Android, diantaranya:</p>
+<ol>
+  <li>Menggunakan <a href="https://developer.android.com/studio/install.html">Android Studio</a></li>
+  <li>Menggunakan Eclipse dengan plugin ADT, namun cara ini tidak lagi di-support oleh Google sejak Juni 2015 <a href="https://developer.android.com/studio/tools/sdk/eclipse-adt.html">Source</a></li>
+  <li>Menggunakan <a href="https://www.embarcadero.com/products/delphi">Delphi</a>, namun Delphi tidak gratis</li>
+  <li>Menggunakan  framework <a href="https://www.meteor.com/">Meteor</a>, <a href="https://ionicframework.com/">Ionic</a>, dll</li>
+  <li>Menggunakan <a href="http://ai2.appinventor.mit.edu/">AppInventor</a></li>
+</ol>
+
+<p>Alhamdulillah saya sudah pernah ikut training dasar dari <a href="http://etraining.seamolec.org/">Seamolec</a> dan <a href="https://www.facebook.com/hasnurcentre.hasnurcentre.7">BCTI</a> namun masih pengen liat gimana si kalo Google yang ngajarin. Jadilah buka website <a href="https://developers.google.com/training/android/">Google Developer</a>. Disini terdapat 4 (empat) tingkatan yaitu:</p>
+<ol>
+  <li>For new programmers</li>
+  <li>For developers</li>
+  <li>Learn design skills</li>
+  <li>Dive into deeper topics</li>
+</ol>
+
+<p>Saya ambil bagian For new programmers, biar aja sekalian dari paling awal kalau mungkin ada yang terlewat dan belum saya pelajari. Dan sekaligus mempelajari cara mengajarnya. Bagian ini mengarahkan saya kepada Course di <a href="https://www.udacity.com/course/android-basics-user-interface--ud834">Udacity</a> dan bagusnya lagi course ini FREE alias GRATIS YAAAAY !! Ada banyak course di Udacity yang mana sebagian besar berkolaborasi dengan perusahaan besar, contohnya untuk course Android ini berkolaborasi oleh Google, Artificial Intelligence yang berkolaborasi oleh IBM Watson, Amazon Alexa, dan DiDi (Ubernya China), dan banyak lagi.</p>
+
+<p>Berdasarkan Course Udacity, Android Basics terdiri dari 5 Course</p>
+<ol>
+  <li>User Interface</li>
+  <li>User Input</li>
+  <li>Multiple App Screens</li>
+  <li>Networking</li>
+  <li>Data Storage</li>
+</ol>
+
+<p>Saya akan bagikan pengalaman videonya dalam Bahasa Indonesia, yang mana saya yakin ini cukup penting supaya ga ada alasan lagi bagi mahasiswa yang ingin belajar namun terkendala bahasa. Stay tune.</p>
+:ET

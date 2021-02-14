@@ -3,159 +3,51 @@
 	<channel>
 		<title>Learn, Practice, Share</title>
 		<description>Software Developer</description>
-		<link>http://localhost:4000</link>
-		<atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
+		<link></link>
+		<atom:link href="/feed.xml" rel="self" type="application/rss+xml" />
 		
 			<item>
-				<title>Praktek 01 PBO1</title>
-				<description>&lt;p&gt;Pemrograman Berorientasi Objek (PBO) adalah sebuah paradigma pemrograman yang mendorong programmer untuk mengelola segala sesuatunya dengan objek. Objek sendiri pada dasarnya adalah variabel yang mampu menyimpan banyak data dengan berbagai macam tipe data. Jika dibandingkan dengan variabel primitif yang hanya mampu menyimpan 1 (satu) data dan 1 (satu) tipe data atau variabel array yang mampu menyimpan banyak data dengan 1 (satu) tipe data yang sama.&lt;/p&gt;
+				<title>Praktikum Java Semester 7: Part 1</title>
+				<description>&lt;p&gt;Pada praktikum khusus semester 7 ini diharapkan sudah menguasai dasar pemrograman android, bisa dipelajari diantaranya melalui playlist berikut&lt;/p&gt;
 
-&lt;p&gt;Salah satu bahasa pemrograman yang menerapkan PBO adalah Java. Untuk menulis program Java bisa saja hanya dengan notepad dan Java Development Kit (JDK), namun untuk mempermudah penulisan bisa digunakan Integrated Development Environment (IDE) yang membantu proses kompilasi, debugging, dan lainnya.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=jlteXciXQJM&amp;amp;list=PLlBn2dsdFy7B3tXOrhBn7kfuWgSXDKXpk&amp;amp;index=1&quot; target=&quot;_blank&quot;&gt;Playlist Android untuk Pemula&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;Langkah pertama menulis Java dengan NetBeans adalah membuat Project, dengan cara memilih File - New Project (Ctrl + Shift + N), kemudian pilih Categories: Java, Projects: Java Application, Next, kemudian tuliskan nama Project-nya dan pilih lokasi folder penyimpanannya, Finish.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;to be continued&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Berikut video pengerjaan praktek 01. Pertanyaan bisa langsung di-comment disini, channel YouTube, atau grup Edmodo&lt;/p&gt;
-&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/D0vc76gYHAo&quot; frameborder=&quot;0&quot; allow=&quot;autoplay; encrypted-media&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
-</description>
-				<pubDate>Wed, 21 Mar 2018 08:00:00 +0800</pubDate>
-				<link>http://localhost:4000/2018/03/praktek01-pbo1</link>
-				<guid isPermaLink="true">http://localhost:4000/2018/03/praktek01-pbo1</guid>
-			</item>
-		
-			<item>
-				<title>Modul Praktikum Delphi Project</title>
-				<description>&lt;p&gt;Silahkan di Download &lt;a href=&quot;http://localhost:4000/assets/MODUL Delphi Project 1.1.pdf&quot;&gt;File PDF&lt;/a&gt; langsung.&lt;/p&gt;
-</description>
-				<pubDate>Sat, 25 Nov 2017 16:25:41 +0800</pubDate>
-				<link>http://localhost:4000/2017/11/modul-delphi7-project</link>
-				<guid isPermaLink="true">http://localhost:4000/2017/11/modul-delphi7-project</guid>
-			</item>
-		
-			<item>
-				<title>GitHub Sebagai Media Pengumpulan Tugas</title>
-				<description>&lt;p&gt;GitHub merupakan wadah untuk berbagi source code, tapi kali ini saya gunakan sebagai media pengumpulan tugas yang berbentuk source code agar tidak memenuhi email saya dan lebih mudah dalam memantau perkembangan source code, juga mengenalkan GitHub kepada mahasiswa.&lt;/p&gt;
-
-&lt;p&gt;Tutorial ini akan menjelaskan cara penggunaan Git bash, dan tidak akan menyenggol masalah github desktop karena mudah saja, hal ini berdasarkan komplain beberapa mahasiswa yang kerepotan karena Windows 32bit tidak bisa menggunakan github desktop.&lt;/p&gt;
-
-&lt;p&gt;Untuk bisa menggunakan GitHub terlebih dahulu bisa mendaftar di &lt;a href=&quot;https://github.com/&quot;&gt;website&lt;/a&gt;-nya, install juga git dari &lt;a href=&quot;https://git-scm.com/download/win&quot;&gt;sini&lt;/a&gt;, untuk yang menggunakan windows 64bit akan lebih mudah menggunakan github desktop yang bisa didownload di &lt;a href=&quot;https://desktop.github.com/&quot;&gt;sini&lt;/a&gt;. Setelah mendaftar jangan lupa verifikasi di email.&lt;/p&gt;
-
-&lt;p&gt;Sign in pada GitHub kemudian buat repository baru dengan klik &lt;code class=&quot;highlighter-rouge&quot;&gt;New repository&lt;/code&gt;. Berikan nama misalkan &lt;code class=&quot;highlighter-rouge&quot;&gt;repo_tugas&lt;/code&gt; kemudian klik tombol &lt;code class=&quot;highlighter-rouge&quot;&gt;Create repository&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;Untuk tugas Java Netbeans dan Android Studio bisa dibuat terlebih dahulu projectnya kemudian simpan, lalu buka foldernya, klik kanan tempat kosong pilih &lt;code class=&quot;highlighter-rouge&quot;&gt;Git bash here&lt;/code&gt;. Pada tugas C++ bisa dibuat terlebih dahulu foldernya kemudian sama dengan sebelumnya, klik kanan. &lt;code class=&quot;highlighter-rouge&quot;&gt;Git bash here&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;Ketikkan perintah berikut yang mana akan menandai bahwa folder tersebut merupakan sebuah repository&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;git init&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;Ketikkan perintah berikut yang menghubungkan antara repository local dengan repository github, copy dari &lt;code class=&quot;highlighter-rouge&quot;&gt;https&lt;/code&gt; dari halaman github setelah berhasil membuat repository misalkan &lt;code class=&quot;highlighter-rouge&quot;&gt;https://github.com/username/repo_tugas.git&lt;/code&gt;&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;git remote add origin &lt;span class=&quot;s2&quot;&gt;&quot;https://github.com/username/repo_tugas.git&quot;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;Buat file C++ dan simpan dalam folder repository local, kita bisa lihat status repository dengan mengetikkan&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;git status&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;Kita akan push file yang kita buat tadi, terlebih dahulu kita add dengan perintah&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;git add -A&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;Kemudian kita commit dengan perintah&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;git commit -a -m &lt;span class=&quot;s2&quot;&gt;&quot;Commit Pertama&quot;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;Jika ada perubahan file maka lakukkan &lt;code class=&quot;highlighter-rouge&quot;&gt;add&lt;/code&gt; lagi, dan &lt;code class=&quot;highlighter-rouge&quot;&gt;commit&lt;/code&gt; lagi seperti pada 2 (dua) perintah sebelumnya. Untuk melihat riwayat commit bisa dengan perintah&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;git log&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;Terakhir untuk mengupload semua ke repository GitHub, lakukan dengan perintah&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;git push -u origin master&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;Video bag.1&lt;/p&gt;
-&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/Siem8GQ54No&quot; frameborder=&quot;0&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
-
-&lt;p&gt;Video bag.2&lt;/p&gt;
-&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/ab370-bEWK8&quot; frameborder=&quot;0&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
-
-&lt;p&gt;Lebih lengkap di&lt;/p&gt;
-&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/xuB1Id2Wxak&quot; frameborder=&quot;0&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
-</description>
-				<pubDate>Wed, 08 Nov 2017 13:46:41 +0800</pubDate>
-				<link>http://localhost:4000/2017/11/github-untuk-mengumpulkan-tugas</link>
-				<guid isPermaLink="true">http://localhost:4000/2017/11/github-untuk-mengumpulkan-tugas</guid>
-			</item>
-		
-			<item>
-				<title>Android Basics - User Interface - Building Layouts: Part 2</title>
-				<description>&lt;p&gt;Pada bagian pertama kita sudah membahas tentang &lt;code class=&quot;highlighter-rouge&quot;&gt;View&lt;/code&gt; dan Atributnya. Pada bagian kedua akan dibahas &lt;code class=&quot;highlighter-rouge&quot;&gt;ViewGroup&lt;/code&gt; yang merupakan tempat meletakkan beberapa atau banyak View.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/01Beginner.01Inteface.01LayoutsP2.001.png&quot; alt=&quot;Miaww&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Gambar yang berwarna hijau merupakan &lt;code class=&quot;highlighter-rouge&quot;&gt;ImageView&lt;/code&gt;, sedangkan yang biru adalah &lt;code class=&quot;highlighter-rouge&quot;&gt;TextView&lt;/code&gt; yang keduanya sudah dibahas pada bagian pertama. Bagian yang berwarna jingga dan merah merupakan &lt;code class=&quot;highlighter-rouge&quot;&gt;ViewGroup&lt;/code&gt; yang menampung &lt;code class=&quot;highlighter-rouge&quot;&gt;View&lt;/code&gt;. Pada gambar sebelah kiri nampak sebuah &lt;code class=&quot;highlighter-rouge&quot;&gt;ViewGroup&lt;/code&gt; menampung 1 (satu) &lt;code class=&quot;highlighter-rouge&quot;&gt;ImageView&lt;/code&gt; dan 2 (dua) &lt;code class=&quot;highlighter-rouge&quot;&gt;TextView&lt;/code&gt;, bagian tengah menampung masing-masing 1 (satu) &lt;code class=&quot;highlighter-rouge&quot;&gt;ImageView&lt;/code&gt; dan &lt;code class=&quot;highlighter-rouge&quot;&gt;TextView&lt;/code&gt; begitu pula pada bagian kanan.&lt;/p&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;ViewGroup&lt;/code&gt; yang menampung &lt;code class=&quot;highlighter-rouge&quot;&gt;View&lt;/code&gt; disebut sebagai &lt;code class=&quot;highlighter-rouge&quot;&gt;parent&lt;/code&gt; sedangkan View-nya disebut &lt;code class=&quot;highlighter-rouge&quot;&gt;child&lt;/code&gt;, dan sesama view disebut sebagai &lt;code class=&quot;highlighter-rouge&quot;&gt;siblings&lt;/code&gt; atau saudara. &lt;code class=&quot;highlighter-rouge&quot;&gt;Parent&lt;/code&gt; dapat mengatur dimana letak &lt;code class=&quot;highlighter-rouge&quot;&gt;child&lt;/code&gt; dan bagaimana susunannya tergantung pada jenis &lt;code class=&quot;highlighter-rouge&quot;&gt;parent&lt;/code&gt; dan isian atributnya.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/01Beginner.01Inteface.01LayoutsP2.002.png&quot; alt=&quot;Miaww1&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/01Beginner.01Inteface.01LayoutsP2.003.png&quot; alt=&quot;Miaww1&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Contoh pertama adalah &lt;code class=&quot;highlighter-rouge&quot;&gt;LinearLayout&lt;/code&gt; yang bisa mengatur &lt;code class=&quot;highlighter-rouge&quot;&gt;child&lt;/code&gt; agar disusun secara &lt;code class=&quot;highlighter-rouge&quot;&gt;vertikal&lt;/code&gt; dari atas ke bawah atau secara &lt;code class=&quot;highlighter-rouge&quot;&gt;horizontal&lt;/code&gt; dari kiri ke kanan&lt;/p&gt;
-
-&lt;p&gt;Contoh kedua adalah &lt;code class=&quot;highlighter-rouge&quot;&gt;RelativeLayout&lt;/code&gt; yang bisa mengatur posisi &lt;code class=&quot;highlighter-rouge&quot;&gt;child&lt;/code&gt; berdasarkan posisi dari komponen lain. Gambar berikut menunjukkan bagaimana &lt;code class=&quot;highlighter-rouge&quot;&gt;TextView&lt;/code&gt; dapat diletakkan pada bagian bawah &lt;code class=&quot;highlighter-rouge&quot;&gt;parent&lt;/code&gt;nya sedangkan &lt;code class=&quot;highlighter-rouge&quot;&gt;ImageView&lt;/code&gt; diletakkan pada bagian atas &lt;code class=&quot;highlighter-rouge&quot;&gt;parent&lt;/code&gt;nya&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/01Beginner.01Inteface.01LayoutsP2.004.png&quot; alt=&quot;Miaww1&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Gambar berikut menunjukkan bagaimana &lt;code class=&quot;highlighter-rouge&quot;&gt;ImagetView&lt;/code&gt; dapat diletakkan pada sebelah kanan dari &lt;code class=&quot;highlighter-rouge&quot;&gt;parent&lt;/code&gt;nya, kemudian &lt;code class=&quot;highlighter-rouge&quot;&gt;TextView&lt;/code&gt; Birthday diletakkan pada sebelah kanan dari &lt;code class=&quot;highlighter-rouge&quot;&gt;ImageView&lt;/code&gt; dan terakhir &lt;code class=&quot;highlighter-rouge&quot;&gt;TextView&lt;/code&gt; January 1 diletakkan pada sebelah kanan dari &lt;code class=&quot;highlighter-rouge&quot;&gt;ImageView&lt;/code&gt; dan juga bagian bawah dari &lt;code class=&quot;highlighter-rouge&quot;&gt;TextView&lt;/code&gt; Birthday&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/01Beginner.01Inteface.01LayoutsP2.005.png&quot; alt=&quot;Miaww1&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Sekarang coba buka &lt;a href=&quot;http://labs.udacity.com/android-visualizer/#/android/linear-layout&quot;&gt;LINK INI&lt;/a&gt; untuk latihan menggunakan ViewGroup. Kemudian tambahkan &lt;code class=&quot;highlighter-rouge&quot;&gt;android:background=&quot;#f44336&quot;&lt;/code&gt; setelah coding &lt;code class=&quot;highlighter-rouge&quot;&gt;android:orientation=&quot;vertical&quot;&lt;/code&gt; supaya tampak ada dimana posisi sang &lt;code class=&quot;highlighter-rouge&quot;&gt;ViewGroup&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;Berikutnya tambahkan atau copy paste bagian&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-xml&quot; data-lang=&quot;xml&quot;&gt;    &lt;span class=&quot;nt&quot;&gt;&amp;lt;TextView&lt;/span&gt;
-        &lt;span class=&quot;na&quot;&gt;android:text=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Patel &quot;&lt;/span&gt;
-        &lt;span class=&quot;na&quot;&gt;android:layout_width=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;wrap_content&quot;&lt;/span&gt;
-        &lt;span class=&quot;na&quot;&gt;android:layout_height=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;wrap_content&quot;&lt;/span&gt;
-        &lt;span class=&quot;na&quot;&gt;android:textSize=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;24sp&quot;&lt;/span&gt;  &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;yang berfungsi untuk menambahkan &lt;code class=&quot;highlighter-rouge&quot;&gt;TextView&lt;/code&gt; baru. Anda bisa juga mencoba mengganti nilai atribut pada &lt;code class=&quot;highlighter-rouge&quot;&gt;android:orientation=&quot;vertical&quot;&lt;/code&gt; menjadi &lt;code class=&quot;highlighter-rouge&quot;&gt;horizontal&lt;/code&gt;&lt;/p&gt;
-
-</description>
-				<pubDate>Sat, 04 Nov 2017 12:46:41 +0800</pubDate>
-				<link>http://localhost:4000/2017/11/android-basics-user-interface2</link>
-				<guid isPermaLink="true">http://localhost:4000/2017/11/android-basics-user-interface2</guid>
-			</item>
-		
-			<item>
-				<title>Android Basics - User Interface - Building Layouts: Part 1</title>
-				<description>&lt;p&gt;Course Android Basics - User Interface dari Udacity ini terdiri dari 4 bagian&lt;/p&gt;
+&lt;p&gt;Mengelola data bisa dengan menggunakan beberapa cara diantaranya&lt;/p&gt;
 &lt;ol&gt;
-  &lt;li&gt;Building Layouts Part 1&lt;br /&gt;
-Pengenalan terhadap eXtensible Markup Language (XML) yang menjadi layout untuk aplikasi Android&lt;/li&gt;
-  &lt;li&gt;Building Layouts Part 2&lt;br /&gt;
- Mengajarkan tentang grouping layout dan desain&lt;/li&gt;
-  &lt;li&gt;Practice Set: Building Layouts&lt;br /&gt;
- Mulai menggunakan android studio untuk praktek layout&lt;/li&gt;
-  &lt;li&gt;Project&lt;br /&gt;
- Membuat project Sederhana&lt;/li&gt;
+  &lt;li&gt;SharedPreferences untuk data kecil&lt;/li&gt;
+  &lt;li&gt;SQLite untuk penyimpanan data local&lt;/li&gt;
+  &lt;li&gt;Menggunakan Web Service / Web API sebagai backend&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;p&gt;Bagian pertama mengenalkan kepada view yang dimiliki android diantaranya ada 3 (tiga) view yaitu &lt;code class=&quot;highlighter-rouge&quot;&gt;TextView&lt;/code&gt; yang berfungsi untuk menampilkan tulisan, &lt;code class=&quot;highlighter-rouge&quot;&gt;ImageView&lt;/code&gt; untuk menampilkan gambar, dan &lt;code class=&quot;highlighter-rouge&quot;&gt;Button&lt;/code&gt;.. ya.. Tombol&lt;/p&gt;
+&lt;p&gt;Beberapa Web Service sederhana yang bisa digunakan sebagai latihan&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;&lt;a href=&quot;https://reqres.in/api/users?page=1&quot; target=&quot;_blank&quot;&gt;https://reqres.in/api/users?page=1&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://randomuser.me/api/&quot; target=&quot;_blank&quot;&gt;https://randomuser.me/api/&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://quote-api.dicoding.dev/list&quot; target=&quot;_blank&quot;&gt;https://quote-api.dicoding.dev/list&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/01Beginner.01Inteface.01LayoutsP1.001.png&quot; alt=&quot;Miaww&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;Web service kompleks yang gratis sampai pemakaian tertentu&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.football-data.org/&quot; target=&quot;_blank&quot;&gt;https://www.football-data.org/&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://developers.themoviedb.org/3/getting-started/introduction&quot; target=&quot;_blank&quot;&gt;https://developers.themoviedb.org/3/getting-started/introduction&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://openweathermap.org/api&quot; target=&quot;_blank&quot;&gt;https://openweathermap.org/api&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
 
-&lt;p&gt;View pada Android dituliskan dengan &lt;code class=&quot;highlighter-rouge&quot;&gt;CamelCase&lt;/code&gt; yang berarti Punuk Onta, karena setiap kata diawali dengan huruf besar makanya disebut mirip dengan punuk onta.&lt;/p&gt;
+&lt;p&gt;Dan tentu masih banyak Web Service lainnya yang bisa kita temui, seperti untuk pengiriman paket, pemesanan tiket, dan lainnya.&lt;/p&gt;
 
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Sintaks&lt;/code&gt; adalah aturan yang mendefinisikan bagaimana menulis bahasa dengan benar, dalam hal ini XML. Jika komponen yang ditulis tidak sesuai dengan sintaks, maka komponen tidak akan muncul pada layar. Berikut sintaks penulisan XML&lt;/p&gt;
+&lt;p&gt;Pada part 1 ini akan digunakan web service yang sederhana dulu agar bisa dipraktekkan cara menghubungkan aplikasi android dengan web service yang sudah ada&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/01Beginner.01Inteface.01LayoutsP1.002.png&quot; alt=&quot;Miaww1&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;Bagian pertama mengenalkan kepada view yang dimiliki android diantaranya ada 3 (tiga) view yaitu &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;TextView&lt;/code&gt; yang berfungsi untuk menampilkan tulisan, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ImageView&lt;/code&gt; untuk menampilkan gambar, dan &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Button&lt;/code&gt;.. ya.. Tombol&lt;/p&gt;
 
-&lt;p&gt;Perhatikan tulisan berwarna hijau menunjukkan nama komponennya yang diawali oleh &lt;code class=&quot;highlighter-rouge&quot;&gt;opening angle bracket (&amp;lt;)&lt;/code&gt; dan diakhiri dengan &lt;code class=&quot;highlighter-rouge&quot;&gt;garis miring&lt;/code&gt; dan &lt;code class=&quot;highlighter-rouge&quot;&gt;closing angle bracket (/&amp;gt;)&lt;/code&gt; yang mana disebut dengan &lt;code class=&quot;highlighter-rouge&quot;&gt;Self Closing Tag&lt;/code&gt;. Tulisan berwarna biru adalah atribut dari komponen, dan yang berwarna merah dan selalu menggunakan tanda petik (“) adalah nilai dari atributnya misalkan&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/01Beginner.01Inteface.01LayoutsP1.001.png&quot; alt=&quot;Miaww&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;View pada Android dituliskan dengan &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;CamelCase&lt;/code&gt; yang berarti Punuk Onta, karena setiap kata diawali dengan huruf besar makanya disebut mirip dengan punuk onta.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Sintaks&lt;/code&gt; adalah aturan yang mendefinisikan bagaimana menulis bahasa dengan benar, dalam hal ini XML. Jika komponen yang ditulis tidak sesuai dengan sintaks, maka komponen tidak akan muncul pada layar. Berikut sintaks penulisan XML&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/01Beginner.01Inteface.01LayoutsP1.002.png&quot; alt=&quot;Miaww1&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Perhatikan tulisan berwarna hijau menunjukkan nama komponennya yang diawali oleh &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;opening angle bracket (&amp;lt;)&lt;/code&gt; dan diakhiri dengan &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;garis miring&lt;/code&gt; dan &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;closing angle bracket (/&amp;gt;)&lt;/code&gt; yang mana disebut dengan &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Self Closing Tag&lt;/code&gt;. Tulisan berwarna biru adalah atribut dari komponen, dan yang berwarna merah dan selalu menggunakan tanda petik (“) adalah nilai dari atributnya misalkan&lt;/p&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-xml&quot; data-lang=&quot;xml&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;TextView&lt;/span&gt;
     &lt;span class=&quot;na&quot;&gt;android:text=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Ini Nilai Atribut&quot;&lt;/span&gt;
@@ -173,14 +65,14 @@ Pengenalan terhadap eXtensible Markup Language (XML) yang menjadi layout untuk a
     &lt;span class=&quot;na&quot;&gt;android:layout_width=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;150dp&quot;&lt;/span&gt;
     &lt;span class=&quot;na&quot;&gt;android:layout_height=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;75dp&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;p&gt;Jika ingin mencoba &lt;code class=&quot;highlighter-rouge&quot;&gt;Views&lt;/code&gt; lainnya bisa dilihat contoh pada &lt;a href=&quot;https://drive.google.com/file/d/0B5XIkMkayHgRMVljUVIyZzNmQUU/view&quot;&gt;LINK INI&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Jika ingin mencoba &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Views&lt;/code&gt; lainnya bisa dilihat contoh pada &lt;a href=&quot;https://drive.google.com/file/d/0B5XIkMkayHgRMVljUVIyZzNmQUU/view&quot;&gt;LINK INI&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;Kombinasi warna pada menu maupun warna huruf sangat penting dalam perancangan tampilan aplikasi berikut &lt;a href=&quot;https://material.io/guidelines/style/color.html#&quot;&gt;LINK&lt;/a&gt; yang bisa dijadikan acuan untuk pemilihan warna&lt;/p&gt;
 
 &lt;p&gt;Selain warna penentuan ukuran huruf juga penting untuk memperindah tampilan dan tidak mengganggu fokus pengguna, berikut &lt;br /&gt;
 &lt;a href=&quot;https://material.io/guidelines/style/typography.html#&quot;&gt;LINK&lt;/a&gt; yang membahas tentang ukuran huruf.&lt;/p&gt;
 
-&lt;p&gt;Nilai atribut &lt;code class=&quot;highlighter-rouge&quot;&gt;android:layout_width&lt;/code&gt; dan &lt;code class=&quot;highlighter-rouge&quot;&gt;android:layout_height&lt;/code&gt; dapat kita isi dengan &lt;code class=&quot;highlighter-rouge&quot;&gt;&quot;wrap_content&quot;&lt;/code&gt; untuk membungkusnya sesuai dengan ukuran isi atau besarnya font&lt;/p&gt;
+&lt;p&gt;Nilai atribut &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;android:layout_width&lt;/code&gt; dan &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;android:layout_height&lt;/code&gt; dapat kita isi dengan &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&quot;wrap_content&quot;&lt;/code&gt; untuk membungkusnya sesuai dengan ukuran isi atau besarnya font&lt;/p&gt;
 
 &lt;p&gt;Coba tuliskan perintah berikut bandingkan dengan hasil source code sebelumnya&lt;/p&gt;
 
@@ -192,7 +84,7 @@ Pengenalan terhadap eXtensible Markup Language (XML) yang menjadi layout untuk a
     &lt;span class=&quot;na&quot;&gt;android:layout_width=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;wrap_content&quot;&lt;/span&gt;
     &lt;span class=&quot;na&quot;&gt;android:layout_height=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;wrap_content&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;p&gt;Views &lt;code class=&quot;highlighter-rouge&quot;&gt;ImageView&lt;/code&gt; bisa digunakan untuk menampilkan gambar, untuk mencoba bisa ditulis source code berikut&lt;/p&gt;
+&lt;p&gt;Views &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ImageView&lt;/code&gt; bisa digunakan untuk menampilkan gambar, untuk mencoba bisa ditulis source code berikut&lt;/p&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-xml&quot; data-lang=&quot;xml&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;ImageView&lt;/span&gt;
     &lt;span class=&quot;na&quot;&gt;android:src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;@drawable/cake&quot;&lt;/span&gt;
@@ -200,228 +92,235 @@ Pengenalan terhadap eXtensible Markup Language (XML) yang menjadi layout untuk a
     &lt;span class=&quot;na&quot;&gt;android:layout_height=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;wrap_content&quot;&lt;/span&gt;
     &lt;span class=&quot;na&quot;&gt;android:scaleType=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;center&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;p&gt;Gambar &lt;code class=&quot;highlighter-rouge&quot;&gt;cake&lt;/code&gt; yang disediakan sangat besar sehingga yang tampak hanya bagian Agar gambar cake terlihat jelas nilai pada &lt;code class=&quot;highlighter-rouge&quot;&gt;android:scaleType&lt;/code&gt; bisa diganti menjadi &lt;code class=&quot;highlighter-rouge&quot;&gt;&quot;centerCrop&quot;&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Gambar &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;cake&lt;/code&gt; yang disediakan sangat besar sehingga yang tampak hanya bagian Agar gambar cake terlihat jelas nilai pada &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;android:scaleType&lt;/code&gt; bisa diganti menjadi &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&quot;centerCrop&quot;&lt;/code&gt;&lt;/p&gt;
 
-&lt;p&gt;Untuk mengganti gambar bisa dilihat pada tombol &lt;code class=&quot;highlighter-rouge&quot;&gt;&quot;AVAILABLE IMAGES&quot;&lt;/code&gt; pada bagian bawah kemudian ganti sesuai dengan nama gambarnya. Setelah gambar diganti, coba atur nilai atribut agar gambar selalu penuh (&lt;code class=&quot;highlighter-rouge&quot;&gt;full bleed&lt;/code&gt;).&lt;/p&gt;
+&lt;p&gt;Untuk mengganti gambar bisa dilihat pada tombol &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&quot;AVAILABLE IMAGES&quot;&lt;/code&gt; pada bagian bawah kemudian ganti sesuai dengan nama gambarnya. Setelah gambar diganti, coba atur nilai atribut agar gambar selalu penuh (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;full bleed&lt;/code&gt;).&lt;/p&gt;
 
 &lt;p&gt;Happy Coding&lt;/p&gt;
 </description>
-				<pubDate>Fri, 03 Nov 2017 12:46:41 +0800</pubDate>
-				<link>http://localhost:4000/2017/11/android-basics-user-interface1</link>
-				<guid isPermaLink="true">http://localhost:4000/2017/11/android-basics-user-interface1</guid>
+				<pubDate>Sat, 13 Feb 2021 12:46:41 +0800</pubDate>
+				<link>/2021/02/java-sem7-part1</link>
+				<guid isPermaLink="true">/2021/02/java-sem7-part1</guid>
 			</item>
 		
 			<item>
-				<title>Ikut Google Developers Training</title>
-				<description>&lt;p&gt;Android merupakan platform yang sangat populer pada jaman now. Hal ini tentu menjadi faktor utama kenapa banyak orang ingin belajar membuat aplikasi android.&lt;/p&gt;
-
-&lt;p&gt;Ada beberapa cara untuk membuat aplikasi yang bisa berjalan pada platform Android, diantaranya:&lt;/p&gt;
-&lt;ol&gt;
-  &lt;li&gt;Menggunakan &lt;a href=&quot;https://developer.android.com/studio/install.html&quot;&gt;Android Studio&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;Menggunakan Eclipse dengan plugin ADT, namun cara ini tidak lagi di-support oleh Google sejak Juni 2015 &lt;a href=&quot;https://developer.android.com/studio/tools/sdk/eclipse-adt.html&quot;&gt;Source&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;Menggunakan &lt;a href=&quot;https://www.embarcadero.com/products/delphi&quot;&gt;Delphi&lt;/a&gt;, namun Delphi tidak gratis&lt;/li&gt;
-  &lt;li&gt;Menggunakan  framework &lt;a href=&quot;https://www.meteor.com/&quot;&gt;Meteor&lt;/a&gt;, &lt;a href=&quot;https://ionicframework.com/&quot;&gt;Ionic&lt;/a&gt;, dll&lt;/li&gt;
-  &lt;li&gt;Menggunakan &lt;a href=&quot;http://ai2.appinventor.mit.edu/&quot;&gt;AppInventor&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;Alhamdulillah saya sudah pernah ikut training dasar dari &lt;a href=&quot;http://etraining.seamolec.org/&quot;&gt;Seamolec&lt;/a&gt; dan &lt;a href=&quot;https://www.facebook.com/hasnurcentre.hasnurcentre.7&quot;&gt;BCTI&lt;/a&gt; namun masih pengen liat gimana si kalo Google yang ngajarin. Jadilah buka website &lt;a href=&quot;https://developers.google.com/training/android/&quot;&gt;Google Developer&lt;/a&gt;. Disini terdapat 4 (empat) tingkatan yaitu:&lt;/p&gt;
-&lt;ol&gt;
-  &lt;li&gt;For new programmers&lt;/li&gt;
-  &lt;li&gt;For developers&lt;/li&gt;
-  &lt;li&gt;Learn design skills&lt;/li&gt;
-  &lt;li&gt;Dive into deeper topics&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;Saya ambil bagian For new programmers, biar aja sekalian dari paling awal kalau mungkin ada yang terlewat dan belum saya pelajari. Dan sekaligus mempelajari cara mengajarnya. Bagian ini mengarahkan saya kepada Course di &lt;a href=&quot;https://www.udacity.com/course/android-basics-user-interface--ud834&quot;&gt;Udacity&lt;/a&gt; dan bagusnya lagi course ini FREE alias GRATIS YAAAAY !! Ada banyak course di Udacity yang mana sebagian besar berkolaborasi dengan perusahaan besar, contohnya untuk course Android ini berkolaborasi oleh Google, Artificial Intelligence yang berkolaborasi oleh IBM Watson, Amazon Alexa, dan DiDi (Ubernya China), dan banyak lagi.&lt;/p&gt;
-
-&lt;p&gt;Berdasarkan Course Udacity, Android Basics terdiri dari 5 Course&lt;/p&gt;
-&lt;ol&gt;
-  &lt;li&gt;User Interface&lt;/li&gt;
-  &lt;li&gt;User Input&lt;/li&gt;
-  &lt;li&gt;Multiple App Screens&lt;/li&gt;
-  &lt;li&gt;Networking&lt;/li&gt;
-  &lt;li&gt;Data Storage&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;Saya akan bagikan pengalaman videonya dalam Bahasa Indonesia, yang mana saya yakin ini cukup penting supaya ga ada alasan lagi bagi mahasiswa yang ingin belajar namun terkendala bahasa. Stay tune.&lt;/p&gt;
+				<title>Praktikum Android Semester 7: Part 1</title>
+				<description>&lt;p&gt;&lt;img src=&quot;https://drive.google.com/file/d/1f9vJyp0zgua0ZO5UVonxniCKAFf04wax/view?usp=sharing&quot; alt=&quot;skema&quot; style=&quot;float: left; margin-right: 10px;&quot; /&gt;&lt;/p&gt;
 </description>
-				<pubDate>Thu, 02 Nov 2017 11:25:41 +0800</pubDate>
-				<link>http://localhost:4000/2017/11/ikut-google-developers-training</link>
-				<guid isPermaLink="true">http://localhost:4000/2017/11/ikut-google-developers-training</guid>
+				<pubDate>Sat, 13 Feb 2021 12:46:41 +0800</pubDate>
+				<link>/2021/02/android-sem7-part1</link>
+				<guid isPermaLink="true">/2021/02/android-sem7-part1</guid>
 			</item>
 		
 			<item>
-				<title>Modul Praktikum Java Web</title>
-				<description>&lt;p&gt;Praktikum Java pada kali ini menggunakan java web. Modul terbagi menjadi 3 (tiga) bagian, bagian pertama adalah pengenalan komponen web,&lt;br /&gt;
-bagian kedua adalah koneksi dan insert data ke dalam database MySQL, sedangkan bagian ketiga adalah menampilkan data dari tabel MySQL.&lt;br /&gt;
-Berikut file modul dan hasil akhirnya:&lt;/p&gt;
-&lt;ol&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.dropbox.com/s/ffxzidhnarczqdh/Praktikum%20Java%20Web.docx?dl=0&quot;&gt;Modul&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://github.com/mirzayogyk/PraktekJavaWeb&quot;&gt;GitHub&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;
+				<title>[UPDATED v0.7] Modul Praktikum Java NetBeans</title>
+				<description>&lt;p&gt;Silahkan di Download &lt;a href=&quot;/assets/Modul Java NetBeans 0.7.pdf&quot;&gt;File PDF&lt;/a&gt; langsung.&lt;/p&gt;
 </description>
-				<pubDate>Thu, 19 Oct 2017 16:25:41 +0800</pubDate>
-				<link>http://localhost:4000/2017/10/modul-praktikum-java-1.1</link>
-				<guid isPermaLink="true">http://localhost:4000/2017/10/modul-praktikum-java-1.1</guid>
+				<pubDate>Sun, 04 Nov 2018 08:25:41 +0800</pubDate>
+				<link>/2018/11/modul-java-netbeans</link>
+				<guid isPermaLink="true">/2018/11/modul-java-netbeans</guid>
 			</item>
 		
 			<item>
-				<title>Install Jekyll di Windows</title>
-				<description>&lt;p&gt;Install jekyll&lt;br /&gt;
-Install chocolatey dengan buka cmd dengan run as administrator&lt;/p&gt;
+				<title>Motivasi 2018</title>
+				<description>&lt;p&gt;Generasi zaman now pada khususnya mahasiswa, banyak mendapat kritik dari generasi sebelumnya, sebutlah:&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;mudah mengeluh&lt;/li&gt;
+  &lt;li&gt;mudah menyerah&lt;/li&gt;
+  &lt;li&gt;terlalu dimanjakan teknologi&lt;/li&gt;
+  &lt;li&gt;lari dari masalah&lt;br /&gt;
+memang sih, tidak semua Generasi muda seperti ini, namun ini hanya pada sebagian besar kasus.&lt;/li&gt;
+&lt;/ol&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;@powershell -NoProfile -ExecutionPolicy Bypass -Command &quot;iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))&quot; &amp;amp;&amp;amp; SET &quot;PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin&quot;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;p&gt;Contoh yang mudah adalah ketika Ujian Akhir Semester, kartu ujian hilang, bukannya melaporkan kehilangan untuk mendapatkan kartu baru malah merajuk tidak ikut ujian. Bangun kesiangan sehingga terlewat ujian, malah sekalian melanjutkan tidur atau malah main, padahal setidaknya melapor ke kampus, berusaha mencari solusi, bukan malah dibiarkan begitu saja, ya lebih tepatnya lagi kalau tau mau ujian ya jangan begadang supaya jangan kesiangan.&lt;/p&gt;
 
-&lt;p&gt;Tutup cmd, buka ulang as administrator&lt;/p&gt;
+&lt;p&gt;Saya pribadi ketika jadi mahasiswa bukanlah pribadi yang tidak bermasalah. Ketinggalan kartu ujian, kesiangan, bolos kuliah dengan dalih organisasi, berdebat hebat dengan dosen yang tidak jarang berimbas kepada nilai, protes nilai, dan banyak hal lain yang tidak kalah bermasalahnya dengan mahasiswa zaman now. Tapi semua itu harus dihadapi supaya bisa menemukan solusi. Pada satu titik permasalahan tidak dihadapi maka hanya sesal kemudian yang bisa ditemui.&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;choco install ruby –y
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/CaptureEdmodo.PNG&quot; alt=&quot;Miaww&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;Tutup cmd, buka ulang as administrator&lt;/p&gt;
+&lt;p&gt;Pagi ini di Edmodo, saya membaca sebuah posting dari Mr. Williams yang membagikan sebuah video di YouTube tentang “Motivational 2018”. Video ini menampilkan para atlit Paralympic 2012 di London. Paralympic adalah olimpide bagi &lt;em&gt;maaf&lt;/em&gt; penyandang cacat. Pada video tampak atlit renang dengan kekurangannya masing masing, ada yang hanya memiliki satu tangan, ada yang kakinya tidak bisa diluruskan, dan berbagai macam kekurangan lainnya. Hal ini menjadi sorotan saya, karena saya sendiri alhamdulillah memiliki tangan dan kaki yang lengkap tapi malah tidak bisa berenang !!&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;gem install bundler
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/ScreenshotYT.png&quot; alt=&quot;Miaww&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;Jika tidak ada masalah ketika menginstall bundler maka langsung install bundler, jika ada masalah maka Install RailsInstaller dari website berikut&lt;/p&gt;
+&lt;p&gt;Atlit dengan berbagai macam kekurangannya memulai perlombaan dengan caranya masing-masing. Atlit dengan tangan yang lengkap bisa bergantung diujung kolam, yang hanya memiliki satu tangan bergantung dengan satu tangan, yang memiliki satu tangan yang tidak sempurna bergantung pada handuk yang dipegangi pelatihnya, yang tidak memiliki tangan bergantung dengan menggigit handuk yang juga dipegang oleh pelatihnya. Hanya dari scene ini kita bisa mengambil pelajaran bahwa terlepas dari kekurangannya masing-masing sang atlit mengatasinya pun dengan cara masing-masing. Bahwa setiap orang pasti punya “ketidakmampuan”, setiap orang pasti “masalah”, setiap orang pasti punya “kekurangan”. Bahwa meski dengan ketidakmampuan, masalah, dan kekurangan, bukan menjadi alasan untuk seseorang untuk tidak menyelesaikan masalahnya.&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;http://railsinstaller.org/en
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;p&gt;Setiap manusia lahir dengan ketidakmampuan. tidak mampu berbicara, tidak mampu berjalan, tidak mampu bahkan hanya untuk duduk sekalipun. Namun seiring berjalannya waktu tiap manusia belajar bicara, berjalan, duduk, dengan caranya masing-masing. Begitu juga dengan programmer, tidak pernah ada tuh programmer yang jago ngoding dari lahir. Semua butuh proses, proses belajar yang panjang, dengan cara yang berbeda tiap orangnya, dengan pengalaman yang berbeda untuk bisa menguasai suatu keahlian.&lt;/p&gt;
 
-&lt;p&gt;Download file &lt;code class=&quot;highlighter-rouge&quot;&gt;cacert.pem&lt;/code&gt; dari website berikut&lt;/p&gt;
+&lt;p&gt;Pada akhirnya mengenali ketidakmampuan, masalah, dan kekurangan kita sendiri juga penting untuk bisa mengatasi itu semua, untuk mencapai suatu prestasi.&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;http://curl.haxx.se/ca/cacert.pem
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;Letakkan di folder&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;C:\RailsInstaller\
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;Atur environment variable, bisa dengan perintah&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;set SSL_CERT_FILE=C:\RailsInstaller\cacert.pem 
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;Install bundler dengan perintah&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;gem install bundler
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;Install Jekyll dengan perintah&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;gem install jekyll
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;Pindah ke folder yang ingin disimpan&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;jekyll new username.github.io
-cd username.github.io
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;Hapus file index.html jika sebelumnya anda membuat file tersebut&lt;/p&gt;
-
-&lt;p&gt;Untuk menjalankannya secara local jalankan&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;jekyll serve
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;Buka dengan browser&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;http://127.0.0.1:4000
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;Untuk deploynya jalankan GitHub for desktop Tuliskan summary commit misalkan &lt;code class=&quot;highlighter-rouge&quot;&gt;commit pertama&lt;/code&gt;, kemudian tekan tombol &lt;code class=&quot;highlighter-rouge&quot;&gt;commit to master&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;Tekan tombol &lt;code class=&quot;highlighter-rouge&quot;&gt;sync&lt;/code&gt;&lt;br /&gt;
-Buka di halaman&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;https://username.github.io/
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
+&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/lht6FhBu2Jc&quot; frameborder=&quot;0&quot; allow=&quot;autoplay; encrypted-media&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
 </description>
-				<pubDate>Mon, 26 Dec 2016 23:01:41 +0800</pubDate>
-				<link>http://localhost:4000/2016/12/install-jekyll</link>
-				<guid isPermaLink="true">http://localhost:4000/2016/12/install-jekyll</guid>
+				<pubDate>Wed, 04 Apr 2018 08:00:00 +0800</pubDate>
+				<link>/2018/04/motivasi-2018</link>
+				<guid isPermaLink="true">/2018/04/motivasi-2018</guid>
 			</item>
 		
 			<item>
-				<title>Membuat GitHub Pages</title>
-				<description>&lt;p&gt;Untuk membuat blog dengan Jekyll kita bisa menggunakan github sebagai host gratisnya. GitHub adalah layanan web untuk proyek-proyek yang bersifat open source, gampangnya ini sosmednya software developer buat bertukar coding gitu lah. Saya juga bikin supaya kekinian ihik ihik. Untuk pembuatan blognya yang dalam hal ini disebut sebagai github pages, repository harus dalam nama username.github.io username-nya ya diganti username akunnya lah. Langkah-langkahnya bisa dijelaskan sebagai berikut:&lt;/p&gt;
-
+				<title>Praktek 03 PBO1</title>
+				<description>&lt;p&gt;Specifier digunakan dalam PBO sebagai praktek dari Encapsulation, dimana method ataupun atribut bisa dibatasi penggunaannya sesuai dengan yang kita inginkan dengan ketentuan sebagai berikut&lt;/p&gt;
 &lt;ol&gt;
-  &lt;li&gt;Daftar GitHub di &lt;a href=&quot;https://github.com/&quot;&gt;https://github.com/&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Buat repository baru dengan nama &lt;code class=&quot;highlighter-rouge&quot;&gt;username.github.io&lt;/code&gt;&lt;br /&gt;
-&lt;img src=&quot;http://localhost:4000/assets/create-repo.png&quot; alt=&quot;Create Repo&quot; /&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;Download GitHub for windows di &lt;a href=&quot;https://pages.github.com/&quot;&gt;https://pages.github.com/&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;Kembali ke halaman GitHub klik Set up in Desktop&lt;br /&gt;
-&lt;img src=&quot;http://localhost:4000/assets/setup-desktop.png&quot; alt=&quot;Setup Desktop&quot; /&gt;&lt;/li&gt;
-  &lt;li&gt;Pilih folder yang diinginkan&lt;/li&gt;
-  &lt;li&gt;Hasil pada GitHub &lt;br /&gt;
-&lt;img src=&quot;http://localhost:4000/assets/github-desktop.png&quot; alt=&quot;GitHub Desktop&quot; /&gt;&lt;/li&gt;
-  &lt;li&gt;Buat sebuah file index.html dan simpan dalam folder repository yang sudah kita buat&lt;/li&gt;
+  &lt;li&gt;+ public : atribut/method bisa diakses oleh seluruh file&lt;/li&gt;
+  &lt;li&gt;# protected : atribut/method hanya bisa diakses oleh Class, Package yang sama, Subclass dalam package yang sama, Subclass dalam package yang berbeda&lt;/li&gt;
+  &lt;li&gt;~ no specifier : atribut/method hanya bisa diakses oleh Class, Package yang sama, Subclass dalam package yang sama&lt;/li&gt;
+  &lt;li&gt;- private : atribut/method hanya bisa diakses oleh Class itu sendiri&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-html&quot; data-lang=&quot;html&quot;&gt;&lt;span class=&quot;cp&quot;&gt;&amp;lt;!DOCTYPE html&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;html&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;head&amp;gt;&lt;/span&gt;
-	&lt;span class=&quot;nt&quot;&gt;&amp;lt;title&amp;gt;&lt;/span&gt;Halo Dunia&lt;span class=&quot;nt&quot;&gt;&amp;lt;/title&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;/head&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;body&amp;gt;&lt;/span&gt;
-	&lt;span class=&quot;nt&quot;&gt;&amp;lt;h1&amp;gt;&lt;/span&gt;Hello World&lt;span class=&quot;nt&quot;&gt;&amp;lt;/h1&amp;gt;&lt;/span&gt;
-	&lt;span class=&quot;nt&quot;&gt;&amp;lt;p&amp;gt;&lt;/span&gt;Halaman ini menggunakan GitHub Pages&lt;span class=&quot;nt&quot;&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;/body&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;/html&amp;gt;&lt;/span&gt;
+&lt;p&gt;Lantas pertanyaannya adalah, bagaimana memberikan atau mengambil nilai dari atribut yang bersifat private, maka bisa dibuat sebuah method yang bersifat public yang bisa mengakses atribut tersebut, dengan menggunakan method programmer bisa memberikan perintah tambahan sebelum suatu nilai dimasukkan kedalam suatu atribut. Method dibuat menggunakan getter and setter yang mana bisa digenerate otomatis oleh NetBeans dengan cara Klik Kanan + Insert Code.. + Getter and Setter kemudian pilih atribut yang akan dibuatkan method getter dan setternya.&lt;br /&gt;
+Inheritance&lt;/p&gt;
 
- &lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+&lt;p&gt;Inheritance yang berarti Pewarisan dalam Bahasa Indonesia adalah suatu fitur dari PBO yang mampu membuat turunan dari suatu Class, sehingga class asalnya akan disebut dengan PARENT CLASS atau SUPER CLASS, sedangkan class turunannya disebut dengan CHILD CLASS atau SUB CLASS. Fitur ini menjadikan sebuah sub class menjadi memiliki semua atribut dan method yang dimiliki oleh super class-nya, sehingga atribut dan method tidak perlu ditulis ulang. Pengecualian untuk CONSTRUCTOR tidak ikut diwariskan kepada sub class.&lt;/p&gt;
 
-&lt;ol&gt;
-  &lt;li&gt;Isi summary dengan &lt;code class=&quot;highlighter-rouge&quot;&gt;commit pertama&lt;/code&gt; klik &lt;code class=&quot;highlighter-rouge&quot;&gt;commit to master&lt;/code&gt; kemudian &lt;code class=&quot;highlighter-rouge&quot;&gt;publish&lt;/code&gt;&lt;/li&gt;
-  &lt;li&gt;Buka pada browser &lt;code class=&quot;highlighter-rouge&quot;&gt;username.github.io&lt;/code&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/hasil-html.png&quot; alt=&quot;Hasil html&quot; /&gt;&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;Selanjutnya untuk menginstal Jekyll bisa dibaca di &lt;a href=&quot;http://mirzayogy.com/blogging/2016/12/26/install-jekyll.html&quot;&gt;SINI&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;
+&lt;p&gt;Berikut video pengerjaan praktek 03. Pertanyaan bisa langsung di-comment disini, channel YouTube, atau grup Edmodo&lt;/p&gt;
+&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/LSAqQUiMIV4&quot; frameborder=&quot;0&quot; allow=&quot;autoplay; encrypted-media&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
 </description>
-				<pubDate>Sun, 25 Dec 2016 23:00:41 +0800</pubDate>
-				<link>http://localhost:4000/2016/12/membuat-github-pages</link>
-				<guid isPermaLink="true">http://localhost:4000/2016/12/membuat-github-pages</guid>
+				<pubDate>Tue, 03 Apr 2018 08:00:00 +0800</pubDate>
+				<link>/2018/04/praktek03-pbo1</link>
+				<guid isPermaLink="true">/2018/04/praktek03-pbo1</guid>
 			</item>
 		
 			<item>
-				<title>Post Pertama</title>
-				<description>&lt;p&gt;Bismillah alhamdulillah. Setelah sebelumnya punya beberapa blog tidak terurus, mudah-mudahan kali ini bisa menjadi tempat berbagi semua ilmu yang saya punya, bukan cuma tempat tulis-tulis ga jelas seperti blog-blog sebelumnya, Hahaha..&lt;/p&gt;
+				<title>Praktek 02 PBO1</title>
+				<description>&lt;p&gt;Setelah pada praktek sebelumnya sudah dikenalkan kepada Class, Attribute, Behavior, Object, dan cara menggunakanya, maka kita lanjutkan dengan lebih mendalam membahas masalah Behavior/Method&lt;/p&gt;
 
-&lt;p&gt;Meskipun telat tapi saya merasa tetap perlu untuk bikin blog. Tujuan utamanya adalah untuk mencatat apa-apa saja yang sudah saya pelajari, supaya lebih mudah mengingatnya apabila terlupa. Sebelumnya pernah pakai Evernote di android dan PC tapi terasa kurang nyaman, dan susah untuk membagikannya. Makin tua makin mudah lupa cuy!! Selain itu juga perlu wadah untuk membagikan materi bagi mahasiswa.&lt;/p&gt;
+&lt;p&gt;Method/Behavior/Procedure/Function merupakan kumpulan perintah dengan beberapa fitur diantaranya adanya nilai balik (return value) dan penggunaan parameter. Begitu juga dengan Constructor yang mana merupakan method juga.&lt;/p&gt;
 
-&lt;p&gt;Terinspirasi oleh blog &lt;a href=&quot;http://software.endy.muhardin.com&quot;&gt;Endy Muhardin&lt;/a&gt; yang sering saya tongkrongin maka makin kuat keinginan untuk bikin blog. Maka saya coba deh ikutin tutorialnya bikin blog menggunakan Jekyll.&lt;/p&gt;
+&lt;p&gt;Method dengan nilai balik harus memiliki perintah return di dalam blok programnya, nilai yang di return tidak boleh berupa null, sehingga jika yang direturn adalah variable baru maka pastikan variable tersebut sudah diinisialisasi nilainya.&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&quot;https://jekyllrb.com&quot;&gt;Jekyll&lt;/a&gt; mampu mengubah text biasa menjadi web statis, persis seperti yang saya inginkan memang supaya simple dan gak pusing mbacanya. Tapi nampaknya untuk mengoperasikannya lebih pas kalau pakai linux ketimbang windows. Lah sayanya punya dual boot sih buat Windows 10 dan Ubuntu, tapi rasanya susah banget lepas dari windows apalagi lagi rame-ramenya Master League PES 2017 Season Ke-4, jadi cari-cari tutorialnya deh bagaimana cara install Jekyll di Windows dan nantinya akan dibagikan di blog ini&lt;/p&gt;
+&lt;p&gt;Method tanpa nilai balik tidak memiliki perintah return di dalam blok programnya, dan ditandai dengan identifier void yang menunjukkan bahwa nilai yang di return tidak ada.&lt;/p&gt;
 
-&lt;p&gt;Semoga setelah gunting pita ini bisa lanjut bloggingnya jangan sampai terbengkalai lagi&lt;/p&gt;
+&lt;p&gt;Constructor adalah method yang namanya sama persis dengan nama Class dan jalan ketika sebuah Object diciptakan. Constructor digunakan untuk memberikan nilai awal pada attribute ataupun statement lainnya. Sebagaimana juga method, Constructor bisa memiliki parameter, namun Constructor tidak boleh memiliki return value, dan tidak boleh diberi identifier void.&lt;/p&gt;
+
+&lt;p&gt;Berikut video pengerjaan praktek 02. Pertanyaan bisa langsung di-comment disini, channel YouTube, atau grup Edmodo&lt;/p&gt;
+&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/-UWM7KG3siU&quot; frameborder=&quot;0&quot; allow=&quot;autoplay; encrypted-media&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
+</description>
+				<pubDate>Mon, 26 Mar 2018 08:00:00 +0800</pubDate>
+				<link>/2018/03/praktek02-pbo1</link>
+				<guid isPermaLink="true">/2018/03/praktek02-pbo1</guid>
+			</item>
+		
+			<item>
+				<title>Praktek 01 PBO1</title>
+				<description>&lt;p&gt;Pemrograman Berorientasi Objek (PBO) adalah sebuah paradigma pemrograman yang mendorong programmer untuk mengelola segala sesuatunya dengan objek. Objek sendiri pada dasarnya adalah variabel yang mampu menyimpan banyak data dengan berbagai macam tipe data. Jika dibandingkan dengan variabel primitif yang hanya mampu menyimpan 1 (satu) data dan 1 (satu) tipe data atau variabel array yang mampu menyimpan banyak data dengan 1 (satu) tipe data yang sama.&lt;/p&gt;
+
+&lt;p&gt;Salah satu bahasa pemrograman yang menerapkan PBO adalah Java. Untuk menulis program Java bisa saja hanya dengan notepad dan Java Development Kit (JDK), namun untuk mempermudah penulisan bisa digunakan Integrated Development Environment (IDE) yang membantu proses kompilasi, debugging, dan lainnya.&lt;/p&gt;
+
+&lt;p&gt;Langkah pertama menulis Java dengan NetBeans adalah membuat Project, dengan cara memilih File - New Project (Ctrl + Shift + N), kemudian pilih Categories: Java, Projects: Java Application, Next, kemudian tuliskan nama Project-nya dan pilih lokasi folder penyimpanannya, Finish.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;to be continued&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Berikut video pengerjaan praktek 01. Pertanyaan bisa langsung di-comment disini, channel YouTube, atau grup Edmodo&lt;/p&gt;
+&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/D0vc76gYHAo&quot; frameborder=&quot;0&quot; allow=&quot;autoplay; encrypted-media&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
+</description>
+				<pubDate>Wed, 21 Mar 2018 08:00:00 +0800</pubDate>
+				<link>/2018/03/praktek01-pbo1</link>
+				<guid isPermaLink="true">/2018/03/praktek01-pbo1</guid>
+			</item>
+		
+			<item>
+				<title>Modul Praktikum Delphi Project</title>
+				<description>&lt;p&gt;Silahkan di Download &lt;a href=&quot;/assets/MODUL Delphi Project 1.1.pdf&quot;&gt;File PDF&lt;/a&gt; langsung.&lt;/p&gt;
+</description>
+				<pubDate>Sat, 25 Nov 2017 16:25:41 +0800</pubDate>
+				<link>/2017/11/modul-delphi7-project</link>
+				<guid isPermaLink="true">/2017/11/modul-delphi7-project</guid>
+			</item>
+		
+			<item>
+				<title>GitHub Sebagai Media Pengumpulan Tugas</title>
+				<description>&lt;p&gt;GitHub merupakan wadah untuk berbagi source code, tapi kali ini saya gunakan sebagai media pengumpulan tugas yang berbentuk source code agar tidak memenuhi email saya dan lebih mudah dalam memantau perkembangan source code, juga mengenalkan GitHub kepada mahasiswa.&lt;/p&gt;
+
+&lt;p&gt;Tutorial ini akan menjelaskan cara penggunaan Git bash, dan tidak akan menyenggol masalah github desktop karena mudah saja, hal ini berdasarkan komplain beberapa mahasiswa yang kerepotan karena Windows 32bit tidak bisa menggunakan github desktop.&lt;/p&gt;
+
+&lt;p&gt;Untuk bisa menggunakan GitHub terlebih dahulu bisa mendaftar di &lt;a href=&quot;https://github.com/&quot;&gt;website&lt;/a&gt;-nya, install juga git dari &lt;a href=&quot;https://git-scm.com/download/win&quot;&gt;sini&lt;/a&gt;, untuk yang menggunakan windows 64bit akan lebih mudah menggunakan github desktop yang bisa didownload di &lt;a href=&quot;https://desktop.github.com/&quot;&gt;sini&lt;/a&gt;. Setelah mendaftar jangan lupa verifikasi di email.&lt;/p&gt;
+
+&lt;p&gt;Sign in pada GitHub kemudian buat repository baru dengan klik &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;New repository&lt;/code&gt;. Berikan nama misalkan &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;repo_tugas&lt;/code&gt; kemudian klik tombol &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Create repository&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Untuk tugas Java Netbeans dan Android Studio bisa dibuat terlebih dahulu projectnya kemudian simpan, lalu buka foldernya, klik kanan tempat kosong pilih &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Git bash here&lt;/code&gt;. Pada tugas C++ bisa dibuat terlebih dahulu foldernya kemudian sama dengan sebelumnya, klik kanan. &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Git bash here&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Ketikkan perintah berikut yang mana akan menandai bahwa folder tersebut merupakan sebuah repository&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;git init&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Ketikkan perintah berikut yang menghubungkan antara repository local dengan repository github, copy dari &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;https&lt;/code&gt; dari halaman github setelah berhasil membuat repository misalkan &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;https://github.com/username/repo_tugas.git&lt;/code&gt;&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;git remote add origin &lt;span class=&quot;s2&quot;&gt;&quot;https://github.com/username/repo_tugas.git&quot;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Buat file C++ dan simpan dalam folder repository local, kita bisa lihat status repository dengan mengetikkan&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;git status&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Kita akan push file yang kita buat tadi, terlebih dahulu kita add dengan perintah&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;git add &lt;span class=&quot;nt&quot;&gt;-A&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Kemudian kita commit dengan perintah&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;git commit &lt;span class=&quot;nt&quot;&gt;-a&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-m&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Commit Pertama&quot;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Jika ada perubahan file maka lakukkan &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;add&lt;/code&gt; lagi, dan &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;commit&lt;/code&gt; lagi seperti pada 2 (dua) perintah sebelumnya. Untuk melihat riwayat commit bisa dengan perintah&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;git log&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Terakhir untuk mengupload semua ke repository GitHub, lakukan dengan perintah&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;git push &lt;span class=&quot;nt&quot;&gt;-u&lt;/span&gt; origin master&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Video bag.1&lt;/p&gt;
+&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/Siem8GQ54No&quot; frameborder=&quot;0&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
+
+&lt;p&gt;Video bag.2&lt;/p&gt;
+&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/ab370-bEWK8&quot; frameborder=&quot;0&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
+
+&lt;p&gt;Lebih lengkap di&lt;/p&gt;
+&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/xuB1Id2Wxak&quot; frameborder=&quot;0&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
+</description>
+				<pubDate>Wed, 08 Nov 2017 13:46:41 +0800</pubDate>
+				<link>/2017/11/github-untuk-mengumpulkan-tugas</link>
+				<guid isPermaLink="true">/2017/11/github-untuk-mengumpulkan-tugas</guid>
+			</item>
+		
+			<item>
+				<title>Android Basics - User Interface - Building Layouts: Part 2</title>
+				<description>&lt;p&gt;Pada bagian pertama kita sudah membahas tentang &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;View&lt;/code&gt; dan Atributnya. Pada bagian kedua akan dibahas &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ViewGroup&lt;/code&gt; yang merupakan tempat meletakkan beberapa atau banyak View.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/01Beginner.01Inteface.01LayoutsP2.001.png&quot; alt=&quot;Miaww&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Gambar yang berwarna hijau merupakan &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ImageView&lt;/code&gt;, sedangkan yang biru adalah &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;TextView&lt;/code&gt; yang keduanya sudah dibahas pada bagian pertama. Bagian yang berwarna jingga dan merah merupakan &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ViewGroup&lt;/code&gt; yang menampung &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;View&lt;/code&gt;. Pada gambar sebelah kiri nampak sebuah &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ViewGroup&lt;/code&gt; menampung 1 (satu) &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ImageView&lt;/code&gt; dan 2 (dua) &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;TextView&lt;/code&gt;, bagian tengah menampung masing-masing 1 (satu) &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ImageView&lt;/code&gt; dan &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;TextView&lt;/code&gt; begitu pula pada bagian kanan.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ViewGroup&lt;/code&gt; yang menampung &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;View&lt;/code&gt; disebut sebagai &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;parent&lt;/code&gt; sedangkan View-nya disebut &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;child&lt;/code&gt;, dan sesama view disebut sebagai &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;siblings&lt;/code&gt; atau saudara. &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Parent&lt;/code&gt; dapat mengatur dimana letak &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;child&lt;/code&gt; dan bagaimana susunannya tergantung pada jenis &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;parent&lt;/code&gt; dan isian atributnya.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/01Beginner.01Inteface.01LayoutsP2.002.png&quot; alt=&quot;Miaww1&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/01Beginner.01Inteface.01LayoutsP2.003.png&quot; alt=&quot;Miaww1&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Contoh pertama adalah &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;LinearLayout&lt;/code&gt; yang bisa mengatur &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;child&lt;/code&gt; agar disusun secara &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;vertikal&lt;/code&gt; dari atas ke bawah atau secara &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;horizontal&lt;/code&gt; dari kiri ke kanan&lt;/p&gt;
+
+&lt;p&gt;Contoh kedua adalah &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;RelativeLayout&lt;/code&gt; yang bisa mengatur posisi &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;child&lt;/code&gt; berdasarkan posisi dari komponen lain. Gambar berikut menunjukkan bagaimana &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;TextView&lt;/code&gt; dapat diletakkan pada bagian bawah &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;parent&lt;/code&gt;nya sedangkan &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ImageView&lt;/code&gt; diletakkan pada bagian atas &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;parent&lt;/code&gt;nya&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/01Beginner.01Inteface.01LayoutsP2.004.png&quot; alt=&quot;Miaww1&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Gambar berikut menunjukkan bagaimana &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ImagetView&lt;/code&gt; dapat diletakkan pada sebelah kanan dari &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;parent&lt;/code&gt;nya, kemudian &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;TextView&lt;/code&gt; Birthday diletakkan pada sebelah kanan dari &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ImageView&lt;/code&gt; dan terakhir &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;TextView&lt;/code&gt; January 1 diletakkan pada sebelah kanan dari &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ImageView&lt;/code&gt; dan juga bagian bawah dari &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;TextView&lt;/code&gt; Birthday&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/01Beginner.01Inteface.01LayoutsP2.005.png&quot; alt=&quot;Miaww1&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Sekarang coba buka &lt;a href=&quot;http://labs.udacity.com/android-visualizer/#/android/linear-layout&quot;&gt;LINK INI&lt;/a&gt; untuk latihan menggunakan ViewGroup. Kemudian tambahkan &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;android:background=&quot;#f44336&quot;&lt;/code&gt; setelah coding &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;android:orientation=&quot;vertical&quot;&lt;/code&gt; supaya tampak ada dimana posisi sang &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ViewGroup&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Berikutnya tambahkan atau copy paste bagian&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-xml&quot; data-lang=&quot;xml&quot;&gt;    &lt;span class=&quot;nt&quot;&gt;&amp;lt;TextView&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;android:text=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Patel &quot;&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;android:layout_width=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;wrap_content&quot;&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;android:layout_height=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;wrap_content&quot;&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;android:textSize=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;24sp&quot;&lt;/span&gt;  &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;yang berfungsi untuk menambahkan &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;TextView&lt;/code&gt; baru. Anda bisa juga mencoba mengganti nilai atribut pada &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;android:orientation=&quot;vertical&quot;&lt;/code&gt; menjadi &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;horizontal&lt;/code&gt;&lt;/p&gt;
 
 </description>
-				<pubDate>Sat, 24 Dec 2016 09:28:41 +0800</pubDate>
-				<link>http://localhost:4000/2016/12/post-pertama</link>
-				<guid isPermaLink="true">http://localhost:4000/2016/12/post-pertama</guid>
+				<pubDate>Sat, 04 Nov 2017 12:46:41 +0800</pubDate>
+				<link>/2017/11/android-basics-user-interface2</link>
+				<guid isPermaLink="true">/2017/11/android-basics-user-interface2</guid>
 			</item>
 		
 	</channel>

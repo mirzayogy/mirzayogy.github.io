@@ -1,0 +1,86 @@
+I"6<p>Pada praktikum khusus semester 7 ini diharapkan sudah menguasai dasar pemrograman android, bisa dipelajari diantaranya melalui playlist berikut</p>
+
+<p><a href="https://www.youtube.com/watch?v=jlteXciXQJM&amp;list=PLlBn2dsdFy7B3tXOrhBn7kfuWgSXDKXpk&amp;index=1" target="_blank">Playlist Android untuk Pemula</a></p>
+
+<p>Mengelola data bisa dengan menggunakan beberapa cara diantaranya</p>
+<ol>
+  <li>SharedPreferences untuk data kecil</li>
+  <li>SQLite untuk penyimpanan data local</li>
+  <li>Menggunakan Web Service / Web API sebagai backend</li>
+</ol>
+
+<p>Beberapa Web Service sederhana yang bisa digunakan sebagai latihan</p>
+<ol>
+  <li><a href="https://reqres.in/api/users?page=1" target="_blank">https://reqres.in/api/users?page=1</a></li>
+  <li><a href="https://randomuser.me/api/" target="_blank">https://randomuser.me/api/</a></li>
+  <li><a href="https://quote-api.dicoding.dev/list" target="_blank">https://quote-api.dicoding.dev/list</a></li>
+</ol>
+
+<p>Web service kompleks yang gratis sampai pemakaian tertentu</p>
+<ol>
+  <li><a href="https://www.football-data.org/" target="_blank">https://www.football-data.org/</a></li>
+  <li><a href="https://developers.themoviedb.org/3/getting-started/introduction" target="_blank">https://developers.themoviedb.org/3/getting-started/introduction</a></li>
+  <li><a href="https://www.football-data.org/" target="_blank">https://www.football-data.org/</a></li>
+</ol>
+
+<p>Bagian pertama mengenalkan kepada view yang dimiliki android diantaranya ada 3 (tiga) view yaitu <code class="language-plaintext highlighter-rouge">TextView</code> yang berfungsi untuk menampilkan tulisan, <code class="language-plaintext highlighter-rouge">ImageView</code> untuk menampilkan gambar, dan <code class="language-plaintext highlighter-rouge">Button</code>.. ya.. Tombol</p>
+
+<p><img src="/assets/01Beginner.01Inteface.01LayoutsP1.001.png" alt="Miaww" /></p>
+
+<p>View pada Android dituliskan dengan <code class="language-plaintext highlighter-rouge">CamelCase</code> yang berarti Punuk Onta, karena setiap kata diawali dengan huruf besar makanya disebut mirip dengan punuk onta.</p>
+
+<p><code class="language-plaintext highlighter-rouge">Sintaks</code> adalah aturan yang mendefinisikan bagaimana menulis bahasa dengan benar, dalam hal ini XML. Jika komponen yang ditulis tidak sesuai dengan sintaks, maka komponen tidak akan muncul pada layar. Berikut sintaks penulisan XML</p>
+
+<p><img src="/assets/01Beginner.01Inteface.01LayoutsP1.002.png" alt="Miaww1" /></p>
+
+<p>Perhatikan tulisan berwarna hijau menunjukkan nama komponennya yang diawali oleh <code class="language-plaintext highlighter-rouge">opening angle bracket (&lt;)</code> dan diakhiri dengan <code class="language-plaintext highlighter-rouge">garis miring</code> dan <code class="language-plaintext highlighter-rouge">closing angle bracket (/&gt;)</code> yang mana disebut dengan <code class="language-plaintext highlighter-rouge">Self Closing Tag</code>. Tulisan berwarna biru adalah atribut dari komponen, dan yang berwarna merah dan selalu menggunakan tanda petik (“) adalah nilai dari atributnya misalkan</p>
+
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;TextView</span>
+    <span class="na">android:text=</span><span class="s">"Ini Nilai Atribut"</span>
+<span class="nt">/&gt;</span></code></pre></figure>
+
+<p>Untuk latihan bisa dicoba pada <a href="http://labs.udacity.com/android-visualizer/#/android/text-view">LINK INI</a> akan tetapi yang perlu diperhatikan bahwa tools ini hanya untuk latihan, dan tidak memiliki fitur selengkap android studio.</p>
+
+<p>Coba tuliskan perintah berikut kemudian ganti-ganti nilai atributnya</p>
+
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;TextView</span>
+    <span class="na">android:text=</span><span class="s">"Happy Birthday!"</span>
+    <span class="na">android:background=</span><span class="s">"#9C27B0"</span>
+    <span class="na">android:textColor=</span><span class="s">"#FFFFFF"</span>
+    <span class="na">android:textSize=</span><span class="s">"24sp"</span>
+    <span class="na">android:layout_width=</span><span class="s">"150dp"</span>
+    <span class="na">android:layout_height=</span><span class="s">"75dp"</span> <span class="nt">/&gt;</span></code></pre></figure>
+
+<p>Jika ingin mencoba <code class="language-plaintext highlighter-rouge">Views</code> lainnya bisa dilihat contoh pada <a href="https://drive.google.com/file/d/0B5XIkMkayHgRMVljUVIyZzNmQUU/view">LINK INI</a></p>
+
+<p>Kombinasi warna pada menu maupun warna huruf sangat penting dalam perancangan tampilan aplikasi berikut <a href="https://material.io/guidelines/style/color.html#">LINK</a> yang bisa dijadikan acuan untuk pemilihan warna</p>
+
+<p>Selain warna penentuan ukuran huruf juga penting untuk memperindah tampilan dan tidak mengganggu fokus pengguna, berikut <br />
+<a href="https://material.io/guidelines/style/typography.html#">LINK</a> yang membahas tentang ukuran huruf.</p>
+
+<p>Nilai atribut <code class="language-plaintext highlighter-rouge">android:layout_width</code> dan <code class="language-plaintext highlighter-rouge">android:layout_height</code> dapat kita isi dengan <code class="language-plaintext highlighter-rouge">"wrap_content"</code> untuk membungkusnya sesuai dengan ukuran isi atau besarnya font</p>
+
+<p>Coba tuliskan perintah berikut bandingkan dengan hasil source code sebelumnya</p>
+
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;TextView</span>
+    <span class="na">android:text=</span><span class="s">"Happy Birthday!"</span>
+    <span class="na">android:background=</span><span class="s">"#9C27B0"</span>
+    <span class="na">android:textColor=</span><span class="s">"#FFFFFF"</span>
+    <span class="na">android:textSize=</span><span class="s">"24sp"</span>
+    <span class="na">android:layout_width=</span><span class="s">"wrap_content"</span>
+    <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span> <span class="nt">/&gt;</span></code></pre></figure>
+
+<p>Views <code class="language-plaintext highlighter-rouge">ImageView</code> bisa digunakan untuk menampilkan gambar, untuk mencoba bisa ditulis source code berikut</p>
+
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;ImageView</span>
+    <span class="na">android:src=</span><span class="s">"@drawable/cake"</span>
+    <span class="na">android:layout_width=</span><span class="s">"wrap_content"</span>
+    <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+    <span class="na">android:scaleType=</span><span class="s">"center"</span><span class="nt">/&gt;</span></code></pre></figure>
+
+<p>Gambar <code class="language-plaintext highlighter-rouge">cake</code> yang disediakan sangat besar sehingga yang tampak hanya bagian Agar gambar cake terlihat jelas nilai pada <code class="language-plaintext highlighter-rouge">android:scaleType</code> bisa diganti menjadi <code class="language-plaintext highlighter-rouge">"centerCrop"</code></p>
+
+<p>Untuk mengganti gambar bisa dilihat pada tombol <code class="language-plaintext highlighter-rouge">"AVAILABLE IMAGES"</code> pada bagian bawah kemudian ganti sesuai dengan nama gambarnya. Setelah gambar diganti, coba atur nilai atribut agar gambar selalu penuh (<code class="language-plaintext highlighter-rouge">full bleed</code>).</p>
+
+<p>Happy Coding</p>
+:ET

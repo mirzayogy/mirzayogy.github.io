@@ -1,0 +1,35 @@
+I"W<p>Pada bagian pertama kita sudah membahas tentang <code class="language-plaintext highlighter-rouge">View</code> dan Atributnya. Pada bagian kedua akan dibahas <code class="language-plaintext highlighter-rouge">ViewGroup</code> yang merupakan tempat meletakkan beberapa atau banyak View.</p>
+
+<p><img src="/assets/01Beginner.01Inteface.01LayoutsP2.001.png" alt="Miaww" /></p>
+
+<p>Gambar yang berwarna hijau merupakan <code class="language-plaintext highlighter-rouge">ImageView</code>, sedangkan yang biru adalah <code class="language-plaintext highlighter-rouge">TextView</code> yang keduanya sudah dibahas pada bagian pertama. Bagian yang berwarna jingga dan merah merupakan <code class="language-plaintext highlighter-rouge">ViewGroup</code> yang menampung <code class="language-plaintext highlighter-rouge">View</code>. Pada gambar sebelah kiri nampak sebuah <code class="language-plaintext highlighter-rouge">ViewGroup</code> menampung 1 (satu) <code class="language-plaintext highlighter-rouge">ImageView</code> dan 2 (dua) <code class="language-plaintext highlighter-rouge">TextView</code>, bagian tengah menampung masing-masing 1 (satu) <code class="language-plaintext highlighter-rouge">ImageView</code> dan <code class="language-plaintext highlighter-rouge">TextView</code> begitu pula pada bagian kanan.</p>
+
+<p><code class="language-plaintext highlighter-rouge">ViewGroup</code> yang menampung <code class="language-plaintext highlighter-rouge">View</code> disebut sebagai <code class="language-plaintext highlighter-rouge">parent</code> sedangkan View-nya disebut <code class="language-plaintext highlighter-rouge">child</code>, dan sesama view disebut sebagai <code class="language-plaintext highlighter-rouge">siblings</code> atau saudara. <code class="language-plaintext highlighter-rouge">Parent</code> dapat mengatur dimana letak <code class="language-plaintext highlighter-rouge">child</code> dan bagaimana susunannya tergantung pada jenis <code class="language-plaintext highlighter-rouge">parent</code> dan isian atributnya.</p>
+
+<p><img src="/assets/01Beginner.01Inteface.01LayoutsP2.002.png" alt="Miaww1" /></p>
+
+<p><img src="/assets/01Beginner.01Inteface.01LayoutsP2.003.png" alt="Miaww1" /></p>
+
+<p>Contoh pertama adalah <code class="language-plaintext highlighter-rouge">LinearLayout</code> yang bisa mengatur <code class="language-plaintext highlighter-rouge">child</code> agar disusun secara <code class="language-plaintext highlighter-rouge">vertikal</code> dari atas ke bawah atau secara <code class="language-plaintext highlighter-rouge">horizontal</code> dari kiri ke kanan</p>
+
+<p>Contoh kedua adalah <code class="language-plaintext highlighter-rouge">RelativeLayout</code> yang bisa mengatur posisi <code class="language-plaintext highlighter-rouge">child</code> berdasarkan posisi dari komponen lain. Gambar berikut menunjukkan bagaimana <code class="language-plaintext highlighter-rouge">TextView</code> dapat diletakkan pada bagian bawah <code class="language-plaintext highlighter-rouge">parent</code>nya sedangkan <code class="language-plaintext highlighter-rouge">ImageView</code> diletakkan pada bagian atas <code class="language-plaintext highlighter-rouge">parent</code>nya</p>
+
+<p><img src="/assets/01Beginner.01Inteface.01LayoutsP2.004.png" alt="Miaww1" /></p>
+
+<p>Gambar berikut menunjukkan bagaimana <code class="language-plaintext highlighter-rouge">ImagetView</code> dapat diletakkan pada sebelah kanan dari <code class="language-plaintext highlighter-rouge">parent</code>nya, kemudian <code class="language-plaintext highlighter-rouge">TextView</code> Birthday diletakkan pada sebelah kanan dari <code class="language-plaintext highlighter-rouge">ImageView</code> dan terakhir <code class="language-plaintext highlighter-rouge">TextView</code> January 1 diletakkan pada sebelah kanan dari <code class="language-plaintext highlighter-rouge">ImageView</code> dan juga bagian bawah dari <code class="language-plaintext highlighter-rouge">TextView</code> Birthday</p>
+
+<p><img src="/assets/01Beginner.01Inteface.01LayoutsP2.005.png" alt="Miaww1" /></p>
+
+<p>Sekarang coba buka <a href="http://labs.udacity.com/android-visualizer/#/android/linear-layout">LINK INI</a> untuk latihan menggunakan ViewGroup. Kemudian tambahkan <code class="language-plaintext highlighter-rouge">android:background="#f44336"</code> setelah coding <code class="language-plaintext highlighter-rouge">android:orientation="vertical"</code> supaya tampak ada dimana posisi sang <code class="language-plaintext highlighter-rouge">ViewGroup</code>.</p>
+
+<p>Berikutnya tambahkan atau copy paste bagian</p>
+
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml">    <span class="nt">&lt;TextView</span>
+        <span class="na">android:text=</span><span class="s">"Patel "</span>
+        <span class="na">android:layout_width=</span><span class="s">"wrap_content"</span>
+        <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+        <span class="na">android:textSize=</span><span class="s">"24sp"</span>  <span class="nt">/&gt;</span></code></pre></figure>
+
+<p>yang berfungsi untuk menambahkan <code class="language-plaintext highlighter-rouge">TextView</code> baru. Anda bisa juga mencoba mengganti nilai atribut pada <code class="language-plaintext highlighter-rouge">android:orientation="vertical"</code> menjadi <code class="language-plaintext highlighter-rouge">horizontal</code></p>
+
+:ET

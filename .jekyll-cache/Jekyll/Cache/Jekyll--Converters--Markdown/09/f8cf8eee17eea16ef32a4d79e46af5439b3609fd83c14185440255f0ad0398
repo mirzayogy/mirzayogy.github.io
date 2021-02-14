@@ -1,0 +1,73 @@
+I"@<p>Install jekyll<br />
+Install chocolatey dengan buka cmd dengan run as administrator</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@powershell -NoProfile -ExecutionPolicy Bypass -Command "iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))" &amp;&amp; SET "PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin"
+</code></pre></div></div>
+
+<p>Tutup cmd, buka ulang as administrator</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>choco install ruby –y
+</code></pre></div></div>
+
+<p>Tutup cmd, buka ulang as administrator</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gem install bundler
+</code></pre></div></div>
+
+<p>Jika tidak ada masalah ketika menginstall bundler maka langsung install bundler, jika ada masalah maka Install RailsInstaller dari website berikut</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>http://railsinstaller.org/en
+</code></pre></div></div>
+
+<p>Download file <code class="language-plaintext highlighter-rouge">cacert.pem</code> dari website berikut</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>http://curl.haxx.se/ca/cacert.pem
+</code></pre></div></div>
+
+<p>Letakkan di folder</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>C:\RailsInstaller\
+</code></pre></div></div>
+
+<p>Atur environment variable, bisa dengan perintah</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>set SSL_CERT_FILE=C:\RailsInstaller\cacert.pem 
+</code></pre></div></div>
+
+<p>Install bundler dengan perintah</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gem install bundler
+</code></pre></div></div>
+
+<p>Install Jekyll dengan perintah</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gem install jekyll
+</code></pre></div></div>
+
+<p>Pindah ke folder yang ingin disimpan</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>jekyll new username.github.io
+cd username.github.io
+</code></pre></div></div>
+
+<p>Hapus file index.html jika sebelumnya anda membuat file tersebut</p>
+
+<p>Untuk menjalankannya secara local jalankan</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>jekyll serve
+</code></pre></div></div>
+
+<p>Buka dengan browser</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>http://127.0.0.1:4000
+</code></pre></div></div>
+
+<p>Untuk deploynya jalankan GitHub for desktop Tuliskan summary commit misalkan <code class="language-plaintext highlighter-rouge">commit pertama</code>, kemudian tekan tombol <code class="language-plaintext highlighter-rouge">commit to master</code></p>
+
+<p>Tekan tombol <code class="language-plaintext highlighter-rouge">sync</code><br />
+Buka di halaman</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>https://username.github.io/
+</code></pre></div></div>
+
+:ET
