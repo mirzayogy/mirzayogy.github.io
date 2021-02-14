@@ -1,7 +1,7 @@
 ---
 layout: post
-title:  "Praktikum Android Semester 7: Part 1"
-date:   2021-02-13 19:00:00 +0800
+title:  "Praktikum Android Semester 7: Part 2"
+date:   2021-02-14 09:00:00 +0800
 categories: android
 published: false
 comments : true
@@ -15,54 +15,112 @@ tags:
  - 201-praktikum-7-android
 ---
 
-Pada praktikum khusus semester 7 ini diharapkan sudah menguasai dasar pemrograman android, bisa dipelajari diantaranya melalui playlist berikut
+[Part 1]({% post_url 2021-02-13-android-sem7-part1 %})
 
-<a href="https://www.youtube.com/watch?v=jlteXciXQJM&list=PLlBn2dsdFy7B3tXOrhBn7kfuWgSXDKXpk&index=1" target="_blank">Playlist Android untuk Pemula</a>
-
-Mengelola data bisa dengan menggunakan beberapa cara diantaranya
-1. SharedPreferences untuk data kecil
-2. SQLite untuk penyimpanan data local
-3. Menggunakan Web Service / Web API sebagai backend
-
-Beberapa Web Service sederhana yang bisa digunakan sebagai latihan
-1. <a href="https://reqres.in/api/users?page=1" target="_blank">https://reqres.in/api/users?page=1</a>
-2. <a href="https://randomuser.me/api/" target="_blank">https://randomuser.me/api/</a>
-3. <a href="https://quote-api.dicoding.dev/list" target="_blank">https://quote-api.dicoding.dev/list</a>
-
-Web service kompleks yang gratis sampai pemakaian tertentu
-1. <a href="https://www.football-data.org/" target="_blank">https://www.football-data.org/</a>
-2. <a href="https://developers.themoviedb.org/3/getting-started/introduction" target="_blank">https://developers.themoviedb.org/3/getting-started/introduction</a>
-3. <a href="https://openweathermap.org/api" target="_blank">https://openweathermap.org/api</a>
-
-Dan tentu masih banyak Web Service lainnya yang bisa ditemui, seperti untuk pengiriman paket, pemesanan tiket, dan lainnya.
-
-Pada part 1 ini akan digunakan web service yang sederhana dulu agar bisa dipraktekkan cara menghubungkan aplikasi android dengan web service yang sudah ada
-
-Buat project baru pada Android Studio
+Pada [Part 1]({% post_url 2021-02-13-android-sem7-part1 %}) aplikasi sudah dapat melakukan request data namun hanya  menampilkan 1 (satu) field ke TextView. Data dapat ditampilkan dalam bentuk list yang bisa diimplementasikan dalam Android Studio dengan menggunakan ListView atau RecyclerView. Pada part ini akan digunakan `RecyclerView` dengan layout sederhana.
 
 tambahkan pada `build.graddle.app`
 {% highlight  xml %}
-    plugins {
-        ...
-        id 'kotlin-android-extensions'
-        ...
-    }
-    ...
-    android{
-        ...
-        buildFeatures {
-        viewBinding = true
-        }
-    }
     ...
     dependencies{
         ...
-        implementation "com.squareup.retrofit2:retrofit:2.9.0"
-        implementation "com.squareup.retrofit2:converter-moshi:2.9.0"
-        implementation "com.squareup.moshi:moshi-kotlin:1.9.3"
-        implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0"
+        implementation 'androidx.recyclerview:recyclerview:1.1.0'
     }
 {% endhighlight %}
+
+pada layout, buat sebuah `Layout Resource File` dan berikan nama `item_row_user` dan isikan dengan
+
+{% highlight  xml %}
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/tv_item_last_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        tools:text="Last Name" />
+
+    <TextView
+        android:id="@+id/tv_item_fist_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:maxLines="2"
+        tools:text="First Name" />
+</LinearLayout>
+{% endhighlight %}
+
+Buat sebuah empty activity baru didalam package `ui.user` dengan nama `UserActivity`, buka file `activity_user.xml` dan isikan dengan
+
+{% highlight  xml %}
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_user"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.user.UserActivity">
+
+    <ProgressBar
+        android:id="@+id/progressBarUser"
+        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+        android:indeterminate="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_users"
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        tools:listitem="@layout/item_row_user" />
+
+</LinearLayout>
+
+{% endhighlight %}
+
+
+Buat sebuah class baru didalam package `ui.user` dengan nama `ListUserAdapter` dan isikan dengan
+
+{% highlight  kotlin %}
+class ListUserAdapter(private val listUser: ArrayList<User>) : RecyclerView.Adapter<ListUserAdapter.ListViewHolder>() {
+    class ListViewHolder(private val binding: ItemRowUserBinding) : RecyclerView.ViewHolder(binding.root) {
+
+    }
+}
+{% endhighlight %}
+
+Import dan implementasikan semua method yang diminta oleh interface Adapter RecyclerView. Masih pada file `ListUserAdapter`, tambahkan method `bind` di dalam inner class `ListViewHolder
+
+{% highlight  kotlin %}
+class ListViewHolder(private val binding: ItemRowUserBinding) : RecyclerView.ViewHolder(binding.root) {
+    fun bind(userData: UserData) {
+        with(binding){
+            tvItemLastName.text = userData.last_name
+            tvItemFirstName.text = userData.first_name
+        }
+    }
+}
+{% endhighlight %}
+
+Masuk ke blok method `onCreateViewHolder` dan isikan dengan
+
+{% highlight  kotlin %}
+override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListViewHolder {
+    val binding = ItemRowUserBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+    return ListViewHolder(binding)
+}
+{% endhighlight %}
+
+
 
 `Retrofit` ini adalah HTTP client yang bisa digunakan untuk melakukan request, singkatnya untuk memanggil internet. Sedangkan `Moshi` digunakan sebagai penerjemah JSON yang didapat dari hasil request. Kedua dependency tadi dihubungkan melalui `retrofit:converter-moshi`. `Androidx Lifecycle` digunakan untuk mengimplementasikan `ViewModel` pada project kali ini. Jangan lupa untuk melakukan sync dengan klik `Sync Now`.
 

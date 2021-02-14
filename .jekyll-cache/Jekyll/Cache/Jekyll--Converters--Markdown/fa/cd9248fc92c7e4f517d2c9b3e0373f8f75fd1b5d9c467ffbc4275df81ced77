@@ -1,0 +1,292 @@
+I"�<p><a href="/2021/02/android-sem7-part1">Part 1</a></p>
+
+<p>Pada <a href="/2021/02/android-sem7-part1">Part 1</a> aplikasi sudah dapat melakukan request data namun hanya  menampilkan 1 (satu) field ke TextView. Data dapat ditampilkan dalam bentuk list yang bisa diimplementasikan dalam Android Studio dengan menggunakan ListView atau RecyclerView. Pada part ini akan digunakan <code class="language-plaintext highlighter-rouge">RecyclerView</code> dengan layout sederhana.</p>
+
+<p>tambahkan pada <code class="language-plaintext highlighter-rouge">build.graddle.app</code></p>
+
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml">    ...
+    dependencies{
+        ...
+        implementation 'androidx.recyclerview:recyclerview:1.1.0'
+    }</code></pre></figure>
+
+<p>pada layout, buat sebuah <code class="language-plaintext highlighter-rouge">Layout Resource File</code> dan berikan nama <code class="language-plaintext highlighter-rouge">item_row_user</code> dan isikan dengan</p>
+
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="cp">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span>
+<span class="nt">&lt;LinearLayout</span> <span class="na">xmlns:android=</span><span class="s">"http://schemas.android.com/apk/res/android"</span>
+    <span class="na">xmlns:tools=</span><span class="s">"http://schemas.android.com/tools"</span>
+    <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+    <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+    <span class="na">android:orientation=</span><span class="s">"vertical"</span>
+    <span class="na">android:padding=</span><span class="s">"16dp"</span><span class="nt">&gt;</span>
+
+    <span class="nt">&lt;TextView</span>
+        <span class="na">android:id=</span><span class="s">"@+id/tv_item_last_name"</span>
+        <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+        <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+        <span class="na">android:layout_marginBottom=</span><span class="s">"8dp"</span>
+        <span class="na">android:textSize=</span><span class="s">"16sp"</span>
+        <span class="na">android:textStyle=</span><span class="s">"bold"</span>
+        <span class="na">tools:text=</span><span class="s">"Last Name"</span> <span class="nt">/&gt;</span>
+
+    <span class="nt">&lt;TextView</span>
+        <span class="na">android:id=</span><span class="s">"@+id/tv_item_fist_name"</span>
+        <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+        <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+        <span class="na">android:ellipsize=</span><span class="s">"end"</span>
+        <span class="na">android:maxLines=</span><span class="s">"2"</span>
+        <span class="na">tools:text=</span><span class="s">"First Name"</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;/LinearLayout&gt;</span></code></pre></figure>
+
+<p>Buat sebuah empty activity baru didalam package <code class="language-plaintext highlighter-rouge">ui.user</code> dengan nama <code class="language-plaintext highlighter-rouge">UserActivity</code>, buka file <code class="language-plaintext highlighter-rouge">activity_user.xml</code> dan isikan dengan</p>
+
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="cp">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span>
+<span class="nt">&lt;LinearLayout</span> <span class="na">xmlns:android=</span><span class="s">"http://schemas.android.com/apk/res/android"</span>
+    <span class="na">xmlns:tools=</span><span class="s">"http://schemas.android.com/tools"</span>
+    <span class="na">android:id=</span><span class="s">"@+id/activity_user"</span>
+    <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+    <span class="na">android:layout_height=</span><span class="s">"match_parent"</span>
+    <span class="na">android:orientation=</span><span class="s">"vertical"</span>
+    <span class="na">tools:context=</span><span class="s">".ui.user.UserActivity"</span><span class="nt">&gt;</span>
+
+    <span class="nt">&lt;ProgressBar</span>
+        <span class="na">android:id=</span><span class="s">"@+id/progressBarUser"</span>
+        <span class="na">style=</span><span class="s">"@style/Widget.AppCompat.ProgressBar.Horizontal"</span>
+        <span class="na">android:indeterminate=</span><span class="s">"true"</span>
+        <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+        <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span> <span class="nt">/&gt;</span>
+
+    <span class="nt">&lt;androidx.recyclerview.widget.RecyclerView</span>
+        <span class="na">android:id=</span><span class="s">"@+id/rv_users"</span>
+        <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+        <span class="na">android:layout_height=</span><span class="s">"fill_parent"</span>
+        <span class="na">tools:listitem=</span><span class="s">"@layout/item_row_user"</span> <span class="nt">/&gt;</span>
+
+<span class="nt">&lt;/LinearLayout&gt;</span></code></pre></figure>
+
+<p>Buat sebuah class baru didalam package <code class="language-plaintext highlighter-rouge">ui.user</code> dengan nama <code class="language-plaintext highlighter-rouge">ListUserAdapter</code> dan isikan dengan</p>
+
+<figure class="highlight"><pre><code class="language-kotlin" data-lang="kotlin"><span class="kd">class</span> <span class="nc">ListUserAdapter</span><span class="p">(</span><span class="k">private</span> <span class="kd">val</span> <span class="py">listUser</span><span class="p">:</span> <span class="nc">ArrayList</span><span class="p">&lt;</span><span class="nc">User</span><span class="p">&gt;)</span> <span class="p">:</span> <span class="nc">RecyclerView</span><span class="p">.</span><span class="nc">Adapter</span><span class="p">&lt;</span><span class="nc">ListUserAdapter</span><span class="err">.</span><span class="nc">ListViewHolder</span><span class="p">&gt;()</span> <span class="p">{</span>
+    <span class="kd">class</span> <span class="nc">ListViewHolder</span><span class="p">(</span><span class="k">private</span> <span class="kd">val</span> <span class="py">binding</span><span class="p">:</span> <span class="nc">ItemRowUserBinding</span><span class="p">)</span> <span class="p">:</span> <span class="nc">RecyclerView</span><span class="p">.</span><span class="nc">ViewHolder</span><span class="p">(</span><span class="n">binding</span><span class="p">.</span><span class="n">root</span><span class="p">)</span> <span class="p">{</span>
+
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>Import dan implementasikan semua method yang diminta oleh interface Adapter RecyclerView. Masih pada file <code class="language-plaintext highlighter-rouge">ListUserAdapter</code>, tambahkan method <code class="language-plaintext highlighter-rouge">bind</code> di dalam inner class `ListViewHolder</p>
+
+<figure class="highlight"><pre><code class="language-kotlin" data-lang="kotlin"><span class="kd">class</span> <span class="nc">ListViewHolder</span><span class="p">(</span><span class="k">private</span> <span class="kd">val</span> <span class="py">binding</span><span class="p">:</span> <span class="nc">ItemRowUserBinding</span><span class="p">)</span> <span class="p">:</span> <span class="nc">RecyclerView</span><span class="p">.</span><span class="nc">ViewHolder</span><span class="p">(</span><span class="n">binding</span><span class="p">.</span><span class="n">root</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">fun</span> <span class="nf">bind</span><span class="p">(</span><span class="n">userData</span><span class="p">:</span> <span class="nc">UserData</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nf">with</span><span class="p">(</span><span class="n">binding</span><span class="p">){</span>
+            <span class="n">tvItemLastName</span><span class="p">.</span><span class="n">text</span> <span class="p">=</span> <span class="n">userData</span><span class="p">.</span><span class="n">last_name</span>
+            <span class="n">tvItemFirstName</span><span class="p">.</span><span class="n">text</span> <span class="p">=</span> <span class="n">userData</span><span class="p">.</span><span class="n">first_name</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>Masuk ke blok method <code class="language-plaintext highlighter-rouge">onCreateViewHolder</code> dan isikan dengan</p>
+
+<figure class="highlight"><pre><code class="language-kotlin" data-lang="kotlin"><span class="k">override</span> <span class="k">fun</span> <span class="nf">onCreateViewHolder</span><span class="p">(</span><span class="n">parent</span><span class="p">:</span> <span class="nc">ViewGroup</span><span class="p">,</span> <span class="n">viewType</span><span class="p">:</span> <span class="nc">Int</span><span class="p">):</span> <span class="nc">ListViewHolder</span> <span class="p">{</span>
+    <span class="kd">val</span> <span class="py">binding</span> <span class="p">=</span> <span class="nc">ItemRowUserBinding</span><span class="p">.</span><span class="nf">inflate</span><span class="p">(</span><span class="nc">LayoutInflater</span><span class="p">.</span><span class="nf">from</span><span class="p">(</span><span class="n">parent</span><span class="p">.</span><span class="n">context</span><span class="p">),</span> <span class="n">parent</span><span class="p">,</span> <span class="k">false</span><span class="p">)</span>
+    <span class="k">return</span> <span class="nc">ListViewHolder</span><span class="p">(</span><span class="n">binding</span><span class="p">)</span>
+<span class="p">}</span></code></pre></figure>
+
+<p><code class="language-plaintext highlighter-rouge">Retrofit</code> ini adalah HTTP client yang bisa digunakan untuk melakukan request, singkatnya untuk memanggil internet. Sedangkan <code class="language-plaintext highlighter-rouge">Moshi</code> digunakan sebagai penerjemah JSON yang didapat dari hasil request. Kedua dependency tadi dihubungkan melalui <code class="language-plaintext highlighter-rouge">retrofit:converter-moshi</code>. <code class="language-plaintext highlighter-rouge">Androidx Lifecycle</code> digunakan untuk mengimplementasikan <code class="language-plaintext highlighter-rouge">ViewModel</code> pada project kali ini. Jangan lupa untuk melakukan sync dengan klik <code class="language-plaintext highlighter-rouge">Sync Now</code>.</p>
+
+<p>Project ini akan melakukan HTTP request atau menghubungkan diri dengan internet, maka perlu ditambahkan permission pada <code class="language-plaintext highlighter-rouge">AndroidManifest.xml</code></p>
+
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml">...
+<span class="nt">&lt;uses-permission</span> <span class="na">android:name=</span><span class="s">"android.permission.INTERNET"</span> <span class="nt">/&gt;</span>
+
+<span class="nt">&lt;application</span></code></pre></figure>
+
+<p>Web service yang digunakan adalah link berikut</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>https://reqres.in/api/users?page=1
+</code></pre></div></div>
+
+<p>Link tersebut bisa dibuka menggunakan web browser biasa. Firefox sudah support untuk pembacaan JSON, Chrome perlu extensi (contoh: “JSON Formatter”) agar bisa menyajikan JSON dengan rapi, atau untuk lebih detail dan proses pengujian lebih lanjut bisa digunakan <a href="https://www.postman.com/downloads/" target="_blank">Postman</a> yang mana sekarang tersedia juga versi web-nya</p>
+
+<p>Berikut contoh hasil request ke <code class="language-plaintext highlighter-rouge">reqres.in</code></p>
+
+<figure class="highlight"><pre><code class="language-json" data-lang="json"><span class="p">{</span><span class="w">
+    </span><span class="nl">"page"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"per_page"</span><span class="p">:</span><span class="mi">6</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"total"</span><span class="p">:</span><span class="mi">12</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"total_pages"</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"email"</span><span class="p">:</span><span class="s2">"george.bluth@reqres.in"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"first_name"</span><span class="p">:</span><span class="s2">"George"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"last_name"</span><span class="p">:</span><span class="s2">"Bluth"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"avatar"</span><span class="p">:</span><span class="s2">"https://reqres.in/img/faces/1-image.jpg"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"email"</span><span class="p">:</span><span class="s2">"janet.weaver@reqres.in"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"first_name"</span><span class="p">:</span><span class="s2">"Janet"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"last_name"</span><span class="p">:</span><span class="s2">"Weaver"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"avatar"</span><span class="p">:</span><span class="s2">"https://reqres.in/img/faces/2-image.jpg"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"email"</span><span class="p">:</span><span class="s2">"emma.wong@reqres.in"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"first_name"</span><span class="p">:</span><span class="s2">"Emma"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"last_name"</span><span class="p">:</span><span class="s2">"Wong"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"avatar"</span><span class="p">:</span><span class="s2">"https://reqres.in/img/faces/3-image.jpg"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="mi">4</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"email"</span><span class="p">:</span><span class="s2">"eve.holt@reqres.in"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"first_name"</span><span class="p">:</span><span class="s2">"Eve"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"last_name"</span><span class="p">:</span><span class="s2">"Holt"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"avatar"</span><span class="p">:</span><span class="s2">"https://reqres.in/img/faces/4-image.jpg"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="mi">5</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"email"</span><span class="p">:</span><span class="s2">"charles.morris@reqres.in"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"first_name"</span><span class="p">:</span><span class="s2">"Charles"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"last_name"</span><span class="p">:</span><span class="s2">"Morris"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"avatar"</span><span class="p">:</span><span class="s2">"https://reqres.in/img/faces/5-image.jpg"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="mi">6</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"email"</span><span class="p">:</span><span class="s2">"tracey.ramos@reqres.in"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"first_name"</span><span class="p">:</span><span class="s2">"Tracey"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"last_name"</span><span class="p">:</span><span class="s2">"Ramos"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"avatar"</span><span class="p">:</span><span class="s2">"https://reqres.in/img/faces/6-image.jpg"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"support"</span><span class="p">:</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"url"</span><span class="p">:</span><span class="s2">"https://reqres.in/#support-heading"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"text"</span><span class="p">:</span><span class="s2">"To keep ReqRes free, contributions towards server costs are appreciated!"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span></code></pre></figure>
+
+<p>Data tersebut akan diterjemahkan dalam bentuk object pada Android Studio dengan membuat Class yang strukturnya mirip.</p>
+
+<p>Buat package <code class="language-plaintext highlighter-rouge">model</code> kemudian didalamnya buat sebuah data class dengan nama <code class="language-plaintext highlighter-rouge">User</code> dan isikan dengan</p>
+
+<figure class="highlight"><pre><code class="language-kotlin" data-lang="kotlin"><span class="kd">data class</span> <span class="nc">User</span><span class="p">(</span>
+    <span class="kd">val</span> <span class="py">page</span><span class="p">:</span> <span class="nc">Int</span><span class="p">,</span>
+    <span class="kd">val</span> <span class="py">per_page</span><span class="p">:</span> <span class="nc">Int</span><span class="p">,</span>
+    <span class="kd">val</span> <span class="py">total</span><span class="p">:</span> <span class="nc">Int</span><span class="p">,</span>
+    <span class="kd">val</span> <span class="py">total_pages</span><span class="p">:</span> <span class="nc">Int</span><span class="p">,</span>
+    <span class="kd">val</span> <span class="py">data</span> <span class="p">:</span> <span class="nc">List</span><span class="p">&lt;</span><span class="nc">UserData</span><span class="p">&gt;</span>
+<span class="p">)</span>
+
+<span class="kd">data class</span> <span class="nc">UserData</span><span class="p">(</span>
+    <span class="err">@</span><span class="n">field</span><span class="p">:</span><span class="nc">Json</span><span class="p">(</span><span class="n">name</span> <span class="p">=</span> <span class="s">"@id"</span><span class="p">)</span>
+    <span class="kd">val</span> <span class="py">id</span><span class="p">:</span> <span class="nc">Int</span><span class="p">,</span>
+    <span class="err">@</span><span class="n">field</span><span class="p">:</span><span class="nc">Json</span><span class="p">(</span><span class="n">name</span> <span class="p">=</span> <span class="s">"@email"</span><span class="p">)</span>
+    <span class="kd">val</span> <span class="py">email</span><span class="p">:</span> <span class="nc">String</span><span class="p">,</span>
+    <span class="err">@</span><span class="n">field</span><span class="p">:</span><span class="nc">Json</span><span class="p">(</span><span class="n">name</span> <span class="p">=</span> <span class="s">"@first_name"</span><span class="p">)</span>
+    <span class="kd">val</span> <span class="py">first_name</span><span class="p">:</span> <span class="nc">String</span><span class="p">,</span>
+    <span class="err">@</span><span class="n">field</span><span class="p">:</span><span class="nc">Json</span><span class="p">(</span><span class="n">name</span> <span class="p">=</span> <span class="s">"@last_name"</span><span class="p">)</span>
+    <span class="kd">val</span> <span class="py">last_name</span><span class="p">:</span> <span class="nc">String</span><span class="p">,</span>
+    <span class="err">@</span><span class="n">field</span><span class="p">:</span><span class="nc">Json</span><span class="p">(</span><span class="n">name</span> <span class="p">=</span> <span class="s">"@avatar"</span><span class="p">)</span>
+    <span class="kd">val</span> <span class="py">avatar</span><span class="p">:</span> <span class="nc">String</span>
+<span class="p">)</span></code></pre></figure>
+
+<p>Berikutnya diperlukan sebuah interface untuk melakukan request menggunakan retrofit. Buat package <code class="language-plaintext highlighter-rouge">network</code> kemudian didalamnya buat sebuah class dengan nama <code class="language-plaintext highlighter-rouge">ApiService</code> dan isikan dengan</p>
+
+<figure class="highlight"><pre><code class="language-kotlin" data-lang="kotlin"><span class="k">private</span> <span class="k">const</span> <span class="kd">val</span> <span class="py">BASE_URL</span> <span class="p">=</span> <span class="s">"https://reqres.in/api/"</span>
+
+<span class="k">private</span> <span class="kd">val</span> <span class="py">moshi</span> <span class="p">=</span> <span class="nc">Moshi</span><span class="p">.</span><span class="nc">Builder</span><span class="p">()</span>
+    <span class="p">.</span><span class="nf">add</span><span class="p">(</span><span class="nc">KotlinJsonAdapterFactory</span><span class="p">())</span>
+    <span class="p">.</span><span class="nf">build</span><span class="p">()</span>
+
+<span class="k">private</span> <span class="kd">val</span> <span class="py">retrofit</span> <span class="p">=</span> <span class="nc">Retrofit</span><span class="p">.</span><span class="nc">Builder</span><span class="p">()</span>
+    <span class="p">.</span><span class="nf">addConverterFactory</span><span class="p">(</span><span class="nc">MoshiConverterFactory</span><span class="p">.</span><span class="nf">create</span><span class="p">(</span><span class="n">moshi</span><span class="p">))</span>
+    <span class="p">.</span><span class="nf">baseUrl</span><span class="p">(</span><span class="nc">BASE_URL</span><span class="p">)</span>
+    <span class="p">.</span><span class="nf">build</span><span class="p">()</span>
+
+
+<span class="kd">interface</span> <span class="nc">ApiService</span> <span class="p">{</span>
+    <span class="nd">@GET</span><span class="p">(</span><span class="s">"users?page=1"</span><span class="p">)</span>
+    <span class="k">suspend</span> <span class="k">fun</span> <span class="nf">getUsers</span><span class="p">():</span> <span class="nc">User</span>
+<span class="p">}</span>
+
+<span class="kd">object</span> <span class="nc">Api</span> <span class="p">{</span>
+    <span class="kd">val</span> <span class="py">retrofitService</span> <span class="p">:</span> <span class="nc">ApiService</span> <span class="k">by</span> <span class="nf">lazy</span> <span class="p">{</span>
+        <span class="n">retrofit</span><span class="p">.</span><span class="nf">create</span><span class="p">(</span><span class="nc">ApiService</span><span class="o">::</span><span class="k">class</span><span class="p">.</span><span class="n">java</span><span class="p">)</span> <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<p><code class="language-plaintext highlighter-rouge">BASE_URL</code> merupakan link utama yang akan di-request, sedangkan parameter detailnya ditambahkan pada methof <code class="language-plaintext highlighter-rouge">getUsers()</code> bisa diperhatikan pada <code class="language-plaintext highlighter-rouge">@GET("users?page=1")</code> yang merupakan argumen tambahan kepada BASE_URL</p>
+
+<p>Data hasil request akan diproses dalam sebuah <code class="language-plaintext highlighter-rouge">ViewModel</code> untuk dapat ditampilkan kedalam activity, praktek ini digunakan agar data tetap tersimpan ketika state berubah dan memungkinkan untuk dilakukan unit testing terhadap request datanya. Buat package <code class="language-plaintext highlighter-rouge">ui</code> didalamnya buat lagi package <code class="language-plaintext highlighter-rouge">user</code> didalamnya buat sebuah class <code class="language-plaintext highlighter-rouge">UserViewModel</code> dan isikan dengan</p>
+
+<figure class="highlight"><pre><code class="language-kotlin" data-lang="kotlin"><span class="kd">class</span> <span class="nc">UserViewModel</span> <span class="p">:</span><span class="nc">ViewModel</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">private</span> <span class="kd">val</span> <span class="py">_response</span> <span class="p">=</span> <span class="nc">MutableLiveData</span><span class="p">&lt;</span><span class="nc">User</span><span class="p">&gt;()</span>
+
+    <span class="kd">val</span> <span class="py">response</span><span class="p">:</span> <span class="nc">LiveData</span><span class="p">&lt;</span><span class="nc">User</span><span class="p">&gt;</span>
+        <span class="k">get</span><span class="p">()</span> <span class="p">=</span> <span class="n">_response</span>
+
+    <span class="nf">init</span> <span class="p">{</span>
+        <span class="nf">setResponse</span><span class="p">()</span>
+    <span class="p">}</span>
+
+    <span class="k">private</span> <span class="k">fun</span> <span class="nf">setResponse</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">viewModelScope</span><span class="p">.</span><span class="nf">launch</span> <span class="p">{</span>
+            <span class="k">try</span> <span class="p">{</span>
+                <span class="kd">val</span> <span class="py">listResult</span> <span class="p">=</span> <span class="nc">Api</span><span class="p">.</span><span class="n">retrofitService</span><span class="p">.</span><span class="nf">getUsers</span><span class="p">()</span>
+                <span class="n">_response</span><span class="p">.</span><span class="n">value</span> <span class="p">=</span> <span class="n">listResult</span>
+            <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="n">e</span><span class="p">:</span> <span class="nc">Exception</span><span class="p">)</span> <span class="p">{</span>
+                <span class="n">_response</span><span class="p">.</span><span class="n">value</span> <span class="p">=</span> <span class="k">null</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>class <code class="language-plaintext highlighter-rouge">UserViewModel</code> merupakan extends atau turunan atau subclass dari <code class="language-plaintext highlighter-rouge">ViewModel</code>, didalamnya terdapat atribut <code class="language-plaintext highlighter-rouge">_response</code> dengan tipe MutableLiveData dengan isi object dari User. Sedangkan <code class="language-plaintext highlighter-rouge">response</code> dengan tipe LiveData digunakan sebagai interface yang ditampilkan pada activity. Method <code class="language-plaintext highlighter-rouge">setResponse</code> dijalankan pada <code class="language-plaintext highlighter-rouge">init</code> atau ketika ViewModel di-instance, yang mana method tersebut beriskan CoroutineScope dengan try-catch proses request data menggunakan retrofit dan hasilnya disimpan di <code class="language-plaintext highlighter-rouge">_response</code>.</p>
+
+<p>Pengujian cepat untuk melihat hasil request bisa dilakukan sementara pada <code class="language-plaintext highlighter-rouge">MainActivity</code> dengan ditambahkan sedikit modifikasi terlebih dahulu pada layout <code class="language-plaintext highlighter-rouge">activity_main.xml</code></p>
+
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml">...
+    <span class="nt">&lt;TextView</span>
+        <span class="na">android:id=</span><span class="s">"@+id/tvMainActivity"</span>
+        <span class="err">...</span>
+        <span class="nt">/&gt;</span>
+
+    <span class="nt">&lt;ProgressBar</span>
+        <span class="na">android:id=</span><span class="s">"@+id/progressBar"</span>
+        <span class="na">style=</span><span class="s">"?android:attr/progressBarStyle"</span>
+        <span class="na">android:layout_width=</span><span class="s">"wrap_content"</span>
+        <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+        <span class="na">app:layout_constraintBottom_toBottomOf=</span><span class="s">"parent"</span>
+        <span class="na">app:layout_constraintEnd_toEndOf=</span><span class="s">"parent"</span>
+        <span class="na">app:layout_constraintStart_toStartOf=</span><span class="s">"parent"</span>
+        <span class="na">app:layout_constraintTop_toTopOf=</span><span class="s">"parent"</span> <span class="nt">/&gt;</span>
+...</code></pre></figure>
+
+<p>Modifikasi dilakukan dengan menambahkan id pada TextView yang sudah ada, dan menambahkan <code class="language-plaintext highlighter-rouge">ProgressBar</code>. Sedangkan modifikasi pada <code class="language-plaintext highlighter-rouge">MainActivity</code> adalah sebagai berikut</p>
+
+<figure class="highlight"><pre><code class="language-kotlin" data-lang="kotlin"><span class="o">..</span><span class="p">.</span>
+<span class="kd">class</span> <span class="nc">MainActivity</span> <span class="p">:</span> <span class="nc">AppCompatActivity</span><span class="p">()</span> <span class="p">{</span>
+
+    <span class="k">private</span> <span class="k">lateinit</span> <span class="kd">var</span> <span class="py">binding</span><span class="p">:</span><span class="nc">ActivityMainBinding</span>
+    <span class="k">private</span> <span class="kd">val</span> <span class="py">viewModel</span><span class="p">:</span> <span class="nc">UserViewModel</span> <span class="k">by</span> <span class="nf">lazy</span> <span class="p">{</span>
+        <span class="nc">ViewModelProvider</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="k">get</span><span class="p">(</span><span class="nc">UserViewModel</span><span class="o">::</span><span class="k">class</span><span class="p">.</span><span class="n">java</span><span class="p">)</span>
+    <span class="p">}</span>
+
+    <span class="k">override</span> <span class="k">fun</span> <span class="nf">onCreate</span><span class="p">(</span><span class="n">savedInstanceState</span><span class="p">:</span> <span class="nc">Bundle</span><span class="p">?)</span> <span class="p">{</span>
+        <span class="k">super</span><span class="p">.</span><span class="nf">onCreate</span><span class="p">(</span><span class="n">savedInstanceState</span><span class="p">)</span>
+        <span class="nf">setContentView</span><span class="p">(</span><span class="nc">R</span><span class="p">.</span><span class="n">layout</span><span class="p">.</span><span class="n">activity_main</span><span class="p">)</span>
+        <span class="n">binding</span> <span class="p">=</span> <span class="nc">ActivityMainBinding</span><span class="p">.</span><span class="nf">inflate</span><span class="p">(</span><span class="n">layoutInflater</span><span class="p">)</span>
+        <span class="nf">setContentView</span><span class="p">(</span><span class="n">binding</span><span class="p">.</span><span class="n">root</span><span class="p">)</span>
+
+        <span class="n">binding</span><span class="p">.</span><span class="n">progressBar</span><span class="p">.</span><span class="n">visibility</span> <span class="p">=</span> <span class="nc">View</span><span class="p">.</span><span class="nc">VISIBLE</span>
+
+        <span class="n">viewModel</span><span class="p">.</span><span class="n">response</span><span class="p">.</span><span class="nf">observe</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="p">{</span>
+            <span class="n">binding</span><span class="p">.</span><span class="n">progressBar</span><span class="p">.</span><span class="n">visibility</span> <span class="p">=</span> <span class="nc">View</span><span class="p">.</span><span class="nc">INVISIBLE</span>
+            <span class="n">binding</span><span class="p">.</span><span class="n">tvMainActivity</span><span class="p">.</span><span class="n">text</span> <span class="p">=</span> <span class="n">it</span><span class="p">.</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">first_name</span>
+        <span class="p">})</span>
+
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>Project ini menggunakan teknik viewBinding sehingga perlu dibuat dulu sebuah atribut <code class="language-plaintext highlighter-rouge">binding</code> dengan tipe ActivityMainBinding dan parameter <code class="language-plaintext highlighter-rouge">setContentView</code> pada onCreate dirubah menyesuaikan dengan binding, atribut <code class="language-plaintext highlighter-rouge">viewModel</code> dibuat dengan tipe UserViewModel. Ketika dijalankan aplikasi akan melakukan request data kemudian menampilkan data pertama dari data user yang ada kedalam TextView.</p>
+
+<p>OK Proses request data berhasil.</p>
+:ET

@@ -46,4 +46,4 @@ Untuk membuat blog dengan Jekyll kita bisa menggunakan github sebagai host grati
 ![Hasil html]({{ site.url }}/assets/hasil-html.png)  
 
 
-10. Selanjutnya untuk menginstal Jekyll bisa dibaca di [SINI](http://mirzayogy.com/blogging/2016/12/26/install-jekyll.html)
+10. Selanjutnya untuk menginstal Jekyll bisa dibaca di [[SINI]({% post_url 2016-12-26-install-jekyll %})

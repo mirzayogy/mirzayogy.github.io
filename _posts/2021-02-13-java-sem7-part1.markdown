@@ -3,104 +3,229 @@ layout: post
 title:  "Praktikum Java Semester 7: Part 1"
 date:   2021-02-13 12:46:41 +0800
 categories: java
-published : false
+published : true
 comments : true
 description: Langkah-langkah pengerjaan praktikum Java khusus untuk semester 7 Fakultas Teknologi Informasi, Universitas Islam Kalimantan Muhammad Arsyad Al Banjari Banjarmasin
 tags: 
  - java
 ---
 
-Pada praktikum khusus semester 7 ini diharapkan sudah menguasai dasar pemrograman android, bisa dipelajari diantaranya melalui playlist berikut
+Use Case Diagram untuk praktikum ini
 
-<a href="https://www.youtube.com/watch?v=jlteXciXQJM&list=PLlBn2dsdFy7B3tXOrhBn7kfuWgSXDKXpk&index=1" target="_blank">Playlist Android untuk Pemula</a>
+![UseCaseDiagram]({{ site.url }}/assets/UseCaseDiagram.png)
 
-Mengelola data bisa dengan menggunakan beberapa cara diantaranya
-1. SharedPreferences untuk data kecil
-2. SQLite untuk penyimpanan data local
-3. Menggunakan Web Service / Web API sebagai backend
+Class Diagram untuk praktikum ini
 
-Beberapa Web Service sederhana yang bisa digunakan sebagai latihan
-1. <a href="https://reqres.in/api/users?page=1" target="_blank">https://reqres.in/api/users?page=1</a>
-2. <a href="https://randomuser.me/api/" target="_blank">https://randomuser.me/api/</a>
-3. <a href="https://quote-api.dicoding.dev/list" target="_blank">https://quote-api.dicoding.dev/list</a>
+![ClassDiagram]({{ site.url }}/assets/ClassDiagram.png)
 
-Web service kompleks yang gratis sampai pemakaian tertentu
-1. <a href="https://www.football-data.org/" target="_blank">https://www.football-data.org/</a>
-2. <a href="https://developers.themoviedb.org/3/getting-started/introduction" target="_blank">https://developers.themoviedb.org/3/getting-started/introduction</a>
-3. <a href="https://openweathermap.org/api" target="_blank">https://openweathermap.org/api</a>
+Tools yang digunakan
+1. IDE: NetBeans 12.+
+2. MySQL
+3. GitHub Desktop
 
-Dan tentu masih banyak Web Service lainnya yang bisa kita temui, seperti untuk pengiriman paket, pemesanan tiket, dan lainnya.
+Buat sebuah database baru di MySQL dengan nama `praktikum_penjualan`, pilih database-nya, buka menu SQL dan jalankan perintah berikut
 
-Pada part 1 ini akan digunakan web service yang sederhana dulu agar bisa dipraktekkan cara menghubungkan aplikasi android dengan web service yang sudah ada
+{% highlight  sql %}
+CREATE TABLE `jenisbarang` (
+`id` INT NOT NULL AUTO_INCREMENT ,
+`namajenisbarang` VARCHAR(200) NOT NULL ,
+PRIMARY KEY (`id`)) ENGINE = InnoDB;
 
+INSERT INTO `jenisbarang` (`id`, `namajenisbarang`) VALUES 
+(NULL, 'Pakaian pria'), 
+(NULL, 'Pakaian wanita') 
 
-
-
-
-Bagian pertama mengenalkan kepada view yang dimiliki android diantaranya ada 3 (tiga) view yaitu `TextView` yang berfungsi untuk menampilkan tulisan, `ImageView` untuk menampilkan gambar, dan `Button`.. ya.. Tombol
-
-![Miaww]({{ site.url }}/assets/01Beginner.01Inteface.01LayoutsP1.001.png)
-
-View pada Android dituliskan dengan `CamelCase` yang berarti Punuk Onta, karena setiap kata diawali dengan huruf besar makanya disebut mirip dengan punuk onta.       
-
-`Sintaks` adalah aturan yang mendefinisikan bagaimana menulis bahasa dengan benar, dalam hal ini XML. Jika komponen yang ditulis tidak sesuai dengan sintaks, maka komponen tidak akan muncul pada layar. Berikut sintaks penulisan XML
-
-![Miaww1]({{ site.url }}/assets/01Beginner.01Inteface.01LayoutsP1.002.png)
-
-Perhatikan tulisan berwarna hijau menunjukkan nama komponennya yang diawali oleh `opening angle bracket (<)` dan diakhiri dengan `garis miring` dan `closing angle bracket (/>)` yang mana disebut dengan `Self Closing Tag`. Tulisan berwarna biru adalah atribut dari komponen, dan yang berwarna merah dan selalu menggunakan tanda petik (") adalah nilai dari atributnya misalkan 
-
-{% highlight xml %}
-<TextView
-    android:text="Ini Nilai Atribut"
-/>
 {% endhighlight %}
 
-Untuk latihan bisa dicoba pada [LINK INI](http://labs.udacity.com/android-visualizer/#/android/text-view) akan tetapi yang perlu diperhatikan bahwa tools ini hanya untuk latihan, dan tidak memiliki fitur selengkap android studio. 
+Buat Project Baru, Category: `Java with Maven`, Projects: `Java Application`
 
-Coba tuliskan perintah berikut kemudian ganti-ganti nilai atributnya
-{% highlight xml %}
-<TextView
-    android:text="Happy Birthday!"
-    android:background="#9C27B0"
-    android:textColor="#FFFFFF"
-    android:textSize="24sp"
-    android:layout_width="150dp"
-    android:layout_height="75dp" />
+Buka package `Project Files` buka file `pom.xml` posisikan kursor setelah `</properties>` dan isikan dengan
+
+{% highlight  xml %}
+<project ..>
+    ...
+    </properties>
+    <dependencies>
+        <!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>8.0.23</version>
+        </dependency>
+    </dependencies>
+</project>
 {% endhighlight %}
 
-Jika ingin mencoba `Views` lainnya bisa dilihat contoh pada [LINK INI](https://drive.google.com/file/d/0B5XIkMkayHgRMVljUVIyZzNmQUU/view) 
+Buat package `db` dan didalamnya buat class `Database`, isikan dengan
 
-Kombinasi warna pada menu maupun warna huruf sangat penting dalam perancangan tampilan aplikasi berikut [LINK](https://material.io/guidelines/style/color.html#) yang bisa dijadikan acuan untuk pemilihan warna 
-
-Selain warna penentuan ukuran huruf juga penting untuk memperindah tampilan dan tidak mengganggu fokus pengguna, berikut 
-[LINK](https://material.io/guidelines/style/typography.html#) yang membahas tentang ukuran huruf.
-
-
-Nilai atribut `android:layout_width` dan `android:layout_height` dapat kita isi dengan `"wrap_content"` untuk membungkusnya sesuai dengan ukuran isi atau besarnya font
-
-Coba tuliskan perintah berikut bandingkan dengan hasil source code sebelumnya
-{% highlight xml %}
-<TextView
-    android:text="Happy Birthday!"
-    android:background="#9C27B0"
-    android:textColor="#FFFFFF"
-    android:textSize="24sp"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content" />
+{% highlight  java %}
+public class Database {
+    
+    private final String URL = "jdbc:mysql://localhost:3306/";
+    private final String DB_NAME = "praktikum_penjualan";
+    private final String USER = "root";
+    private final String PASS = "";
+    
+    public Connection getConnection(){
+        Connection con = null;
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            con = DriverManager.getConnection(URL+DB_NAME, USER, PASS);
+            System.out.println("Koneksi Berhasil");
+        } catch (ClassNotFoundException | SQLException ex) {
+            System.out.println(ex.toString());
+        }
+        return con;
+    }
+    
+}
 {% endhighlight %}
 
-Views `ImageView` bisa digunakan untuk menampilkan gambar, untuk mencoba bisa ditulis source code berikut
+Buat class `Main`, isikan dengan
 
-{% highlight xml %}
-<ImageView
-    android:src="@drawable/cake"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:scaleType="center"/>
+{% highlight  java %}
+public class Main {
+    public static void main(String[] args) {
+        System.out.println("Hello world");
+        
+        Database db = new Database();
+        Connection con = db.getConnection();
+    }
+}
 {% endhighlight %}
 
-Gambar `cake` yang disediakan sangat besar sehingga yang tampak hanya bagian Agar gambar cake terlihat jelas nilai pada `android:scaleType` bisa diganti menjadi `"centerCrop"`
+Hasil yang diharapkan adalah tertulis `Hello world` dan `Koneksi Berhasil`
 
-Untuk mengganti gambar bisa dilihat pada tombol `"AVAILABLE IMAGES"` pada bagian bawah kemudian ganti sesuai dengan nama gambarnya. Setelah gambar diganti, coba atur nilai atribut agar gambar selalu penuh (`full bleed`).
+Buat package `template` dan didalamnya buat interface `MyModelInterface`, isikan dengan
 
-Happy Coding
+{% highlight  java %}
+public interface MyModelInterface {
+    
+    abstract boolean create();
+    abstract ArrayList<Object> read();
+    abstract boolean update();
+    abstract boolean delete();
+    abstract ArrayList<Object> search(String keyword);
+    
+}
+{% endhighlight %}
+
+Buat package `model` dan didalamnya buat class `JenisBarang`, isikan dengan
+
+{% highlight  java %}
+public class JenisBarang implements MyModelInterface{
+
+    Connection con;
+    private int id;
+    private String namaJenisBarang;
+
+}
+{% endhighlight %}
+
+Perhatikan lampu peringatan, klik dan pilih `Implement all abstract methods` sehingga akan muncul method CRUD sesuai dengan interface yang sudah dibuat sebelumnya.
+
+Generate constructor JenisBarang dengan parameter con dan satu constructor lagi dengan parameter id dan namaJenisBarang. Generate juga Getter and Setter untuk setiap atribut.
+
+Cari method create() dan isikan dengan
+
+{% highlight  java %}
+@Override
+public boolean create() {
+    boolean berhasil = false;
+    
+    String insertSQL = "INSERT INTO jenisbarang VALUES (NULL,?)";
+    
+    try {
+        PreparedStatement ps = this.con.prepareStatement(insertSQL);
+        ps.setString(1, this.namaJenisBarang);
+        ps.execute();
+        berhasil = true;
+    } catch (SQLException ex) {
+        System.out.println(ex.toString());
+    }
+    
+    return berhasil;
+}
+{% endhighlight %}
+
+Cari method read() dan isikan dengan
+
+{% highlight  java %}
+
+@Override
+public ArrayList<Object> read() {
+    ArrayList<Object> list =  new ArrayList<>();
+    
+    String selectSQL = "SELECT * FROM jenisbarang";
+    
+    try {
+        Statement statement = this.con.createStatement();
+        ResultSet resultSet = statement.executeQuery(selectSQL);
+        
+        while(resultSet.next()){
+            JenisBarang jb = new JenisBarang(
+                    resultSet.getInt(1),
+                    resultSet.getString(2)
+            );
+            list.add(jb);
+        }
+        
+    } catch (SQLException ex) {
+        System.out.println(ex.toString());
+    }
+    
+    return list;
+}
+{% endhighlight %}
+
+Cari method update() dan isikan dengan
+
+{% highlight  java %}
+@Override
+public boolean update() {
+    
+    boolean berhasil = false;
+    
+    String updateSQL = "UPDATE jenisbarang SET namajenisbarang = ? WHERE id = ?";
+    
+    try {
+        PreparedStatement ps = this.con.prepareStatement(updateSQL);
+        ps.setString(1, this.namaJenisBarang);
+        ps.setInt(2, this.id);
+
+        ps.execute();
+        berhasil = true;
+    } catch (SQLException ex) {
+        System.out.println(ex.toString());
+    }
+    
+    return berhasil;
+}
+{% endhighlight %}
+
+Cari method update() dan isikan dengan
+
+{% highlight  java %}
+@Override
+public boolean delete() {
+    boolean berhasil = false;
+    
+    String deleteSQL = "DELETE FROM jenisbarang WHERE id = ?";
+    
+    try {
+        PreparedStatement ps = this.con.prepareStatement(deleteSQL);
+        ps.setInt(1, this.id);
+
+        ps.execute();
+        berhasil = true;
+    } catch (SQLException ex) {
+        System.out.println(ex.toString());
+    }
+    
+    return berhasil;
+}
+{% endhighlight %}
+
+And... that's about it for today. Aplikasi sudah mampu melakukan CRUD sederhana namun masih tanpa view visual.
+
+<iframe width="560" height="315" src="https://youtu.be/FNS_zA36qtY" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
