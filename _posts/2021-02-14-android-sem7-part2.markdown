@@ -8,15 +8,13 @@ comments : true
 description: Menampilkan data hasil request web service ke dalam item recyclerview
 tags: 
  - android
- - retrofit
- - moshi
- - viewmodel
  - recyclerview
  - 201-praktikum-7-android
 ---
 
 [Praktikum Android Semester 7: Part 1]({% post_url 2021-02-13-android-sem7-part1 %})
 Praktikum Android Semester 7: Part 2
+[Praktikum Android Semester 7: Part 3]({% post_url 2021-02-27-android-sem7-part3 %})
 
 Pada [Part 1]({% post_url 2021-02-13-android-sem7-part1 %}) aplikasi sudah dapat melakukan request data namun hanya  menampilkan 1 (satu) field ke TextView. Data dapat ditampilkan dalam bentuk list yang bisa diimplementasikan dalam Android Studio dengan menggunakan ListView atau RecyclerView. Pada part ini akan digunakan `RecyclerView` dengan layout sederhana.
 
@@ -182,3 +180,7 @@ Terakhir pada manifest kita ganti agar UserActivity menjadi Main Launcher
 
 
 Voila ! jadilah data tampil di RecyclerView
+
+[Praktikum Android Semester 7: Part 1]({% post_url 2021-02-13-android-sem7-part1 %})
+Praktikum Android Semester 7: Part 2
+[Praktikum Android Semester 7: Part 3]({% post_url 2021-02-27-android-sem7-part3 %})
