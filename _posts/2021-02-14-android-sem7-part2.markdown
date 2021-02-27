@@ -89,7 +89,7 @@ Buat sebuah empty activity baru didalam package `ui.user` dengan nama `UserActiv
 Buat sebuah class baru didalam package `ui.user` dengan nama `ListUserAdapter` dan isikan dengan
 
 {% highlight  kotlin %}
-class ListUserAdapter(private val listUser: ArrayList<User>) : RecyclerView.Adapter<ListUserAdapter.ListViewHolder>() {
+class ListUserAdapter(private val listUser: ArrayList<UserData>) : RecyclerView.Adapter<ListUserAdapter.ListViewHolder>() {
     class ListViewHolder(private val binding: ItemRowUserBinding) : RecyclerView.ViewHolder(binding.root) {
 
     }
@@ -160,6 +160,41 @@ class ListUserAdapter(private val listUser: ArrayList<UserData>) : RecyclerView.
 }
 {% endhighlight %}
 
+Ubah isi dari UserActivity dengan
+
+{% highlight  kotlin %}
+class UserActivity : AppCompatActivity() {
+
+    private lateinit var binding:ActivityUserBinding
+    private val list = ArrayList<UserData>()
+    private val viewModel: UserViewModel by lazy {
+        ViewModelProvider(this).get(UserViewModel::class.java)
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        binding = ActivityUserBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        binding.rvUsers.setHasFixedSize(true)
+
+        binding.progressBarUser.visibility = View.VISIBLE
+
+        getListUser()
+
+    }
+
+    private fun getListUser() {
+        viewModel.response.observe(this, {
+            binding.progressBarUser.visibility = View.INVISIBLE
+            list.addAll(it.data)
+            binding.rvUsers.layoutManager = LinearLayoutManager(this)
+            val listUserAdapter = ListUserAdapter(list)
+            binding.rvUsers.adapter = listUserAdapter
+        })
+    }
+}
+{% endhighlight %}
 
 Terakhir pada manifest kita ganti agar UserActivity menjadi Main Launcher
 
