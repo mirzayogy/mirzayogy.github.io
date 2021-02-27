@@ -5,7 +5,7 @@ date:   2021-02-14 09:00:00 +0800
 categories: android
 published: true
 comments : true
-description: Langkah-langkah pengerjaan Praktikum Android khusus untuk semester 7 Fakultas Teknologi Informasi, Universitas Islam Kalimantan Muhammad Arsyad Al Banjari Banjarmasin
+description: Menampilkan data hasil request web service ke dalam item recyclerview
 tags: 
  - android
  - retrofit

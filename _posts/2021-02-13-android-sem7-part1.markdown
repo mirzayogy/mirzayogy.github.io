@@ -4,7 +4,7 @@ title:  "Praktikum Android Semester 7: Part 1"
 date:   2021-02-13 19:00:00 +0800
 categories: android
 comments : true
-description: Langkah-langkah pengerjaan Praktikum Android khusus untuk semester 7 Fakultas Teknologi Informasi, Universitas Islam Kalimantan Muhammad Arsyad Al Banjari Banjarmasin
+description: Melakukan request data ke web service menggunakan retrofit dan moshi dengan penerapan viewmodel
 tags: 
  - android 
  - retrofit
