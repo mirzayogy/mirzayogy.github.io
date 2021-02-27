@@ -3,7 +3,7 @@ layout: post
 title:  "Praktikum Android Semester 7: Part 2"
 date:   2021-02-14 09:00:00 +0800
 categories: android
-published: false
+published: true
 comments : true
 description: Langkah-langkah pengerjaan Praktikum Android khusus untuk semester 7 Fakultas Teknologi Informasi, Universitas Islam Kalimantan Muhammad Arsyad Al Banjari Banjarmasin
 tags: 
@@ -15,7 +15,8 @@ tags:
  - 201-praktikum-7-android
 ---
 
-[Part 1]({% post_url 2021-02-13-android-sem7-part1 %})
+[Praktikum Android Semester 7: Part 1]({% post_url 2021-02-13-android-sem7-part1 %})
+Praktikum Android Semester 7: Part 2
 
 Pada [Part 1]({% post_url 2021-02-13-android-sem7-part1 %}) aplikasi sudah dapat melakukan request data namun hanya  menampilkan 1 (satu) field ke TextView. Data dapat ditampilkan dalam bentuk list yang bisa diimplementasikan dalam Android Studio dengan menggunakan ListView atau RecyclerView. Pada part ini akan digunakan `RecyclerView` dengan layout sederhana.
 
@@ -40,21 +41,20 @@ pada layout, buat sebuah `Layout Resource File` dan berikan nama `item_row_user`
     android:padding="16dp">
 
     <TextView
-        android:id="@+id/tv_item_last_name"
+        android:id="@+id/tv_item_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
+        android:layout_marginBottom="4dp"
         android:textSize="16sp"
         android:textStyle="bold"
-        tools:text="Last Name" />
+        tools:text="Name" />
 
     <TextView
-        android:id="@+id/tv_item_fist_name"
+        android:id="@+id/tv_item_email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:ellipsize="end"
         android:maxLines="2"
-        tools:text="First Name" />
+        tools:text="Email" />
 </LinearLayout>
 {% endhighlight %}
 
@@ -102,13 +102,13 @@ Import dan implementasikan semua method yang diminta oleh interface Adapter Recy
 
 {% highlight  kotlin %}
 class ListViewHolder(private val binding: ItemRowUserBinding) : RecyclerView.ViewHolder(binding.root) {
-    fun bind(userData: UserData) {
-        with(binding){
-            tvItemLastName.text = userData.last_name
-            tvItemFirstName.text = userData.first_name
+        fun bind(userData: UserData) {
+            with(binding){
+                tvItemName.text = userData.first_name + " " + userData.last_name
+                tvItemEmail.text = userData.email
+            }
         }
     }
-}
 {% endhighlight %}
 
 Masuk ke blok method `onCreateViewHolder` dan isikan dengan
@@ -120,218 +120,65 @@ override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListViewHolde
 }
 {% endhighlight %}
 
+Masuk ke blok method `onBindViewHolder` dan isikan dengan
 
-
-`Retrofit` ini adalah HTTP client yang bisa digunakan untuk melakukan request, singkatnya untuk memanggil internet. Sedangkan `Moshi` digunakan sebagai penerjemah JSON yang didapat dari hasil request. Kedua dependency tadi dihubungkan melalui `retrofit:converter-moshi`. `Androidx Lifecycle` digunakan untuk mengimplementasikan `ViewModel` pada project kali ini. Jangan lupa untuk melakukan sync dengan klik `Sync Now`.
-
-Project ini akan melakukan HTTP request atau menghubungkan diri dengan internet, maka perlu ditambahkan permission pada `AndroidManifest.xml`
-{% highlight  xml %}
-...
-<uses-permission android:name="android.permission.INTERNET" />
-
-<application
-
-{% endhighlight %}
-
-Web service yang digunakan adalah link berikut
-
-    https://reqres.in/api/users?page=1
-
-Link tersebut bisa dibuka menggunakan web browser biasa. Firefox sudah support untuk pembacaan JSON, Chrome perlu extensi (contoh: "JSON Formatter") agar bisa menyajikan JSON dengan rapi, atau untuk lebih detail dan proses pengujian lebih lanjut bisa digunakan <a href="https://www.postman.com/downloads/" target="_blank">Postman</a> yang mana sekarang tersedia juga versi web-nya
-
-Berikut contoh hasil request ke `reqres.in`
-{% highlight  JSON %}
-{
-    "page":1,
-    "per_page":6,
-    "total":12,
-    "total_pages":2,
-    "data":[
-        {
-            "id":1,
-            "email":"george.bluth@reqres.in",
-            "first_name":"George",
-            "last_name":"Bluth",
-            "avatar":"https://reqres.in/img/faces/1-image.jpg"
-        },
-        {
-            "id":2,
-            "email":"janet.weaver@reqres.in",
-            "first_name":"Janet",
-            "last_name":"Weaver",
-            "avatar":"https://reqres.in/img/faces/2-image.jpg"
-        },
-        {
-            "id":3,
-            "email":"emma.wong@reqres.in",
-            "first_name":"Emma",
-            "last_name":"Wong",
-            "avatar":"https://reqres.in/img/faces/3-image.jpg"
-        },
-        {
-            "id":4,
-            "email":"eve.holt@reqres.in",
-            "first_name":"Eve",
-            "last_name":"Holt",
-            "avatar":"https://reqres.in/img/faces/4-image.jpg"
-        },
-        {
-            "id":5,
-            "email":"charles.morris@reqres.in",
-            "first_name":"Charles",
-            "last_name":"Morris",
-            "avatar":"https://reqres.in/img/faces/5-image.jpg"
-        },
-        {
-            "id":6,
-            "email":"tracey.ramos@reqres.in",
-            "first_name":"Tracey",
-            "last_name":"Ramos",
-            "avatar":"https://reqres.in/img/faces/6-image.jpg"
-        }
-    ],
-    "support":
-        {
-            "url":"https://reqres.in/#support-heading",
-            "text":"To keep ReqRes free, contributions towards server costs are appreciated!"
-        }
+{% highlight  kotlin %}
+override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
+        holder.bind(listUser[position])
 }
 {% endhighlight %}
 
-Data tersebut akan diterjemahkan dalam bentuk object pada Android Studio dengan membuat Class yang strukturnya mirip.
-
-Buat package `model` kemudian didalamnya buat sebuah data class dengan nama `User` dan isikan dengan
+Pada blok method `getItemCount` isikan dengan
 
 {% highlight  kotlin %}
-
-data class User(
-    val page: Int,
-    val per_page: Int,
-    val total: Int,
-    val total_pages: Int,
-    val data : List<UserData>
-)
-
-data class UserData(
-    @field:Json(name = "@id")
-    val id: Int,
-    @field:Json(name = "@email")
-    val email: String,
-    @field:Json(name = "@first_name")
-    val first_name: String,
-    @field:Json(name = "@last_name")
-    val last_name: String,
-    @field:Json(name = "@avatar")
-    val avatar: String
-)
+override fun getItemCount():Int = listUser.size
 {% endhighlight %}
 
-Berikutnya diperlukan sebuah interface untuk melakukan request menggunakan retrofit. Buat package `network` kemudian didalamnya buat sebuah class dengan nama `ApiService` dan isikan dengan
+Sehingga hasil akhirnya ListUserAdapter berisikan
 
 {% highlight  kotlin %}
+class ListUserAdapter(private val listUser: ArrayList<UserData>) : RecyclerView.Adapter<ListUserAdapter.ListViewHolder>() {
 
-private const val BASE_URL = "https://reqres.in/api/"
-
-private val moshi = Moshi.Builder()
-    .add(KotlinJsonAdapterFactory())
-    .build()
-
-private val retrofit = Retrofit.Builder()
-    .addConverterFactory(MoshiConverterFactory.create(moshi))
-    .baseUrl(BASE_URL)
-    .build()
-
-
-interface ApiService {
-    @GET("users?page=1")
-    suspend fun getUsers(): User
-}
-
-object Api {
-    val retrofitService : ApiService by lazy {
-        retrofit.create(ApiService::class.java) }
-}
-{% endhighlight %}
-
-`BASE_URL` merupakan link utama yang akan di-request, sedangkan parameter detailnya ditambahkan pada methof `getUsers()` bisa diperhatikan pada `@GET("users?page=1")` yang merupakan argumen tambahan kepada BASE_URL
-
-Data hasil request akan diproses dalam sebuah `ViewModel` untuk dapat ditampilkan kedalam activity, praktek ini digunakan agar data tetap tersimpan ketika state berubah dan memungkinkan untuk dilakukan unit testing terhadap request datanya. Buat package `ui` didalamnya buat lagi package `user` didalamnya buat sebuah class `UserViewModel` dan isikan dengan
-
-{% highlight  kotlin %}
-class UserViewModel :ViewModel() {
-    private val _response = MutableLiveData<User>()
-
-    val response: LiveData<User>
-        get() = _response
-
-    init {
-        setResponse()
-    }
-
-    private fun setResponse() {
-        viewModelScope.launch {
-            try {
-                val listResult = Api.retrofitService.getUsers()
-                _response.value = listResult
-            } catch (e: Exception) {
-                _response.value = null
+    class ListViewHolder(private val binding: ItemRowUserBinding) : RecyclerView.ViewHolder(binding.root) {
+        fun bind(userData: UserData) {
+            with(binding){
+                tvItemName.text = userData.first_name + " " + userData.last_name
+                tvItemEmail.text = userData.email
             }
         }
     }
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListViewHolder {
+        val binding = ItemRowUserBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return ListViewHolder(binding)
+    }
+
+    override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
+        holder.bind(listUser[position])
+    }
+
+    override fun getItemCount():Int = listUser.size
+
 }
 {% endhighlight %}
 
-class `UserViewModel` merupakan extends atau turunan atau subclass dari `ViewModel`, didalamnya terdapat atribut `_response` dengan tipe MutableLiveData dengan isi object dari User. Sedangkan `response` dengan tipe LiveData digunakan sebagai interface yang ditampilkan pada activity. Method `setResponse` dijalankan pada `init` atau ketika ViewModel di-instance, yang mana method tersebut beriskan CoroutineScope dengan try-catch proses request data menggunakan retrofit dan hasilnya disimpan di `_response`.
 
-Pengujian cepat untuk melihat hasil request bisa dilakukan sementara pada `MainActivity` dengan ditambahkan sedikit modifikasi terlebih dahulu pada layout `activity_main.xml`
-{% highlight  xml %}
-...
-    <TextView
-        android:id="@+id/tvMainActivity"
-        ...
-        />
-
-    <ProgressBar
-        android:id="@+id/progressBar"
-        style="?android:attr/progressBarStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-...
-
-{% endhighlight %}
-
-Modifikasi dilakukan dengan menambahkan id pada TextView yang sudah ada, dan menambahkan `ProgressBar`. Sedangkan modifikasi pada `MainActivity` adalah sebagai berikut
+Terakhir pada manifest kita ganti agar UserActivity menjadi Main Launcher
 
 {% highlight  kotlin %}
-...
-class MainActivity : AppCompatActivity() {
+<application ...
+    <activity android:name=".ui.user.UserActivity">
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
 
-    private lateinit var binding:ActivityMainBinding
-    private val viewModel: UserViewModel by lazy {
-        ViewModelProvider(this).get(UserViewModel::class.java)
-    }
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+    </activity>
+    <activity android:name=".MainActivity">
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
-
-        binding.progressBar.visibility = View.VISIBLE
-
-        viewModel.response.observe(this, {
-            binding.progressBar.visibility = View.INVISIBLE
-            binding.tvMainActivity.text = it.data[0].first_name
-        })
-
-    }
-}
+    </activity>
+</application>
 {% endhighlight %}
 
-Project ini menggunakan teknik viewBinding sehingga perlu dibuat dulu sebuah atribut `binding` dengan tipe ActivityMainBinding dan parameter `setContentView` pada onCreate dirubah menyesuaikan dengan binding, atribut `viewModel` dibuat dengan tipe UserViewModel. Ketika dijalankan aplikasi akan melakukan request data kemudian menampilkan data pertama dari data user yang ada kedalam TextView. 
 
-OK Proses request data berhasil.
+Voila ! jadilah data tampil di RecyclerView

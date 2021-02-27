@@ -275,3 +275,6 @@ class MainActivity : AppCompatActivity() {
 Project ini menggunakan teknik viewBinding sehingga perlu dibuat dulu sebuah atribut `binding` dengan tipe ActivityMainBinding dan parameter `setContentView` pada onCreate dirubah menyesuaikan dengan binding, atribut `viewModel` dibuat dengan tipe UserViewModel. Ketika dijalankan aplikasi akan melakukan request data kemudian menampilkan data pertama dari data user yang ada kedalam TextView. 
 
 OK Proses request data berhasil.
+
+Praktikum Android Semester 7: Part 1
+[Praktikum Android Semester 7: Part 2]({% post_url 2021-02-14-android-sem7-part2 %})

@@ -1,94 +1,56 @@
-I"ã‡<p><a href="/2021/02/android-sem7-part1">Part 1</a></p>
+I"Øj<p>Pada praktikum khusus semester 7 ini diharapkan sudah menguasai dasar pemrograman android, bisa dipelajari diantaranya melalui playlist berikut</p>
 
-<p>Pada <a href="/2021/02/android-sem7-part1">Part 1</a> aplikasi sudah dapat melakukan request data namun hanya  menampilkan 1 (satu) field ke TextView. Data dapat ditampilkan dalam bentuk list yang bisa diimplementasikan dalam Android Studio dengan menggunakan ListView atau RecyclerView. Pada part ini akan digunakan <code class="language-plaintext highlighter-rouge">RecyclerView</code> dengan layout sederhana.</p>
+<p><a href="https://www.youtube.com/watch?v=jlteXciXQJM&amp;list=PLlBn2dsdFy7B3tXOrhBn7kfuWgSXDKXpk&amp;index=1" target="_blank">Playlist Android untuk Pemula</a></p>
+
+<p>Mengelola data bisa dengan menggunakan beberapa cara diantaranya</p>
+<ol>
+  <li>SharedPreferences untuk data kecil</li>
+  <li>SQLite untuk penyimpanan data local</li>
+  <li>Menggunakan Web Service / Web API sebagai backend</li>
+</ol>
+
+<p>Beberapa Web Service sederhana yang bisa digunakan sebagai latihan</p>
+<ol>
+  <li><a href="https://reqres.in/api/users?page=1" target="_blank">https://reqres.in/api/users?page=1</a></li>
+  <li><a href="https://randomuser.me/api/" target="_blank">https://randomuser.me/api/</a></li>
+  <li><a href="https://quote-api.dicoding.dev/list" target="_blank">https://quote-api.dicoding.dev/list</a></li>
+</ol>
+
+<p>Web service kompleks yang gratis sampai pemakaian tertentu</p>
+<ol>
+  <li><a href="https://www.football-data.org/" target="_blank">https://www.football-data.org/</a></li>
+  <li><a href="https://developers.themoviedb.org/3/getting-started/introduction" target="_blank">https://developers.themoviedb.org/3/getting-started/introduction</a></li>
+  <li><a href="https://openweathermap.org/api" target="_blank">https://openweathermap.org/api</a></li>
+</ol>
+
+<p>Dan tentu masih banyak Web Service lainnya yang bisa ditemui, seperti untuk pengiriman paket, pemesanan tiket, dan lainnya.</p>
+
+<p>Pada part 1 ini akan digunakan web service yang sederhana dulu agar bisa dipraktekkan cara menghubungkan aplikasi android dengan web service yang sudah ada</p>
+
+<p>Buat project baru pada Android Studio</p>
 
 <p>tambahkan pada <code class="language-plaintext highlighter-rouge">build.graddle.app</code></p>
 
-<figure class="highlight"><pre><code class="language-xml" data-lang="xml">    ...
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml">    plugins {
+        ...
+        id 'kotlin-android-extensions'
+        ...
+    }
+    ...
+    android{
+        ...
+        buildFeatures {
+        viewBinding = true
+        }
+    }
+    ...
     dependencies{
         ...
-        implementation 'androidx.recyclerview:recyclerview:1.1.0'
+        implementation "com.squareup.retrofit2:retrofit:2.9.0"
+        implementation "com.squareup.retrofit2:converter-moshi:2.9.0"
+        implementation "com.squareup.moshi:moshi-kotlin:1.9.3"
+        implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0"
     }</code></pre></figure>
-
-<p>pada layout, buat sebuah <code class="language-plaintext highlighter-rouge">Layout Resource File</code> dan berikan nama <code class="language-plaintext highlighter-rouge">item_row_user</code> dan isikan dengan</p>
-
-<figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="cp">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span>
-<span class="nt">&lt;LinearLayout</span> <span class="na">xmlns:android=</span><span class="s">"http://schemas.android.com/apk/res/android"</span>
-    <span class="na">xmlns:tools=</span><span class="s">"http://schemas.android.com/tools"</span>
-    <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
-    <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
-    <span class="na">android:orientation=</span><span class="s">"vertical"</span>
-    <span class="na">android:padding=</span><span class="s">"16dp"</span><span class="nt">&gt;</span>
-
-    <span class="nt">&lt;TextView</span>
-        <span class="na">android:id=</span><span class="s">"@+id/tv_item_last_name"</span>
-        <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
-        <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
-        <span class="na">android:layout_marginBottom=</span><span class="s">"8dp"</span>
-        <span class="na">android:textSize=</span><span class="s">"16sp"</span>
-        <span class="na">android:textStyle=</span><span class="s">"bold"</span>
-        <span class="na">tools:text=</span><span class="s">"Last Name"</span> <span class="nt">/&gt;</span>
-
-    <span class="nt">&lt;TextView</span>
-        <span class="na">android:id=</span><span class="s">"@+id/tv_item_fist_name"</span>
-        <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
-        <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
-        <span class="na">android:ellipsize=</span><span class="s">"end"</span>
-        <span class="na">android:maxLines=</span><span class="s">"2"</span>
-        <span class="na">tools:text=</span><span class="s">"First Name"</span> <span class="nt">/&gt;</span>
-<span class="nt">&lt;/LinearLayout&gt;</span></code></pre></figure>
-
-<p>Buat sebuah empty activity baru didalam package <code class="language-plaintext highlighter-rouge">ui.user</code> dengan nama <code class="language-plaintext highlighter-rouge">UserActivity</code>, buka file <code class="language-plaintext highlighter-rouge">activity_user.xml</code> dan isikan dengan</p>
-
-<figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="cp">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span>
-<span class="nt">&lt;LinearLayout</span> <span class="na">xmlns:android=</span><span class="s">"http://schemas.android.com/apk/res/android"</span>
-    <span class="na">xmlns:tools=</span><span class="s">"http://schemas.android.com/tools"</span>
-    <span class="na">android:id=</span><span class="s">"@+id/activity_user"</span>
-    <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
-    <span class="na">android:layout_height=</span><span class="s">"match_parent"</span>
-    <span class="na">android:orientation=</span><span class="s">"vertical"</span>
-    <span class="na">tools:context=</span><span class="s">".ui.user.UserActivity"</span><span class="nt">&gt;</span>
-
-    <span class="nt">&lt;ProgressBar</span>
-        <span class="na">android:id=</span><span class="s">"@+id/progressBarUser"</span>
-        <span class="na">style=</span><span class="s">"@style/Widget.AppCompat.ProgressBar.Horizontal"</span>
-        <span class="na">android:indeterminate=</span><span class="s">"true"</span>
-        <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
-        <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span> <span class="nt">/&gt;</span>
-
-    <span class="nt">&lt;androidx.recyclerview.widget.RecyclerView</span>
-        <span class="na">android:id=</span><span class="s">"@+id/rv_users"</span>
-        <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
-        <span class="na">android:layout_height=</span><span class="s">"fill_parent"</span>
-        <span class="na">tools:listitem=</span><span class="s">"@layout/item_row_user"</span> <span class="nt">/&gt;</span>
-
-<span class="nt">&lt;/LinearLayout&gt;</span></code></pre></figure>
-
-<p>Buat sebuah class baru didalam package <code class="language-plaintext highlighter-rouge">ui.user</code> dengan nama <code class="language-plaintext highlighter-rouge">ListUserAdapter</code> dan isikan dengan</p>
-
-<figure class="highlight"><pre><code class="language-kotlin" data-lang="kotlin"><span class="kd">class</span> <span class="nc">ListUserAdapter</span><span class="p">(</span><span class="k">private</span> <span class="kd">val</span> <span class="py">listUser</span><span class="p">:</span> <span class="nc">ArrayList</span><span class="p">&lt;</span><span class="nc">User</span><span class="p">&gt;)</span> <span class="p">:</span> <span class="nc">RecyclerView</span><span class="p">.</span><span class="nc">Adapter</span><span class="p">&lt;</span><span class="nc">ListUserAdapter</span><span class="err">.</span><span class="nc">ListViewHolder</span><span class="p">&gt;()</span> <span class="p">{</span>
-    <span class="kd">class</span> <span class="nc">ListViewHolder</span><span class="p">(</span><span class="k">private</span> <span class="kd">val</span> <span class="py">binding</span><span class="p">:</span> <span class="nc">ItemRowUserBinding</span><span class="p">)</span> <span class="p">:</span> <span class="nc">RecyclerView</span><span class="p">.</span><span class="nc">ViewHolder</span><span class="p">(</span><span class="n">binding</span><span class="p">.</span><span class="n">root</span><span class="p">)</span> <span class="p">{</span>
-
-    <span class="p">}</span>
-<span class="p">}</span></code></pre></figure>
-
-<p>Import dan implementasikan semua method yang diminta oleh interface Adapter RecyclerView. Masih pada file <code class="language-plaintext highlighter-rouge">ListUserAdapter</code>, tambahkan method <code class="language-plaintext highlighter-rouge">bind</code> di dalam inner class `ListViewHolder</p>
-
-<figure class="highlight"><pre><code class="language-kotlin" data-lang="kotlin"><span class="kd">class</span> <span class="nc">ListViewHolder</span><span class="p">(</span><span class="k">private</span> <span class="kd">val</span> <span class="py">binding</span><span class="p">:</span> <span class="nc">ItemRowUserBinding</span><span class="p">)</span> <span class="p">:</span> <span class="nc">RecyclerView</span><span class="p">.</span><span class="nc">ViewHolder</span><span class="p">(</span><span class="n">binding</span><span class="p">.</span><span class="n">root</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">fun</span> <span class="nf">bind</span><span class="p">(</span><span class="n">userData</span><span class="p">:</span> <span class="nc">UserData</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nf">with</span><span class="p">(</span><span class="n">binding</span><span class="p">){</span>
-            <span class="n">tvItemLastName</span><span class="p">.</span><span class="n">text</span> <span class="p">=</span> <span class="n">userData</span><span class="p">.</span><span class="n">last_name</span>
-            <span class="n">tvItemFirstName</span><span class="p">.</span><span class="n">text</span> <span class="p">=</span> <span class="n">userData</span><span class="p">.</span><span class="n">first_name</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-<span class="p">}</span></code></pre></figure>
-
-<p>Masuk ke blok method <code class="language-plaintext highlighter-rouge">onCreateViewHolder</code> dan isikan dengan</p>
-
-<figure class="highlight"><pre><code class="language-kotlin" data-lang="kotlin"><span class="k">override</span> <span class="k">fun</span> <span class="nf">onCreateViewHolder</span><span class="p">(</span><span class="n">parent</span><span class="p">:</span> <span class="nc">ViewGroup</span><span class="p">,</span> <span class="n">viewType</span><span class="p">:</span> <span class="nc">Int</span><span class="p">):</span> <span class="nc">ListViewHolder</span> <span class="p">{</span>
-    <span class="kd">val</span> <span class="py">binding</span> <span class="p">=</span> <span class="nc">ItemRowUserBinding</span><span class="p">.</span><span class="nf">inflate</span><span class="p">(</span><span class="nc">LayoutInflater</span><span class="p">.</span><span class="nf">from</span><span class="p">(</span><span class="n">parent</span><span class="p">.</span><span class="n">context</span><span class="p">),</span> <span class="n">parent</span><span class="p">,</span> <span class="k">false</span><span class="p">)</span>
-    <span class="k">return</span> <span class="nc">ListViewHolder</span><span class="p">(</span><span class="n">binding</span><span class="p">)</span>
-<span class="p">}</span></code></pre></figure>
 
 <p><code class="language-plaintext highlighter-rouge">Retrofit</code> ini adalah HTTP client yang bisa digunakan untuk melakukan request, singkatnya untuk memanggil internet. Sedangkan <code class="language-plaintext highlighter-rouge">Moshi</code> digunakan sebagai penerjemah JSON yang didapat dari hasil request. Kedua dependency tadi dihubungkan melalui <code class="language-plaintext highlighter-rouge">retrofit:converter-moshi</code>. <code class="language-plaintext highlighter-rouge">Androidx Lifecycle</code> digunakan untuk mengimplementasikan <code class="language-plaintext highlighter-rouge">ViewModel</code> pada project kali ini. Jangan lupa untuk melakukan sync dengan klik <code class="language-plaintext highlighter-rouge">Sync Now</code>.</p>
 
@@ -289,4 +251,7 @@
 <p>Project ini menggunakan teknik viewBinding sehingga perlu dibuat dulu sebuah atribut <code class="language-plaintext highlighter-rouge">binding</code> dengan tipe ActivityMainBinding dan parameter <code class="language-plaintext highlighter-rouge">setContentView</code> pada onCreate dirubah menyesuaikan dengan binding, atribut <code class="language-plaintext highlighter-rouge">viewModel</code> dibuat dengan tipe UserViewModel. Ketika dijalankan aplikasi akan melakukan request data kemudian menampilkan data pertama dari data user yang ada kedalam TextView.</p>
 
 <p>OK Proses request data berhasil.</p>
+
+<p>Praktikun Android Semester 7: Part 1<br />
+<a href="/2021/02/android-sem7-part2">Praktikun Android Semester 7: Part 2</a></p>
 :ET

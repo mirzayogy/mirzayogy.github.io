@@ -1,4 +1,4 @@
-I"Vj<p>Pada praktikum khusus semester 7 ini diharapkan sudah menguasai dasar pemrograman android, bisa dipelajari diantaranya melalui playlist berikut</p>
+I"Øj<p>Pada praktikum khusus semester 7 ini diharapkan sudah menguasai dasar pemrograman android, bisa dipelajari diantaranya melalui playlist berikut</p>
 
 <p><a href="https://www.youtube.com/watch?v=jlteXciXQJM&amp;list=PLlBn2dsdFy7B3tXOrhBn7kfuWgSXDKXpk&amp;index=1" target="_blank">Playlist Android untuk Pemula</a></p>
 
@@ -251,4 +251,7 @@
 <p>Project ini menggunakan teknik viewBinding sehingga perlu dibuat dulu sebuah atribut <code class="language-plaintext highlighter-rouge">binding</code> dengan tipe ActivityMainBinding dan parameter <code class="language-plaintext highlighter-rouge">setContentView</code> pada onCreate dirubah menyesuaikan dengan binding, atribut <code class="language-plaintext highlighter-rouge">viewModel</code> dibuat dengan tipe UserViewModel. Ketika dijalankan aplikasi akan melakukan request data kemudian menampilkan data pertama dari data user yang ada kedalam TextView.</p>
 
 <p>OK Proses request data berhasil.</p>
+
+<p>Praktikum Android Semester 7: Part 1<br />
+<a href="/2021/02/android-sem7-part2">Praktikum Android Semester 7: Part 2</a></p>
 :ET
