@@ -9,6 +9,7 @@ description: Langkah-langkah pengerjaan praktikum Java khusus untuk semester 7 F
 tags: 
  - java
  - netbeans
+ - 201-praktikum-7-java
 ---
 
 Praktikum Java Semester 7: Part 1

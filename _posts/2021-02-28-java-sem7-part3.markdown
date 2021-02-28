@@ -9,6 +9,7 @@ description: Membuat Add Frame
 tags: 
  - java
  - netbeans
+ - 201-praktikum-7-java
 ---
 [Praktikum Java Semester 7: Part 1]({% post_url 2021-02-13-java-sem7-part1 %})
 [Praktikum Java Semester 7: Part 2]({% post_url 2021-02-28-java-sem7-part2 %})
