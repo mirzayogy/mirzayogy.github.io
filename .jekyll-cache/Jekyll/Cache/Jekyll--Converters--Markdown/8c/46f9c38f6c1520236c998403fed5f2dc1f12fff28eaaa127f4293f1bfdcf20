@@ -1,0 +1,236 @@
+I"�`<p><a href="/2021/02/java-sem7-part1">Praktikum Java Semester 7: Part 1</a><br />
+Praktikum Java Semester 7: Part 2</p>
+
+<p>Pembuatan Frame di NetBeans sangat dimudahkan oleh fitur visualnya, namun karena ada beberapa fitur yang akan memiliki method yang sama dan menghindari pengulangan coding maka terlebih dahulu dipersiapkan templatenya.</p>
+
+<p>Pada pengelolaan data master akan dipersiapkan 2 (dua) frame untuk tiap table, yaitu View Frame yang fungsinya untuk menampilkan table, dan Add Frame yang fungsinya untuk tambah dan ubah data. Maka dibuat dulu Interface-nya</p>
+
+<p>Buat sebuah package <code class="language-plaintext highlighter-rouge">template</code> dan didalamnya buat interface <code class="language-plaintext highlighter-rouge">ViewFrameInterface</code>, isikan dengan</p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">ViewFrameInterface</span> <span class="o">{</span>
+    <span class="kd">abstract</span> <span class="kt">void</span> <span class="nf">refresh</span><span class="o">();</span>
+    <span class="kd">abstract</span> <span class="kt">void</span> <span class="nf">buildTable</span><span class="o">(</span><span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">Object</span><span class="o">&gt;</span> <span class="n">list</span><span class="o">);</span>
+<span class="o">}</span></code></pre></figure>
+
+<p>berikutnya buat interface <code class="language-plaintext highlighter-rouge">AddFrameInterface</code>, isikan dengan</p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">MyAddFrameInterface</span> <span class="o">{</span>
+    <span class="kd">abstract</span> <span class="kt">boolean</span> <span class="nf">dataKosong</span><span class="o">();</span>
+    <span class="kd">abstract</span> <span class="kt">void</span> <span class="nf">simpanTambah</span><span class="o">();</span>
+    <span class="kd">abstract</span> <span class="kt">void</span> <span class="nf">simpanUbah</span><span class="o">();</span>
+<span class="o">}</span></code></pre></figure>
+
+<p>Frame yang dibuat akan berupa custom yang tidak memiliki window sehingga supaya seragam kita buat dulu custom framenya, masih didalam package <code class="language-plaintext highlighter-rouge">template</code> buat sebuah class <code class="language-plaintext highlighter-rouge">CustomFrame</code>, dan isikan dengan</p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">CustomFrame</span> <span class="kd">extends</span> <span class="n">javax</span><span class="o">.</span><span class="na">swing</span><span class="o">.</span><span class="na">JFrame</span><span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">customShow</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">dispose</span><span class="o">();</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">setUndecorated</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">setLocationRelativeTo</span><span class="o">(</span><span class="kc">null</span><span class="o">);</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">setVisible</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span></code></pre></figure>
+
+<p>Use Case Diagram untuk praktikum ini</p>
+
+<p><img src="/assets/UseCaseDiagram.png" alt="UseCaseDiagram" /></p>
+
+<p>Class Diagram untuk praktikum ini</p>
+
+<p><img src="/assets/ClassDiagram.png" alt="ClassDiagram" /></p>
+
+<p>Tools yang digunakan</p>
+<ol>
+  <li>IDE: NetBeans 12.+</li>
+  <li>MySQL</li>
+  <li>GitHub Desktop</li>
+</ol>
+
+<p>Buat sebuah database baru di MySQL dengan nama <code class="language-plaintext highlighter-rouge">praktikum_penjualan</code>, pilih database-nya, buka menu SQL dan jalankan perintah berikut</p>
+
+<figure class="highlight"><pre><code class="language-sql" data-lang="sql"><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="nv">`jenisbarang`</span> <span class="p">(</span>
+<span class="nv">`id`</span> <span class="nb">INT</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="n">AUTO_INCREMENT</span> <span class="p">,</span>
+<span class="nv">`namajenisbarang`</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">200</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="p">,</span>
+<span class="k">PRIMARY</span> <span class="k">KEY</span> <span class="p">(</span><span class="nv">`id`</span><span class="p">))</span> <span class="n">ENGINE</span> <span class="o">=</span> <span class="n">InnoDB</span><span class="p">;</span>
+
+<span class="k">INSERT</span> <span class="k">INTO</span> <span class="nv">`jenisbarang`</span> <span class="p">(</span><span class="nv">`id`</span><span class="p">,</span> <span class="nv">`namajenisbarang`</span><span class="p">)</span> <span class="k">VALUES</span> 
+<span class="p">(</span><span class="k">NULL</span><span class="p">,</span> <span class="s1">'Pakaian pria'</span><span class="p">),</span> 
+<span class="p">(</span><span class="k">NULL</span><span class="p">,</span> <span class="s1">'Pakaian wanita'</span><span class="p">)</span> </code></pre></figure>
+
+<p>Buat Project Baru, Category: <code class="language-plaintext highlighter-rouge">Java with Maven</code>, Projects: <code class="language-plaintext highlighter-rouge">Java Application</code></p>
+
+<p>Buka package <code class="language-plaintext highlighter-rouge">Project Files</code> buka file <code class="language-plaintext highlighter-rouge">pom.xml</code> posisikan kursor setelah <code class="language-plaintext highlighter-rouge">&lt;/properties&gt;</code> dan isikan dengan</p>
+
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;project</span> <span class="err">..</span><span class="nt">&gt;</span>
+    ...
+    <span class="nt">&lt;/properties&gt;</span>
+    <span class="nt">&lt;dependencies&gt;</span>
+        <span class="c">&lt;!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java --&gt;</span>
+        <span class="nt">&lt;dependency&gt;</span>
+            <span class="nt">&lt;groupId&gt;</span>mysql<span class="nt">&lt;/groupId&gt;</span>
+            <span class="nt">&lt;artifactId&gt;</span>mysql-connector-java<span class="nt">&lt;/artifactId&gt;</span>
+            <span class="nt">&lt;version&gt;</span>8.0.23<span class="nt">&lt;/version&gt;</span>
+        <span class="nt">&lt;/dependency&gt;</span>
+    <span class="nt">&lt;/dependencies&gt;</span>
+<span class="nt">&lt;/project&gt;</span></code></pre></figure>
+
+<p>Buat package <code class="language-plaintext highlighter-rouge">db</code> dan didalamnya buat class <code class="language-plaintext highlighter-rouge">Database</code>, isikan dengan</p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Database</span> <span class="o">{</span>
+    
+    <span class="kd">private</span> <span class="kd">final</span> <span class="nc">String</span> <span class="no">URL</span> <span class="o">=</span> <span class="s">"jdbc:mysql://localhost:3306/"</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kd">final</span> <span class="nc">String</span> <span class="no">DB_NAME</span> <span class="o">=</span> <span class="s">"praktikum_penjualan"</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kd">final</span> <span class="nc">String</span> <span class="no">USER</span> <span class="o">=</span> <span class="s">"root"</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kd">final</span> <span class="nc">String</span> <span class="no">PASS</span> <span class="o">=</span> <span class="s">""</span><span class="o">;</span>
+    
+    <span class="kd">public</span> <span class="nc">Connection</span> <span class="nf">getConnection</span><span class="o">(){</span>
+        <span class="nc">Connection</span> <span class="n">con</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+        <span class="k">try</span> <span class="o">{</span>
+            <span class="nc">Class</span><span class="o">.</span><span class="na">forName</span><span class="o">(</span><span class="s">"com.mysql.cj.jdbc.Driver"</span><span class="o">);</span>
+            <span class="n">con</span> <span class="o">=</span> <span class="nc">DriverManager</span><span class="o">.</span><span class="na">getConnection</span><span class="o">(</span><span class="no">URL</span><span class="o">+</span><span class="no">DB_NAME</span><span class="o">,</span> <span class="no">USER</span><span class="o">,</span> <span class="no">PASS</span><span class="o">);</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Koneksi Berhasil"</span><span class="o">);</span>
+        <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">ClassNotFoundException</span> <span class="o">|</span> <span class="nc">SQLException</span> <span class="n">ex</span><span class="o">)</span> <span class="o">{</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">ex</span><span class="o">.</span><span class="na">toString</span><span class="o">());</span>
+        <span class="o">}</span>
+        <span class="k">return</span> <span class="n">con</span><span class="o">;</span>
+    <span class="o">}</span>
+    
+<span class="o">}</span></code></pre></figure>
+
+<p>Buat class <code class="language-plaintext highlighter-rouge">Main</code>, isikan dengan</p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Main</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Hello world"</span><span class="o">);</span>
+        
+        <span class="nc">Database</span> <span class="n">db</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Database</span><span class="o">();</span>
+        <span class="nc">Connection</span> <span class="n">con</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="na">getConnection</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span></code></pre></figure>
+
+<p>Hasil yang diharapkan adalah tertulis <code class="language-plaintext highlighter-rouge">Hello world</code> dan <code class="language-plaintext highlighter-rouge">Koneksi Berhasil</code></p>
+
+<p>Buat package <code class="language-plaintext highlighter-rouge">template</code> dan didalamnya buat interface <code class="language-plaintext highlighter-rouge">MyModelInterface</code>, isikan dengan</p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">MyModelInterface</span> <span class="o">{</span>
+    
+    <span class="kd">abstract</span> <span class="kt">boolean</span> <span class="nf">create</span><span class="o">();</span>
+    <span class="kd">abstract</span> <span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">Object</span><span class="o">&gt;</span> <span class="nf">read</span><span class="o">();</span>
+    <span class="kd">abstract</span> <span class="kt">boolean</span> <span class="nf">update</span><span class="o">();</span>
+    <span class="kd">abstract</span> <span class="kt">boolean</span> <span class="nf">delete</span><span class="o">();</span>
+    <span class="kd">abstract</span> <span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">Object</span><span class="o">&gt;</span> <span class="nf">search</span><span class="o">(</span><span class="nc">String</span> <span class="n">keyword</span><span class="o">);</span>
+    
+<span class="o">}</span></code></pre></figure>
+
+<p>Buat package <code class="language-plaintext highlighter-rouge">model</code> dan didalamnya buat class <code class="language-plaintext highlighter-rouge">JenisBarang</code>, isikan dengan</p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">JenisBarang</span> <span class="kd">implements</span> <span class="nc">MyModelInterface</span><span class="o">{</span>
+
+    <span class="nc">Connection</span> <span class="n">con</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kt">int</span> <span class="n">id</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">namaJenisBarang</span><span class="o">;</span>
+
+<span class="o">}</span></code></pre></figure>
+
+<p>Perhatikan lampu peringatan, klik dan pilih <code class="language-plaintext highlighter-rouge">Implement all abstract methods</code> sehingga akan muncul method CRUD sesuai dengan interface yang sudah dibuat sebelumnya.</p>
+
+<p>Generate constructor JenisBarang dengan parameter con dan satu constructor lagi dengan parameter id dan namaJenisBarang. Generate juga Getter and Setter untuk setiap atribut.</p>
+
+<p>Cari method create() dan isikan dengan</p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="nd">@Override</span>
+<span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">create</span><span class="o">()</span> <span class="o">{</span>
+    <span class="kt">boolean</span> <span class="n">berhasil</span> <span class="o">=</span> <span class="kc">false</span><span class="o">;</span>
+    
+    <span class="nc">String</span> <span class="n">insertSQL</span> <span class="o">=</span> <span class="s">"INSERT INTO jenisbarang VALUES (NULL,?)"</span><span class="o">;</span>
+    
+    <span class="k">try</span> <span class="o">{</span>
+        <span class="nc">PreparedStatement</span> <span class="n">ps</span> <span class="o">=</span> <span class="k">this</span><span class="o">.</span><span class="na">con</span><span class="o">.</span><span class="na">prepareStatement</span><span class="o">(</span><span class="n">insertSQL</span><span class="o">);</span>
+        <span class="n">ps</span><span class="o">.</span><span class="na">setString</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="k">this</span><span class="o">.</span><span class="na">namaJenisBarang</span><span class="o">);</span>
+        <span class="n">ps</span><span class="o">.</span><span class="na">execute</span><span class="o">();</span>
+        <span class="n">berhasil</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
+    <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">SQLException</span> <span class="n">ex</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">ex</span><span class="o">.</span><span class="na">toString</span><span class="o">());</span>
+    <span class="o">}</span>
+    
+    <span class="k">return</span> <span class="n">berhasil</span><span class="o">;</span>
+<span class="o">}</span></code></pre></figure>
+
+<p>Cari method read() dan isikan dengan</p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="nd">@Override</span>
+<span class="kd">public</span> <span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">Object</span><span class="o">&gt;</span> <span class="nf">read</span><span class="o">()</span> <span class="o">{</span>
+    <span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">Object</span><span class="o">&gt;</span> <span class="n">list</span> <span class="o">=</span>  <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;();</span>
+    
+    <span class="nc">String</span> <span class="n">selectSQL</span> <span class="o">=</span> <span class="s">"SELECT * FROM jenisbarang"</span><span class="o">;</span>
+    
+    <span class="k">try</span> <span class="o">{</span>
+        <span class="nc">Statement</span> <span class="n">statement</span> <span class="o">=</span> <span class="k">this</span><span class="o">.</span><span class="na">con</span><span class="o">.</span><span class="na">createStatement</span><span class="o">();</span>
+        <span class="nc">ResultSet</span> <span class="n">resultSet</span> <span class="o">=</span> <span class="n">statement</span><span class="o">.</span><span class="na">executeQuery</span><span class="o">(</span><span class="n">selectSQL</span><span class="o">);</span>
+        
+        <span class="k">while</span><span class="o">(</span><span class="n">resultSet</span><span class="o">.</span><span class="na">next</span><span class="o">()){</span>
+            <span class="nc">JenisBarang</span> <span class="n">jb</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">JenisBarang</span><span class="o">(</span>
+                    <span class="n">resultSet</span><span class="o">.</span><span class="na">getInt</span><span class="o">(</span><span class="mi">1</span><span class="o">),</span>
+                    <span class="n">resultSet</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="mi">2</span><span class="o">)</span>
+            <span class="o">);</span>
+            <span class="n">list</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">jb</span><span class="o">);</span>
+        <span class="o">}</span>
+        
+    <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">SQLException</span> <span class="n">ex</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">ex</span><span class="o">.</span><span class="na">toString</span><span class="o">());</span>
+    <span class="o">}</span>
+    
+    <span class="k">return</span> <span class="n">list</span><span class="o">;</span>
+<span class="o">}</span></code></pre></figure>
+
+<p>Cari method update() dan isikan dengan</p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="nd">@Override</span>
+<span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">update</span><span class="o">()</span> <span class="o">{</span>
+    
+    <span class="kt">boolean</span> <span class="n">berhasil</span> <span class="o">=</span> <span class="kc">false</span><span class="o">;</span>
+    
+    <span class="nc">String</span> <span class="n">updateSQL</span> <span class="o">=</span> <span class="s">"UPDATE jenisbarang SET namajenisbarang = ? WHERE id = ?"</span><span class="o">;</span>
+    
+    <span class="k">try</span> <span class="o">{</span>
+        <span class="nc">PreparedStatement</span> <span class="n">ps</span> <span class="o">=</span> <span class="k">this</span><span class="o">.</span><span class="na">con</span><span class="o">.</span><span class="na">prepareStatement</span><span class="o">(</span><span class="n">updateSQL</span><span class="o">);</span>
+        <span class="n">ps</span><span class="o">.</span><span class="na">setString</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="k">this</span><span class="o">.</span><span class="na">namaJenisBarang</span><span class="o">);</span>
+        <span class="n">ps</span><span class="o">.</span><span class="na">setInt</span><span class="o">(</span><span class="mi">2</span><span class="o">,</span> <span class="k">this</span><span class="o">.</span><span class="na">id</span><span class="o">);</span>
+
+        <span class="n">ps</span><span class="o">.</span><span class="na">execute</span><span class="o">();</span>
+        <span class="n">berhasil</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
+    <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">SQLException</span> <span class="n">ex</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">ex</span><span class="o">.</span><span class="na">toString</span><span class="o">());</span>
+    <span class="o">}</span>
+    
+    <span class="k">return</span> <span class="n">berhasil</span><span class="o">;</span>
+<span class="o">}</span></code></pre></figure>
+
+<p>Cari method update() dan isikan dengan</p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="nd">@Override</span>
+<span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">delete</span><span class="o">()</span> <span class="o">{</span>
+    <span class="kt">boolean</span> <span class="n">berhasil</span> <span class="o">=</span> <span class="kc">false</span><span class="o">;</span>
+    
+    <span class="nc">String</span> <span class="n">deleteSQL</span> <span class="o">=</span> <span class="s">"DELETE FROM jenisbarang WHERE id = ?"</span><span class="o">;</span>
+    
+    <span class="k">try</span> <span class="o">{</span>
+        <span class="nc">PreparedStatement</span> <span class="n">ps</span> <span class="o">=</span> <span class="k">this</span><span class="o">.</span><span class="na">con</span><span class="o">.</span><span class="na">prepareStatement</span><span class="o">(</span><span class="n">deleteSQL</span><span class="o">);</span>
+        <span class="n">ps</span><span class="o">.</span><span class="na">setInt</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="k">this</span><span class="o">.</span><span class="na">id</span><span class="o">);</span>
+
+        <span class="n">ps</span><span class="o">.</span><span class="na">execute</span><span class="o">();</span>
+        <span class="n">berhasil</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
+    <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">SQLException</span> <span class="n">ex</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">ex</span><span class="o">.</span><span class="na">toString</span><span class="o">());</span>
+    <span class="o">}</span>
+    
+    <span class="k">return</span> <span class="n">berhasil</span><span class="o">;</span>
+<span class="o">}</span></code></pre></figure>
+
+<p>And… that’s about it for today. Aplikasi sudah mampu melakukan CRUD sederhana namun masih tanpa view visual.</p>
+
+<p><a href="/2021/02/java-sem7-part1">Praktikum Java Semester 7: Part 1</a><br />
+Praktikum Java Semester 7: Part 2</p>
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/FNS_zA36qtY" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+:ET

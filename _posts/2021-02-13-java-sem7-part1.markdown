@@ -8,7 +8,12 @@ comments : true
 description: Langkah-langkah pengerjaan praktikum Java khusus untuk semester 7 Fakultas Teknologi Informasi, Universitas Islam Kalimantan Muhammad Arsyad Al Banjari Banjarmasin
 tags: 
  - java
+ - netbeans
 ---
+
+Praktikum Java Semester 7: Part 1
+[Praktikum Java Semester 7: Part 2]({% post_url 2021-02-28-java-sem7-part2 %})
+
 
 Use Case Diagram untuk praktikum ini
 
@@ -226,6 +231,41 @@ public boolean delete() {
 }
 {% endhighlight %}
 
+Cari method search() dan isikan dengan
+
+{% highlight  java %}
+@Override
+public ArrayList<Object> search(String keyword) {
+    ArrayList<Object> list =  new ArrayList<>();
+    
+    String searchSQL = "SELECT * FROM jenisbarang WHERE namajenisbarang like ?";
+    
+    keyword = "%"+keyword+"%";
+    
+    try {
+        PreparedStatement ps = this.con.prepareStatement(searchSQL);
+        ps.setString(1, keyword);
+        ResultSet resultSet = ps.executeQuery();
+        
+        while(resultSet.next()){
+            JenisBarang jb = new JenisBarang(
+                    resultSet.getInt(1),
+                    resultSet.getString(2)
+            );
+            list.add(jb);
+        }
+        
+    } catch (SQLException ex) {
+        System.out.println(ex.toString());
+    }
+    
+    return list;
+}
+{% endhighlight %}
+
 And... that's about it for today. Aplikasi sudah mampu melakukan CRUD sederhana namun masih tanpa view visual.
+
+Praktikum Java Semester 7: Part 1
+[Praktikum Java Semester 7: Part 2]({% post_url 2021-02-28-java-sem7-part2 %})
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/FNS_zA36qtY" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
