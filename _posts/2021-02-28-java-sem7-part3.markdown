@@ -23,7 +23,7 @@ Pilih package `view.admin.jenisbarang` kemudian buat sebuah frame dengan nama `J
 1. JPanel: Properties->background: [102,16,242]
 2. JLabel
 3. JLabel
-4. JTextField: tfId
+4. JTextField: tfId -> Properties -> matikan centang `Editable`
 5. JLabel
 6. JTextField: tfNamaJenisBarang
 7. JButton: btBatal
@@ -82,6 +82,8 @@ public  void simpanTambah() {
     Database db = new Database();
     Connection con = db.getConnection();
     jenisBarang = new JenisBarang(con);
+    jenisBarang.setNamaJenisBarang(namaJenisBarang);
+
 
     if (jenisBarang.create()) {
         JOptionPane.showMessageDialog(null, "Data berhasil disimpan");
@@ -98,6 +100,13 @@ Pada method `simpanUbah` isikan dengan
 {% highlight  java %}
 @Override
 public void simpanUbah() {
+
+    String id = tfId.getText();
+    int idInt = Integer.parseInt(id);
+    String namaJenisBarang = tfNamaJenisBarang.getText();
+
+    jenisBarang.setId(idInt);
+    jenisBarang.setNamaJenisBarang(namaJenisBarang);
     
     if (jenisBarang.update()) {
         JOptionPane.showMessageDialog(null, "Data berhasil diubah");
@@ -116,7 +125,7 @@ Pindah ke bagian `Design`, klik pada frame dan cari pada window `Properties` tab
 private void formWindowActivated(java.awt.event.WindowEvent evt) {                                     
     if (jenisBarang != null) {
         String id = String.valueOf(jenisBarang.getId());
-        String namaJenisBarang = jenisBarang.getNamajenisbarang();
+        String namaJenisBarang = jenisBarang.getNamaJenisBarang();
 
         tfId.setText(id);
         tfNamaJenisBarang.setText(namaJenisBarang);
@@ -178,7 +187,7 @@ private void btUbahActionPerformed(java.awt.event.ActionEvent evt) {
 
         JenisBarang jenisBarang = new JenisBarang(con);
         jenisBarang.setId(id);
-        jenisBarang.setNamajenisbarang(namaJenisBarang);
+        jenisBarang.setNamaJenisBarang(namaJenisBarang);
 
         JenisBarangAddFrame frame = new JenisBarangAddFrame();
         frame.setJenisBarang(jenisBarang);
@@ -199,7 +208,7 @@ Pengujian dilakukan dengan mengubah isi dari class `Main` menjadi
 public class Main {
     public static void main(String[] args) {
 
-        JenisbarangViewFrame frame = new JenisbarangViewFrame();
+        JenisBarangViewFrame frame = new JenisBarangViewFrame();
         frame.customShow();
         
     }
