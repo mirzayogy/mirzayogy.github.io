@@ -5,13 +5,15 @@ date:   2021-02-28 08:00:41 +0800
 categories: java
 published : true
 comments : true
-description: Membuat Frame
+description: Membuat View Frame
 tags: 
  - java
  - netbeans
 ---
 [Praktikum Java Semester 7: Part 1]({% post_url 2021-02-13-java-sem7-part1 %})
 Praktikum Java Semester 7: Part 2
+[Praktikum Java Semester 7: Part 3]({% post_url 2021-02-28-java-sem7-part3 %})
+
 
 Pembuatan Frame di NetBeans sangat dimudahkan oleh fitur visualnya, namun karena ada beberapa fitur yang akan memiliki method yang sama dan menghindari pengulangan coding maka terlebih dahulu dipersiapkan templatenya.
 
@@ -135,7 +137,7 @@ private void btBatalActionPerformed(java.awt.event.ActionEvent evt) {
 Kembali ke bagian `Design`, klik dua kali pada `btTutup`, dan isikan dengan
 
 {% highlight  java %}
-private void btBatalActionPerformed(java.awt.event.ActionEvent evt) {                                        
+private void btTutupActionPerformed(java.awt.event.ActionEvent evt) {                                        
     dispose();
 }     
 {% endhighlight %}
@@ -199,3 +201,4 @@ Oke, sebagian fitur sudah diisi, untuk tombol tambah dan ubah diperlukan AddFram
 
 [Praktikum Java Semester 7: Part 1]({% post_url 2021-02-13-java-sem7-part1 %})
 Praktikum Java Semester 7: Part 2
+[Praktikum Java Semester 7: Part 3]({% post_url 2021-02-28-java-sem7-part3 %})
