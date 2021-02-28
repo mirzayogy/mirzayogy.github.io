@@ -7,7 +7,9 @@ comments : true
 published : true
 description: Praktek 01 PBO1, membuat Class, Attribute, Behavior, dan Object
 tags: 
- - praktek pbo1
+ - java
+ - netbeans
+ - pbo
 ---
 
 Pemrograman Berorientasi Objek (PBO) adalah sebuah paradigma pemrograman yang mendorong programmer untuk mengelola segala sesuatunya dengan objek. Objek sendiri pada dasarnya adalah variabel yang mampu menyimpan banyak data dengan berbagai macam tipe data. Jika dibandingkan dengan variabel primitif yang hanya mampu menyimpan 1 (satu) data dan 1 (satu) tipe data atau variabel array yang mampu menyimpan banyak data dengan 1 (satu) tipe data yang sama.

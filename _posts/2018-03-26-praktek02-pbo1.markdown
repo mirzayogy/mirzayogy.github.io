@@ -7,7 +7,9 @@ comments : true
 published : true
 description: Praktek 02 PBO1 Membuat method dan constructor
 tags: 
- - praktek pbo1
+ - java
+ - netbeans
+ - pbo
 ---
 
 Setelah pada praktek sebelumnya sudah dikenalkan kepada Class, Attribute, Behavior, Object, dan cara menggunakanya, maka kita lanjutkan dengan lebih mendalam membahas masalah Behavior/Method

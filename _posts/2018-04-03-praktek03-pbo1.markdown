@@ -7,7 +7,9 @@ comments : true
 published : true
 description: Praktek 03 PBO1 Membuat Getter, Setter, dan Inheritance
 tags: 
- - praktek pbo1
+ - java
+ - netbeans
+ - pbo
 ---
 
 Specifier digunakan dalam PBO sebagai praktek dari Encapsulation, dimana method ataupun atribut bisa dibatasi penggunaannya sesuai dengan yang kita inginkan dengan ketentuan sebagai berikut
