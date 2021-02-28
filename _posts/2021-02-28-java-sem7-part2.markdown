@@ -31,7 +31,7 @@ public interface ViewFrameInterface {
 berikutnya buat interface `AddFrameInterface`, isikan dengan
 
 {% highlight  java %}
-public interface MyAddFrameInterface {
+public interface AddFrameInterface {
     abstract boolean dataKosong();
     abstract void simpanTambah();
     abstract void simpanUbah();
@@ -51,7 +51,7 @@ public class CustomFrame extends javax.swing.JFrame{
 }
 {% endhighlight %}
 
-Buat package `view.admin.jenisbarang` dan didalamnya buat sebuah frame dengan nama `JenisbarangViewFrame` dan atur sedemikian rupa sehingga tampil seperti gambar berikut
+Buat package `view.admin.jenisbarang` dan didalamnya buat sebuah frame dengan nama `JenisBarangViewFrame` dan atur sedemikian rupa sehingga tampil seperti gambar berikut
 
 ![UseCaseDiagram]({{ site.url }}/assets/img/java-7-2/java-7-2-1.png)
 
@@ -96,7 +96,7 @@ public void buildTable(ArrayList<Object> list) {
         for (int i = 0; i < list.size(); i++) {
             JenisBarang jenisBarang = (JenisBarang) list.get(i);
             row[0] = jenisBarang.getId();
-            row[1] = jenisBarang.getNamajenisbarang();
+            row[1] = jenisBarang.getNamaJenisBarang();
             model.addRow(row);
         }
     }
@@ -180,7 +180,7 @@ private void btHapusActionPerformed(java.awt.event.ActionEvent evt) {
     
         if(pilihan == 0){
             
-            TableModel model = tbJenisBarang.getModel();
+            TableModel model = tbJenisbarang.getModel();
             int id = (int) model.getValueAt(barisTerpilih, 0);
             
             Database db = new Database();

@@ -29,6 +29,22 @@ Pilih package `view.admin.jenisbarang` kemudian buat sebuah frame dengan nama `J
 7. JButton: btBatal
 8. JButton: btSimpan
 
+Pada baris sebelum constructor `JenisBarangAddFrame()` tambahkan
+{% highlight  java %}
+
+...
+JenisBarang jenisBarang;
+
+public void setJenisBarang(JenisBarang jenisBarang) {
+    this.jenisBarang = jenisBarang;
+}
+
+public JenisBarangAddFrame() {
+    initComponents();
+}
+{% endhighlight %}
+
+
 Pindah ke bagian `Source` , ubah deklarasi class frame ini dari
 
 {% highlight  java %}
@@ -92,20 +108,6 @@ public void simpanUbah() {
 }
 {% endhighlight %}
 
-Pada baris sebelum constructor `JenisBarangAddFrame()` tambahkan
-{% highlight  java %}
-
-...
-JenisBarang jenisBarang;
-
-public void setJenisBarang(JenisBarang jenisBarang) {
-    this.jenisBarang = jenisBarang;
-}
-
-public JenisBarangAddFrame() {
-    initComponents();
-}
-{% endhighlight %}
 
 
 Pindah ke bagian `Design`, klik pada frame dan cari pada window `Properties` tab `Events`, scroll kebawah pada posisi `windowActivated`, pilih comboboxnya sehingga tercipta method `formWindowActivated`, dan isikan dengan
