@@ -16,6 +16,7 @@ tags:
 Praktikum Android Semester 7: Part 1
 [Praktikum Android Semester 7: Part 2]({% post_url 2021-02-14-android-sem7-part2 %})
 [Praktikum Android Semester 7: Part 3]({% post_url 2021-02-27-android-sem7-part3 %})
+[Praktikum Android Semester 7: Part 4]({% post_url 2021-03-06-android-sem7-part4 %})
 
 Pada praktikum khusus semester 7 ini diharapkan sudah menguasai dasar pemrograman android, bisa dipelajari diantaranya melalui playlist berikut
 
@@ -283,3 +284,5 @@ OK Proses request data berhasil.
 Praktikum Android Semester 7: Part 1
 [Praktikum Android Semester 7: Part 2]({% post_url 2021-02-14-android-sem7-part2 %})
 [Praktikum Android Semester 7: Part 3]({% post_url 2021-02-27-android-sem7-part3 %})
+[Praktikum Android Semester 7: Part 4]({% post_url 2021-03-06-android-sem7-part4 %})
+
