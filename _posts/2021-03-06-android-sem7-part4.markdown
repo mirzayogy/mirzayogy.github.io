@@ -8,8 +8,7 @@ comments : true
 description: Membuat backend dengan PHP
 tags: 
  - android
- - glide
- - circleimageview
+ - php
  - 201-praktikum-7-android
 ---
 
