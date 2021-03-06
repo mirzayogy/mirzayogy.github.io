@@ -329,7 +329,7 @@ class JenisbarangActivity : AppCompatActivity() {
 }
 {% endhighlight %}
 
-Terakhir pada manifest kita ganti agar UserActivity menjadi Main Launcher, juga tambahkan `usesClearTextTraffic` pada tag application
+Terakhir pada manifest kita ganti agar JenisbarangActivity menjadi Main Launcher, juga tambahkan `usesClearTextTraffic` pada tag application
 
 {% highlight  kotlin %}
 <application ...
