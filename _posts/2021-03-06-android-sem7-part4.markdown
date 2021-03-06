@@ -210,8 +210,7 @@ Import dan implementasikan semua method yang diminta oleh interface Adapter Recy
 class ListViewHolder(private val binding: ItemRowJenisbarangBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(jenisbarangData: JenisbarangData) {
             with(binding){
-                tvItemName.text = jenisbarangData.first_name + " " + jenisbarangData.last_name
-                tvItemEmail.text = jenisbarangData.email
+                tvNamajenisbarang.text = jenisbarangData.namajenisbarang
             }
         }
     }
@@ -248,8 +247,7 @@ class ListJenisbarangAdapter(private val listJenisbarang: ArrayList<JenisbarangD
     class ListViewHolder(private val binding: ItemRowJenisbarangBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(jenisbarangData: JenisbarangData) {
             with(binding){
-                tvItemName.text = jenisbarangData.first_name + " " + jenisbarangData.last_name
-                tvItemEmail.text = jenisbarangData.email
+                tvNamajenisbarang.text = jenisbarangData.namajenisbarang
             }
         }
     }
@@ -267,6 +265,33 @@ class ListJenisbarangAdapter(private val listJenisbarang: ArrayList<JenisbarangD
 
 }
 {% endhighlight %}
+
+Buat `JenisbarangViewModel`, isikan dengan
+
+{% highlight  kotlin %}
+class JenisbarangViewModel : ViewModel() {
+    private val _response = MutableLiveData<Jenisbarang>()
+
+    val response: LiveData<Jenisbarang>
+        get() = _response
+
+    init {
+        setResponse()
+    }
+
+    private fun setResponse() {
+        viewModelScope.launch {
+            try {
+                val listResult = Api.retrofitService.getJenisbarang()
+                _response.value = listResult
+            } catch (e: Exception) {
+                _response.value = null
+            }
+        }
+    }
+}
+{% endhighlight %}
+
 
 Ubah isi dari JenisbarangActivity dengan
 
