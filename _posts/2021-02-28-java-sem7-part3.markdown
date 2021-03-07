@@ -15,6 +15,7 @@ tags:
 [Praktikum Java Semester 7: Part 2]({% post_url 2021-02-28-java-sem7-part2 %})
 Praktikum Java Semester 7: Part 3
 [Praktikum Java Semester 7: Part 4]({% post_url 2021-03-07-java-sem7-part4 %})
+[Praktikum Java Semester 7: Part 5]({% post_url 2021-03-07-java-sem7-part5 %})
 
 
 AddFrame akan berfungsi sebagai frame yang melakukan proses tambah data, dan ubah data. Dimulai dengan yang table JenisBarang yang hanya berisikan 2 (dua) field maka harusnya pembuatan frame ini akan sangat mudah.
@@ -223,3 +224,4 @@ public class Main {
 [Praktikum Java Semester 7: Part 2]({% post_url 2021-02-28-java-sem7-part2 %})
 Praktikum Java Semester 7: Part 3
 [Praktikum Java Semester 7: Part 4]({% post_url 2021-03-07-java-sem7-part4 %})
+[Praktikum Java Semester 7: Part 5]({% post_url 2021-03-07-java-sem7-part5 %})

@@ -16,6 +16,7 @@ tags:
 [Praktikum Java Semester 7: Part 2]({% post_url 2021-02-28-java-sem7-part2 %})
 [Praktikum Java Semester 7: Part 3]({% post_url 2021-02-28-java-sem7-part3 %})
 Praktikum Java Semester 7: Part 4
+[Praktikum Java Semester 7: Part 5]({% post_url 2021-03-07-java-sem7-part5 %})
 
 Buat package `utils` buat class `MD5` dan isikan dengan
 
@@ -287,3 +288,4 @@ Struktur project pada akhir Part 4 ini:
 [Praktikum Java Semester 7: Part 2]({% post_url 2021-02-28-java-sem7-part2 %})
 [Praktikum Java Semester 7: Part 3]({% post_url 2021-02-28-java-sem7-part3 %})
 Praktikum Java Semester 7: Part 4
+[Praktikum Java Semester 7: Part 5]({% post_url 2021-03-07-java-sem7-part5 %})

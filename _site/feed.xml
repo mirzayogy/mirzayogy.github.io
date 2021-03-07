@@ -7,11 +7,132 @@
 		<atom:link href="/feed.xml" rel="self" type="application/rss+xml" />
 		
 			<item>
+				<title>Praktikum Java Semester 7: Part 5</title>
+				<description>&lt;p&gt;&lt;a href=&quot;/2021/02/java-sem7-part1&quot;&gt;Praktikum Java Semester 7: Part 1&lt;/a&gt;&lt;br /&gt;
+&lt;a href=&quot;/2021/02/java-sem7-part2&quot;&gt;Praktikum Java Semester 7: Part 2&lt;/a&gt;&lt;br /&gt;
+&lt;a href=&quot;/2021/02/java-sem7-part3&quot;&gt;Praktikum Java Semester 7: Part 3&lt;/a&gt;&lt;br /&gt;
+&lt;a href=&quot;/2021/03/java-sem7-part4&quot;&gt;Praktikum Java Semester 7: Part 4&lt;/a&gt;&lt;br /&gt;
+Praktikum Java Semester 7: Part 5&lt;/p&gt;
+
+&lt;p&gt;Pada model &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Pengguna&lt;/code&gt; tambahkan method &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ubahpassword()&lt;/code&gt;&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;boolean&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;ubahpassword&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(){&lt;/span&gt;
+    &lt;span class=&quot;kt&quot;&gt;boolean&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;hasil&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+    
+    &lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;updateSQL&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;UPDATE pengguna SET password = ? WHERE id = ?&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+    
+    &lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;md5Password&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;MD5&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getMd5&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;password&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+    
+    &lt;span class=&quot;nc&quot;&gt;PreparedStatement&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ps&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;try&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;ps&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;connection&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;prepareStatement&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;updateSQL&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;ps&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;setString&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;md5Password&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;ps&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;setInt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;ps&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;execute&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;hasil&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;catch&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;SQLException&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ex&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;nc&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Gagal ubah password&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;hasil&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Pada package &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;auth&lt;/code&gt; buat sebuah frame &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ResetPasswordFrame&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/java-7-5/java-7-5-1.png&quot; alt=&quot;ResetPasswordFrame&quot; /&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;JPanel: Properties-&amp;gt;background: [102,16,242]&lt;/li&gt;
+  &lt;li&gt;JLabel&lt;/li&gt;
+  &lt;li&gt;JLabel&lt;/li&gt;
+  &lt;li&gt;JPasswordField: name-&amp;gt;tfPasswordLama&lt;/li&gt;
+  &lt;li&gt;JLabel&lt;/li&gt;
+  &lt;li&gt;JPasswordField: name-&amp;gt;tfPasswordBaru&lt;/li&gt;
+  &lt;li&gt;JLabel&lt;/li&gt;
+  &lt;li&gt;JPasswordField: name-&amp;gt;tfPasswordBaruUlang&lt;/li&gt;
+  &lt;li&gt;JButton: btBatal&lt;/li&gt;
+  &lt;li&gt;JButton: btSimpan&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Sama seperti pada frame lainnya, masuk pada bagian &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Source&lt;/code&gt; dan tambahkan atribut Pengguna beserta setter-nya, letakkan sebelum constructor&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;span class=&quot;nc&quot;&gt;Pengguna&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pengguna&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+    
+&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;setPengguna&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Pengguna&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pengguna&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;){&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;pengguna&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pengguna&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;ResetPasswordFrame&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;initComponents&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Ganti extends &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;javax.swing.JFrame&lt;/code&gt; menjadi&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;ResetPasswordFrame&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;extends&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;CustomFrame&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Isikan method untuk masing-masing button&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;btBatalActionPerformed&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;java&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;awt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;event&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;ActionEvent&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;evt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;                                        
+    &lt;span class=&quot;n&quot;&gt;dispose&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;                                       
+
+&lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;btSimpanActionPerformed&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;java&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;awt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;event&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;ActionEvent&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;evt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;                                         
+    &lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;passwordLamaString&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tfPasswordLama&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getPassword&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;());&lt;/span&gt;
+    &lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;passwordBaruString&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tfPasswordBaru&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getPassword&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;());&lt;/span&gt;
+    &lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;passwordBaruUlangString&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tfPasswordBaruUlang&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getPassword&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;());&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;passwordBaruString&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;equals&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;passwordBaruUlangString&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)){&lt;/span&gt;
+        &lt;span class=&quot;nc&quot;&gt;Database&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;db&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Database&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+        &lt;span class=&quot;nc&quot;&gt;Connection&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;con&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;db&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getConnection&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+        &lt;span class=&quot;nc&quot;&gt;Pengguna&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;mPengguna&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Pengguna&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;con&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+        
+        &lt;span class=&quot;n&quot;&gt;mPengguna&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;setUsername&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;pengguna&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getUsername&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;());&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;mPengguna&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;setPassword&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;passwordLamaString&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;mPengguna&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;mPengguna&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;login&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+        
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;mPengguna&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;){&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;mPengguna&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;setPassword&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;passwordBaruString&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;mPengguna&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;setConnection&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;con&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;mPengguna&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;ubahpassword&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()){&lt;/span&gt;
+                &lt;span class=&quot;nc&quot;&gt;JOptionPane&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;showMessageDialog&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Ubah Password Berhasil&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+                &lt;span class=&quot;n&quot;&gt;dispose&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+            &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+                &lt;span class=&quot;nc&quot;&gt;JOptionPane&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;showMessageDialog&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Ubah Password Gagal&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+            &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;nc&quot;&gt;JOptionPane&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;showMessageDialog&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Password Lama salah&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;nc&quot;&gt;JOptionPane&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;showMessageDialog&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Password Baru tidak sesuai&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;      &lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Kembali ke &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;AdminMainFrame&lt;/code&gt; dan &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;CashierMainFrame&lt;/code&gt;, isikan method &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;btUbahPassword&lt;/code&gt; dengan&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;btUbahPasswordActionPerformed&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;java&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;awt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;event&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;ActionEvent&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;evt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;                                               
+    &lt;span class=&quot;nc&quot;&gt;ResetPasswordFrame&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;frame&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;ResetPasswordFrame&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;frame&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;setPengguna&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;pengguna&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;frame&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;customShow&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;      &lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;&lt;a href=&quot;/2021/02/java-sem7-part1&quot;&gt;Praktikum Java Semester 7: Part 1&lt;/a&gt;&lt;br /&gt;
+&lt;a href=&quot;/2021/02/java-sem7-part2&quot;&gt;Praktikum Java Semester 7: Part 2&lt;/a&gt;&lt;br /&gt;
+&lt;a href=&quot;/2021/02/java-sem7-part3&quot;&gt;Praktikum Java Semester 7: Part 3&lt;/a&gt;&lt;br /&gt;
+&lt;a href=&quot;/2021/03/java-sem7-part4&quot;&gt;Praktikum Java Semester 7: Part 4&lt;/a&gt;&lt;br /&gt;
+Praktikum Java Semester 7: Part 5&lt;/p&gt;
+</description>
+				<pubDate>Sun, 07 Mar 2021 10:00:41 +0800</pubDate>
+				<link>/2021/03/java-sem7-part5</link>
+				<guid isPermaLink="true">/2021/03/java-sem7-part5</guid>
+			</item>
+		
+			<item>
 				<title>Praktikum Java Semester 7: Part 4</title>
 				<description>&lt;p&gt;&lt;a href=&quot;/2021/02/java-sem7-part1&quot;&gt;Praktikum Java Semester 7: Part 1&lt;/a&gt;&lt;br /&gt;
 &lt;a href=&quot;/2021/02/java-sem7-part2&quot;&gt;Praktikum Java Semester 7: Part 2&lt;/a&gt;&lt;br /&gt;
 &lt;a href=&quot;/2021/02/java-sem7-part3&quot;&gt;Praktikum Java Semester 7: Part 3&lt;/a&gt;&lt;br /&gt;
-Praktikum Java Semester 7: Part 4&lt;/p&gt;
+Praktikum Java Semester 7: Part 4&lt;br /&gt;
+&lt;a href=&quot;/2021/03/java-sem7-part5&quot;&gt;Praktikum Java Semester 7: Part 5&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;Buat package &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;utils&lt;/code&gt; buat class &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;MD5&lt;/code&gt; dan isikan dengan&lt;/p&gt;
 
@@ -55,8 +176,9 @@ Praktikum Java Semester 7: Part 4&lt;/p&gt;
         &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;connection&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;connection&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
     &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
     
-    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;Pengguna&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;namaLengkap&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;boolean&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;isAdmin&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;Pengguna&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;username&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;namaLengkap&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;boolean&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;isAdmin&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
         &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;id&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;username&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;username&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
         &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;namaLengkap&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;namaLengkap&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
         &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;isAdmin&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;isAdmin&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
     &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
@@ -79,6 +201,7 @@ Praktikum Java Semester 7: Part 4&lt;/p&gt;
             &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;rs&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;next&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()){&lt;/span&gt;
                 &lt;span class=&quot;n&quot;&gt;pengguna&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Pengguna&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;
                         &lt;span class=&quot;n&quot;&gt;rs&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getInt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;),&lt;/span&gt;
+                        &lt;span class=&quot;n&quot;&gt;rs&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getString&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;),&lt;/span&gt;
                         &lt;span class=&quot;n&quot;&gt;rs&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getString&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;),&lt;/span&gt;
                         &lt;span class=&quot;n&quot;&gt;rs&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getBoolean&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
                 &lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
@@ -258,7 +381,8 @@ Praktikum Java Semester 7: Part 4&lt;/p&gt;
 &lt;p&gt;&lt;a href=&quot;/2021/02/java-sem7-part1&quot;&gt;Praktikum Java Semester 7: Part 1&lt;/a&gt;&lt;br /&gt;
 &lt;a href=&quot;/2021/02/java-sem7-part2&quot;&gt;Praktikum Java Semester 7: Part 2&lt;/a&gt;&lt;br /&gt;
 &lt;a href=&quot;/2021/02/java-sem7-part3&quot;&gt;Praktikum Java Semester 7: Part 3&lt;/a&gt;&lt;br /&gt;
-Praktikum Java Semester 7: Part 4&lt;/p&gt;
+Praktikum Java Semester 7: Part 4&lt;br /&gt;
+&lt;a href=&quot;/2021/03/java-sem7-part5&quot;&gt;Praktikum Java Semester 7: Part 5&lt;/a&gt;&lt;/p&gt;
 </description>
 				<pubDate>Sun, 07 Mar 2021 09:00:41 +0800</pubDate>
 				<link>/2021/03/java-sem7-part4</link>
@@ -586,7 +710,8 @@ Praktikum Android Semester 7: Part 4&lt;/p&gt;
 				<description>&lt;p&gt;&lt;a href=&quot;/2021/02/java-sem7-part1&quot;&gt;Praktikum Java Semester 7: Part 1&lt;/a&gt;&lt;br /&gt;
 &lt;a href=&quot;/2021/02/java-sem7-part2&quot;&gt;Praktikum Java Semester 7: Part 2&lt;/a&gt;&lt;br /&gt;
 Praktikum Java Semester 7: Part 3&lt;br /&gt;
-&lt;a href=&quot;/2021/03/java-sem7-part4&quot;&gt;Praktikum Java Semester 7: Part 4&lt;/a&gt;&lt;/p&gt;
+&lt;a href=&quot;/2021/03/java-sem7-part4&quot;&gt;Praktikum Java Semester 7: Part 4&lt;/a&gt;&lt;br /&gt;
+&lt;a href=&quot;/2021/03/java-sem7-part5&quot;&gt;Praktikum Java Semester 7: Part 5&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;AddFrame akan berfungsi sebagai frame yang melakukan proses tambah data, dan ubah data. Dimulai dengan yang table JenisBarang yang hanya berisikan 2 (dua) field maka harusnya pembuatan frame ini akan sangat mudah.&lt;/p&gt;
 
@@ -768,7 +893,8 @@ Praktikum Java Semester 7: Part 3&lt;br /&gt;
 &lt;p&gt;&lt;a href=&quot;/2021/02/java-sem7-part1&quot;&gt;Praktikum Java Semester 7: Part 1&lt;/a&gt;&lt;br /&gt;
 &lt;a href=&quot;/2021/02/java-sem7-part2&quot;&gt;Praktikum Java Semester 7: Part 2&lt;/a&gt;&lt;br /&gt;
 Praktikum Java Semester 7: Part 3&lt;br /&gt;
-&lt;a href=&quot;/2021/03/java-sem7-part4&quot;&gt;Praktikum Java Semester 7: Part 4&lt;/a&gt;&lt;/p&gt;
+&lt;a href=&quot;/2021/03/java-sem7-part4&quot;&gt;Praktikum Java Semester 7: Part 4&lt;/a&gt;&lt;br /&gt;
+&lt;a href=&quot;/2021/03/java-sem7-part5&quot;&gt;Praktikum Java Semester 7: Part 5&lt;/a&gt;&lt;/p&gt;
 </description>
 				<pubDate>Sun, 28 Feb 2021 09:00:41 +0800</pubDate>
 				<link>/2021/02/java-sem7-part3</link>
@@ -780,7 +906,8 @@ Praktikum Java Semester 7: Part 3&lt;br /&gt;
 				<description>&lt;p&gt;&lt;a href=&quot;/2021/02/java-sem7-part1&quot;&gt;Praktikum Java Semester 7: Part 1&lt;/a&gt;&lt;br /&gt;
 Praktikum Java Semester 7: Part 2&lt;br /&gt;
 &lt;a href=&quot;/2021/02/java-sem7-part3&quot;&gt;Praktikum Java Semester 7: Part 3&lt;/a&gt;&lt;br /&gt;
-&lt;a href=&quot;/2021/03/java-sem7-part4&quot;&gt;Praktikum Java Semester 7: Part 4&lt;/a&gt;&lt;/p&gt;
+&lt;a href=&quot;/2021/03/java-sem7-part4&quot;&gt;Praktikum Java Semester 7: Part 4&lt;/a&gt;&lt;br /&gt;
+&lt;a href=&quot;/2021/03/java-sem7-part5&quot;&gt;Praktikum Java Semester 7: Part 5&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;Pembuatan Frame di NetBeans sangat dimudahkan oleh fitur visualnya, namun karena ada beberapa fitur yang akan memiliki method yang sama dan menghindari pengulangan coding maka terlebih dahulu dipersiapkan templatenya.&lt;/p&gt;
 
@@ -947,8 +1074,8 @@ Praktikum Java Semester 7: Part 2&lt;br /&gt;
 &lt;p&gt;&lt;a href=&quot;/2021/02/java-sem7-part1&quot;&gt;Praktikum Java Semester 7: Part 1&lt;/a&gt;&lt;br /&gt;
 Praktikum Java Semester 7: Part 2&lt;br /&gt;
 &lt;a href=&quot;/2021/02/java-sem7-part3&quot;&gt;Praktikum Java Semester 7: Part 3&lt;/a&gt;&lt;br /&gt;
-&lt;a href=&quot;/2021/03/java-sem7-part4&quot;&gt;Praktikum Java Semester 7: Part 4&lt;/a&gt;&lt;/p&gt;
-
+&lt;a href=&quot;/2021/03/java-sem7-part4&quot;&gt;Praktikum Java Semester 7: Part 4&lt;/a&gt;&lt;br /&gt;
+&lt;a href=&quot;/2021/03/java-sem7-part5&quot;&gt;Praktikum Java Semester 7: Part 5&lt;/a&gt;&lt;/p&gt;
 </description>
 				<pubDate>Sun, 28 Feb 2021 08:00:41 +0800</pubDate>
 				<link>/2021/02/java-sem7-part2</link>
@@ -1513,7 +1640,8 @@ Praktikum Android Semester 7: Part 2&lt;br /&gt;
 				<description>&lt;p&gt;Praktikum Java Semester 7: Part 1&lt;br /&gt;
 &lt;a href=&quot;/2021/02/java-sem7-part2&quot;&gt;Praktikum Java Semester 7: Part 2&lt;/a&gt;&lt;br /&gt;
 &lt;a href=&quot;/2021/02/java-sem7-part3&quot;&gt;Praktikum Java Semester 7: Part 3&lt;/a&gt;&lt;br /&gt;
-&lt;a href=&quot;/2021/03/java-sem7-part4&quot;&gt;Praktikum Java Semester 7: Part 4&lt;/a&gt;&lt;/p&gt;
+&lt;a href=&quot;/2021/03/java-sem7-part4&quot;&gt;Praktikum Java Semester 7: Part 4&lt;/a&gt;&lt;br /&gt;
+&lt;a href=&quot;/2021/03/java-sem7-part5&quot;&gt;Praktikum Java Semester 7: Part 5&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;Use Case Diagram untuk praktikum ini&lt;/p&gt;
 
@@ -1746,7 +1874,8 @@ Praktikum Android Semester 7: Part 2&lt;br /&gt;
 &lt;p&gt;Praktikum Java Semester 7: Part 1&lt;br /&gt;
 &lt;a href=&quot;/2021/02/java-sem7-part2&quot;&gt;Praktikum Java Semester 7: Part 2&lt;/a&gt;&lt;br /&gt;
 &lt;a href=&quot;/2021/02/java-sem7-part3&quot;&gt;Praktikum Java Semester 7: Part 3&lt;/a&gt;&lt;br /&gt;
-&lt;a href=&quot;/2021/03/java-sem7-part4&quot;&gt;Praktikum Java Semester 7: Part 4&lt;/a&gt;&lt;/p&gt;
+&lt;a href=&quot;/2021/03/java-sem7-part4&quot;&gt;Praktikum Java Semester 7: Part 4&lt;/a&gt;&lt;br /&gt;
+&lt;a href=&quot;/2021/03/java-sem7-part5&quot;&gt;Praktikum Java Semester 7: Part 5&lt;/a&gt;&lt;/p&gt;
 
 &lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/FNS_zA36qtY&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
 </description>
@@ -1762,40 +1891,6 @@ Praktikum Android Semester 7: Part 2&lt;br /&gt;
 				<pubDate>Sun, 04 Nov 2018 08:25:41 +0800</pubDate>
 				<link>/2018/11/modul-java-netbeans</link>
 				<guid isPermaLink="true">/2018/11/modul-java-netbeans</guid>
-			</item>
-		
-			<item>
-				<title>Motivasi 2018</title>
-				<description>&lt;p&gt;Generasi zaman now pada khususnya mahasiswa, banyak mendapat kritik dari generasi sebelumnya, sebutlah:&lt;/p&gt;
-&lt;ol&gt;
-  &lt;li&gt;mudah mengeluh&lt;/li&gt;
-  &lt;li&gt;mudah menyerah&lt;/li&gt;
-  &lt;li&gt;terlalu dimanjakan teknologi&lt;/li&gt;
-  &lt;li&gt;lari dari masalah&lt;br /&gt;
-memang sih, tidak semua Generasi muda seperti ini, namun ini hanya pada sebagian besar kasus.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;Contoh yang mudah adalah ketika Ujian Akhir Semester, kartu ujian hilang, bukannya melaporkan kehilangan untuk mendapatkan kartu baru malah merajuk tidak ikut ujian. Bangun kesiangan sehingga terlewat ujian, malah sekalian melanjutkan tidur atau malah main, padahal setidaknya melapor ke kampus, berusaha mencari solusi, bukan malah dibiarkan begitu saja, ya lebih tepatnya lagi kalau tau mau ujian ya jangan begadang supaya jangan kesiangan.&lt;/p&gt;
-
-&lt;p&gt;Saya pribadi ketika jadi mahasiswa bukanlah pribadi yang tidak bermasalah. Ketinggalan kartu ujian, kesiangan, bolos kuliah dengan dalih organisasi, berdebat hebat dengan dosen yang tidak jarang berimbas kepada nilai, protes nilai, dan banyak hal lain yang tidak kalah bermasalahnya dengan mahasiswa zaman now. Tapi semua itu harus dihadapi supaya bisa menemukan solusi. Pada satu titik permasalahan tidak dihadapi maka hanya sesal kemudian yang bisa ditemui.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/CaptureEdmodo.PNG&quot; alt=&quot;Miaww&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Pagi ini di Edmodo, saya membaca sebuah posting dari Mr. Williams yang membagikan sebuah video di YouTube tentang “Motivational 2018”. Video ini menampilkan para atlit Paralympic 2012 di London. Paralympic adalah olimpide bagi &lt;em&gt;maaf&lt;/em&gt; penyandang cacat. Pada video tampak atlit renang dengan kekurangannya masing masing, ada yang hanya memiliki satu tangan, ada yang kakinya tidak bisa diluruskan, dan berbagai macam kekurangan lainnya. Hal ini menjadi sorotan saya, karena saya sendiri alhamdulillah memiliki tangan dan kaki yang lengkap tapi malah tidak bisa berenang !!&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/ScreenshotYT.png&quot; alt=&quot;Miaww&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Atlit dengan berbagai macam kekurangannya memulai perlombaan dengan caranya masing-masing. Atlit dengan tangan yang lengkap bisa bergantung diujung kolam, yang hanya memiliki satu tangan bergantung dengan satu tangan, yang memiliki satu tangan yang tidak sempurna bergantung pada handuk yang dipegangi pelatihnya, yang tidak memiliki tangan bergantung dengan menggigit handuk yang juga dipegang oleh pelatihnya. Hanya dari scene ini kita bisa mengambil pelajaran bahwa terlepas dari kekurangannya masing-masing sang atlit mengatasinya pun dengan cara masing-masing. Bahwa setiap orang pasti punya “ketidakmampuan”, setiap orang pasti “masalah”, setiap orang pasti punya “kekurangan”. Bahwa meski dengan ketidakmampuan, masalah, dan kekurangan, bukan menjadi alasan untuk seseorang untuk tidak menyelesaikan masalahnya.&lt;/p&gt;
-
-&lt;p&gt;Setiap manusia lahir dengan ketidakmampuan. tidak mampu berbicara, tidak mampu berjalan, tidak mampu bahkan hanya untuk duduk sekalipun. Namun seiring berjalannya waktu tiap manusia belajar bicara, berjalan, duduk, dengan caranya masing-masing. Begitu juga dengan programmer, tidak pernah ada tuh programmer yang jago ngoding dari lahir. Semua butuh proses, proses belajar yang panjang, dengan cara yang berbeda tiap orangnya, dengan pengalaman yang berbeda untuk bisa menguasai suatu keahlian.&lt;/p&gt;
-
-&lt;p&gt;Pada akhirnya mengenali ketidakmampuan, masalah, dan kekurangan kita sendiri juga penting untuk bisa mengatasi itu semua, untuk mencapai suatu prestasi.&lt;/p&gt;
-
-&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/lht6FhBu2Jc&quot; frameborder=&quot;0&quot; allow=&quot;autoplay; encrypted-media&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
-</description>
-				<pubDate>Wed, 04 Apr 2018 08:00:00 +0800</pubDate>
-				<link>/2018/04/motivasi-2018</link>
-				<guid isPermaLink="true">/2018/04/motivasi-2018</guid>
 			</item>
 		
 	</channel>

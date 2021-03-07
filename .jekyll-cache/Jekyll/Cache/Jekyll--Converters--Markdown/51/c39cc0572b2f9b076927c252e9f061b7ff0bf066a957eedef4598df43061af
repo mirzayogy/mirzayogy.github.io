@@ -1,0 +1,315 @@
+I"Ÿ}<p><a href="/2021/02/java-sem7-part1">Praktikum Java Semester 7: Part 1</a><br />
+<a href="/2021/02/java-sem7-part2">Praktikum Java Semester 7: Part 2</a><br />
+<a href="/2021/02/java-sem7-part3">Praktikum Java Semester 7: Part 3</a><br />
+<a href="/2021/03/java-sem7-part4">Praktikum Java Semester 7: Part 4</a><br />
+Praktikum Java Semester 7: Part 5</p>
+
+<p>Pada model <code class="language-plaintext highlighter-rouge">Pengguna</code> tambahkan method <code class="language-plaintext highlighter-rouge">ubahpassword()</code></p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">ubahpassword</span><span class="o">(){</span>
+    <span class="kt">boolean</span> <span class="n">hasil</span> <span class="o">=</span> <span class="kc">false</span><span class="o">;</span>
+    
+    <span class="nc">String</span> <span class="n">updateSQL</span> <span class="o">=</span> <span class="s">"UPDATE pengguna SET password = ? WHERE id = ?"</span><span class="o">;</span>
+    
+    <span class="nc">String</span> <span class="n">md5Password</span> <span class="o">=</span> <span class="no">MD5</span><span class="o">.</span><span class="na">getMd5</span><span class="o">(</span><span class="k">this</span><span class="o">.</span><span class="na">password</span><span class="o">);</span>
+    
+    <span class="nc">PreparedStatement</span> <span class="n">ps</span><span class="o">;</span>
+    <span class="k">try</span> <span class="o">{</span>
+        <span class="n">ps</span> <span class="o">=</span> <span class="k">this</span><span class="o">.</span><span class="na">connection</span><span class="o">.</span><span class="na">prepareStatement</span><span class="o">(</span><span class="n">updateSQL</span><span class="o">);</span>
+        <span class="n">ps</span><span class="o">.</span><span class="na">setString</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="n">md5Password</span><span class="o">);</span>
+        <span class="n">ps</span><span class="o">.</span><span class="na">setInt</span><span class="o">(</span><span class="mi">2</span><span class="o">,</span><span class="k">this</span><span class="o">.</span><span class="na">id</span><span class="o">);</span>
+        <span class="n">ps</span><span class="o">.</span><span class="na">execute</span><span class="o">();</span>
+        <span class="n">hasil</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
+    <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">SQLException</span> <span class="n">ex</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Gagal ubah password"</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="k">return</span> <span class="n">hasil</span><span class="o">;</span>
+<span class="o">}</span></code></pre></figure>
+
+<p>Pada package <code class="language-plaintext highlighter-rouge">auth</code> buat sebuah frame <code class="language-plaintext highlighter-rouge">ResetPasswordFrame</code></p>
+
+<p><img src="/assets/img/java-7-5/java-7-5-1.png" alt="ResetPasswordFrame" /></p>
+
+<ol>
+  <li>JPanel: Properties-&gt;background: [102,16,242]</li>
+  <li>JLabel</li>
+  <li>JLabel</li>
+  <li>JPasswordField: name-&gt;tfPasswordLama</li>
+  <li>JLabel</li>
+  <li>JPasswordField: name-&gt;tfPasswordBaru</li>
+  <li>JLabel</li>
+  <li>JPasswordField: name-&gt;tfPasswordBaruUlang</li>
+  <li>JButton: btBatal</li>
+  <li>JButton: btSimpan</li>
+</ol>
+
+<p>Sama seperti pada AdminMainFrame, masuk pada bagian <code class="language-plaintext highlighter-rouge">Source</code> dan tambahkan atribut Pengguna beserta setter-nya, letakkan sebelum constructor</p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="nc">Pengguna</span> <span class="n">pengguna</span><span class="o">;</span>
+    
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">setPengguna</span><span class="o">(</span><span class="nc">Pengguna</span> <span class="n">pengguna</span><span class="o">){</span>
+    <span class="k">this</span><span class="o">.</span><span class="na">pengguna</span> <span class="o">=</span> <span class="n">pengguna</span><span class="o">;</span>
+<span class="o">}</span>
+
+<span class="kd">public</span> <span class="nf">CashierMainFrame</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">initComponents</span><span class="o">();</span>
+<span class="o">}</span></code></pre></figure>
+
+<p>Buat package <code class="language-plaintext highlighter-rouge">utils</code> dan didalamnya buat class <code class="language-plaintext highlighter-rouge">KeyValue</code> dan isikan dengan</p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">KeyValue</span> <span class="o">{</span>
+    
+    <span class="kt">int</span> <span class="n">key</span><span class="o">;</span>
+    <span class="nc">String</span> <span class="n">value</span><span class="o">;</span>
+    
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">toString</span><span class="o">(){</span>
+        <span class="k">return</span> <span class="n">value</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="nf">KeyValue</span><span class="o">(</span><span class="kt">int</span> <span class="n">key</span><span class="o">,</span> <span class="nc">String</span> <span class="n">value</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">key</span> <span class="o">=</span> <span class="n">key</span><span class="o">;</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">value</span> <span class="o">=</span> <span class="n">value</span><span class="o">;</span>
+    <span class="o">}</span>
+    
+    <span class="kd">public</span> <span class="nf">KeyValue</span><span class="o">(</span><span class="nc">String</span> <span class="n">value</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">key</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">value</span> <span class="o">=</span> <span class="n">value</span><span class="o">;</span>
+    <span class="o">}</span>
+    
+    <span class="kd">public</span> <span class="nf">KeyValue</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">key</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">value</span> <span class="o">=</span> <span class="s">""</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">getKey</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">key</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setKey</span><span class="o">(</span><span class="kt">int</span> <span class="n">key</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">key</span> <span class="o">=</span> <span class="n">key</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">getValue</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">value</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setValue</span><span class="o">(</span><span class="nc">String</span> <span class="n">value</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">value</span> <span class="o">=</span> <span class="n">value</span><span class="o">;</span>
+    <span class="o">}</span>
+    
+    
+<span class="o">}</span></code></pre></figure>
+
+<p>Class ini akan berfungsi dalam pengisian JComboBox yang dinamis. JComboBox akan menampilkan list (value) berupa nama barang tetapi juga menyediakan id barang (key) dalam datanya.</p>
+
+<p>Berikutnya masih pada package <code class="language-plaintext highlighter-rouge">utils</code> buat class <code class="language-plaintext highlighter-rouge">MD5</code> dan isikan dengan</p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MD5</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="nc">String</span> <span class="nf">getMd5</span><span class="o">(</span><span class="nc">String</span> <span class="n">input</span><span class="o">)</span> 
+    <span class="o">{</span> 
+        <span class="k">try</span> <span class="o">{</span> 
+            
+            <span class="nc">MessageDigest</span> <span class="n">md</span> <span class="o">=</span> <span class="nc">MessageDigest</span><span class="o">.</span><span class="na">getInstance</span><span class="o">(</span><span class="s">"MD5"</span><span class="o">);</span> 
+            <span class="kt">byte</span><span class="o">[]</span> <span class="n">messageDigest</span> <span class="o">=</span> <span class="n">md</span><span class="o">.</span><span class="na">digest</span><span class="o">(</span><span class="n">input</span><span class="o">.</span><span class="na">getBytes</span><span class="o">());</span> 
+            <span class="nc">BigInteger</span> <span class="n">no</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">BigInteger</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="n">messageDigest</span><span class="o">);</span> 
+
+            <span class="nc">String</span> <span class="n">hashtext</span> <span class="o">=</span> <span class="n">no</span><span class="o">.</span><span class="na">toString</span><span class="o">(</span><span class="mi">16</span><span class="o">);</span> 
+            <span class="k">while</span> <span class="o">(</span><span class="n">hashtext</span><span class="o">.</span><span class="na">length</span><span class="o">()</span> <span class="o">&lt;</span> <span class="mi">32</span><span class="o">)</span> <span class="o">{</span> 
+                <span class="n">hashtext</span> <span class="o">=</span> <span class="s">"0"</span> <span class="o">+</span> <span class="n">hashtext</span><span class="o">;</span> 
+            <span class="o">}</span> 
+            <span class="k">return</span> <span class="n">hashtext</span><span class="o">;</span> 
+        <span class="o">}</span>  
+  
+        <span class="k">catch</span> <span class="o">(</span><span class="nc">NoSuchAlgorithmException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span> 
+            <span class="k">throw</span> <span class="k">new</span> <span class="nf">RuntimeException</span><span class="o">(</span><span class="n">e</span><span class="o">);</span> 
+        <span class="o">}</span> 
+    <span class="o">}</span>
+<span class="o">}</span></code></pre></figure>
+
+<p>Class ini berfungsi untuk melakukan enkripsi pada string password supaya bisa dicocokkan dengan data password yang ada pada table</p>
+
+<p>AddFrame akan berfungsi sebagai frame yang melakukan proses tambah data, dan ubah data. Dimulai dengan yang table JenisBarang yang hanya berisikan 2 (dua) field maka harusnya pembuatan frame ini akan sangat mudah.</p>
+
+<p>Pilih package <code class="language-plaintext highlighter-rouge">view.admin.jenisbarang</code> kemudian buat sebuah frame dengan nama <code class="language-plaintext highlighter-rouge">JenisBarangAddFrame</code> dan atur sedemikian rupa sehingga tampil seperti gambar berikut</p>
+
+<p><img src="/assets/img/java-7-3/java-7-3-1.png" alt="UseCaseDiagram" /></p>
+
+<ol>
+  <li>JPanel: Properties-&gt;background: [102,16,242]</li>
+  <li>JLabel</li>
+  <li>JLabel</li>
+  <li>JTextField: tfId -&gt; Properties -&gt; matikan centang <code class="language-plaintext highlighter-rouge">Editable</code></li>
+  <li>JLabel</li>
+  <li>JTextField: tfNamaJenisBarang</li>
+  <li>JButton: btBatal</li>
+  <li>JButton: btSimpan</li>
+</ol>
+
+<p>Pada baris sebelum constructor <code class="language-plaintext highlighter-rouge">JenisBarangAddFrame()</code> tambahkan</p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="o">...</span>
+<span class="nc">JenisBarang</span> <span class="n">jenisBarang</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">setJenisBarang</span><span class="o">(</span><span class="nc">JenisBarang</span> <span class="n">jenisBarang</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">this</span><span class="o">.</span><span class="na">jenisBarang</span> <span class="o">=</span> <span class="n">jenisBarang</span><span class="o">;</span>
+<span class="o">}</span>
+
+<span class="kd">public</span> <span class="nf">JenisBarangAddFrame</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">initComponents</span><span class="o">();</span>
+<span class="o">}</span></code></pre></figure>
+
+<p>Pindah ke bagian <code class="language-plaintext highlighter-rouge">Source</code> , ubah deklarasi class frame ini dari</p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">JenisBarangAddFrame</span> <span class="kd">extends</span> <span class="n">javax</span><span class="o">.</span><span class="na">swing</span><span class="o">.</span><span class="na">JFrame</span><span class="o">{</span></code></pre></figure>
+
+<p>menjadi</p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">JenisBarangAddFrame</span> <span class="kd">extends</span> <span class="nc">CustomFrame</span>
+   <span class="kd">implements</span> <span class="nc">AddFrameInterface</span><span class="o">{</span></code></pre></figure>
+
+<p>Implements abstract methodnya dan pada method <code class="language-plaintext highlighter-rouge">dataKosong</code> isikan dengan</p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="nd">@Override</span>
+<span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">dataKosong</span><span class="o">()</span> <span class="o">{</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">tfNamaJenisBarang</span><span class="o">.</span><span class="na">getText</span><span class="o">().</span><span class="na">equals</span><span class="o">(</span><span class="s">""</span><span class="o">))</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+    <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span></code></pre></figure>
+
+<p>Pada method <code class="language-plaintext highlighter-rouge">simpanTambah</code> isikan dengan</p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="nd">@Override</span>
+<span class="kd">public</span>  <span class="kt">void</span> <span class="nf">simpanTambah</span><span class="o">()</span> <span class="o">{</span>
+
+    <span class="nc">String</span> <span class="n">namaJenisBarang</span> <span class="o">=</span> <span class="n">tfNamaJenisBarang</span><span class="o">.</span><span class="na">getText</span><span class="o">();</span>
+
+    <span class="nc">Database</span> <span class="n">db</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Database</span><span class="o">();</span>
+    <span class="nc">Connection</span> <span class="n">con</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="na">getConnection</span><span class="o">();</span>
+    <span class="n">jenisBarang</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">JenisBarang</span><span class="o">(</span><span class="n">con</span><span class="o">);</span>
+    <span class="n">jenisBarang</span><span class="o">.</span><span class="na">setNamaJenisBarang</span><span class="o">(</span><span class="n">namaJenisBarang</span><span class="o">);</span>
+
+
+    <span class="k">if</span> <span class="o">(</span><span class="n">jenisBarang</span><span class="o">.</span><span class="na">create</span><span class="o">())</span> <span class="o">{</span>
+        <span class="nc">JOptionPane</span><span class="o">.</span><span class="na">showMessageDialog</span><span class="o">(</span><span class="kc">null</span><span class="o">,</span> <span class="s">"Data berhasil disimpan"</span><span class="o">);</span>
+        <span class="n">dispose</span><span class="o">();</span>
+    <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+        <span class="nc">JOptionPane</span><span class="o">.</span><span class="na">showMessageDialog</span><span class="o">(</span><span class="kc">null</span><span class="o">,</span> <span class="s">"Data gagal disimpan"</span><span class="o">);</span>
+    <span class="o">}</span>
+
+
+<span class="o">}</span></code></pre></figure>
+
+<p>Pada method <code class="language-plaintext highlighter-rouge">simpanUbah</code> isikan dengan</p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="nd">@Override</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">simpanUbah</span><span class="o">()</span> <span class="o">{</span>
+
+    <span class="nc">String</span> <span class="n">id</span> <span class="o">=</span> <span class="n">tfId</span><span class="o">.</span><span class="na">getText</span><span class="o">();</span>
+    <span class="kt">int</span> <span class="n">idInt</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">id</span><span class="o">);</span>
+    <span class="nc">String</span> <span class="n">namaJenisBarang</span> <span class="o">=</span> <span class="n">tfNamaJenisBarang</span><span class="o">.</span><span class="na">getText</span><span class="o">();</span>
+
+    <span class="n">jenisBarang</span><span class="o">.</span><span class="na">setId</span><span class="o">(</span><span class="n">idInt</span><span class="o">);</span>
+    <span class="n">jenisBarang</span><span class="o">.</span><span class="na">setNamaJenisBarang</span><span class="o">(</span><span class="n">namaJenisBarang</span><span class="o">);</span>
+    
+    <span class="k">if</span> <span class="o">(</span><span class="n">jenisBarang</span><span class="o">.</span><span class="na">update</span><span class="o">())</span> <span class="o">{</span>
+        <span class="nc">JOptionPane</span><span class="o">.</span><span class="na">showMessageDialog</span><span class="o">(</span><span class="kc">null</span><span class="o">,</span> <span class="s">"Data berhasil diubah"</span><span class="o">);</span>
+        <span class="n">dispose</span><span class="o">();</span>
+    <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+        <span class="nc">JOptionPane</span><span class="o">.</span><span class="na">showMessageDialog</span><span class="o">(</span><span class="kc">null</span><span class="o">,</span> <span class="s">"Data gagal diubah"</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span></code></pre></figure>
+
+<p>Pindah ke bagian <code class="language-plaintext highlighter-rouge">Design</code>, klik pada frame dan cari pada window <code class="language-plaintext highlighter-rouge">Properties</code> tab <code class="language-plaintext highlighter-rouge">Events</code>, scroll kebawah pada posisi <code class="language-plaintext highlighter-rouge">windowActivated</code>, pilih comboboxnya sehingga tercipta method <code class="language-plaintext highlighter-rouge">formWindowActivated</code>, dan isikan dengan</p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">private</span> <span class="kt">void</span> <span class="nf">formWindowActivated</span><span class="o">(</span><span class="n">java</span><span class="o">.</span><span class="na">awt</span><span class="o">.</span><span class="na">event</span><span class="o">.</span><span class="na">WindowEvent</span> <span class="n">evt</span><span class="o">)</span> <span class="o">{</span>                                     
+    <span class="k">if</span> <span class="o">(</span><span class="n">jenisBarang</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">String</span> <span class="n">id</span> <span class="o">=</span> <span class="nc">String</span><span class="o">.</span><span class="na">valueOf</span><span class="o">(</span><span class="n">jenisBarang</span><span class="o">.</span><span class="na">getId</span><span class="o">());</span>
+        <span class="nc">String</span> <span class="n">namaJenisBarang</span> <span class="o">=</span> <span class="n">jenisBarang</span><span class="o">.</span><span class="na">getNamaJenisBarang</span><span class="o">();</span>
+
+        <span class="n">tfId</span><span class="o">.</span><span class="na">setText</span><span class="o">(</span><span class="n">id</span><span class="o">);</span>
+        <span class="n">tfNamaJenisBarang</span><span class="o">.</span><span class="na">setText</span><span class="o">(</span><span class="n">namaJenisBarang</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>      </code></pre></figure>
+
+<p>Kembali ke bagian <code class="language-plaintext highlighter-rouge">Design</code>, klik dua kali pada <code class="language-plaintext highlighter-rouge">btBatal</code>, dan isikan dengan</p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">private</span> <span class="kt">void</span> <span class="nf">btBatalActionPerformed</span><span class="o">(</span><span class="n">java</span><span class="o">.</span><span class="na">awt</span><span class="o">.</span><span class="na">event</span><span class="o">.</span><span class="na">ActionEvent</span> <span class="n">evt</span><span class="o">)</span> <span class="o">{</span>                                        
+    <span class="n">dispose</span><span class="o">();</span>
+<span class="o">}</span>     </code></pre></figure>
+
+<p>Kembali ke bagian <code class="language-plaintext highlighter-rouge">Design</code>, klik dua kali pada <code class="language-plaintext highlighter-rouge">btSimpan</code>, dan isikan dengan</p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">private</span> <span class="kt">void</span> <span class="nf">btSimpanActionPerformed</span><span class="o">(</span><span class="n">java</span><span class="o">.</span><span class="na">awt</span><span class="o">.</span><span class="na">event</span><span class="o">.</span><span class="na">ActionEvent</span> <span class="n">evt</span><span class="o">)</span> <span class="o">{</span>                                         
+
+    <span class="kt">boolean</span> <span class="n">tambahData</span> <span class="o">=</span> <span class="n">jenisBarang</span> <span class="o">==</span> <span class="kc">null</span><span class="o">;</span>
+
+    <span class="k">if</span> <span class="o">(!</span><span class="n">dataKosong</span><span class="o">())</span> <span class="o">{</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">tambahData</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">simpanTambah</span><span class="o">();</span>
+        <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+            <span class="n">simpanUbah</span><span class="o">();</span>
+        <span class="o">}</span>
+    <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+        <span class="nc">JOptionPane</span><span class="o">.</span><span class="na">showMessageDialog</span><span class="o">(</span><span class="kc">null</span><span class="o">,</span> <span class="s">"Lengkapi data"</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>     </code></pre></figure>
+
+<p>Kembali ke frame <code class="language-plaintext highlighter-rouge">JenisbarangViewFrame</code> klik dua kali pada <code class="language-plaintext highlighter-rouge">btTambah</code> dan isikan dengan</p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">private</span> <span class="kt">void</span> <span class="nf">btTambahActionPerformed</span><span class="o">(</span><span class="n">java</span><span class="o">.</span><span class="na">awt</span><span class="o">.</span><span class="na">event</span><span class="o">.</span><span class="na">ActionEvent</span> <span class="n">evt</span><span class="o">)</span> <span class="o">{</span>                                         
+    <span class="nc">JenisBarangAddFrame</span> <span class="n">frame</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">JenisBarangAddFrame</span><span class="o">();</span>
+    <span class="n">frame</span><span class="o">.</span><span class="na">customShow</span><span class="o">();</span>
+<span class="o">}</span>            </code></pre></figure>
+
+<p>klik dua kali pada <code class="language-plaintext highlighter-rouge">btUbah</code> dan isikan dengan</p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">private</span> <span class="kt">void</span> <span class="nf">btUbahActionPerformed</span><span class="o">(</span><span class="n">java</span><span class="o">.</span><span class="na">awt</span><span class="o">.</span><span class="na">event</span><span class="o">.</span><span class="na">ActionEvent</span> <span class="n">evt</span><span class="o">)</span> <span class="o">{</span>                                       
+
+    <span class="nc">TableModel</span> <span class="n">tableModel</span> <span class="o">=</span> <span class="n">tbJenisbarang</span><span class="o">.</span><span class="na">getModel</span><span class="o">();</span>
+    <span class="kt">int</span> <span class="n">rowSelected</span> <span class="o">=</span> <span class="n">tbJenisbarang</span><span class="o">.</span><span class="na">getSelectedRow</span><span class="o">();</span>
+
+    <span class="k">if</span> <span class="o">(</span><span class="n">rowSelected</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
+
+        <span class="kt">int</span> <span class="n">id</span> <span class="o">=</span> <span class="o">(</span><span class="kt">int</span><span class="o">)</span> <span class="n">tableModel</span><span class="o">.</span><span class="na">getValueAt</span><span class="o">(</span><span class="n">rowSelected</span><span class="o">,</span> <span class="mi">0</span><span class="o">);</span>
+        <span class="nc">String</span> <span class="n">namaJenisBarang</span> <span class="o">=</span> <span class="n">tableModel</span><span class="o">.</span><span class="na">getValueAt</span><span class="o">(</span><span class="n">rowSelected</span><span class="o">,</span> <span class="mi">1</span><span class="o">).</span><span class="na">toString</span><span class="o">();</span>
+
+        <span class="nc">Database</span> <span class="n">db</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Database</span><span class="o">();</span>
+        <span class="nc">Connection</span> <span class="n">con</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="na">getConnection</span><span class="o">();</span>
+
+        <span class="nc">JenisBarang</span> <span class="n">jenisBarang</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">JenisBarang</span><span class="o">(</span><span class="n">con</span><span class="o">);</span>
+        <span class="n">jenisBarang</span><span class="o">.</span><span class="na">setId</span><span class="o">(</span><span class="n">id</span><span class="o">);</span>
+        <span class="n">jenisBarang</span><span class="o">.</span><span class="na">setNamaJenisBarang</span><span class="o">(</span><span class="n">namaJenisBarang</span><span class="o">);</span>
+
+        <span class="nc">JenisBarangAddFrame</span> <span class="n">frame</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">JenisBarangAddFrame</span><span class="o">();</span>
+        <span class="n">frame</span><span class="o">.</span><span class="na">setJenisBarang</span><span class="o">(</span><span class="n">jenisBarang</span><span class="o">);</span>
+        <span class="n">frame</span><span class="o">.</span><span class="na">customShow</span><span class="o">();</span>
+    <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+        <span class="nc">JOptionPane</span><span class="o">.</span><span class="na">showMessageDialog</span><span class="o">(</span><span class="kc">null</span><span class="o">,</span>
+                <span class="s">"Pilih data"</span><span class="o">,</span>
+                <span class="s">"Pesan"</span><span class="o">,</span>
+                <span class="nc">JOptionPane</span><span class="o">.</span><span class="na">WARNING_MESSAGE</span><span class="o">);</span>
+    <span class="o">}</span>
+
+<span class="o">}</span>        </code></pre></figure>
+
+<p>Pengujian dilakukan dengan mengubah isi dari class <code class="language-plaintext highlighter-rouge">Main</code> menjadi</p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Main</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+
+        <span class="nc">JenisBarangViewFrame</span> <span class="n">frame</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">JenisBarangViewFrame</span><span class="o">();</span>
+        <span class="n">frame</span><span class="o">.</span><span class="na">customShow</span><span class="o">();</span>
+        
+    <span class="o">}</span>
+<span class="o">}</span></code></pre></figure>
+
+<p><a href="/2021/02/java-sem7-part1">Praktikum Java Semester 7: Part 1</a><br />
+<a href="/2021/02/java-sem7-part2">Praktikum Java Semester 7: Part 2</a><br />
+<a href="/2021/02/java-sem7-part3">Praktikum Java Semester 7: Part 3</a><br />
+<a href="/2021/03/java-sem7-part4">Praktikum Java Semester 7: Part 4</a><br />
+Praktikum Java Semester 7: Part 5</p>
+:ET
