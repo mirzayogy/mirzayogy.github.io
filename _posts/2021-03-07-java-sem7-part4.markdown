@@ -63,8 +63,9 @@ public class Pengguna {
         this.connection = connection;
     }
     
-    public Pengguna(int id, String namaLengkap, boolean isAdmin) {
+    public Pengguna(int id, String username, String namaLengkap, boolean isAdmin) {
         this.id = id;
+        this.username = username;
         this.namaLengkap = namaLengkap;
         this.isAdmin = isAdmin;
     }
@@ -87,6 +88,7 @@ public class Pengguna {
             if(rs.next()){
                 pengguna = new Pengguna(
                         rs.getInt(1),
+                        rs.getString(2),
                         rs.getString(4),
                         rs.getBoolean(5)
                 );
