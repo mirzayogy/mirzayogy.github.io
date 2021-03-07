@@ -14,13 +14,15 @@ tags:
 [Praktikum Java Semester 7: Part 1]({% post_url 2021-02-13-java-sem7-part1 %})
 Praktikum Java Semester 7: Part 2
 [Praktikum Java Semester 7: Part 3]({% post_url 2021-02-28-java-sem7-part3 %})
+[Praktikum Java Semester 7: Part 4]({% post_url 2021-03-07-java-sem7-part4 %})
+
 
 
 Pembuatan Frame di NetBeans sangat dimudahkan oleh fitur visualnya, namun karena ada beberapa fitur yang akan memiliki method yang sama dan menghindari pengulangan coding maka terlebih dahulu dipersiapkan templatenya.
 
 Pada pengelolaan data master akan dipersiapkan 2 (dua) frame untuk tiap table, yaitu View Frame yang fungsinya untuk menampilkan table, dan Add Frame yang fungsinya untuk tambah dan ubah data. Maka dibuat dulu Interface-nya
 
-Buat sebuah package `template` dan didalamnya buat interface `ViewFrameInterface`, isikan dengan
+Buka package `template` dan didalamnya buat interface `ViewFrameInterface`, isikan dengan
 
 {% highlight  java %}
 public interface ViewFrameInterface {
@@ -203,3 +205,5 @@ Oke, sebagian fitur sudah diisi, untuk tombol tambah dan ubah diperlukan AddFram
 [Praktikum Java Semester 7: Part 1]({% post_url 2021-02-13-java-sem7-part1 %})
 Praktikum Java Semester 7: Part 2
 [Praktikum Java Semester 7: Part 3]({% post_url 2021-02-28-java-sem7-part3 %})
+[Praktikum Java Semester 7: Part 4]({% post_url 2021-03-07-java-sem7-part4 %})
+

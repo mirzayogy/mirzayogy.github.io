@@ -1,0 +1,242 @@
+I"O_<p><a href="/2021/02/java-sem7-part1">Praktikum Java Semester 7: Part 1</a><br />
+<a href="/2021/02/java-sem7-part2">Praktikum Java Semester 7: Part 2</a><br />
+<a href="/2021/02/java-sem7-part3">Praktikum Java Semester 7: Part 3</a><br />
+Praktikum Java Semester 7: Part 4</p>
+
+<p>Buat package <code class="language-plaintext highlighter-rouge">utils</code> buat class <code class="language-plaintext highlighter-rouge">MD5</code> dan isikan dengan</p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MD5</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="nc">String</span> <span class="nf">getMd5</span><span class="o">(</span><span class="nc">String</span> <span class="n">input</span><span class="o">)</span> 
+    <span class="o">{</span> 
+        <span class="k">try</span> <span class="o">{</span> 
+            
+            <span class="nc">MessageDigest</span> <span class="n">md</span> <span class="o">=</span> <span class="nc">MessageDigest</span><span class="o">.</span><span class="na">getInstance</span><span class="o">(</span><span class="s">"MD5"</span><span class="o">);</span> 
+            <span class="kt">byte</span><span class="o">[]</span> <span class="n">messageDigest</span> <span class="o">=</span> <span class="n">md</span><span class="o">.</span><span class="na">digest</span><span class="o">(</span><span class="n">input</span><span class="o">.</span><span class="na">getBytes</span><span class="o">());</span> 
+            <span class="nc">BigInteger</span> <span class="n">no</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">BigInteger</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="n">messageDigest</span><span class="o">);</span> 
+
+            <span class="nc">String</span> <span class="n">hashtext</span> <span class="o">=</span> <span class="n">no</span><span class="o">.</span><span class="na">toString</span><span class="o">(</span><span class="mi">16</span><span class="o">);</span> 
+            <span class="k">while</span> <span class="o">(</span><span class="n">hashtext</span><span class="o">.</span><span class="na">length</span><span class="o">()</span> <span class="o">&lt;</span> <span class="mi">32</span><span class="o">)</span> <span class="o">{</span> 
+                <span class="n">hashtext</span> <span class="o">=</span> <span class="s">"0"</span> <span class="o">+</span> <span class="n">hashtext</span><span class="o">;</span> 
+            <span class="o">}</span> 
+            <span class="k">return</span> <span class="n">hashtext</span><span class="o">;</span> 
+        <span class="o">}</span>  
+  
+        <span class="k">catch</span> <span class="o">(</span><span class="nc">NoSuchAlgorithmException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span> 
+            <span class="k">throw</span> <span class="k">new</span> <span class="nf">RuntimeException</span><span class="o">(</span><span class="n">e</span><span class="o">);</span> 
+        <span class="o">}</span> 
+    <span class="o">}</span>
+<span class="o">}</span></code></pre></figure>
+
+<p>Class ini berfungsi untuk melakukan enkripsi pada string password supaya bisa dicocokkan dengan data password yang ada pada table.</p>
+
+<p>Pada package <code class="language-plaintext highlighter-rouge">model</code>, buat class <code class="language-plaintext highlighter-rouge">Pengguna</code> dan isikan dengan</p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Pengguna</span> <span class="o">{</span>
+    
+    <span class="nc">Connection</span> <span class="n">connection</span><span class="o">;</span>
+    
+    <span class="kd">private</span> <span class="kt">int</span> <span class="n">id</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">username</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">password</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">namaLengkap</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kt">boolean</span> <span class="n">isAdmin</span><span class="o">;</span>
+    
+    <span class="kd">public</span> <span class="nf">Pengguna</span><span class="o">(</span><span class="nc">Connection</span> <span class="n">connection</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">connection</span> <span class="o">=</span> <span class="n">connection</span><span class="o">;</span>
+    <span class="o">}</span>
+    
+    <span class="kd">public</span> <span class="nf">Pengguna</span><span class="o">(</span><span class="kt">int</span> <span class="n">id</span><span class="o">,</span> <span class="nc">String</span> <span class="n">namaLengkap</span><span class="o">,</span> <span class="kt">boolean</span> <span class="n">isAdmin</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">id</span> <span class="o">=</span> <span class="n">id</span><span class="o">;</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">namaLengkap</span> <span class="o">=</span> <span class="n">namaLengkap</span><span class="o">;</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">isAdmin</span> <span class="o">=</span> <span class="n">isAdmin</span><span class="o">;</span>
+    <span class="o">}</span>
+    
+    <span class="kd">public</span> <span class="nc">Pengguna</span> <span class="nf">login</span><span class="o">(){</span>
+        <span class="nc">Pengguna</span> <span class="n">pengguna</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+        
+        <span class="nc">String</span> <span class="n">loginSQL</span> <span class="o">=</span> <span class="s">"SELECT * FROM pengguna WHERE username = ? AND password = ?"</span><span class="o">;</span>
+        
+        <span class="nc">PreparedStatement</span> <span class="n">ps</span><span class="o">;</span>
+        <span class="k">try</span> <span class="o">{</span>
+            <span class="n">ps</span> <span class="o">=</span> <span class="k">this</span><span class="o">.</span><span class="na">connection</span><span class="o">.</span><span class="na">prepareStatement</span><span class="o">(</span><span class="n">loginSQL</span><span class="o">);</span>
+            
+            <span class="nc">String</span> <span class="n">md5Password</span> <span class="o">=</span> <span class="no">MD5</span><span class="o">.</span><span class="na">getMd5</span><span class="o">(</span><span class="k">this</span><span class="o">.</span><span class="na">password</span><span class="o">);</span>
+            
+            <span class="n">ps</span><span class="o">.</span><span class="na">setString</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="k">this</span><span class="o">.</span><span class="na">username</span><span class="o">);</span>
+            <span class="n">ps</span><span class="o">.</span><span class="na">setString</span><span class="o">(</span><span class="mi">2</span><span class="o">,</span> <span class="n">md5Password</span><span class="o">);</span>
+            <span class="nc">ResultSet</span> <span class="n">rs</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="na">executeQuery</span><span class="o">();</span>
+            
+            <span class="k">if</span><span class="o">(</span><span class="n">rs</span><span class="o">.</span><span class="na">next</span><span class="o">()){</span>
+                <span class="n">pengguna</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Pengguna</span><span class="o">(</span>
+                        <span class="n">rs</span><span class="o">.</span><span class="na">getInt</span><span class="o">(</span><span class="mi">1</span><span class="o">),</span>
+                        <span class="n">rs</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="mi">4</span><span class="o">),</span>
+                        <span class="n">rs</span><span class="o">.</span><span class="na">getBoolean</span><span class="o">(</span><span class="mi">5</span><span class="o">)</span>
+                <span class="o">);</span>
+            <span class="o">}</span>
+        <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">SQLException</span> <span class="n">ex</span><span class="o">)</span> <span class="o">{</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Gagal login"</span><span class="o">);</span>
+        <span class="o">}</span>
+        
+        <span class="k">return</span> <span class="n">pengguna</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span></code></pre></figure>
+
+<p>Jangan lupa untuk <code class="language-plaintext highlighter-rouge">Generate Getter and Setter</code> untuk semua atribut pada class Pengguna.</p>
+
+<p>Method <code class="language-plaintext highlighter-rouge">login()</code> pada Pengguna mengubah atribut password kedalam md5Password menggunakan class MD5 yang sebelumnya sudah dibuat. Method ini akan me-return object Pengguna yang bisa diambil id, nama lengkap, dan level usernya.</p>
+
+<p>Pada package <code class="language-plaintext highlighter-rouge">view.admin</code> Buat JFrame <code class="language-plaintext highlighter-rouge">AdminMainFrame</code> dan isikan</p>
+
+<p><img src="/assets/img/java-7-4/java-7-4-1.png" alt="AdminMainFrame" /></p>
+
+<ol>
+  <li>JPanel: Properties-&gt;background: [102,16,242]</li>
+  <li>JLabel</li>
+  <li>JLabel: name-&gt;lbNamaLengkap</li>
+  <li>JButton: name-&gt;btUbahPassword</li>
+  <li>JButton: name-&gt;btJenisBarang</li>
+  <li>JButton</li>
+  <li>JButton</li>
+  <li>JButton</li>
+  <li>JButton</li>
+  <li>JButton</li>
+  <li>JButton</li>
+  <li>JButton: name-&gt;btTutup</li>
+</ol>
+
+<p>Masuk pada bagian <code class="language-plaintext highlighter-rouge">Source</code> dan tambahkan atribut Pengguna beserta setter-nya, letakkan sebelum constructor</p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="nc">Pengguna</span> <span class="n">pengguna</span><span class="o">;</span>
+    
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">setPengguna</span><span class="o">(</span><span class="nc">Pengguna</span> <span class="n">pengguna</span><span class="o">){</span>
+    <span class="k">this</span><span class="o">.</span><span class="na">pengguna</span> <span class="o">=</span> <span class="n">pengguna</span><span class="o">;</span>
+<span class="o">}</span>
+
+<span class="kd">public</span> <span class="nf">AdminMainFrame</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">initComponents</span><span class="o">();</span>
+<span class="o">}</span></code></pre></figure>
+
+<p>Ganti extends <code class="language-plaintext highlighter-rouge">javax.swing.JFrame</code> menjadi</p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">AdminMainFrame</span> <span class="kd">extends</span> <span class="nc">CustomFrame</span></code></pre></figure>
+
+<p>Karena JenisBarang sudah punya frame bisa ditambahkan pada <code class="language-plaintext highlighter-rouge">btJenisBarang</code></p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">private</span> <span class="kt">void</span> <span class="nf">btjenisBarangActionPerformed</span><span class="o">(</span><span class="n">java</span><span class="o">.</span><span class="na">awt</span><span class="o">.</span><span class="na">event</span><span class="o">.</span><span class="na">ActionEvent</span> <span class="n">evt</span><span class="o">)</span> <span class="o">{</span>                                              
+    <span class="nc">JenisBarangViewFrame</span> <span class="n">frame</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">JenisBarangViewFrame</span><span class="o">();</span>
+    <span class="n">frame</span><span class="o">.</span><span class="na">customShow</span><span class="o">();</span>
+<span class="o">}</span>    </code></pre></figure>
+
+<p>Tambahkan method untuk <code class="language-plaintext highlighter-rouge">btTutup</code> dan <code class="language-plaintext highlighter-rouge">formWindowActivated</code></p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">private</span> <span class="kt">void</span> <span class="nf">btTutupActionPerformed</span><span class="o">(</span><span class="n">java</span><span class="o">.</span><span class="na">awt</span><span class="o">.</span><span class="na">event</span><span class="o">.</span><span class="na">ActionEvent</span> <span class="n">evt</span><span class="o">)</span> <span class="o">{</span>                                        
+        <span class="nc">System</span><span class="o">.</span><span class="na">exit</span><span class="o">(</span><span class="mi">0</span><span class="o">);</span>
+    <span class="o">}</span>                                       
+
+<span class="kd">private</span> <span class="kt">void</span> <span class="nf">formWindowActivated</span><span class="o">(</span><span class="n">java</span><span class="o">.</span><span class="na">awt</span><span class="o">.</span><span class="na">event</span><span class="o">.</span><span class="na">WindowEvent</span> <span class="n">evt</span><span class="o">)</span> <span class="o">{</span>                                     
+    <span class="n">lbNamaLengkap</span><span class="o">.</span><span class="na">setText</span><span class="o">(</span><span class="n">pengguna</span><span class="o">.</span><span class="na">getNamaLengkap</span><span class="o">());</span>
+<span class="o">}</span>     </code></pre></figure>
+
+<p>Pada package <code class="language-plaintext highlighter-rouge">view</code> buat package baru <code class="language-plaintext highlighter-rouge">cashier</code> dan buat JFrame <code class="language-plaintext highlighter-rouge">CashierMainFrame</code> dan isikan</p>
+
+<p><img src="/assets/img/java-7-4/java-7-4-2.png" alt="CashierMainFrame" /></p>
+
+<ol>
+  <li>JPanel: Properties-&gt;background: [102,16,242]</li>
+  <li>JLabel</li>
+  <li>JLabel: name-&gt;lbNamaLengkap</li>
+  <li>JButton: name-&gt;btUbahPassword</li>
+  <li>JButton</li>
+  <li>JButton</li>
+  <li>JButton: name-&gt;btTutup</li>
+</ol>
+
+<p>Sama seperti pada AdminMainFrame, masuk pada bagian <code class="language-plaintext highlighter-rouge">Source</code> dan tambahkan atribut Pengguna beserta setter-nya, letakkan sebelum constructor</p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="nc">Pengguna</span> <span class="n">pengguna</span><span class="o">;</span>
+    
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">setPengguna</span><span class="o">(</span><span class="nc">Pengguna</span> <span class="n">pengguna</span><span class="o">){</span>
+    <span class="k">this</span><span class="o">.</span><span class="na">pengguna</span> <span class="o">=</span> <span class="n">pengguna</span><span class="o">;</span>
+<span class="o">}</span>
+
+<span class="kd">public</span> <span class="nf">CashierMainFrame</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">initComponents</span><span class="o">();</span>
+<span class="o">}</span></code></pre></figure>
+
+<p>Ganti extends <code class="language-plaintext highlighter-rouge">javax.swing.JFrame</code> menjadi</p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">CashierMainFrame</span> <span class="kd">extends</span> <span class="nc">CustomFrame</span></code></pre></figure>
+
+<p>Tambahkan method untuk <code class="language-plaintext highlighter-rouge">btTutup</code> dan <code class="language-plaintext highlighter-rouge">formWindowActivated</code></p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">private</span> <span class="kt">void</span> <span class="nf">btTutupActionPerformed</span><span class="o">(</span><span class="n">java</span><span class="o">.</span><span class="na">awt</span><span class="o">.</span><span class="na">event</span><span class="o">.</span><span class="na">ActionEvent</span> <span class="n">evt</span><span class="o">)</span> <span class="o">{</span>                                        
+        <span class="nc">System</span><span class="o">.</span><span class="na">exit</span><span class="o">(</span><span class="mi">0</span><span class="o">);</span>
+    <span class="o">}</span>                                       
+
+<span class="kd">private</span> <span class="kt">void</span> <span class="nf">formWindowActivated</span><span class="o">(</span><span class="n">java</span><span class="o">.</span><span class="na">awt</span><span class="o">.</span><span class="na">event</span><span class="o">.</span><span class="na">WindowEvent</span> <span class="n">evt</span><span class="o">)</span> <span class="o">{</span>                                     
+    <span class="n">lbNamaLengkap</span><span class="o">.</span><span class="na">setText</span><span class="o">(</span><span class="n">pengguna</span><span class="o">.</span><span class="na">getNamaLengkap</span><span class="o">());</span>
+<span class="o">}</span>     </code></pre></figure>
+
+<p>Pada package <code class="language-plaintext highlighter-rouge">view</code> buat package baru <code class="language-plaintext highlighter-rouge">auth</code> dan buat JFrame <code class="language-plaintext highlighter-rouge">LoginFrame</code> dan isikan</p>
+
+<p><img src="/assets/img/java-7-4/java-7-4-3.png" alt="LoginFrame" /></p>
+
+<ol>
+  <li>JPanel: Properties-&gt;background: [102,16,242]</li>
+  <li>JLabel</li>
+  <li>JLabel</li>
+  <li>JTextField: name-&gt;tfUsername</li>
+  <li>JLabel</li>
+  <li>JPasswordField: name-&gt;tfPassword</li>
+  <li>JButton: name-&gt;btBatal</li>
+  <li>JButton: name-&gt;btLogin</li>
+</ol>
+
+<p>Ganti extends <code class="language-plaintext highlighter-rouge">javax.swing.JFrame</code> menjadi</p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">LoginFrame</span> <span class="kd">extends</span> <span class="nc">CustomFrame</span></code></pre></figure>
+
+<p>Pada btLogin tambahkan</p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">private</span> <span class="kt">void</span> <span class="nf">btLoginActionPerformed</span><span class="o">(</span><span class="n">java</span><span class="o">.</span><span class="na">awt</span><span class="o">.</span><span class="na">event</span><span class="o">.</span><span class="na">ActionEvent</span> <span class="n">evt</span><span class="o">)</span> <span class="o">{</span>                                        
+    <span class="nc">Database</span> <span class="n">db</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Database</span><span class="o">();</span>
+    <span class="nc">Connection</span> <span class="n">connection</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="na">getConnection</span><span class="o">();</span>
+    <span class="nc">Pengguna</span> <span class="n">pengguna</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Pengguna</span><span class="o">(</span><span class="n">connection</span><span class="o">);</span>
+    
+    <span class="nc">String</span> <span class="n">stringPassword</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">String</span><span class="o">(</span><span class="n">tfPassword</span><span class="o">.</span><span class="na">getPassword</span><span class="o">());</span>
+
+    <span class="n">pengguna</span><span class="o">.</span><span class="na">setUsername</span><span class="o">(</span><span class="n">tfUsername</span><span class="o">.</span><span class="na">getText</span><span class="o">());</span>
+    <span class="n">pengguna</span><span class="o">.</span><span class="na">setPassword</span><span class="o">(</span><span class="n">stringPassword</span><span class="o">);</span>
+    
+    <span class="n">pengguna</span> <span class="o">=</span> <span class="n">pengguna</span><span class="o">.</span><span class="na">login</span><span class="o">();</span>
+    
+    <span class="k">if</span><span class="o">(</span><span class="n">pengguna</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">){</span>
+        <span class="k">if</span><span class="o">(</span><span class="n">pengguna</span><span class="o">.</span><span class="na">isIsAdmin</span><span class="o">()){</span>
+            <span class="n">dispose</span><span class="o">();</span>
+            <span class="nc">AdminMainFrame</span> <span class="n">frame</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">AdminMainFrame</span><span class="o">();</span>
+            <span class="n">frame</span><span class="o">.</span><span class="na">setPengguna</span><span class="o">(</span><span class="n">pengguna</span><span class="o">);</span>
+            <span class="n">frame</span><span class="o">.</span><span class="na">customShow</span><span class="o">();</span>
+        <span class="o">}</span><span class="k">else</span><span class="o">{</span>
+            <span class="n">dispose</span><span class="o">();</span>
+            <span class="nc">CashierMainFrame</span> <span class="n">frame</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">CashierMainFrame</span><span class="o">();</span>
+            <span class="n">frame</span><span class="o">.</span><span class="na">setPengguna</span><span class="o">(</span><span class="n">pengguna</span><span class="o">);</span>
+            <span class="n">frame</span><span class="o">.</span><span class="na">customShow</span><span class="o">();</span>
+        <span class="o">}</span>
+    <span class="o">}</span><span class="k">else</span><span class="o">{</span>
+        <span class="nc">JOptionPane</span><span class="o">.</span><span class="na">showMessageDialog</span><span class="o">(</span><span class="kc">null</span><span class="o">,</span> <span class="s">"Login gagal"</span><span class="o">);</span>
+
+    <span class="o">}</span>
+<span class="o">}</span>     </code></pre></figure>
+
+<p>Terakhir pada class <code class="language-plaintext highlighter-rouge">Main</code> ubah method main-nya menjadi</p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+    <span class="nc">LoginFrame</span> <span class="n">frame</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">LoginFrame</span><span class="o">();</span>
+    <span class="n">frame</span><span class="o">.</span><span class="na">customShow</span><span class="o">();</span>
+<span class="o">}</span></code></pre></figure>
+
+<p><a href="/2021/02/java-sem7-part1">Praktikum Java Semester 7: Part 1</a><br />
+<a href="/2021/02/java-sem7-part2">Praktikum Java Semester 7: Part 2</a><br />
+<a href="/2021/02/java-sem7-part3">Praktikum Java Semester 7: Part 3</a><br />
+Praktikum Java Semester 7: Part 4</p>
+:ET

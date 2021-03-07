@@ -15,6 +15,7 @@ tags:
 Praktikum Java Semester 7: Part 1
 [Praktikum Java Semester 7: Part 2]({% post_url 2021-02-28-java-sem7-part2 %})
 [Praktikum Java Semester 7: Part 3]({% post_url 2021-02-28-java-sem7-part3 %})
+[Praktikum Java Semester 7: Part 4]({% post_url 2021-03-07-java-sem7-part4 %})
 
 
 
@@ -271,6 +272,7 @@ And... that's about it for today. Aplikasi sudah mampu melakukan CRUD sederhana 
 Praktikum Java Semester 7: Part 1
 [Praktikum Java Semester 7: Part 2]({% post_url 2021-02-28-java-sem7-part2 %})
 [Praktikum Java Semester 7: Part 3]({% post_url 2021-02-28-java-sem7-part3 %})
+[Praktikum Java Semester 7: Part 4]({% post_url 2021-03-07-java-sem7-part4 %})
 
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/FNS_zA36qtY" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>

@@ -1,20 +1,99 @@
 ---
 layout: post
-title:  "Praktikum Java Semester 7: Part 3"
-date:   2021-02-28 09:00:41 +0800
+title:  "Praktikum Java Semester 7: Part 4"
+date:   2021-03-07 09:00:41 +0800
 categories: java
-published : true
+published : false
 comments : true
-description: Membuat Add Frame
+description: Proses Login
 tags: 
  - java
  - netbeans
+ - login
  - 201-praktikum-7-java
 ---
 [Praktikum Java Semester 7: Part 1]({% post_url 2021-02-13-java-sem7-part1 %})
 [Praktikum Java Semester 7: Part 2]({% post_url 2021-02-28-java-sem7-part2 %})
 Praktikum Java Semester 7: Part 3
 [Praktikum Java Semester 7: Part 4]({% post_url 2021-03-07-java-sem7-part4 %})
+
+Buat package `utils` dan didalamnya buat class `KeyValue` dan isikan dengan
+
+{% highlight  java %}
+public class KeyValue {
+    
+    int key;
+    String value;
+    
+    @Override
+    public String toString(){
+        return value;
+    }
+
+    public KeyValue(int key, String value) {
+        this.key = key;
+        this.value = value;
+    }
+    
+    public KeyValue(String value) {
+        this.key = 0;
+        this.value = value;
+    }
+    
+    public KeyValue() {
+        this.key = 0;
+        this.value = "";
+    }
+
+    public int getKey() {
+        return key;
+    }
+
+    public void setKey(int key) {
+        this.key = key;
+    }
+
+    public String getValue() {
+        return value;
+    }
+
+    public void setValue(String value) {
+        this.value = value;
+    }
+    
+    
+}
+{% endhighlight %}
+
+Class ini akan berfungsi dalam pengisian JComboBox yang dinamis. JComboBox akan menampilkan list (value) berupa nama barang tetapi juga menyediakan id barang (key) dalam datanya. 
+
+Berikutnya masih pada package `utils` buat class `MD5` dan isikan dengan
+
+{% highlight  java %}
+public class MD5 {
+    public static String getMd5(String input) 
+    { 
+        try { 
+            
+            MessageDigest md = MessageDigest.getInstance("MD5"); 
+            byte[] messageDigest = md.digest(input.getBytes()); 
+            BigInteger no = new BigInteger(1, messageDigest); 
+
+            String hashtext = no.toString(16); 
+            while (hashtext.length() < 32) { 
+                hashtext = "0" + hashtext; 
+            } 
+            return hashtext; 
+        }  
+  
+        catch (NoSuchAlgorithmException e) { 
+            throw new RuntimeException(e); 
+        } 
+    }
+}
+{% endhighlight %}
+
+Class ini berfungsi untuk melakukan enkripsi pada string password supaya bisa dicocokkan dengan data password yang ada pada table
 
 
 AddFrame akan berfungsi sebagai frame yang melakukan proses tambah data, dan ubah data. Dimulai dengan yang table JenisBarang yang hanya berisikan 2 (dua) field maka harusnya pembuatan frame ini akan sangat mudah.
@@ -222,4 +301,3 @@ public class Main {
 [Praktikum Java Semester 7: Part 1]({% post_url 2021-02-13-java-sem7-part1 %})
 [Praktikum Java Semester 7: Part 2]({% post_url 2021-02-28-java-sem7-part2 %})
 Praktikum Java Semester 7: Part 3
-[Praktikum Java Semester 7: Part 4]({% post_url 2021-03-07-java-sem7-part4 %})
