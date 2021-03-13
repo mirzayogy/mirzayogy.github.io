@@ -1,0 +1,137 @@
+I"´4<p><a href="/2021/02/android-sem7-part1">Praktikum Android Semester 7: Part 1</a><br />
+<a href="/2021/02/android-sem7-part2">Praktikum Android Semester 7: Part 2</a><br />
+<a href="/2021/02/android-sem7-part3">Praktikum Android Semester 7: Part 3</a><br />
+<a href="/2021/03/android-sem7-part4">Praktikum Android Semester 7: Part 4</a><br />
+Praktikum Android Semester 7: Part 5</p>
+
+<p>Pada <a href="/2021/03/android-sem7-part4">Praktikum Android Semester 7: Part 4</a> aplikasi sudah dapat menampilkan data dari web service local yang dibangun sendiri menggunakan PHP dengan GET request, pada kali ini akan dijelaskan cara menggunakan <code class="language-plaintext highlighter-rouge">POST request</code> yang diimplementasikan dalam bentuk Tambah Data.</p>
+
+<p>Pada project PHP file <code class="language-plaintext highlighter-rouge">jenisbarang.php</code> tambahkan function berikut</p>
+
+<figure class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<span class="k">function</span> <span class="n">find</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="nv">$selectSQL</span> <span class="o">=</span> <span class="s2">"SELECT * FROM jenisbarang WHERE id = ?"</span><span class="p">;</span>
+    <span class="nv">$stmt</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="n">conn</span><span class="o">-&gt;</span><span class="nf">prepare</span><span class="p">(</span><span class="nv">$selectSQL</span><span class="p">);</span>
+    <span class="nv">$stmt</span><span class="o">-&gt;</span><span class="nf">bindParam</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="n">id</span><span class="p">);</span>
+    <span class="nv">$stmt</span><span class="o">-&gt;</span><span class="nf">execute</span><span class="p">();</span>
+
+    <span class="k">return</span> <span class="nv">$stmt</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">function</span> <span class="n">create</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="nv">$insertSQL</span> <span class="o">=</span> <span class="s2">"INSERT INTO jenisbarang VALUES (NULL, ?)"</span><span class="p">;</span>
+    <span class="nv">$stmt</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="n">conn</span><span class="o">-&gt;</span><span class="nf">prepare</span><span class="p">(</span><span class="nv">$insertSQL</span><span class="p">);</span>
+    <span class="nv">$stmt</span><span class="o">-&gt;</span><span class="nf">bindParam</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="n">namajenisbarang</span><span class="p">);</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="nv">$stmt</span><span class="o">-&gt;</span><span class="nf">execute</span><span class="p">())</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="n">conn</span><span class="o">-&gt;</span><span class="nf">lastInsertId</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="cp">?&gt;</span></code></pre></figure>
+
+<p>Buat file <code class="language-plaintext highlighter-rouge">create.php</code> pada folder yang sama dengan <code class="language-plaintext highlighter-rouge">read.php</code> dan isikan dengan</p>
+
+<figure class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<span class="k">include_once</span> <span class="s2">"../../config/api-header.php"</span><span class="p">;</span>
+<span class="k">include_once</span> <span class="s2">"jenisbarang.php"</span><span class="p">;</span>
+
+<span class="nv">$jenisbarang</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Jenisbarang</span><span class="p">(</span><span class="nv">$db</span><span class="p">);</span>
+<span class="nv">$data</span> <span class="o">=</span> <span class="nb">json_decode</span><span class="p">(</span><span class="nb">file_get_contents</span><span class="p">(</span><span class="s2">"php://input"</span><span class="p">));</span>
+
+<span class="nv">$response</span><span class="p">[</span><span class="s2">"success"</span><span class="p">]</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+<span class="nv">$response</span><span class="p">[</span><span class="s2">"data"</span><span class="p">]</span> <span class="o">=</span> <span class="k">array</span><span class="p">();</span>
+<span class="nv">$response</span><span class="p">[</span><span class="s2">"message"</span><span class="p">]</span> <span class="o">=</span> <span class="s2">""</span><span class="p">;</span>
+
+<span class="k">if</span> <span class="p">(</span>
+    <span class="o">!</span><span class="nb">empty</span><span class="p">(</span><span class="nv">$data</span><span class="o">-&gt;</span><span class="n">namajenisbarang</span><span class="p">)</span>
+<span class="p">)</span> <span class="p">{</span>
+
+    <span class="nv">$jenisbarang</span><span class="o">-&gt;</span><span class="n">namajenisbarang</span> <span class="o">=</span> <span class="nv">$data</span><span class="o">-&gt;</span><span class="n">namajenisbarang</span><span class="p">;</span>
+    <span class="nv">$jenisbarang</span><span class="o">-&gt;</span><span class="n">id</span> <span class="o">=</span> <span class="nv">$jenisbarang</span><span class="o">-&gt;</span><span class="nf">create</span><span class="p">();</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="nv">$jenisbarang</span><span class="o">-&gt;</span><span class="n">id</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nv">$stmt</span> <span class="o">=</span> <span class="nv">$jenisbarang</span><span class="o">-&gt;</span><span class="nf">find</span><span class="p">();</span>
+        <span class="nv">$row</span> <span class="o">=</span> <span class="nv">$stmt</span><span class="o">-&gt;</span><span class="nf">fetch</span><span class="p">();</span>
+        <span class="nv">$response</span><span class="p">[</span><span class="s2">"data"</span><span class="p">]</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
+            <span class="s2">"id"</span> <span class="o">=&gt;</span> <span class="nv">$row</span><span class="p">[</span><span class="s2">"id"</span><span class="p">],</span>
+            <span class="s2">"namajenisbarang"</span> <span class="o">=&gt;</span> <span class="nv">$row</span><span class="p">[</span><span class="s2">"namajenisbarang"</span><span class="p">]</span>
+        <span class="p">);</span>
+
+        <span class="nb">http_response_code</span><span class="p">(</span><span class="mi">201</span><span class="p">);</span>
+        <span class="nv">$response</span><span class="p">[</span><span class="s2">"success"</span><span class="p">]</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+        <span class="nv">$response</span><span class="p">[</span><span class="s2">"message"</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"create data jenisbarang berhasil"</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="nb">http_response_code</span><span class="p">(</span><span class="mi">503</span><span class="p">);</span>
+        <span class="nv">$response</span><span class="p">[</span><span class="s2">"message"</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"create data jenisbarang gagal"</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="nb">http_response_code</span><span class="p">(</span><span class="mi">400</span><span class="p">);</span>
+    <span class="nv">$response</span><span class="p">[</span><span class="s2">"message"</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"lengkapi data jenisbarang"</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">echo</span> <span class="nb">json_encode</span><span class="p">(</span><span class="nv">$response</span><span class="p">);</span></code></pre></figure>
+
+<p>Pada <code class="language-plaintext highlighter-rouge">Android Studio</code> buat sebuah activity baru, bisa diberikan nama <code class="language-plaintext highlighter-rouge">JenisbarangPostActivity</code> dan pada layout xml-nya isikan dengan</p>
+
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="cp">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span>
+<span class="nt">&lt;androidx.constraintlayout.widget.ConstraintLayout</span> <span class="na">xmlns:android=</span><span class="s">"http://schemas.android.com/apk/res/android"</span>
+    <span class="na">xmlns:app=</span><span class="s">"http://schemas.android.com/apk/res-auto"</span>
+    <span class="na">xmlns:tools=</span><span class="s">"http://schemas.android.com/tools"</span>
+    <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+    <span class="na">android:layout_height=</span><span class="s">"match_parent"</span>
+    <span class="na">tools:context=</span><span class="s">".ui.jenisbarang.JenisbarangPostActivity"</span><span class="nt">&gt;</span>
+
+    <span class="nt">&lt;ScrollView</span>
+        <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+        <span class="na">android:layout_height=</span><span class="s">"match_parent"</span>
+        <span class="na">tools:layout_editor_absoluteX=</span><span class="s">"188dp"</span>
+        <span class="na">tools:layout_editor_absoluteY=</span><span class="s">"221dp"</span><span class="nt">&gt;</span>
+
+        <span class="nt">&lt;LinearLayout</span>
+            <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+            <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+            <span class="na">android:orientation=</span><span class="s">"vertical"</span> <span class="nt">&gt;</span>
+
+            <span class="nt">&lt;EditText</span>
+                <span class="na">android:id=</span><span class="s">"@+id/etIdJenisbarang"</span>
+                <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+                <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+                <span class="na">android:text=</span><span class="s">"0"</span>
+                <span class="na">android:hint=</span><span class="s">"Id"</span>
+                <span class="na">android:ems=</span><span class="s">"10"</span>
+                <span class="na">android:inputType=</span><span class="s">"number"</span> <span class="nt">/&gt;</span>
+
+            <span class="nt">&lt;EditText</span>
+                <span class="na">android:id=</span><span class="s">"@+id/etNamajenisbarang"</span>
+                <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+                <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+                <span class="na">android:hint=</span><span class="s">"Nama Jenis Barang"</span>
+                <span class="na">android:ems=</span><span class="s">"10"</span>
+                <span class="na">android:inputType=</span><span class="s">"text"</span> <span class="nt">/&gt;</span>
+
+            <span class="nt">&lt;Button</span>
+                <span class="na">android:id=</span><span class="s">"@+id/btSimpanJenisbarangPost"</span>
+                <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+                <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+                <span class="na">android:text=</span><span class="s">"Simpan"</span> <span class="nt">/&gt;</span>
+
+            <span class="nt">&lt;ProgressBar</span>
+                <span class="na">android:id=</span><span class="s">"@+id/progressBarJenisbarangPost"</span>
+                <span class="na">style=</span><span class="s">"?android:attr/progressBarStyle"</span>
+                <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+                <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;/LinearLayout&gt;</span>
+    <span class="nt">&lt;/ScrollView&gt;</span>
+<span class="nt">&lt;/androidx.constraintlayout.widget.ConstraintLayout&gt;</span></code></pre></figure>
+
+<p><a href="/2021/02/android-sem7-part1">Praktikum Android Semester 7: Part 1</a><br />
+<a href="/2021/02/android-sem7-part2">Praktikum Android Semester 7: Part 2</a><br />
+<a href="/2021/02/android-sem7-part3">Praktikum Android Semester 7: Part 3</a><br />
+<a href="/2021/03/android-sem7-part4">Praktikum Android Semester 7: Part 4</a><br />
+Praktikum Android Semester 7: Part 5</p>
+:ET

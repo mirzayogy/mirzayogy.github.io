@@ -1,0 +1,42 @@
+I"/<p><a href="/2021/02/android-sem7-part1">Praktikum Android Semester 7: Part 1</a><br />
+<a href="/2021/02/android-sem7-part2">Praktikum Android Semester 7: Part 2</a><br />
+<a href="/2021/02/android-sem7-part3">Praktikum Android Semester 7: Part 3</a><br />
+<a href="/2021/03/android-sem7-part4">Praktikum Android Semester 7: Part 4</a><br />
+Praktikum Android Semester 7: Part 5</p>
+
+<p>Pada <a href="/2021/03/android-sem7-part4">Praktikum Android Semester 7: Part 4</a> aplikasi sudah dapat menampilkan data dari web service local yang dibangun sendiri menggunakan PHP dengan GET request, pada kali ini akan dijelaskan cara menggunakan <code class="language-plaintext highlighter-rouge">POST request</code> yang diimplementasikan dalam bentuk Tambah Data.</p>
+
+<p>Pada project PHP file <code class="language-plaintext highlighter-rouge">jenisbarang.php</code> tambahkan function berikut</p>
+
+<figure class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<span class="k">function</span> <span class="n">find</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="nv">$selectSQL</span> <span class="o">=</span> <span class="s2">"SELECT * FROM jenisbarang WHERE id = ?"</span><span class="p">;</span>
+    <span class="nv">$stmt</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="n">conn</span><span class="o">-&gt;</span><span class="nf">prepare</span><span class="p">(</span><span class="nv">$selectSQL</span><span class="p">);</span>
+    <span class="nv">$stmt</span><span class="o">-&gt;</span><span class="nf">bindParam</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="n">id</span><span class="p">);</span>
+    <span class="nv">$stmt</span><span class="o">-&gt;</span><span class="nf">execute</span><span class="p">();</span>
+
+    <span class="k">return</span> <span class="nv">$stmt</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">function</span> <span class="n">create</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="nv">$insertSQL</span> <span class="o">=</span> <span class="s2">"INSERT INTO jenisbarang VALUES (NULL, ?)"</span><span class="p">;</span>
+    <span class="nv">$stmt</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="n">conn</span><span class="o">-&gt;</span><span class="nf">prepare</span><span class="p">(</span><span class="nv">$insertSQL</span><span class="p">);</span>
+    <span class="nv">$stmt</span><span class="o">-&gt;</span><span class="nf">bindParam</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="n">namajenisbarang</span><span class="p">);</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="nv">$stmt</span><span class="o">-&gt;</span><span class="nf">execute</span><span class="p">())</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="n">conn</span><span class="o">-&gt;</span><span class="nf">lastInsertId</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="cp">?&gt;</span></code></pre></figure>
+
+<p><a href="/2021/02/android-sem7-part1">Praktikum Android Semester 7: Part 1</a><br />
+<a href="/2021/02/android-sem7-part2">Praktikum Android Semester 7: Part 2</a><br />
+<a href="/2021/02/android-sem7-part3">Praktikum Android Semester 7: Part 3</a><br />
+<a href="/2021/03/android-sem7-part4">Praktikum Android Semester 7: Part 4</a><br />
+Praktikum Android Semester 7: Part 5</p>
+:ET
