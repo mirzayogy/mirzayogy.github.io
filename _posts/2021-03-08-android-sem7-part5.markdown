@@ -182,8 +182,13 @@ suspend fun create(@Body jenisbarangData: JenisbarangData): Response<Jenisbarang
 
 {% endhighlight %}
 
+Pada `JenisbarangViewModel` tambahkan atribut
+{% highlight  kotlin %}
+val createResponse = MutableLiveData<Response<JenisbarangResponse>>()
+{% endhighlight %}
 
-Pada `JenisbarangViewModel` tambahkan function yang menggunakan `create` pada ApiService, bisa ditulis seperti berikut
+
+Masih pada `JenisbarangViewModel` tambahkan function yang menggunakan `create` pada ApiService, bisa ditulis seperti berikut
 
 {% highlight  kotlin %}
 fun create(jenisbarangData: JenisbarangData) {
