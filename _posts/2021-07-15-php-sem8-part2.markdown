@@ -4,7 +4,7 @@ title:  "Praktikum Web (PHP) Semester 8: Part 2"
 date:   2021-07-15 01:00:00 +0800
 categories: php
 comments : true
-description: Membuat CRUD sederhana
+description: Membuat CRUD sederhana (Read & Create)
 tags: 
  - php 
  - web
@@ -13,6 +13,20 @@ tags:
 
 [Praktikum Web Semester 8: Part 1]({% post_url 2021-07-15-php-sem8-part1 %})
 Praktikum Web Semester 8: Part 2
+
+Buat sebuah database baru di MySQL dengan nama `praktikum_penjualan`, pilih database-nya, buka menu SQL dan jalankan perintah berikut
+
+{% highlight  sql %}
+CREATE TABLE `jenisbarang` (
+`id` INT NOT NULL AUTO_INCREMENT ,
+`namajenisbarang` VARCHAR(200) NOT NULL ,
+PRIMARY KEY (`id`)) ENGINE = InnoDB;
+
+INSERT INTO `jenisbarang` (`id`, `namajenisbarang`) VALUES 
+(NULL, 'Pakaian pria'), 
+(NULL, 'Pakaian wanita') 
+
+{% endhighlight %}
 
 Pada file `database.php` isikan dengan
 
@@ -50,5 +64,209 @@ class Database
 }
 {% endhighlight %}
 
-Buat file dan folder berikut
+Pada folder `pages`, buat file dan folder berikut
 ![Folder1]({{ site.url }}/assets/img/web-8-2/jenisbarang-crud.png)
+
+
+isi `jenisbarangread.php` dengan
+
+{% highlight  php %}
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>Jenis Barang</h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="?page=home">Home</a></li>
+                    <li class="breadcrumb-item active">Jenis Barang</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="content">
+    <div class="card">
+        <div class="card-header">
+            <h3 class="card-title">Data Jenis Barang</h3>
+            <a href="?page=jenisbarangcreate" class="btn btn-success btn-sm float-right"><i class="fa fa-plus-circle"></i> Tambah Data</a>
+        </div>
+        <div class="card-body">
+            <table id="mytable" class="table table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th>No</th>
+                        <th>Nama Jenis Barang</th>
+                        <th>Opsi</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                    include_once "database/database.php";
+                    $database = new Database();
+                    $db = $database->getConnection();
+
+                    $selectSql = "SELECT * FROM jenisbarang";
+
+                    $stmt = $db->prepare($selectSql);
+                    $stmt->execute();
+
+                    $no = 1;
+                    while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                    ?>
+                        <tr>
+                            <td><?php echo $no++ ?></td>
+                            <td><?php echo $row['namajenisbarang'] ?></td>
+                            <td>
+                                <form action method="POST">
+                                    <input type="hidden" name="id" value="<?php echo $row['id'] ?>">
+                                    <a href="?page=jenisbarangupdate&id=<?php echo $row['id'] ?>" class="btn btn-primary btn-sm mr-1"><i class="fa fa-edit"></i> Ubah</a>
+                                    <a href="?page=jenisbarangdelete&id=<?php echo $row['id'] ?>" class="btn btn-danger btn-sm" onClick="javascript: return confirm('Konfirmasi data akan dihapus?');"><i class="fa fa-trash"></i> Hapus</a>
+                                </form>
+                            </td>
+                        </tr>
+                    <?
+                    }
+                    ?>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+
+<?php include_once "components/scripts.php" ?>
+
+{% endhighlight %}
+
+
+Tambahkan case pada file `routes.php` untuk jenisbarangread
+
+{% highlight  php %}
+..
+case 'jenisbarangread':
+    if (file_exists('pages/admin/jenisbarang/jenisbarangread.php')) {
+        include 'pages/admin/jenisbarang/jenisbarangread.php';
+    } else {
+        include "pages/404.php";
+    }
+    break;
+default:
+    include "pages/404.php";
+    break;
+{% endhighlight %}
+
+Hasil read
+![Folder1]({{ site.url }}/assets/img/web-8-2/jenisbarangread.png)
+
+
+isi `jenisbarangcreate.php` dengan
+
+{% highlight  php %}
+
+<?php
+if (isset($_POST['btnSimpan'])) {
+    include_once "database/database.php";
+    $database = new Database();
+    $db = $database->getConnection();
+
+    $insertSql = "INSERT INTO jenisbarang (namajenisbarang) VALUES (?)";
+    $stmt = $db->prepare($insertSql);
+    $stmt->bindParam(1, $_POST['namajenisbarang']);
+    if ($stmt->execute()) {
+        $_SESSION['hasil_create'] = true;
+    } else {
+        $_SESSION['hasil_create'] = false;
+    }
+    echo "<meta http-equiv='refresh' content='0;url=?page=jenisbarangread'>";
+}
+?>
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>Jenis Barang</h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="?page=home">Home</a></li>
+                    <li class="breadcrumb-item"><a href="?page=jenisbarangread">Jenis Barang</a></li>
+                    <li class="breadcrumb-item active">Tambah Data</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="content">
+    <div class="card">
+        <div class="card-header">
+            <h3 class="card-title">Tambah Jenis Barang</h3>
+        </div>
+        <div class="card-body">
+            <form method="POST">
+                <div class="form-group">
+                    <label for="namajenisbarang">Nama Jenis Barang</label>
+                    <input type="text" class="form-control" name="namajenisbarang">
+                </div>
+                <a href="?page=jenisbarangread" class="btn btn-danger btn-sm float-right"><i class="fa fa-times"></i> Batal</a>
+                <button type="submit" name="btnSimpan" class="btn btn-success btn-sm float-right"><i class="fa fa-save"></i> Simpan</button>
+            </form>
+        </div>
+    </div>
+</section>
+
+<?php include_once "components/scripts.php" ?>
+
+{% endhighlight %}
+
+Tambahkan case pada file `routes.php` untuk jenisbarangcreate
+
+{% highlight  php %}
+..
+case 'jenisbarangcreate':
+    if (file_exists('pages/admin/jenisbarang/jenisbarangcreate.php')) {
+        include 'pages/admin/jenisbarang/jenisbarangcreate.php';
+    } else {
+        include "pages/404.php";
+    }
+    break;
+default:
+    include "pages/404.php";
+    break;
+{% endhighlight %}
+
+Kembali ke file `jenisbarangread.php` tambahkan kedalam div `container-fluid` perintah berikut 
+
+{% highlight  php %}
+<section class="content-header">
+    <div class="container-fluid">
+        <?php
+        if (isset($_SESSION["hasil_create"])) {
+            if ($_SESSION["hasil_create"]) {
+        ?>
+                <div class="alert alert-success alert-dismissible">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                    <h5><i class="icon fas fa-check"></i> Berhasil</h5>
+                    Tambah data jenis barang berhasil
+                </div>
+            <?php
+            } else {
+            ?>
+                <div class="alert alert-danger alert-dismissible">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                    <h5><i class="icon fas fa-ban"></i> Gagal</h5>
+                    Tambah data jenis barang gagal
+                </div>
+        <?php
+            }
+            unset($_SESSION['hasil_create']);
+        }
+        ?>
+        <div class="row mb-2">
+        ..
+{% endhighlight %}
+
+Berikut halaman create dan hasil setelah create
+
+![create]({{ site.url }}/assets/img/web-8-2/jenisbarangcreate.png)
+![readhasil]({{ site.url }}/assets/img/web-8-2/jenisbarangreadhasil.png)

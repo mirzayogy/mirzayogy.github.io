@@ -28,20 +28,6 @@ Tools yang digunakan
 3. GitHub Desktop
 4. <a href="https://github.com/ColorlibHQ/AdminLTE/archive/refs/tags/v3.1.0.zip" target="_blank">AdminLTE 3.1.0</a>
 
-Buat sebuah database baru di MySQL dengan nama `praktikum_penjualan`, pilih database-nya, buka menu SQL dan jalankan perintah berikut
-
-{% highlight  sql %}
-CREATE TABLE `jenisbarang` (
-`id` INT NOT NULL AUTO_INCREMENT ,
-`namajenisbarang` VARCHAR(200) NOT NULL ,
-PRIMARY KEY (`id`)) ENGINE = InnoDB;
-
-INSERT INTO `jenisbarang` (`id`, `namajenisbarang`) VALUES 
-(NULL, 'Pakaian pria'), 
-(NULL, 'Pakaian wanita') 
-
-{% endhighlight %}
-
 Download template <a href="https://github.com/ColorlibHQ/AdminLTE/archive/refs/tags/v3.1.0.zip" target="_blank">AdminLTE 3.1.0</a> kemudian extract.
 
 Buat folder baru pada `htdocs` dengan nama bebas, sebagai contoh pada project ini menggunakan nama `praktikum-penjualan`, kemudian pindahkan folder AdminLTE-3.1.0 kedalamnya.
