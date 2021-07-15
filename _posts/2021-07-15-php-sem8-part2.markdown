@@ -1,0 +1,54 @@
+---
+layout: post
+title:  "Praktikum Web (PHP) Semester 8: Part 2"
+date:   2021-07-15 01:00:00 +0800
+categories: php
+comments : true
+description: Membuat CRUD sederhana
+tags: 
+ - php 
+ - web
+ - 202-praktikum-8-web
+---
+
+[Praktikum Web Semester 8: Part 1]({% post_url 2021-07-15-php-sem8-part1 %})
+Praktikum Web Semester 8: Part 2
+
+Pada file `database.php` isikan dengan
+
+{% highlight  php %}
+<?php
+class Database
+{
+
+    private $host;
+    private $db_name;
+    private $username;
+    private $password;
+    public $conn;
+
+    function __construct()
+    {
+        $this->host     = 'localhost';
+        $this->username = 'root';
+        $this->password = '';
+        $this->db_name    = 'praktikum_penjualan';
+    }
+
+    public function getConnection()
+    {
+        $this->conn = null;
+        try {
+            $this->conn = new PDO("mysql:host=" . $this->host . ";dbname=" . $this->db_name, $this->username, $this->password);
+            $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            // $this->conn->exec("set names utf8");
+        } catch (PDOException $exception) {
+            echo "Connection error: " . $exception->getMessage();
+        }
+        return $this->conn;
+    }
+}
+{% endhighlight %}
+
+Buat file dan folder berikut
+![Folder1]({{ site.url }}/assets/img/web-8-2/jenisbarang-crud.png)

@@ -1,0 +1,40 @@
+I"€<p><a href="/2021/07/php-sem8-part1">Praktikum Web Semester 8: Part 1</a><br />
+Praktikum Web Semester 8: Part 2</p>
+
+<p>Pada file <code class="language-plaintext highlighter-rouge">database.php</code> isikan dengan</p>
+
+<figure class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<span class="kd">class</span> <span class="nc">Database</span>
+<span class="p">{</span>
+
+    <span class="k">private</span> <span class="nv">$host</span><span class="p">;</span>
+    <span class="k">private</span> <span class="nv">$db_name</span><span class="p">;</span>
+    <span class="k">private</span> <span class="nv">$username</span><span class="p">;</span>
+    <span class="k">private</span> <span class="nv">$password</span><span class="p">;</span>
+    <span class="k">public</span> <span class="nv">$conn</span><span class="p">;</span>
+
+    <span class="k">function</span> <span class="n">__construct</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="n">host</span>     <span class="o">=</span> <span class="s1">'localhost'</span><span class="p">;</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="n">username</span> <span class="o">=</span> <span class="s1">'root'</span><span class="p">;</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="n">password</span> <span class="o">=</span> <span class="s1">''</span><span class="p">;</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="n">db_name</span>    <span class="o">=</span> <span class="s1">'praktikum_penjualan'</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="n">getConnection</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="n">conn</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+        <span class="k">try</span> <span class="p">{</span>
+            <span class="nv">$this</span><span class="o">-&gt;</span><span class="n">conn</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">PDO</span><span class="p">(</span><span class="s2">"mysql:host="</span> <span class="mf">.</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="n">host</span> <span class="mf">.</span> <span class="s2">";dbname="</span> <span class="mf">.</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="n">db_name</span><span class="p">,</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="n">username</span><span class="p">,</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="n">password</span><span class="p">);</span>
+            <span class="nv">$this</span><span class="o">-&gt;</span><span class="n">conn</span><span class="o">-&gt;</span><span class="nf">setAttribute</span><span class="p">(</span><span class="no">PDO</span><span class="o">::</span><span class="no">ATTR_ERRMODE</span><span class="p">,</span> <span class="no">PDO</span><span class="o">::</span><span class="no">ERRMODE_EXCEPTION</span><span class="p">);</span>
+            <span class="c1">// $this-&gt;conn-&gt;exec("set names utf8");</span>
+        <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nc">PDOException</span> <span class="nv">$exception</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">echo</span> <span class="s2">"Connection error: "</span> <span class="mf">.</span> <span class="nv">$exception</span><span class="o">-&gt;</span><span class="nf">getMessage</span><span class="p">();</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="n">conn</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>Buat file dan folder berikut<br />
+<img src="/assets/img/web-8-2/jenisbarang-crud.png" alt="Folder1" /></p>
+:ET
