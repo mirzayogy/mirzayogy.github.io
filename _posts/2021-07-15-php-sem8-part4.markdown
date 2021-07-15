@@ -1,0 +1,52 @@
+---
+layout: post
+title:  "Praktikum Web (PHP) Semester 8: Part 4"
+date:   2021-07-15 03:00:00 +0800
+categories: php
+comments : true
+description: Membuat CRUD sederhana (Read & Create)
+tags: 
+ - php 
+ - web
+ - 202-praktikum-8-web
+---
+
+[Praktikum Web Semester 8: Part 1]({% post_url 2021-07-15-php-sem8-part1 %})
+[Praktikum Web Semester 8: Part 2]({% post_url 2021-07-15-php-sem8-part2 %})
+[Praktikum Web Semester 8: Part 3]({% post_url 2021-07-15-php-sem8-part3 %})
+Praktikum Web Semester 8: Part 4
+
+Buat table `barang` yang memiliki relasi one to many terhadap jenisbarang, ditandai dengan adanya `idjenisbarang` sebagai foreign key
+
+{% highlight  sql %}
+CREATE TABLE `barang` (
+`id` INT NOT NULL AUTO_INCREMENT ,
+`idjenisbarang` int(11) NOT NULL,
+`namabarang` varchar(200) NOT NULL,
+`harga` double NOT NULL,
+PRIMARY KEY (`id`)) ENGINE = InnoDB;
+
+INSERT INTO `barang` (`id`, `idjenisbarang`, `namabarang`, `harga`) VALUES
+(NULL, 1, 'Celana Kargo', 300000),
+(NULL, 1, 'Kemeja Pantai', 250000),
+(NULL, 2, 'Blouse Putih', 270000),
+(NULL, 2, 'Rok Panjang', 350000)
+{% endhighlight %}
+
+Buat table `pengguna` yang digunakan dalam proses otentifikasi pengguna dan pemilahan fitur
+
+{% highlight  sql %}
+CREATE TABLE `pengguna` (
+  `id` INT NOT NULL AUTO_INCREMENT ,
+  `username` varchar(25) NOT NULL,
+  `password` varchar(200) NOT NULL,
+  `namalengkap` varchar(200) NOT NULL,
+  `isadmin` tinyint(1) NOT NULL,
+PRIMARY KEY (`id`)) ENGINE = InnoDB;
+
+INSERT INTO `pengguna` (`id`, `username`, `password`, `namalengkap`, `isadmin`) VALUES
+(NULL, 'admin', md5("admin"), 'Nama Admin', 1),
+(NULL, 'user', md5("user"), 'Nama User', 0);
+{% endhighlight %}
+
+Dengan mengikuti pola pada part2 dan part3 buat fitur CRUD untuk dua tabel tersebut

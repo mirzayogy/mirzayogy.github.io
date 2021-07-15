@@ -1,5 +1,7 @@
-I"�^<p><a href="/2021/07/php-sem8-part1">Praktikum Web Semester 8: Part 1</a><br />
-Praktikum Web Semester 8: Part 2</p>
+I"Go<p><a href="/2021/07/php-sem8-part1">Praktikum Web Semester 8: Part 1</a><br />
+Praktikum Web Semester 8: Part 2<br />
+<a href="/2021/07/php-sem8-part3">Praktikum Web Semester 8: Part 3</a><br />
+<a href="/2021/07/php-sem8-part4">Praktikum Web Semester 8: Part 4</a></p>
 
 <p>Buat sebuah database baru di MySQL dengan nama <code class="language-plaintext highlighter-rouge">praktikum_penjualan</code>, pilih database-nya, buka menu SQL dan jalankan perintah berikut</p>
 
@@ -113,7 +115,9 @@ Praktikum Web Semester 8: Part 2</p>
             <span class="nt">&lt;/table&gt;</span>
         <span class="nt">&lt;/div&gt;</span>
     <span class="nt">&lt;/div&gt;</span>
-<span class="nt">&lt;/section&gt;</span></code></pre></figure>
+<span class="nt">&lt;/section&gt;</span>
+
+<span class="cp">&lt;?php</span> <span class="k">include_once</span> <span class="s2">"components/scripts.php"</span> <span class="cp">?&gt;</span></code></pre></figure>
 
 <p>Tambahkan case pada file <code class="language-plaintext highlighter-rouge">routes.php</code> untuk jenisbarangread</p>
 
@@ -183,7 +187,9 @@ Praktikum Web Semester 8: Part 2</p>
             <span class="nt">&lt;/form&gt;</span>
         <span class="nt">&lt;/div&gt;</span>
     <span class="nt">&lt;/div&gt;</span>
-<span class="nt">&lt;/section&gt;</span></code></pre></figure>
+<span class="nt">&lt;/section&gt;</span>
+
+<span class="cp">&lt;?php</span> <span class="k">include_once</span> <span class="s2">"components/scripts.php"</span> <span class="cp">?&gt;</span></code></pre></figure>
 
 <p>Tambahkan case pada file <code class="language-plaintext highlighter-rouge">routes.php</code> untuk jenisbarangcreate</p>
 
@@ -198,4 +204,38 @@ Praktikum Web Semester 8: Part 2</p>
 <span class="k">default</span><span class="o">:</span>
     <span class="k">include</span> <span class="s2">"pages/404.php"</span><span class="p">;</span>
     <span class="k">break</span><span class="p">;</span></code></pre></figure>
+
+<p>Kembali ke file <code class="language-plaintext highlighter-rouge">jenisbarangread.php</code> tambahkan kedalam div <code class="language-plaintext highlighter-rouge">container-fluid</code> perintah berikut</p>
+
+<figure class="highlight"><pre><code class="language-php" data-lang="php"><span class="nt">&lt;section</span> <span class="na">class=</span><span class="s">"content-header"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"container-fluid"</span><span class="nt">&gt;</span>
+        <span class="cp">&lt;?php</span>
+        <span class="k">if</span> <span class="p">(</span><span class="k">isset</span><span class="p">(</span><span class="nv">$_SESSION</span><span class="p">[</span><span class="s2">"hasil_create"</span><span class="p">]))</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nv">$_SESSION</span><span class="p">[</span><span class="s2">"hasil_create"</span><span class="p">])</span> <span class="p">{</span>
+        <span class="cp">?&gt;</span>
+                <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"alert alert-success alert-dismissible"</span><span class="nt">&gt;</span>
+                    <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"close"</span> <span class="na">data-dismiss=</span><span class="s">"alert"</span> <span class="na">aria-hidden=</span><span class="s">"true"</span><span class="nt">&gt;</span>×<span class="nt">&lt;/button&gt;</span>
+                    <span class="nt">&lt;h5&gt;&lt;i</span> <span class="na">class=</span><span class="s">"icon fas fa-check"</span><span class="nt">&gt;&lt;/i&gt;</span> Berhasil<span class="nt">&lt;/h5&gt;</span>
+                    Tambah data jenis barang berhasil
+                <span class="nt">&lt;/div&gt;</span>
+            <span class="cp">&lt;?php</span>
+            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="cp">?&gt;</span>
+                <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"alert alert-danger alert-dismissible"</span><span class="nt">&gt;</span>
+                    <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"close"</span> <span class="na">data-dismiss=</span><span class="s">"alert"</span> <span class="na">aria-hidden=</span><span class="s">"true"</span><span class="nt">&gt;</span>×<span class="nt">&lt;/button&gt;</span>
+                    <span class="nt">&lt;h5&gt;&lt;i</span> <span class="na">class=</span><span class="s">"icon fas fa-ban"</span><span class="nt">&gt;&lt;/i&gt;</span> Gagal<span class="nt">&lt;/h5&gt;</span>
+                    Tambah data jenis barang gagal
+                <span class="nt">&lt;/div&gt;</span>
+        <span class="cp">&lt;?php</span>
+            <span class="p">}</span>
+            <span class="nb">unset</span><span class="p">(</span><span class="nv">$_SESSION</span><span class="p">[</span><span class="s1">'hasil_create'</span><span class="p">]);</span>
+        <span class="p">}</span>
+        <span class="cp">?&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row mb-2"</span><span class="nt">&gt;</span>
+        ..</code></pre></figure>
+
+<p>Berikut halaman create dan hasil setelah create</p>
+
+<p><img src="/assets/img/web-8-2/jenisbarangcreate.png" alt="create" /><br />
+<img src="/assets/img/web-8-2/jenisbarangreadhasil.png" alt="readhasil" /></p>
 :ET

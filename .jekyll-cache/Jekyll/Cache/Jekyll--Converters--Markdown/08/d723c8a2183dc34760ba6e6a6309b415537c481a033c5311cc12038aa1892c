@@ -1,6 +1,7 @@
-I"�6<p><a href="/2021/07/php-sem8-part1">Praktikum Web Semester 8: Part 1</a><br />
+I"Y<p><a href="/2021/07/php-sem8-part1">Praktikum Web Semester 8: Part 1</a><br />
 <a href="/2021/07/php-sem8-part2">Praktikum Web Semester 8: Part 2</a><br />
-Praktikum Web Semester 8: Part 3</p>
+Praktikum Web Semester 8: Part 3<br />
+<a href="/2021/07/php-sem8-part4">Praktikum Web Semester 8: Part 4</a></p>
 
 <p>Isi <code class="language-plaintext highlighter-rouge">jenisbarangupdate.php</code> dengan</p>
 
@@ -93,32 +94,98 @@ Praktikum Web Semester 8: Part 3</p>
     <span class="k">include</span> <span class="s2">"pages/404.php"</span><span class="p">;</span>
     <span class="k">break</span><span class="p">;</span></code></pre></figure>
 
-<p>Hasil read<br />
-<img src="/assets/img/web-8-2/jenisbarangread.png" alt="Folder1" /></p>
+<p>Kembali ke file <code class="language-plaintext highlighter-rouge">jenisbarangread.php</code> tambahkan kedalam div <code class="language-plaintext highlighter-rouge">container-fluid</code>  perintah berikut</p>
 
-<p>if (isset($_SESSION[“hasil_update”])) {<br />
-            if ($_SESSION[“hasil_update”]) {<br />
-            ?&gt;<br />
-                &lt;div class="alert alert-success alert-dismissible"&gt;<br />
-                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button><br />
-                    &lt;h5&gt;<i class="icon fas fa-check"></i> Berhasil&lt;/h5&gt;<br />
-                    Ubah data jenis barang berhasil<br />
-                &lt;/div&gt;<br />
-            &lt;?php<br />
-            } else {<br />
-            ?&gt;<br />
-                &lt;div class="alert alert-danger alert-dismissible"&gt;<br />
-                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button><br />
-                    &lt;h5&gt;<i class="icon fas fa-ban"></i> Gagal&lt;/h5&gt;<br />
-                    Ubah data jenis barang gagal<br />
-                &lt;/div&gt;<br />
-        &lt;?php<br />
-            }<br />
-            unset($_SESSION[‘hasil_update’]);<br />
-        }</p>
+<figure class="highlight"><pre><code class="language-php" data-lang="php"><span class="mf">..</span>
+<span class="k">if</span> <span class="p">(</span><span class="k">isset</span><span class="p">(</span><span class="nv">$_SESSION</span><span class="p">[</span><span class="s2">"hasil_update"</span><span class="p">]))</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nv">$_SESSION</span><span class="p">[</span><span class="s2">"hasil_update"</span><span class="p">])</span> <span class="p">{</span>
+    <span class="cp">?&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"alert alert-success alert-dismissible"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"close"</span> <span class="na">data-dismiss=</span><span class="s">"alert"</span> <span class="na">aria-hidden=</span><span class="s">"true"</span><span class="nt">&gt;</span>×<span class="nt">&lt;/button&gt;</span>
+            <span class="nt">&lt;h5&gt;&lt;i</span> <span class="na">class=</span><span class="s">"icon fas fa-check"</span><span class="nt">&gt;&lt;/i&gt;</span> Berhasil<span class="nt">&lt;/h5&gt;</span>
+            Ubah data jenis barang berhasil
+        <span class="nt">&lt;/div&gt;</span>
+    <span class="cp">&lt;?php</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="cp">?&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"alert alert-danger alert-dismissible"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"close"</span> <span class="na">data-dismiss=</span><span class="s">"alert"</span> <span class="na">aria-hidden=</span><span class="s">"true"</span><span class="nt">&gt;</span>×<span class="nt">&lt;/button&gt;</span>
+            <span class="nt">&lt;h5&gt;&lt;i</span> <span class="na">class=</span><span class="s">"icon fas fa-ban"</span><span class="nt">&gt;&lt;/i&gt;</span> Gagal<span class="nt">&lt;/h5&gt;</span>
+            Ubah data jenis barang gagal
+        <span class="nt">&lt;/div&gt;</span>
+<span class="cp">&lt;?php</span>
+    <span class="p">}</span>
+    <span class="nb">unset</span><span class="p">(</span><span class="nv">$_SESSION</span><span class="p">[</span><span class="s1">'hasil_update'</span><span class="p">]);</span>
+<span class="p">}</span>
+<span class="mf">..</span></code></pre></figure>
 
-<p>Berikut halaman create dan hasil setelah create</p>
+<p>Berikut halaman update dan hasil setelah update</p>
 
-<p><img src="/assets/img/web-8-2/jenisbarangcreate.png" alt="create" /><br />
-<img src="/assets/img/web-8-2/jenisbarangreadhasil.png" alt="readhasil" /></p>
+<p><img src="/assets/img/web-8-3/jenisbarangupdate.png" alt="update" /><br />
+<img src="/assets/img/web-8-3/jenisbarangreadhasilupdate.png" alt="readhasil" /></p>
+
+<p>Isi <code class="language-plaintext highlighter-rouge">jenisbarangdelete.php</code> dengan</p>
+
+<figure class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<span class="k">if</span> <span class="p">(</span><span class="k">isset</span><span class="p">(</span><span class="nv">$_GET</span><span class="p">[</span><span class="s1">'id'</span><span class="p">]))</span> <span class="p">{</span>
+    <span class="nv">$id</span> <span class="o">=</span> <span class="nv">$_GET</span><span class="p">[</span><span class="s1">'id'</span><span class="p">];</span>
+
+    <span class="k">include_once</span> <span class="s2">"database/database.php"</span><span class="p">;</span>
+    <span class="nv">$database</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Database</span><span class="p">();</span>
+    <span class="nv">$db</span> <span class="o">=</span> <span class="nv">$database</span><span class="o">-&gt;</span><span class="nf">getConnection</span><span class="p">();</span>
+
+    <span class="nv">$deleteSql</span> <span class="o">=</span> <span class="s2">"DELETE FROM jenisbarang WHERE id = ?"</span><span class="p">;</span>
+    <span class="nv">$stmt</span> <span class="o">=</span> <span class="nv">$db</span><span class="o">-&gt;</span><span class="nf">prepare</span><span class="p">(</span><span class="nv">$deleteSql</span><span class="p">);</span>
+    <span class="nv">$stmt</span><span class="o">-&gt;</span><span class="nf">bindParam</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nv">$_GET</span><span class="p">[</span><span class="s1">'id'</span><span class="p">]);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nv">$stmt</span><span class="o">-&gt;</span><span class="nf">execute</span><span class="p">())</span> <span class="p">{</span>
+        <span class="nv">$_SESSION</span><span class="p">[</span><span class="s1">'hasil_delete'</span><span class="p">]</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="nv">$_SESSION</span><span class="p">[</span><span class="s1">'hasil_delete'</span><span class="p">]</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="k">echo</span> <span class="s2">"&lt;meta http-equiv='refresh' content='0;url=?page=jenisbarangread'&gt;"</span><span class="p">;</span></code></pre></figure>
+
+<p>Tambahkan case pada file <code class="language-plaintext highlighter-rouge">routes.php</code> untuk jenisbarangread</p>
+
+<figure class="highlight"><pre><code class="language-php" data-lang="php"><span class="mf">..</span>
+<span class="k">case</span> <span class="s1">'jenisbarangdelete'</span><span class="o">:</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nb">file_exists</span><span class="p">(</span><span class="s1">'pages/admin/jenisbarang/jenisbarangdelete.php'</span><span class="p">))</span> <span class="p">{</span>
+        <span class="k">include</span> <span class="s1">'pages/admin/jenisbarang/jenisbarangdelete.php'</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="k">include</span> <span class="s2">"pages/404.php"</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">break</span><span class="p">;</span>
+<span class="k">default</span><span class="o">:</span>
+    <span class="k">include</span> <span class="s2">"pages/404.php"</span><span class="p">;</span>
+    <span class="k">break</span><span class="p">;</span></code></pre></figure>
+
+<p>Kembali ke file <code class="language-plaintext highlighter-rouge">jenisbarangread.php</code> tambahkan kedalam div <code class="language-plaintext highlighter-rouge">container-fluid</code>  perintah berikut</p>
+
+<figure class="highlight"><pre><code class="language-php" data-lang="php"><span class="mf">..</span>
+<span class="k">if</span> <span class="p">(</span><span class="k">isset</span><span class="p">(</span><span class="nv">$_SESSION</span><span class="p">[</span><span class="s2">"hasil_delete"</span><span class="p">]))</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nv">$_SESSION</span><span class="p">[</span><span class="s2">"hasil_delete"</span><span class="p">])</span> <span class="p">{</span>
+    <span class="cp">?&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"alert alert-success alert-dismissible"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"close"</span> <span class="na">data-dismiss=</span><span class="s">"alert"</span> <span class="na">aria-hidden=</span><span class="s">"true"</span><span class="nt">&gt;</span>×<span class="nt">&lt;/button&gt;</span>
+            <span class="nt">&lt;h5&gt;&lt;i</span> <span class="na">class=</span><span class="s">"icon fas fa-check"</span><span class="nt">&gt;&lt;/i&gt;</span> Berhasil<span class="nt">&lt;/h5&gt;</span>
+            Hapus data jenis barang berhasil
+        <span class="nt">&lt;/div&gt;</span>
+    <span class="cp">&lt;?php</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="cp">?&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"alert alert-danger alert-dismissible"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"close"</span> <span class="na">data-dismiss=</span><span class="s">"alert"</span> <span class="na">aria-hidden=</span><span class="s">"true"</span><span class="nt">&gt;</span>×<span class="nt">&lt;/button&gt;</span>
+            <span class="nt">&lt;h5&gt;&lt;i</span> <span class="na">class=</span><span class="s">"icon fas fa-ban"</span><span class="nt">&gt;&lt;/i&gt;</span> Gagal<span class="nt">&lt;/h5&gt;</span>
+            Hapus data jenis barang gagal
+        <span class="nt">&lt;/div&gt;</span>
+<span class="cp">&lt;?php</span>
+    <span class="p">}</span>
+    <span class="nb">unset</span><span class="p">(</span><span class="nv">$_SESSION</span><span class="p">[</span><span class="s1">'hasil_delete'</span><span class="p">]);</span>
+<span class="p">}</span>
+<span class="mf">..</span></code></pre></figure>
+
+<p>Berikut halaman delete dan hasil setelah delete</p>
+
+<p><img src="/assets/img/web-8-3/jenisbarangdelete.png" alt="delete" /><br />
+<img src="/assets/img/web-8-3/jenisbarangreadhasildelete.png" alt="readhasil" /></p>
 :ET
