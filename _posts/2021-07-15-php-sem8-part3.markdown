@@ -4,7 +4,7 @@ title:  "Praktikum Web (PHP) Semester 8: Part 3"
 date:   2021-07-15 02:00:00 +0800
 categories: php
 comments : true
-description: Membuat CRUD sederhana (Read & Create)
+description: Membuat CRUD sederhana (Update & Delete)
 tags: 
  - php 
  - web
