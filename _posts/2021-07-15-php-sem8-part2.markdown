@@ -13,6 +13,7 @@ tags:
 
 [Praktikum Web Semester 8: Part 1]({% post_url 2021-07-15-php-sem8-part1 %})
 Praktikum Web Semester 8: Part 2
+[Praktikum Web Semester 8: Part 3]({% post_url 2021-07-15-php-sem8-part3 %})
 
 Buat sebuah database baru di MySQL dengan nama `praktikum_penjualan`, pilih database-nya, buka menu SQL dan jalankan perintah berikut
 

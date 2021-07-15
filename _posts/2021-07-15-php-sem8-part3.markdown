@@ -1,0 +1,218 @@
+---
+layout: post
+title:  "Praktikum Web (PHP) Semester 8: Part 3"
+date:   2021-07-15 02:00:00 +0800
+categories: php
+comments : true
+description: Membuat CRUD sederhana (Read & Create)
+tags: 
+ - php 
+ - web
+ - 202-praktikum-8-web
+---
+
+[Praktikum Web Semester 8: Part 1]({% post_url 2021-07-15-php-sem8-part1 %})
+[Praktikum Web Semester 8: Part 2]({% post_url 2021-07-15-php-sem8-part2 %})
+Praktikum Web Semester 8: Part 3
+
+Isi `jenisbarangupdate.php` dengan
+
+{% highlight  php %}
+<?php
+if (isset($_GET['id'])) {
+
+    include_once "database/database.php";
+    $database = new Database();
+    $db = $database->getConnection();
+
+    if (isset($_POST['btnSimpan'])) {
+
+        $updateSql = "UPDATE jenisbarang SET namajenisbarang = ? WHERE id = ?";
+        $stmt = $db->prepare($updateSql);
+        $stmt->bindParam(1, $_POST['namajenisbarang']);
+        $stmt->bindParam(2, $_POST['id']);
+        if ($stmt->execute()) {
+            $_SESSION['hasil_update'] = true;
+        } else {
+            $_SESSION['hasil_update'] = false;
+        }
+        echo "<meta http-equiv='refresh' content='0;url=?page=jenisbarangread'>";
+    }
+
+    $id = $_GET['id'];
+    $findSql = "SELECT * FROM jenisbarang WHERE id = ?";
+    $stmt = $db->prepare($findSql);
+    $stmt->bindParam(1, $_GET['id']);
+    $stmt->execute();
+    $row = $stmt->fetch();
+    if (isset($row['id'])) {
+?>
+        <section class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1>Jenis Barang</h1>
+                    </div>
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a href="?page=home">Home</a></li>
+                            <li class="breadcrumb-item"><a href="?page=jenisbarangread">Jenis Barang</a></li>
+                            <li class="breadcrumb-item active">Ubah Data</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="content">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Ubah Jenis Barang</h3>
+                </div>
+                <div class="card-body">
+                    <form method="POST">
+                        <div class="form-group">
+                            <label for="namajenisbarang">Nama Jenis Barang</label>
+                            <input type="hidden" class="form-control" name="id" value="<?php echo $row['id'] ?>">
+                            <input type="text" class="form-control" name="namajenisbarang" value="<?php echo $row['namajenisbarang'] ?>">
+                        </div>
+                        <a href="?page=jenisbarangread" class="btn btn-danger btn-sm float-right"><i class="fa fa-times"></i> Batal</a>
+                        <button type="submit" name="btnSimpan" class="btn btn-success btn-sm float-right"><i class="fa fa-save"></i> Simpan</button>
+                    </form>
+                </div>
+            </div>
+    <?php
+    } else {
+        $_SESSION['hasil_update'] = false;
+        echo "<meta http-equiv='refresh' content='0;url=?page=jenisbarangread'>";
+    }
+} else {
+    $_SESSION['hasil_update'] = false;
+    echo "<meta http-equiv='refresh' content='0;url=?page=jenisbarangread'>";
+}
+    ?>
+
+<?php include_once "components/scripts.php" ?>
+
+{% endhighlight %}
+
+
+Tambahkan case pada file `routes.php` untuk jenisbarangread
+
+{% highlight  php %}
+..
+case 'jenisbarangupdate':
+    if (file_exists('pages/admin/jenisbarang/jenisbarangupdate.php')) {
+        include 'pages/admin/jenisbarang/jenisbarangupdate.php';
+    } else {
+        include "pages/404.php";
+    }
+    break;
+default:
+    include "pages/404.php";
+    break;
+{% endhighlight %}
+
+Kembali ke file `jenisbarangread.php` tambahkan kedalam div `container-fluid`  perintah berikut 
+
+{% highlight  php %}
+..
+if (isset($_SESSION["hasil_update"])) {
+    if ($_SESSION["hasil_update"]) {
+    ?>
+        <div class="alert alert-success alert-dismissible">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+            <h5><i class="icon fas fa-check"></i> Berhasil</h5>
+            Ubah data jenis barang berhasil
+        </div>
+    <?php
+    } else {
+    ?>
+        <div class="alert alert-danger alert-dismissible">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+            <h5><i class="icon fas fa-ban"></i> Gagal</h5>
+            Ubah data jenis barang gagal
+        </div>
+<?php
+    }
+    unset($_SESSION['hasil_update']);
+}
+..
+{% endhighlight %}
+
+Berikut halaman update dan hasil setelah update
+
+![update]({{ site.url }}/assets/img/web-8-3/jenisbarangupdate.png)
+![readhasil]({{ site.url }}/assets/img/web-8-3/jenisbarangreadhasilupdate.png)
+
+
+Isi `jenisbarangdelete.php` dengan
+
+{% highlight  php %}
+<?php
+if (isset($_GET['id'])) {
+    $id = $_GET['id'];
+
+    include_once "database/database.php";
+    $database = new Database();
+    $db = $database->getConnection();
+
+    $deleteSql = "DELETE FROM jenisbarang WHERE id = ?";
+    $stmt = $db->prepare($deleteSql);
+    $stmt->bindParam(1, $_GET['id']);
+    if ($stmt->execute()) {
+        $_SESSION['hasil_delete'] = true;
+    } else {
+        $_SESSION['hasil_delete'] = false;
+    }
+}
+echo "<meta http-equiv='refresh' content='0;url=?page=jenisbarangread'>";
+{% endhighlight %}
+
+
+Tambahkan case pada file `routes.php` untuk jenisbarangread
+
+{% highlight  php %}
+..
+case 'jenisbarangdelete':
+    if (file_exists('pages/admin/jenisbarang/jenisbarangdelete.php')) {
+        include 'pages/admin/jenisbarang/jenisbarangdelete.php';
+    } else {
+        include "pages/404.php";
+    }
+    break;
+default:
+    include "pages/404.php";
+    break;
+{% endhighlight %}
+
+Kembali ke file `jenisbarangread.php` tambahkan kedalam div `container-fluid`  perintah berikut 
+
+{% highlight  php %}
+..
+if (isset($_SESSION["hasil_delete"])) {
+    if ($_SESSION["hasil_delete"]) {
+    ?>
+        <div class="alert alert-success alert-dismissible">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+            <h5><i class="icon fas fa-check"></i> Berhasil</h5>
+            Hapus data jenis barang berhasil
+        </div>
+    <?php
+    } else {
+    ?>
+        <div class="alert alert-danger alert-dismissible">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+            <h5><i class="icon fas fa-ban"></i> Gagal</h5>
+            Hapus data jenis barang gagal
+        </div>
+<?php
+    }
+    unset($_SESSION['hasil_delete']);
+}
+..
+{% endhighlight %}
+
+Berikut halaman delete dan hasil setelah delete
+
+![delete]({{ site.url }}/assets/img/web-8-3/jenisbarangdelete.png)
+![readhasil]({{ site.url }}/assets/img/web-8-3/jenisbarangreadhasildelete.png)

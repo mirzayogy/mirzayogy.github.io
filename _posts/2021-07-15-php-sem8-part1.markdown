@@ -13,6 +13,7 @@ tags:
 
 Praktikum Web Semester 8: Part 1
 [Praktikum Web Semester 8: Part 2]({% post_url 2021-07-15-php-sem8-part2 %})
+[Praktikum Web Semester 8: Part 3]({% post_url 2021-07-15-php-sem8-part3 %})
 
 Use Case Diagram untuk praktikum ini
 
