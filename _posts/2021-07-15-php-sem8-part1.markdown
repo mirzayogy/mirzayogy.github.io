@@ -1,0 +1,651 @@
+---
+layout: post
+title:  "Praktikum Web (PHP) Semester 8: Part 1"
+date:   2021-07-15 00:00:00 +0800
+categories: php
+comments : true
+description: Menggunakan template AdminLTE3
+tags: 
+ - php 
+ - web
+ - 202-praktikum-8-web
+---
+
+Praktikum Web Semester 8: Part 1
+
+Use Case Diagram untuk praktikum ini
+
+![UseCaseDiagram]({{ site.url }}/assets/UseCaseDiagram.png)
+
+Class Diagram untuk praktikum ini
+
+![ClassDiagram]({{ site.url }}/assets/ClassDiagram.png)
+
+Tools yang digunakan
+1. Text editor: Visual Studio Code / Sublime / Atom / Notepad++
+2. MySQL
+3. GitHub Desktop
+4. <a href="https://github.com/ColorlibHQ/AdminLTE/archive/refs/tags/v3.1.0.zip" target="_blank">AdminLTE 3.1.0</a>
+
+Buat sebuah database baru di MySQL dengan nama `praktikum_penjualan`, pilih database-nya, buka menu SQL dan jalankan perintah berikut
+
+{% highlight  sql %}
+CREATE TABLE `jenisbarang` (
+`id` INT NOT NULL AUTO_INCREMENT ,
+`namajenisbarang` VARCHAR(200) NOT NULL ,
+PRIMARY KEY (`id`)) ENGINE = InnoDB;
+
+INSERT INTO `jenisbarang` (`id`, `namajenisbarang`) VALUES 
+(NULL, 'Pakaian pria'), 
+(NULL, 'Pakaian wanita') 
+
+{% endhighlight %}
+
+Download template <a href="https://github.com/ColorlibHQ/AdminLTE/archive/refs/tags/v3.1.0.zip" target="_blank">AdminLTE 3.1.0</a> kemudian extract.
+
+Buat folder baru pada `htdocs` dengan nama bebas, sebagai contoh pada project ini menggunakan nama `praktikum-penjualan`, kemudian pindahkan folder AdminLTE-3.1.0 kedalamnya.
+
+Salin folder `dist` dan folder `plugins` ke folder praktikum-penjualan. Salin juga file `index.html`
+
+![Folder1]({{ site.url }}/assets/img/web-8-1/folder-1.png)
+
+Coba buka pada `localhost/praktikum-penjualan` untuk memastikan semua plugin bisa berjalan
+
+![AdminLTE]({{ site.url }}/assets/img/web-8-1/adminlte.png)
+
+Tambahkan folder dan file-file berikut, untuk sementara biarkan kosong, ubah juga file `index.html` menjad `index.php`. 
+
+![Folder2]({{ site.url }}/assets/img/web-8-1/folder-2.png)
+
+Ganti isi file `index.php` dengan
+
+{% highlight  php %}
+
+<?php 
+session_start();
+?>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <?php 
+  include_once "components/head.php";
+  include_once "library/library.php";
+  ?>
+</head>
+
+<body class="hold-transition sidebar-mini">
+  <div class="wrapper">
+    <?php
+    include_once "components/navbar.php";
+    include_once "components/sidebar.php";
+    ?>
+    <div class="content-wrapper">
+      <?php include_once "routes/routes.php" ?>
+    </div>
+    <?php include_once "components/footer.php" ?>
+  </div>
+  <?php include_once "components/scripts.php" ?>
+</body>
+
+</html>
+{% endhighlight %}
+
+Isi file `head.php` dengan
+
+{% highlight  php %}
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Praktikum Penjualan</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+<link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
+<link rel="stylesheet" href="dist/css/adminlte.min.css">
+{% endhighlight %}
+
+Isi file `navbar.php` dengan
+
+{% highlight  php %}
+<nav class="main-header navbar navbar-expand navbar-white navbar-light">
+    <ul class="navbar-nav">
+        <li class="nav-item">
+            <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+        </li>
+    </ul>
+
+    <ul class="navbar-nav ml-auto">
+        <li class="nav-item dropdown">
+            <a class="nav-link" data-toggle="dropdown" href="#">
+                <i class="fas fa-th-large"></i>
+            </a>
+            <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+                <span class="dropdown-item dropdown-header">Pengaturan Pengguna</span>
+                <a href="#" class="dropdown-item">
+                    <i class="fas fa-key mr-2"></i> Ubah Password
+                </a>
+                <a href="#" class="dropdown-item">
+                    <i class="fas fa-sign-out-alt mr-2"></i> Logout
+                </a>
+            </div>
+        </li>
+    </ul>
+</nav>
+{% endhighlight %}
+
+Isi file `sidebar.php` dengan
+
+{% highlight  php %}
+<aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <a href="#" class="brand-link">
+        <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+        <span class="brand-text font-weight-light">Penjualan</span>
+    </a>
+    <div class="sidebar">
+        <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+            <div class="image">
+                <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+            </div>
+            <div class="info">
+                <a href="#" class="d-block">Admin</a>
+            </div>
+        </div>
+        <nav class="mt-2">
+            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                <li class="nav-item">
+                    <a href="?page=home" class="nav-link active">
+                        <i class="nav-icon fas fa-home"></i>
+                        <p>
+                            Home
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="?page=jenisbarangread" class="nav-link">
+                        <i class="nav-icon fas fa-cube"></i>
+                        <p>
+                            Jenis barang
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="?page=barangread" class="nav-link">
+                        <i class="nav-icon fas fa-cubes"></i>
+                        <p>
+                            Barang
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="?page=penggunaread" class="nav-link">
+                        <i class="nav-icon fas fa-users"></i>
+                        <p>
+                            Pengguna
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-copy"></i>
+                        <p>
+                            Laporan Penjualan
+                            <i class="fas fa-angle-left right"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Penjualan</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>per Jenis Barang</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>per Barang</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>per Pengguna</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-header">KASIR</li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-shopping-cart"></i>
+                        <p>
+                            Keranjang Belanja
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon far fa-list-alt"></i>
+                        <p>
+                            Penjualan
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-hand-paper"></i>
+                        <p>
+                            Pending
+                            <span class="badge badge-info right">2</span>
+                        </p>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</aside>
+{% endhighlight %}
+
+Isi file `routes.php` dengan
+
+{% highlight  php %}
+<?php
+if (isset($_GET['page'])) {
+    $page = $_GET['page'];
+    switch ($page) {
+        case '':
+            if (file_exists('pages/home.php')) {
+                include 'pages/home.php';
+            } else {
+                include "pages/404.php";
+            }
+            break;
+        case 'home':
+            if (file_exists('pages/home.php')) {
+                include 'pages/home.php';
+            } else {
+                include "pages/404.php";
+            }
+            break;
+        default:
+            include "pages/404.php";
+            break;
+    }
+} else {
+    include "pages/home.php";
+}
+
+{% endhighlight %}
+
+Isi file `footer.php` dengan
+
+{% highlight  php %}
+<footer class="main-footer">
+    <div class="float-right d-none d-sm-block">
+        <b>Version</b> 0.1.0
+    </div>
+    <strong>Copyright &copy; 2021 <a href="https://mirzayogy.github.io">Praktikum Web</a>.</strong> All rights reserved.
+</footer>
+{% endhighlight %}
+
+Isi file `scripts.php` dengan
+
+{% highlight  php %}
+<script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="dist/js/adminlte.min.js"></script>
+<script src="dist/js/demo.js"></script>
+{% endhighlight %}
+
+Isi file `404.php` dengan
+
+{% highlight  php %}
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>404 Error Page</h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="?page=home">Home</a></li>
+                    <li class="breadcrumb-item active">404 Error Page</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="content">
+    <div class="error-page">
+        <h2 class="headline text-warning"> 404</h2>
+        <div class="error-content">
+            <h3><i class="fas fa-exclamation-triangle text-warning"></i> Oops! Page not found.</h3>
+            <p>
+                We could not find the page you were looking for.
+                Meanwhile, you may <a href="?page=home">return to dashboard</a> or try using the search form.
+            </p>
+            <form class="search-form">
+                <div class="input-group">
+                    <input type="text" name="search" class="form-control" placeholder="Search">
+                    <div class="input-group-append">
+                        <button type="submit" name="submit" class="btn btn-warning"><i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+{% endhighlight %}
+
+
+Isi file `home.php` dengan
+
+{% highlight  php %}
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>Blank Page</h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item active">Home</li>
+                </ol>
+            </div>
+        </div>
+    </div><!-- /.container-fluid -->
+</section>
+<section class="content">
+    <div class="card">
+        <div class="card-header">
+            <h3 class="card-title">Title</h3>
+        </div>
+        <div class="card-body">
+            Start creating your amazing application!
+        </div>
+        <div class="card-footer">
+            Footer
+        </div>
+    </div>
+</section>
+
+<script src="plugins/jquery/jquery.min.js"></script>
+{% endhighlight %}
+
+Berikut preview hasilnya
+
+![Preview]({{ site.url }}/assets/img/web-8-1/preview.png)
+
+
+<a href="https://www.youtube.com/watch?v=jlteXciXQJM&list=PLlBn2dsdFy7B3tXOrhBn7kfuWgSXDKXpk&index=1" target="_blank">Playlist Android untuk Pemula</a>
+
+Mengelola data bisa dengan menggunakan beberapa cara diantaranya
+1. SharedPreferences untuk data kecil
+2. SQLite untuk penyimpanan data local
+3. Menggunakan Web Service / Web API sebagai backend
+
+
+
+Beberapa Web Service sederhana yang bisa digunakan sebagai latihan
+1. <a href="https://reqres.in/api/users?page=1" target="_blank">https://reqres.in/api/users?page=1</a>
+2. <a href="https://randomuser.me/api/" target="_blank">https://randomuser.me/api/</a>
+3. <a href="https://quote-api.dicoding.dev/list" target="_blank">https://quote-api.dicoding.dev/list</a>
+
+Web service kompleks yang gratis sampai pemakaian tertentu
+1. <a href="https://www.football-data.org/" target="_blank">https://www.football-data.org/</a>
+2. <a href="https://developers.themoviedb.org/3/getting-started/introduction" target="_blank">https://developers.themoviedb.org/3/getting-started/introduction</a>
+3. <a href="https://openweathermap.org/api" target="_blank">https://openweathermap.org/api</a>
+
+Dan tentu masih banyak Web Service lainnya yang bisa ditemui, seperti untuk pengiriman paket, pemesanan tiket, dan lainnya.
+
+Pada part 1 ini akan digunakan web service yang sederhana dulu agar bisa dipraktekkan cara menghubungkan aplikasi android dengan web service yang sudah ada
+
+Buat project baru pada Android Studio
+
+tambahkan pada `build.graddle.app`
+{% highlight  xml %}
+    plugins {
+        ...
+        id 'kotlin-android-extensions'
+        ...
+    }
+    ...
+    android{
+        ...
+        buildFeatures {
+        viewBinding = true
+        }
+    }
+    ...
+    dependencies{
+        ...
+        implementation "com.squareup.retrofit2:retrofit:2.9.0"
+        implementation "com.squareup.retrofit2:converter-moshi:2.9.0"
+        implementation "com.squareup.moshi:moshi-kotlin:1.9.3"
+        implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0"
+    }
+{% endhighlight %}
+
+`Retrofit` ini adalah HTTP client yang bisa digunakan untuk melakukan request, singkatnya untuk memanggil internet. Sedangkan `Moshi` digunakan sebagai penerjemah JSON yang didapat dari hasil request. Kedua dependency tadi dihubungkan melalui `retrofit:converter-moshi`. `Androidx Lifecycle` digunakan untuk mengimplementasikan `ViewModel` pada project kali ini. Jangan lupa untuk melakukan sync dengan klik `Sync Now`.
+
+Project ini akan melakukan HTTP request atau menghubungkan diri dengan internet, maka perlu ditambahkan permission pada `AndroidManifest.xml`
+{% highlight  xml %}
+...
+<uses-permission android:name="android.permission.INTERNET" />
+
+<application
+
+{% endhighlight %}
+
+Web service yang digunakan adalah link berikut
+
+    https://reqres.in/api/users?page=1
+
+Link tersebut bisa dibuka menggunakan web browser biasa. Firefox sudah support untuk pembacaan JSON, Chrome perlu extensi (contoh: "JSON Formatter") agar bisa menyajikan JSON dengan rapi, atau untuk lebih detail dan proses pengujian lebih lanjut bisa digunakan <a href="https://www.postman.com/downloads/" target="_blank">Postman</a> yang mana sekarang tersedia juga versi web-nya
+
+Berikut contoh hasil request ke `reqres.in`
+{% highlight  JSON %}
+{
+    "page":1,
+    "per_page":6,
+    "total":12,
+    "total_pages":2,
+    "data":[
+        {
+            "id":1,
+            "email":"george.bluth@reqres.in",
+            "first_name":"George",
+            "last_name":"Bluth",
+            "avatar":"https://reqres.in/img/faces/1-image.jpg"
+        },
+        {
+            "id":2,
+            "email":"janet.weaver@reqres.in",
+            "first_name":"Janet",
+            "last_name":"Weaver",
+            "avatar":"https://reqres.in/img/faces/2-image.jpg"
+        },
+        {
+            "id":3,
+            "email":"emma.wong@reqres.in",
+            "first_name":"Emma",
+            "last_name":"Wong",
+            "avatar":"https://reqres.in/img/faces/3-image.jpg"
+        },
+        {
+            "id":4,
+            "email":"eve.holt@reqres.in",
+            "first_name":"Eve",
+            "last_name":"Holt",
+            "avatar":"https://reqres.in/img/faces/4-image.jpg"
+        },
+        {
+            "id":5,
+            "email":"charles.morris@reqres.in",
+            "first_name":"Charles",
+            "last_name":"Morris",
+            "avatar":"https://reqres.in/img/faces/5-image.jpg"
+        },
+        {
+            "id":6,
+            "email":"tracey.ramos@reqres.in",
+            "first_name":"Tracey",
+            "last_name":"Ramos",
+            "avatar":"https://reqres.in/img/faces/6-image.jpg"
+        }
+    ],
+    "support":
+        {
+            "url":"https://reqres.in/#support-heading",
+            "text":"To keep ReqRes free, contributions towards server costs are appreciated!"
+        }
+}
+{% endhighlight %}
+
+Data tersebut akan diterjemahkan dalam bentuk object pada Android Studio dengan membuat Class yang strukturnya mirip.
+
+Buat package `model` kemudian didalamnya buat sebuah data class dengan nama `User` dan isikan dengan
+
+{% highlight  kotlin %}
+
+data class User(
+    val page: Int,
+    val per_page: Int,
+    val total: Int,
+    val total_pages: Int,
+    val data : List<UserData>
+)
+
+data class UserData(
+    @field:Json(name = "@id")
+    val id: Int,
+    @field:Json(name = "@email")
+    val email: String,
+    @field:Json(name = "@first_name")
+    val first_name: String,
+    @field:Json(name = "@last_name")
+    val last_name: String,
+    @field:Json(name = "@avatar")
+    val avatar: String
+)
+{% endhighlight %}
+
+Berikutnya diperlukan sebuah interface untuk melakukan request menggunakan retrofit. Buat package `network` kemudian didalamnya buat sebuah class dengan nama `ApiService` dan isikan dengan
+
+{% highlight  kotlin %}
+
+private const val BASE_URL = "https://reqres.in/api/"
+
+private val moshi = Moshi.Builder()
+    .add(KotlinJsonAdapterFactory())
+    .build()
+
+private val retrofit = Retrofit.Builder()
+    .addConverterFactory(MoshiConverterFactory.create(moshi))
+    .baseUrl(BASE_URL)
+    .build()
+
+
+interface ApiService {
+    @GET("users?page=1")
+    suspend fun getUsers(): User
+}
+
+object Api {
+    val retrofitService : ApiService by lazy {
+        retrofit.create(ApiService::class.java) }
+}
+{% endhighlight %}
+
+`BASE_URL` merupakan link utama yang akan di-request, sedangkan parameter detailnya ditambahkan pada methof `getUsers()` bisa diperhatikan pada `@GET("users?page=1")` yang merupakan argumen tambahan kepada BASE_URL
+
+Data hasil request akan diproses dalam sebuah `ViewModel` untuk dapat ditampilkan kedalam activity, praktek ini digunakan agar data tetap tersimpan ketika state berubah dan memungkinkan untuk dilakukan unit testing terhadap request datanya. Buat package `ui` didalamnya buat lagi package `user` didalamnya buat sebuah class `UserViewModel` dan isikan dengan
+
+{% highlight  kotlin %}
+class UserViewModel :ViewModel() {
+    private val _response = MutableLiveData<User>()
+
+    val response: LiveData<User>
+        get() = _response
+
+    init {
+        setResponse()
+    }
+
+    private fun setResponse() {
+        viewModelScope.launch {
+            try {
+                val listResult = Api.retrofitService.getUsers()
+                _response.value = listResult
+            } catch (e: Exception) {
+                _response.value = null
+            }
+        }
+    }
+}
+{% endhighlight %}
+
+class `UserViewModel` merupakan extends atau turunan atau subclass dari `ViewModel`, didalamnya terdapat atribut `_response` dengan tipe MutableLiveData dengan isi object dari User. Sedangkan `response` dengan tipe LiveData digunakan sebagai interface yang ditampilkan pada activity. Method `setResponse` dijalankan pada `init` atau ketika ViewModel di-instance, yang mana method tersebut beriskan CoroutineScope dengan try-catch proses request data menggunakan retrofit dan hasilnya disimpan di `_response`.
+
+Pengujian cepat untuk melihat hasil request bisa dilakukan sementara pada `MainActivity` dengan ditambahkan sedikit modifikasi terlebih dahulu pada layout `activity_main.xml`
+{% highlight  xml %}
+...
+    <TextView
+        android:id="@+id/tvMainActivity"
+        ...
+        />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+...
+
+{% endhighlight %}
+
+Modifikasi dilakukan dengan menambahkan id pada TextView yang sudah ada, dan menambahkan `ProgressBar`. Sedangkan modifikasi pada `MainActivity` adalah sebagai berikut
+
+{% highlight  kotlin %}
+...
+class MainActivity : AppCompatActivity() {
+
+    private lateinit var binding:ActivityMainBinding
+    private val viewModel: UserViewModel by lazy {
+        ViewModelProvider(this).get(UserViewModel::class.java)
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        binding.progressBar.visibility = View.VISIBLE
+
+        viewModel.response.observe(this, {
+            binding.progressBar.visibility = View.INVISIBLE
+            binding.tvMainActivity.text = it.data[0].first_name
+        })
+
+    }
+}
+{% endhighlight %}
+
+Project ini menggunakan teknik viewBinding sehingga perlu dibuat dulu sebuah atribut `binding` dengan tipe ActivityMainBinding dan parameter `setContentView` pada onCreate dirubah menyesuaikan dengan binding, atribut `viewModel` dibuat dengan tipe UserViewModel. Ketika dijalankan aplikasi akan melakukan request data kemudian menampilkan data pertama dari data user yang ada kedalam TextView. 
+
+OK Proses request data berhasil.
+
+Praktikum Android Semester 7: Part 1
+[Praktikum Android Semester 7: Part 2]({% post_url 2021-02-14-android-sem7-part2 %})
+[Praktikum Android Semester 7: Part 3]({% post_url 2021-02-27-android-sem7-part3 %})
+[Praktikum Android Semester 7: Part 4]({% post_url 2021-03-06-android-sem7-part4 %})
+[Praktikum Android Semester 7: Part 5]({% post_url 2021-03-08-android-sem7-part5 %})
+
