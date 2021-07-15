@@ -60,15 +60,14 @@ Tambahkan folder dan file-file berikut, untuk sementara biarkan kosong, ubah jug
 Ganti isi file `index.php` dengan
 
 {% highlight  php %}
-
-<?php 
+<?php
 session_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-  <?php 
+  <?php
   include_once "components/head.php";
   include_once "library/library.php";
   ?>
@@ -85,7 +84,6 @@ session_start();
     </div>
     <?php include_once "components/footer.php" ?>
   </div>
-  <?php include_once "components/scripts.php" ?>
 </body>
 
 </html>
@@ -294,6 +292,7 @@ Isi file `footer.php` dengan
 Isi file `scripts.php` dengan
 
 {% highlight  php %}
+<script src="plugins/jquery/jquery.min.js"></script>
 <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <script src="dist/js/adminlte.min.js"></script>
 <script src="dist/js/demo.js"></script>
@@ -372,7 +371,7 @@ Isi file `home.php` dengan
     </div>
 </section>
 
-<script src="plugins/jquery/jquery.min.js"></script>
+<?php include_once "components/scripts.php" ?>
 {% endhighlight %}
 
 Berikut preview hasilnya
