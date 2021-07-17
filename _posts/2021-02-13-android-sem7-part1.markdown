@@ -59,7 +59,7 @@ tambahkan pada `build.graddle.app`
         implementation "com.squareup.retrofit2:retrofit:2.9.0"
         implementation "com.squareup.retrofit2:converter-moshi:2.9.0"
         implementation "com.squareup.moshi:moshi-kotlin:1.9.3"
-        implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0"
+        implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1"
     }
 {% endhighlight %}
 
@@ -200,9 +200,9 @@ Data hasil request akan diproses dalam sebuah `ViewModel` untuk dapat ditampilka
 
 {% highlight  kotlin %}
 class UserViewModel :ViewModel() {
-    private val response = MutableLiveData<User>()
+    val response = MutableLiveData<User>()
 
-    private fun getUsers() {
+    fun getUsers() {
         viewModelScope.launch {
             try {
                 val listResult = Api.retrofitService.getUsers()
@@ -257,6 +257,7 @@ class MainActivity : AppCompatActivity() {
 
         binding.progressBar.visibility = View.VISIBLE
 
+        viewModel.getUsers()
         viewModel.response.observe(this, {
             binding.progressBar.visibility = View.INVISIBLE
             binding.tvMainActivity.text = it.data[0].first_name
