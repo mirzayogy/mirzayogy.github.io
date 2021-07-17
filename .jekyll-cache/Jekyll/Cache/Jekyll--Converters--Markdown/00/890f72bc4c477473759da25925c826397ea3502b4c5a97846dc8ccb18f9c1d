@@ -1,0 +1,132 @@
+I"�@<p><a href="/2021/07/android-sem7-part1">Praktikum Android Semester 7: Part 1</a><br />
+<a href="/2021/07/android-sem7-part2">Praktikum Android Semester 7: Part 2</a><br />
+<a href="/2021/07/android-sem7-part3">Praktikum Android Semester 7: Part 3</a><br />
+<a href="/2021/07/android-sem7-part4">Praktikum Android Semester 7: Part 4</a><br />
+<a href="/2021/07/android-sem7-part5">Praktikum Android Semester 7: Part 5</a><br />
+<a href="/2021/07/android-sem7-part6">Praktikum Android Semester 7: Part 6</a></p>
+
+<p>Pada button edit dan delete diperlukan gambar untuk memperkecil ukuran tombol, ketimbang harus menuliskan kata ‘EDIT’ dan ‘DELETE’ yang akan banyak menghabiskan ruang. Menambahkan gambar icon bisa menggunakan <code class="language-plaintext highlighter-rouge">Vector Asset</code> yang sudah disediakan Android Studio.</p>
+
+<p>Pilih package <code class="language-plaintext highlighter-rouge">res/drawable</code>, klik kanan <code class="language-plaintext highlighter-rouge">New</code> -&gt; <code class="language-plaintext highlighter-rouge">Vector Asset</code>, klik tombol pada <code class="language-plaintext highlighter-rouge">Clip Art</code> dan cari icon untuk edit, klik OK -&gt; Next -&gt; Finish. Ulangi cara yang sama untuk icon delete.</p>
+
+<p>Masuk pada layout <code class="language-plaintext highlighter-rouge">item_row_jenisbarang</code>, akan ditambahkan tombol pada layout ini</p>
+
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="cp">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span>
+<span class="nt">&lt;LinearLayout</span> <span class="na">xmlns:android=</span><span class="s">"http://schemas.android.com/apk/res/android"</span>
+    <span class="na">xmlns:tools=</span><span class="s">"http://schemas.android.com/tools"</span>
+    <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+    <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+    <span class="na">android:orientation=</span><span class="s">"horizontal"</span>
+    <span class="na">android:padding=</span><span class="s">"16dp"</span><span class="nt">&gt;</span>
+
+    <span class="nt">&lt;TextView</span>
+        <span class="na">android:id=</span><span class="s">"@+id/tvNamaJenisbarang"</span>
+        <span class="na">android:layout_width=</span><span class="s">"0dp"</span>
+        <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+        <span class="na">android:layout_weight=</span><span class="s">"1"</span>
+        <span class="na">android:layout_marginBottom=</span><span class="s">"4dp"</span>
+        <span class="na">android:textSize=</span><span class="s">"16sp"</span>
+        <span class="na">android:textStyle=</span><span class="s">"bold"</span>
+        <span class="na">tools:text=</span><span class="s">"Name"</span> <span class="nt">/&gt;</span>
+
+
+        <span class="nt">&lt;ImageButton</span>
+            <span class="na">android:id=</span><span class="s">"@+id/btnEdit"</span>
+            <span class="na">android:layout_width=</span><span class="s">"wrap_content"</span>
+            <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+            <span class="na">android:src=</span><span class="s">"@drawable/ic_baseline_edit_24"</span>
+            <span class="na">android:backgroundTint=</span><span class="s">"@android:color/holo_green_light"</span>
+            <span class="nt">/&gt;</span>
+        <span class="nt">&lt;ImageButton</span>
+            <span class="na">android:id=</span><span class="s">"@+id/btnDelete"</span>
+            <span class="na">android:layout_width=</span><span class="s">"wrap_content"</span>
+            <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+            <span class="na">android:src=</span><span class="s">"@drawable/ic_baseline_delete_24"</span>
+            <span class="na">android:backgroundTint=</span><span class="s">"@android:color/holo_red_light"</span>
+            <span class="nt">/&gt;</span>
+<span class="nt">&lt;/LinearLayout&gt;</span></code></pre></figure>
+
+<p>sesuaikan atribut <code class="language-plaintext highlighter-rouge">src</code> pada <code class="language-plaintext highlighter-rouge">ImageButton</code> dengan nama icon yang sudah dibuat sebelumnya.</p>
+
+<p>Kembali ke PHP, buka file <code class="language-plaintext highlighter-rouge">jenisbarang.php</code> tambahkan method</p>
+
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml">function delete()
+{
+    $deleteSQL = "DELETE FROM jenisbarang WHERE id = ?";
+    $stmt = $this-&gt;conn-&gt;prepare($deleteSQL);
+    $stmt-&gt;bindParam(1, $this-&gt;id);
+    return $stmt-&gt;execute() ? true : false;
+}</code></pre></figure>
+
+<p>Pada <a href="/2021/07/android-sem7-part5">Praktikum Android Semester 7: Part 5</a> aplikasi sudah mampu menyimpan data dengan method POST, tapi recyclerview belum direfresh secara otomatis. Selain itu activity JenisbarangPost hanya bisa menyimpan untuk proses simpan tambah data, sedangkan nantinya akan digunakan juga untuk proses simpan ubah data, sehingga perlu dipisahkan fungsinya.</p>
+
+<p>Agar bisa direfresh dengan baik maka method <code class="language-plaintext highlighter-rouge">getListJenisbarang()</code> pada <code class="language-plaintext highlighter-rouge">JenisbarangActivity</code> perlu ditambahkan method <code class="language-plaintext highlighter-rouge">list.clear()</code> sebelum <code class="language-plaintext highlighter-rouge">list.addAll(it.data)</code></p>
+
+<figure class="highlight"><pre><code class="language-kotlin" data-lang="kotlin"><span class="k">private</span> <span class="k">fun</span> <span class="nf">getListJenisbarang</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">viewModel</span><span class="p">.</span><span class="nf">getJenisbarang</span><span class="p">()</span>
+    <span class="n">viewModel</span><span class="p">.</span><span class="n">response</span><span class="p">.</span><span class="nf">observe</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="p">{</span>
+        <span class="n">binding</span><span class="p">.</span><span class="n">progressBarJenisbarang</span><span class="p">.</span><span class="n">visibility</span> <span class="p">=</span> <span class="nc">View</span><span class="p">.</span><span class="nc">INVISIBLE</span>
+        <span class="n">list</span><span class="p">.</span><span class="nf">clear</span><span class="p">()</span>
+        <span class="n">list</span><span class="p">.</span><span class="nf">addAll</span><span class="p">(</span><span class="n">it</span><span class="p">.</span><span class="n">data</span><span class="p">)</span>
+        <span class="n">binding</span><span class="p">.</span><span class="n">rvJenisbarang</span><span class="p">.</span><span class="n">layoutManager</span> <span class="p">=</span> <span class="nc">LinearLayoutManager</span><span class="p">(</span><span class="k">this</span><span class="p">)</span>
+        <span class="kd">val</span> <span class="py">listJenisbarangAdapter</span> <span class="p">=</span> <span class="nc">ListJenisbarangAdapter</span><span class="p">(</span><span class="n">list</span><span class="p">)</span>
+        <span class="n">binding</span><span class="p">.</span><span class="n">rvJenisbarang</span><span class="p">.</span><span class="n">adapter</span> <span class="p">=</span> <span class="n">listJenisbarangAdapter</span>
+    <span class="p">})</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>Berikutnya, karena onActivityResult sudah deprecated, maka kita gunakan penggantinya dengan menggunakan  <code class="language-plaintext highlighter-rouge">ActivityResultContracts</code>. Tambahkan perintah berikut pada JenisbarangActivity</p>
+
+<figure class="highlight"><pre><code class="language-kotlin" data-lang="kotlin"><span class="k">private</span> <span class="kd">val</span> <span class="py">getContract</span> <span class="p">=</span> <span class="nf">registerForActivityResult</span><span class="p">(</span><span class="nc">ActivityResultContracts</span><span class="p">.</span><span class="nc">StartActivityForResult</span><span class="p">()){</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">it</span><span class="p">.</span><span class="n">resultCode</span> <span class="p">==</span> <span class="nc">RESULT_OK</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nf">getListJenisbarang</span><span class="p">()</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>pada <code class="language-plaintext highlighter-rouge">btTambahJenisbarang.setOnClickListener</code> yang berfungsi untuk memanggil JenisbarangPostActivity ditambahkan extra STATUS yang berisikan TAMBAH dan <code class="language-plaintext highlighter-rouge">startActivity</code> diganti dengan <code class="language-plaintext highlighter-rouge">getContract.launch(intent)</code></p>
+
+<figure class="highlight"><pre><code class="language-kotlin" data-lang="kotlin"><span class="n">binding</span><span class="p">.</span><span class="n">btTambahJenisbarang</span><span class="p">.</span><span class="nf">setOnClickListener</span><span class="p">{</span>
+    <span class="kd">val</span> <span class="py">intent</span> <span class="p">=</span> <span class="nc">Intent</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="nc">JenisbarangPostActivity</span><span class="o">::</span><span class="k">class</span><span class="p">.</span><span class="n">java</span><span class="p">)</span>
+    <span class="n">intent</span><span class="p">.</span><span class="nf">putExtra</span><span class="p">(</span><span class="s">"STATUS"</span><span class="p">,</span><span class="s">"TAMBAH"</span><span class="p">)</span>
+    <span class="n">getContract</span><span class="p">.</span><span class="nf">launch</span><span class="p">(</span><span class="n">intent</span><span class="p">)</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>Pada <code class="language-plaintext highlighter-rouge">JenisbarangPostActivity</code> ditambahkan perintah untuk mengambil extra status, dan dengan extra tersebut bisa ditentukan jika statusnya adalah TAMBAH daha maka, id disembunyikan, sedangkan lainnya bisa dimunculkan</p>
+
+<figure class="highlight"><pre><code class="language-kotlin" data-lang="kotlin"><span class="kd">val</span> <span class="py">status</span> <span class="p">=</span> <span class="n">intent</span><span class="p">.</span><span class="nf">getStringExtra</span><span class="p">(</span><span class="s">"STATUS"</span><span class="p">)</span>
+<span class="k">if</span><span class="p">(</span><span class="n">status</span><span class="p">==</span><span class="s">"TAMBAH"</span><span class="p">){</span>
+    <span class="n">binding</span><span class="p">.</span><span class="n">etIdJenisbarang</span><span class="p">.</span><span class="n">visibility</span>  <span class="p">=</span> <span class="nc">View</span><span class="p">.</span><span class="nc">GONE</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="n">binding</span><span class="p">.</span><span class="n">etIdJenisbarang</span><span class="p">.</span><span class="n">visibility</span>  <span class="p">=</span> <span class="nc">View</span><span class="p">.</span><span class="nc">VISIBLE</span>
+<span class="p">}</span>
+<span class="n">binding</span><span class="p">.</span><span class="n">etNamajenisbarang</span><span class="p">.</span><span class="nf">requestFocus</span><span class="p">()</span></code></pre></figure>
+
+<p>Pada <code class="language-plaintext highlighter-rouge">btSimpanJenisbarangPost.setOnClickListener</code> dibuat percabangan untuk memilah kapan dilakukan simpan TAMBAH dan kapan dilakukan simpan UBAH, ditambahkan juga <code class="language-plaintext highlighter-rouge">setResult(RESULT_OK)</code> untuk memberitahu activity JenisbarangActivity bahwa simpan data berhasil dilakukan. Perintah <code class="language-plaintext highlighter-rouge">finish()</code> juga ditambahkan agar JenisbarangPostActivity ditutup setelah simpan data berhasil dilakukan.</p>
+
+<figure class="highlight"><pre><code class="language-kotlin" data-lang="kotlin"><span class="n">binding</span><span class="p">.</span><span class="n">btSimpanJenisbarangPost</span><span class="p">.</span><span class="nf">setOnClickListener</span><span class="p">{</span>
+
+    <span class="kd">val</span> <span class="py">idJenisbarang</span> <span class="p">=</span> <span class="n">binding</span><span class="p">.</span><span class="n">etIdJenisbarang</span><span class="p">.</span><span class="n">text</span><span class="p">.</span><span class="nf">toString</span><span class="p">()</span>
+    <span class="kd">val</span> <span class="py">namaJenisBarang</span> <span class="p">=</span> <span class="n">binding</span><span class="p">.</span><span class="n">etNamajenisbarang</span><span class="p">.</span><span class="n">text</span><span class="p">.</span><span class="nf">toString</span><span class="p">()</span>
+    <span class="kd">val</span> <span class="py">jenisBarangData</span> <span class="p">=</span> <span class="nc">JenisbarangData</span><span class="p">(</span><span class="n">idJenisbarang</span><span class="p">,</span><span class="n">namaJenisBarang</span><span class="p">)</span>
+
+    <span class="n">binding</span><span class="p">.</span><span class="n">progressBarJenisbarangPost</span><span class="p">.</span><span class="n">visibility</span> <span class="p">=</span> <span class="nc">View</span><span class="p">.</span><span class="nc">VISIBLE</span>
+    <span class="n">binding</span><span class="p">.</span><span class="n">btSimpanJenisbarangPost</span><span class="p">.</span><span class="n">visibility</span> <span class="p">=</span> <span class="nc">View</span><span class="p">.</span><span class="nc">INVISIBLE</span>
+
+    <span class="k">if</span><span class="p">(</span><span class="n">status</span> <span class="p">==</span> <span class="s">"TAMBAH"</span><span class="p">){</span>
+        <span class="n">viewModel</span><span class="p">.</span><span class="nf">create</span><span class="p">(</span><span class="n">jenisBarangData</span><span class="p">)</span>
+        <span class="n">viewModel</span><span class="p">.</span><span class="n">createResponse</span><span class="p">.</span><span class="nf">observe</span><span class="p">(</span><span class="k">this</span><span class="p">,{</span>
+            <span class="n">binding</span><span class="p">.</span><span class="n">progressBarJenisbarangPost</span><span class="p">.</span><span class="n">visibility</span> <span class="p">=</span> <span class="nc">View</span><span class="p">.</span><span class="nc">INVISIBLE</span>
+            <span class="n">binding</span><span class="p">.</span><span class="n">btSimpanJenisbarangPost</span><span class="p">.</span><span class="n">visibility</span> <span class="p">=</span> <span class="nc">View</span><span class="p">.</span><span class="nc">VISIBLE</span>
+            <span class="nc">Toast</span><span class="p">.</span><span class="nf">makeText</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="n">it</span><span class="p">.</span><span class="nf">body</span><span class="p">()</span><span class="o">?.</span><span class="n">message</span><span class="p">,</span><span class="nc">Toast</span><span class="p">.</span><span class="nc">LENGTH_SHORT</span><span class="p">).</span><span class="nf">show</span><span class="p">()</span>
+            <span class="nf">setResult</span><span class="p">(</span><span class="nc">RESULT_OK</span><span class="p">)</span>
+            <span class="nf">finish</span><span class="p">()</span>
+        <span class="p">})</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<p><a href="/2021/07/android-sem7-part1">Praktikum Android Semester 7: Part 1</a><br />
+<a href="/2021/07/android-sem7-part2">Praktikum Android Semester 7: Part 2</a><br />
+<a href="/2021/07/android-sem7-part3">Praktikum Android Semester 7: Part 3</a><br />
+<a href="/2021/07/android-sem7-part4">Praktikum Android Semester 7: Part 4</a><br />
+<a href="/2021/07/android-sem7-part5">Praktikum Android Semester 7: Part 5</a><br />
+<a href="/2021/07/android-sem7-part6">Praktikum Android Semester 7: Part 6</a></p>
+:ET

@@ -19,6 +19,8 @@ tags:
 [Praktikum Android Semester 7: Part 3]({% post_url 2021-07-17-android-sem7-part3 %})
 [Praktikum Android Semester 7: Part 4]({% post_url 2021-07-17-android-sem7-part4 %})
 [Praktikum Android Semester 7: Part 5]({% post_url 2021-07-17-android-sem7-part5 %})
+[Praktikum Android Semester 7: Part 6]({% post_url 2021-07-17-android-sem7-part6 %})
+[Praktikum Android Semester 7: Part 7]({% post_url 2021-07-17-android-sem7-part7 %})
 
 Pada [Praktikum Android Semester 7: Part 4]({% post_url 2021-07-17-android-sem7-part4 %}) aplikasi sudah dapat menampilkan data dari web service local yang dibangun sendiri menggunakan PHP dengan GET request, pada kali ini akan dijelaskan cara menggunakan `POST request` yang diimplementasikan dalam bentuk Tambah Data.
 
@@ -262,3 +264,5 @@ binding.btTambahJenisbarang.setOnClickListener{
 [Praktikum Android Semester 7: Part 3]({% post_url 2021-07-17-android-sem7-part3 %})
 [Praktikum Android Semester 7: Part 4]({% post_url 2021-07-17-android-sem7-part4 %})
 [Praktikum Android Semester 7: Part 5]({% post_url 2021-07-17-android-sem7-part5 %})
+[Praktikum Android Semester 7: Part 6]({% post_url 2021-07-17-android-sem7-part6 %})
+[Praktikum Android Semester 7: Part 7]({% post_url 2021-07-17-android-sem7-part7 %})

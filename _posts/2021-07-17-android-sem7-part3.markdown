@@ -18,6 +18,8 @@ tags:
 [Praktikum Android Semester 7: Part 3]({% post_url 2021-07-17-android-sem7-part3 %})
 [Praktikum Android Semester 7: Part 4]({% post_url 2021-07-17-android-sem7-part4 %})
 [Praktikum Android Semester 7: Part 5]({% post_url 2021-07-17-android-sem7-part5 %})
+[Praktikum Android Semester 7: Part 6]({% post_url 2021-07-17-android-sem7-part6 %})
+[Praktikum Android Semester 7: Part 7]({% post_url 2021-07-17-android-sem7-part7 %})
 
 
 Pada [Part 2]({% post_url 2021-07-17-android-sem7-part2 %}) aplikasi sudah dapat menampilkan data ke dalam recyclerview, namun belum menampilkan data avatar yang merupakan url gambar, untuk menampilkannya praktikum kali ini menggunakan glide dan circleimageview.
@@ -101,3 +103,5 @@ Okedeh ! jadilah tampil gambar dari url avatar
 [Praktikum Android Semester 7: Part 3]({% post_url 2021-07-17-android-sem7-part3 %})
 [Praktikum Android Semester 7: Part 4]({% post_url 2021-07-17-android-sem7-part4 %})
 [Praktikum Android Semester 7: Part 5]({% post_url 2021-07-17-android-sem7-part5 %})
+[Praktikum Android Semester 7: Part 6]({% post_url 2021-07-17-android-sem7-part6 %})
+[Praktikum Android Semester 7: Part 7]({% post_url 2021-07-17-android-sem7-part7 %})

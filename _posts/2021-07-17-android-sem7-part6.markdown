@@ -20,6 +20,8 @@ tags:
 [Praktikum Android Semester 7: Part 4]({% post_url 2021-07-17-android-sem7-part4 %})
 [Praktikum Android Semester 7: Part 5]({% post_url 2021-07-17-android-sem7-part5 %})
 [Praktikum Android Semester 7: Part 6]({% post_url 2021-07-17-android-sem7-part6 %})
+[Praktikum Android Semester 7: Part 7]({% post_url 2021-07-17-android-sem7-part7 %})
+
 
 
 Pada [Praktikum Android Semester 7: Part 5]({% post_url 2021-07-17-android-sem7-part5 %}) aplikasi sudah mampu menyimpan data dengan method POST, tapi recyclerview belum direfresh secara otomatis. Selain itu activity JenisbarangPost hanya bisa menyimpan untuk proses simpan tambah data, sedangkan nantinya akan digunakan juga untuk proses simpan ubah data, sehingga perlu dipisahkan fungsinya.
@@ -103,3 +105,4 @@ binding.btSimpanJenisbarangPost.setOnClickListener{
 [Praktikum Android Semester 7: Part 4]({% post_url 2021-07-17-android-sem7-part4 %})
 [Praktikum Android Semester 7: Part 5]({% post_url 2021-07-17-android-sem7-part5 %})
 [Praktikum Android Semester 7: Part 6]({% post_url 2021-07-17-android-sem7-part6 %})
+[Praktikum Android Semester 7: Part 7]({% post_url 2021-07-17-android-sem7-part7 %})
