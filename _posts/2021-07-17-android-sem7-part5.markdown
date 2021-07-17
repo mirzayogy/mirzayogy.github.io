@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Praktikum Android Semester 7: Part 5"
-date:   2021-03-08 09:00:00 +0800
+date:   2021-07-17 09:30:00 +0800
 categories: android
 published: true
 comments : true

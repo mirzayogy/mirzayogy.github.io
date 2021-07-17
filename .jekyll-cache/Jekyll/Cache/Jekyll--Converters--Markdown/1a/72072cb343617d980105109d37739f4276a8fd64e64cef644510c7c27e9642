@@ -1,0 +1,189 @@
+I"xZ<p><a href="/2021/07/android-sem7-part1">Praktikum Android Semester 7: Part 1</a><br />
+<a href="/2021/07/android-sem7-part2">Praktikum Android Semester 7: Part 2</a><br />
+<a href="/2021/07/android-sem7-part3">Praktikum Android Semester 7: Part 3</a><br />
+<a href="/2021/07/android-sem7-part4">Praktikum Android Semester 7: Part 4</a><br />
+<a href="/2021/03/android-sem7-part5">Praktikum Android Semester 7: Part 5</a></p>
+
+<p>Pada <a href="/2021/07/android-sem7-part1">Part 1</a> aplikasi sudah dapat melakukan request data namun hanya  menampilkan 1 (satu) field ke TextView. Data dapat ditampilkan dalam bentuk list yang bisa diimplementasikan dalam Android Studio dengan menggunakan ListView atau RecyclerView. Pada part ini akan digunakan <code class="language-plaintext highlighter-rouge">RecyclerView</code> dengan layout sederhana.</p>
+
+<p>tambahkan pada <code class="language-plaintext highlighter-rouge">build.graddle.app</code></p>
+
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml">    ...
+    dependencies{
+        ...
+        implementation 'androidx.recyclerview:recyclerview:1.2.1'
+    }</code></pre></figure>
+
+<p>pada layout, buat sebuah <code class="language-plaintext highlighter-rouge">Layout Resource File</code> dan berikan nama <code class="language-plaintext highlighter-rouge">item_row_user</code> dan isikan dengan</p>
+
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="cp">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span>
+<span class="nt">&lt;LinearLayout</span> <span class="na">xmlns:android=</span><span class="s">"http://schemas.android.com/apk/res/android"</span>
+    <span class="na">xmlns:tools=</span><span class="s">"http://schemas.android.com/tools"</span>
+    <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+    <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+    <span class="na">android:orientation=</span><span class="s">"vertical"</span>
+    <span class="na">android:padding=</span><span class="s">"16dp"</span><span class="nt">&gt;</span>
+
+    <span class="nt">&lt;TextView</span>
+        <span class="na">android:id=</span><span class="s">"@+id/tv_item_name"</span>
+        <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+        <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+        <span class="na">android:layout_marginBottom=</span><span class="s">"4dp"</span>
+        <span class="na">android:textSize=</span><span class="s">"16sp"</span>
+        <span class="na">android:textStyle=</span><span class="s">"bold"</span>
+        <span class="na">tools:text=</span><span class="s">"Name"</span> <span class="nt">/&gt;</span>
+
+    <span class="nt">&lt;TextView</span>
+        <span class="na">android:id=</span><span class="s">"@+id/tv_item_email"</span>
+        <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+        <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+        <span class="na">android:maxLines=</span><span class="s">"2"</span>
+        <span class="na">tools:text=</span><span class="s">"Email"</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;/LinearLayout&gt;</span></code></pre></figure>
+
+<p>Buat sebuah empty activity baru didalam package <code class="language-plaintext highlighter-rouge">ui.user</code> dengan nama <code class="language-plaintext highlighter-rouge">UserActivity</code>, buka file <code class="language-plaintext highlighter-rouge">activity_user.xml</code> dan isikan dengan</p>
+
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="cp">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span>
+<span class="nt">&lt;LinearLayout</span> <span class="na">xmlns:android=</span><span class="s">"http://schemas.android.com/apk/res/android"</span>
+    <span class="na">xmlns:tools=</span><span class="s">"http://schemas.android.com/tools"</span>
+    <span class="na">android:id=</span><span class="s">"@+id/activity_user"</span>
+    <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+    <span class="na">android:layout_height=</span><span class="s">"match_parent"</span>
+    <span class="na">android:orientation=</span><span class="s">"vertical"</span>
+    <span class="na">tools:context=</span><span class="s">".ui.user.UserActivity"</span><span class="nt">&gt;</span>
+
+    <span class="nt">&lt;ProgressBar</span>
+        <span class="na">android:id=</span><span class="s">"@+id/progressBarUser"</span>
+        <span class="na">style=</span><span class="s">"@style/Widget.AppCompat.ProgressBar.Horizontal"</span>
+        <span class="na">android:indeterminate=</span><span class="s">"true"</span>
+        <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+        <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span> <span class="nt">/&gt;</span>
+
+    <span class="nt">&lt;androidx.recyclerview.widget.RecyclerView</span>
+        <span class="na">android:id=</span><span class="s">"@+id/rv_users"</span>
+        <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+        <span class="na">android:layout_height=</span><span class="s">"fill_parent"</span>
+        <span class="na">tools:listitem=</span><span class="s">"@layout/item_row_user"</span> <span class="nt">/&gt;</span>
+
+<span class="nt">&lt;/LinearLayout&gt;</span></code></pre></figure>
+
+<p>Buat sebuah class baru didalam package <code class="language-plaintext highlighter-rouge">ui.user</code> dengan nama <code class="language-plaintext highlighter-rouge">ListUserAdapter</code> dan isikan dengan</p>
+
+<figure class="highlight"><pre><code class="language-kotlin" data-lang="kotlin"><span class="kd">class</span> <span class="nc">ListUserAdapter</span><span class="p">(</span><span class="k">private</span> <span class="kd">val</span> <span class="py">listUser</span><span class="p">:</span> <span class="nc">ArrayList</span><span class="p">&lt;</span><span class="nc">UserData</span><span class="p">&gt;)</span> <span class="p">:</span> <span class="nc">RecyclerView</span><span class="p">.</span><span class="nc">Adapter</span><span class="p">&lt;</span><span class="nc">ListUserAdapter</span><span class="err">.</span><span class="nc">ListViewHolder</span><span class="p">&gt;()</span> <span class="p">{</span>
+    <span class="kd">class</span> <span class="nc">ListViewHolder</span><span class="p">(</span><span class="k">private</span> <span class="kd">val</span> <span class="py">binding</span><span class="p">:</span> <span class="nc">ItemRowUserBinding</span><span class="p">)</span> <span class="p">:</span> <span class="nc">RecyclerView</span><span class="p">.</span><span class="nc">ViewHolder</span><span class="p">(</span><span class="n">binding</span><span class="p">.</span><span class="n">root</span><span class="p">)</span> <span class="p">{</span>
+
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>Import dan implementasikan semua method yang diminta oleh interface Adapter RecyclerView. Masih pada file <code class="language-plaintext highlighter-rouge">ListUserAdapter</code>, tambahkan method <code class="language-plaintext highlighter-rouge">bind</code> di dalam inner class `ListViewHolder</p>
+
+<figure class="highlight"><pre><code class="language-kotlin" data-lang="kotlin"><span class="kd">class</span> <span class="nc">ListViewHolder</span><span class="p">(</span><span class="k">private</span> <span class="kd">val</span> <span class="py">binding</span><span class="p">:</span> <span class="nc">ItemRowUserBinding</span><span class="p">)</span> <span class="p">:</span> <span class="nc">RecyclerView</span><span class="p">.</span><span class="nc">ViewHolder</span><span class="p">(</span><span class="n">binding</span><span class="p">.</span><span class="n">root</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">fun</span> <span class="nf">bind</span><span class="p">(</span><span class="n">userData</span><span class="p">:</span> <span class="nc">UserData</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nf">with</span><span class="p">(</span><span class="n">binding</span><span class="p">){</span>
+                <span class="n">tvItemName</span><span class="p">.</span><span class="n">text</span> <span class="p">=</span> <span class="n">userData</span><span class="p">.</span><span class="n">first_name</span> <span class="p">+</span> <span class="s">" "</span> <span class="p">+</span> <span class="n">userData</span><span class="p">.</span><span class="n">last_name</span>
+                <span class="n">tvItemEmail</span><span class="p">.</span><span class="n">text</span> <span class="p">=</span> <span class="n">userData</span><span class="p">.</span><span class="n">email</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span></code></pre></figure>
+
+<p>Masuk ke blok method <code class="language-plaintext highlighter-rouge">onCreateViewHolder</code> dan isikan dengan</p>
+
+<figure class="highlight"><pre><code class="language-kotlin" data-lang="kotlin"><span class="k">override</span> <span class="k">fun</span> <span class="nf">onCreateViewHolder</span><span class="p">(</span><span class="n">parent</span><span class="p">:</span> <span class="nc">ViewGroup</span><span class="p">,</span> <span class="n">viewType</span><span class="p">:</span> <span class="nc">Int</span><span class="p">):</span> <span class="nc">ListViewHolder</span> <span class="p">{</span>
+    <span class="kd">val</span> <span class="py">binding</span> <span class="p">=</span> <span class="nc">ItemRowUserBinding</span><span class="p">.</span><span class="nf">inflate</span><span class="p">(</span><span class="nc">LayoutInflater</span><span class="p">.</span><span class="nf">from</span><span class="p">(</span><span class="n">parent</span><span class="p">.</span><span class="n">context</span><span class="p">),</span> <span class="n">parent</span><span class="p">,</span> <span class="k">false</span><span class="p">)</span>
+    <span class="k">return</span> <span class="nc">ListViewHolder</span><span class="p">(</span><span class="n">binding</span><span class="p">)</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>Masuk ke blok method <code class="language-plaintext highlighter-rouge">onBindViewHolder</code> dan isikan dengan</p>
+
+<figure class="highlight"><pre><code class="language-kotlin" data-lang="kotlin"><span class="k">override</span> <span class="k">fun</span> <span class="nf">onBindViewHolder</span><span class="p">(</span><span class="n">holder</span><span class="p">:</span> <span class="nc">ListViewHolder</span><span class="p">,</span> <span class="n">position</span><span class="p">:</span> <span class="nc">Int</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">holder</span><span class="p">.</span><span class="nf">bind</span><span class="p">(</span><span class="n">listUser</span><span class="p">[</span><span class="n">position</span><span class="p">])</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>Pada blok method <code class="language-plaintext highlighter-rouge">getItemCount</code> isikan dengan</p>
+
+<figure class="highlight"><pre><code class="language-kotlin" data-lang="kotlin"><span class="k">override</span> <span class="k">fun</span> <span class="nf">getItemCount</span><span class="p">():</span><span class="nc">Int</span> <span class="p">=</span> <span class="n">listUser</span><span class="p">.</span><span class="n">size</span></code></pre></figure>
+
+<p>Sehingga hasil akhirnya ListUserAdapter berisikan</p>
+
+<figure class="highlight"><pre><code class="language-kotlin" data-lang="kotlin"><span class="kd">class</span> <span class="nc">ListUserAdapter</span><span class="p">(</span><span class="k">private</span> <span class="kd">val</span> <span class="py">listUser</span><span class="p">:</span> <span class="nc">ArrayList</span><span class="p">&lt;</span><span class="nc">UserData</span><span class="p">&gt;)</span> <span class="p">:</span> <span class="nc">RecyclerView</span><span class="p">.</span><span class="nc">Adapter</span><span class="p">&lt;</span><span class="nc">ListUserAdapter</span><span class="err">.</span><span class="nc">ListViewHolder</span><span class="p">&gt;()</span> <span class="p">{</span>
+
+    <span class="kd">class</span> <span class="nc">ListViewHolder</span><span class="p">(</span><span class="k">private</span> <span class="kd">val</span> <span class="py">binding</span><span class="p">:</span> <span class="nc">ItemRowUserBinding</span><span class="p">)</span> <span class="p">:</span> <span class="nc">RecyclerView</span><span class="p">.</span><span class="nc">ViewHolder</span><span class="p">(</span><span class="n">binding</span><span class="p">.</span><span class="n">root</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">fun</span> <span class="nf">bind</span><span class="p">(</span><span class="n">userData</span><span class="p">:</span> <span class="nc">UserData</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nf">with</span><span class="p">(</span><span class="n">binding</span><span class="p">){</span>
+                <span class="n">tvItemName</span><span class="p">.</span><span class="n">text</span> <span class="p">=</span> <span class="n">userData</span><span class="p">.</span><span class="n">first_name</span> <span class="p">+</span> <span class="s">" "</span> <span class="p">+</span> <span class="n">userData</span><span class="p">.</span><span class="n">last_name</span>
+                <span class="n">tvItemEmail</span><span class="p">.</span><span class="n">text</span> <span class="p">=</span> <span class="n">userData</span><span class="p">.</span><span class="n">email</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="k">override</span> <span class="k">fun</span> <span class="nf">onCreateViewHolder</span><span class="p">(</span><span class="n">parent</span><span class="p">:</span> <span class="nc">ViewGroup</span><span class="p">,</span> <span class="n">viewType</span><span class="p">:</span> <span class="nc">Int</span><span class="p">):</span> <span class="nc">ListViewHolder</span> <span class="p">{</span>
+        <span class="kd">val</span> <span class="py">binding</span> <span class="p">=</span> <span class="nc">ItemRowUserBinding</span><span class="p">.</span><span class="nf">inflate</span><span class="p">(</span><span class="nc">LayoutInflater</span><span class="p">.</span><span class="nf">from</span><span class="p">(</span><span class="n">parent</span><span class="p">.</span><span class="n">context</span><span class="p">),</span> <span class="n">parent</span><span class="p">,</span> <span class="k">false</span><span class="p">)</span>
+        <span class="k">return</span> <span class="nc">ListViewHolder</span><span class="p">(</span><span class="n">binding</span><span class="p">)</span>
+    <span class="p">}</span>
+
+    <span class="k">override</span> <span class="k">fun</span> <span class="nf">onBindViewHolder</span><span class="p">(</span><span class="n">holder</span><span class="p">:</span> <span class="nc">ListViewHolder</span><span class="p">,</span> <span class="n">position</span><span class="p">:</span> <span class="nc">Int</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">holder</span><span class="p">.</span><span class="nf">bind</span><span class="p">(</span><span class="n">listUser</span><span class="p">[</span><span class="n">position</span><span class="p">])</span>
+    <span class="p">}</span>
+
+    <span class="k">override</span> <span class="k">fun</span> <span class="nf">getItemCount</span><span class="p">():</span><span class="nc">Int</span> <span class="p">=</span> <span class="n">listUser</span><span class="p">.</span><span class="n">size</span>
+
+<span class="p">}</span></code></pre></figure>
+
+<p>Ubah isi dari UserActivity dengan</p>
+
+<figure class="highlight"><pre><code class="language-kotlin" data-lang="kotlin"><span class="kd">class</span> <span class="nc">UserActivity</span> <span class="p">:</span> <span class="nc">AppCompatActivity</span><span class="p">()</span> <span class="p">{</span>
+
+    <span class="k">private</span> <span class="k">lateinit</span> <span class="kd">var</span> <span class="py">binding</span><span class="p">:</span><span class="nc">ActivityUserBinding</span>
+    <span class="k">private</span> <span class="kd">val</span> <span class="py">list</span> <span class="p">=</span> <span class="nc">ArrayList</span><span class="p">&lt;</span><span class="nc">UserData</span><span class="p">&gt;()</span>
+    <span class="k">private</span> <span class="kd">val</span> <span class="py">viewModel</span><span class="p">:</span> <span class="nc">UserViewModel</span> <span class="k">by</span> <span class="nf">lazy</span> <span class="p">{</span>
+        <span class="nc">ViewModelProvider</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="k">get</span><span class="p">(</span><span class="nc">UserViewModel</span><span class="o">::</span><span class="k">class</span><span class="p">.</span><span class="n">java</span><span class="p">)</span>
+    <span class="p">}</span>
+
+    <span class="k">override</span> <span class="k">fun</span> <span class="nf">onCreate</span><span class="p">(</span><span class="n">savedInstanceState</span><span class="p">:</span> <span class="nc">Bundle</span><span class="p">?)</span> <span class="p">{</span>
+        <span class="k">super</span><span class="p">.</span><span class="nf">onCreate</span><span class="p">(</span><span class="n">savedInstanceState</span><span class="p">)</span>
+        <span class="n">binding</span> <span class="p">=</span> <span class="nc">ActivityUserBinding</span><span class="p">.</span><span class="nf">inflate</span><span class="p">(</span><span class="n">layoutInflater</span><span class="p">)</span>
+        <span class="nf">setContentView</span><span class="p">(</span><span class="n">binding</span><span class="p">.</span><span class="n">root</span><span class="p">)</span>
+
+        <span class="n">binding</span><span class="p">.</span><span class="n">rvUsers</span><span class="p">.</span><span class="nf">setHasFixedSize</span><span class="p">(</span><span class="k">true</span><span class="p">)</span>
+
+        <span class="n">binding</span><span class="p">.</span><span class="n">progressBarUser</span><span class="p">.</span><span class="n">visibility</span> <span class="p">=</span> <span class="nc">View</span><span class="p">.</span><span class="nc">VISIBLE</span>
+
+        <span class="nf">getListUser</span><span class="p">()</span>
+
+    <span class="p">}</span>
+
+    <span class="k">private</span> <span class="k">fun</span> <span class="nf">getListUser</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">viewModel</span><span class="p">.</span><span class="nf">getUsers</span><span class="p">()</span>
+        <span class="n">viewModel</span><span class="p">.</span><span class="n">response</span><span class="p">.</span><span class="nf">observe</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="p">{</span>
+            <span class="n">binding</span><span class="p">.</span><span class="n">progressBarUser</span><span class="p">.</span><span class="n">visibility</span> <span class="p">=</span> <span class="nc">View</span><span class="p">.</span><span class="nc">INVISIBLE</span>
+            <span class="n">list</span><span class="p">.</span><span class="nf">addAll</span><span class="p">(</span><span class="n">it</span><span class="p">.</span><span class="n">data</span><span class="p">)</span>
+            <span class="n">binding</span><span class="p">.</span><span class="n">rvUsers</span><span class="p">.</span><span class="n">layoutManager</span> <span class="p">=</span> <span class="nc">LinearLayoutManager</span><span class="p">(</span><span class="k">this</span><span class="p">)</span>
+            <span class="kd">val</span> <span class="py">listUserAdapter</span> <span class="p">=</span> <span class="nc">ListUserAdapter</span><span class="p">(</span><span class="n">list</span><span class="p">)</span>
+            <span class="n">binding</span><span class="p">.</span><span class="n">rvUsers</span><span class="p">.</span><span class="n">adapter</span> <span class="p">=</span> <span class="n">listUserAdapter</span>
+        <span class="p">})</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>Terakhir pada manifest kita ganti agar UserActivity menjadi Main Launcher</p>
+
+<figure class="highlight"><pre><code class="language-kotlin" data-lang="kotlin"><span class="p">&lt;</span><span class="n">application</span> <span class="o">..</span><span class="p">.</span>
+    <span class="p">&lt;</span><span class="n">activity</span> <span class="n">android</span><span class="p">:</span><span class="n">name</span><span class="p">=</span><span class="s">".ui.user.UserActivity"</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="n">intent-filter</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="n">action</span> <span class="n">android</span><span class="p">:</span><span class="n">name</span><span class="p">=</span><span class="s">"android.intent.action.MAIN"</span> <span class="p">/&gt;</span>
+
+            <span class="p">&lt;</span><span class="n">category</span> <span class="n">android</span><span class="p">:</span><span class="n">name</span><span class="p">=</span><span class="s">"android.intent.category.LAUNCHER"</span> <span class="p">/&gt;</span>
+        <span class="p">&lt;/</span><span class="n">intent-filter</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="n">activity</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="n">activity</span> <span class="n">android</span><span class="p">:</span><span class="n">name</span><span class="p">=</span><span class="s">".MainActivity"</span><span class="p">&gt;</span>
+
+    <span class="p">&lt;/</span><span class="n">activity</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="n">application</span><span class="p">&gt;</span></code></pre></figure>
+
+<p>Voila ! jadilah data tampil di RecyclerView</p>
+
+<p><a href="/2021/07/android-sem7-part1">Praktikum Android Semester 7: Part 1</a><br />
+<a href="/2021/07/android-sem7-part2">Praktikum Android Semester 7: Part 2</a><br />
+<a href="/2021/07/android-sem7-part3">Praktikum Android Semester 7: Part 3</a><br />
+<a href="/2021/07/android-sem7-part4">Praktikum Android Semester 7: Part 4</a><br />
+<a href="/2021/03/android-sem7-part5">Praktikum Android Semester 7: Part 5</a></p>
+:ET
