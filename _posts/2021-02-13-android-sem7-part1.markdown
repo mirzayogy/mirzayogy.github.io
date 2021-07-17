@@ -46,11 +46,6 @@ Buat project baru pada Android Studio
 
 tambahkan pada `build.graddle.app`
 {% highlight  xml %}
-    plugins {
-        ...
-        id 'kotlin-android-extensions'
-        ...
-    }
     ...
     android{
         ...
@@ -172,7 +167,7 @@ data class UserData(
 )
 {% endhighlight %}
 
-Berikutnya diperlukan sebuah interface untuk melakukan request menggunakan retrofit. Buat package `network` kemudian didalamnya buat sebuah class dengan nama `ApiService` dan isikan dengan
+Berikutnya diperlukan sebuah interface untuk melakukan request menggunakan retrofit. Buat package `network` kemudian didalamnya buat sebuah interface dengan nama `ApiService` dan isikan dengan
 
 {% highlight  kotlin %}
 
@@ -205,29 +200,22 @@ Data hasil request akan diproses dalam sebuah `ViewModel` untuk dapat ditampilka
 
 {% highlight  kotlin %}
 class UserViewModel :ViewModel() {
-    private val _response = MutableLiveData<User>()
+    private val response = MutableLiveData<User>()
 
-    val response: LiveData<User>
-        get() = _response
-
-    init {
-        setResponse()
-    }
-
-    private fun setResponse() {
+    private fun getUsers() {
         viewModelScope.launch {
             try {
                 val listResult = Api.retrofitService.getUsers()
-                _response.value = listResult
+                response.value = listResult
             } catch (e: Exception) {
-                _response.value = null
+                response.value = null
             }
         }
     }
 }
 {% endhighlight %}
 
-class `UserViewModel` merupakan extends atau turunan atau subclass dari `ViewModel`, didalamnya terdapat atribut `_response` dengan tipe MutableLiveData dengan isi object dari User. Sedangkan `response` dengan tipe LiveData digunakan sebagai interface yang ditampilkan pada activity. Method `setResponse` dijalankan pada `init` atau ketika ViewModel di-instance, yang mana method tersebut beriskan CoroutineScope dengan try-catch proses request data menggunakan retrofit dan hasilnya disimpan di `_response`.
+class `UserViewModel` merupakan extends atau turunan atau subclass dari `ViewModel`, didalamnya terdapat atribut `response` dengan tipe MutableLiveData dengan isi object dari User. Method `getusers()` akan dijalankan pada MainActivity, yang mana method tersebut beriskan CoroutineScope dengan try-catch proses request data menggunakan retrofit dan hasilnya disimpan di `response`.
 
 Pengujian cepat untuk melihat hasil request bisa dilakukan sementara pada `MainActivity` dengan ditambahkan sedikit modifikasi terlebih dahulu pada layout `activity_main.xml`
 {% highlight  xml %}
