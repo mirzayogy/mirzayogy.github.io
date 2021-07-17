@@ -1,4 +1,4 @@
-I">
+I"Â
 <figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nb">echo</span> <span class="s1">'---\nlayout: tag_index\ntag: blogging \n---'</span> <span class="o">&gt;</span> <span class="s1">'blogging.md'</span> &amp;
 <span class="nb">echo</span> <span class="s1">'---\nlayout: tag_index\ntag: jekyll \n---'</span> <span class="o">&gt;</span> <span class="s1">'jekyll.md'</span> &amp;
 <span class="nb">echo</span> <span class="s1">'---\nlayout: tag_index\ntag: java \n---'</span> <span class="o">&gt;</span> <span class="s1">'java.md'</span> &amp;
@@ -8,18 +8,20 @@
 <span class="nb">echo</span> <span class="s1">'---\nlayout: tag_index\ntag: netbeans \n---'</span> <span class="o">&gt;</span> <span class="s1">'netbeans.md'</span> &amp;
 <span class="nb">echo</span> <span class="s1">'---\nlayout: tag_index\ntag: pbo \n---'</span> <span class="o">&gt;</span> <span class="s1">'pbo.md'</span> &amp;
 <span class="nb">echo</span> <span class="s1">'---\nlayout: tag_index\ntag: 201-praktikum-7-java \n---'</span> <span class="o">&gt;</span> <span class="s1">'201-praktikum-7-java.md'</span> &amp;
-<span class="nb">echo</span> <span class="s1">'---\nlayout: tag_index\ntag: glide \n---'</span> <span class="o">&gt;</span> <span class="s1">'glide.md'</span> &amp;
-<span class="nb">echo</span> <span class="s1">'---\nlayout: tag_index\ntag: circleimageview \n---'</span> <span class="o">&gt;</span> <span class="s1">'circleimageview.md'</span> &amp;
-<span class="nb">echo</span> <span class="s1">'---\nlayout: tag_index\ntag: 201-praktikum-7-android \n---'</span> <span class="o">&gt;</span> <span class="s1">'201-praktikum-7-android.md'</span> &amp;
-<span class="nb">echo</span> <span class="s1">'---\nlayout: tag_index\ntag: php \n---'</span> <span class="o">&gt;</span> <span class="s1">'php.md'</span> &amp;
 <span class="nb">echo</span> <span class="s1">'---\nlayout: tag_index\ntag: login \n---'</span> <span class="o">&gt;</span> <span class="s1">'login.md'</span> &amp;
 <span class="nb">echo</span> <span class="s1">'---\nlayout: tag_index\ntag: auth \n---'</span> <span class="o">&gt;</span> <span class="s1">'auth.md'</span> &amp;
-<span class="nb">echo</span> <span class="s1">'---\nlayout: tag_index\ntag: SharedPreferences \n---'</span> <span class="o">&gt;</span> <span class="s1">'SharedPreferences.md'</span> &amp;
+<span class="nb">echo</span> <span class="s1">'---\nlayout: tag_index\ntag: php \n---'</span> <span class="o">&gt;</span> <span class="s1">'php.md'</span> &amp;
 <span class="nb">echo</span> <span class="s1">'---\nlayout: tag_index\ntag: web \n---'</span> <span class="o">&gt;</span> <span class="s1">'web.md'</span> &amp;
 <span class="nb">echo</span> <span class="s1">'---\nlayout: tag_index\ntag: 202-praktikum-8-web \n---'</span> <span class="o">&gt;</span> <span class="s1">'202-praktikum-8-web.md'</span> &amp;
 <span class="nb">echo</span> <span class="s1">'---\nlayout: tag_index\ntag: retrofit \n---'</span> <span class="o">&gt;</span> <span class="s1">'retrofit.md'</span> &amp;
 <span class="nb">echo</span> <span class="s1">'---\nlayout: tag_index\ntag: moshi \n---'</span> <span class="o">&gt;</span> <span class="s1">'moshi.md'</span> &amp;
 <span class="nb">echo</span> <span class="s1">'---\nlayout: tag_index\ntag: viewmodel \n---'</span> <span class="o">&gt;</span> <span class="s1">'viewmodel.md'</span> &amp;
-<span class="nb">echo</span> <span class="s1">'---\nlayout: tag_index\ntag: recyclerview \n---'</span> <span class="o">&gt;</span> <span class="s1">'recyclerview.md'</span> &amp;</code></pre></figure>
+<span class="nb">echo</span> <span class="s1">'---\nlayout: tag_index\ntag: 201-praktikum-7-android \n---'</span> <span class="o">&gt;</span> <span class="s1">'201-praktikum-7-android.md'</span> &amp;
+<span class="nb">echo</span> <span class="s1">'---\nlayout: tag_index\ntag: recyclerview \n---'</span> <span class="o">&gt;</span> <span class="s1">'recyclerview.md'</span> &amp;
+<span class="nb">echo</span> <span class="s1">'---\nlayout: tag_index\ntag: glide \n---'</span> <span class="o">&gt;</span> <span class="s1">'glide.md'</span> &amp;
+<span class="nb">echo</span> <span class="s1">'---\nlayout: tag_index\ntag: circleimageview \n---'</span> <span class="o">&gt;</span> <span class="s1">'circleimageview.md'</span> &amp;
+<span class="nb">echo</span> <span class="s1">'---\nlayout: tag_index\ntag: SharedPreferences \n---'</span> <span class="o">&gt;</span> <span class="s1">'SharedPreferences.md'</span> &amp;
+<span class="nb">echo</span> <span class="s1">'---\nlayout: tag_index\ntag: onActivityResult \n---'</span> <span class="o">&gt;</span> <span class="s1">'onActivityResult.md'</span> &amp;
+<span class="nb">echo</span> <span class="s1">'---\nlayout: tag_index\ntag: ActivityResultContracts \n---'</span> <span class="o">&gt;</span> <span class="s1">'ActivityResultContracts.md'</span> &amp;</code></pre></figure>
 
 :ET

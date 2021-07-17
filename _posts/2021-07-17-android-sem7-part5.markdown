@@ -22,8 +22,6 @@ tags:
 
 Pada [Praktikum Android Semester 7: Part 4]({% post_url 2021-07-17-android-sem7-part4 %}) aplikasi sudah dapat menampilkan data dari web service local yang dibangun sendiri menggunakan PHP dengan GET request, pada kali ini akan dijelaskan cara menggunakan `POST request` yang diimplementasikan dalam bentuk Tambah Data.
 
-
-
 Pada project PHP file `jenisbarang.php` tambahkan function berikut
 
 {% highlight  php %}

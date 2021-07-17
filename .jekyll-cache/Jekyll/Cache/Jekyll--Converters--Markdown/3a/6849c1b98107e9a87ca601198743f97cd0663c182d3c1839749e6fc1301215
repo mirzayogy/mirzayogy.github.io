@@ -1,4 +1,4 @@
-I"&<div class="page-content wc-container">
+I"¾<div class="page-content wc-container">
 	<div class="post">
 		<h1>Tags</h1>  
 		<ul>
@@ -27,10 +27,6 @@
 			
 			<li><a href="/tag/php">php</a></li>
 			
-			<li><a href="/tag/SharedPreferences">SharedPreferences</a></li>
-			
-			<li><a href="/tag/201-praktikum-7-android">201-praktikum-7-android</a></li>
-			
 			<li><a href="/tag/web">web</a></li>
 			
 			<li><a href="/tag/202-praktikum-8-web">202-praktikum-8-web</a></li>
@@ -41,11 +37,19 @@
 			
 			<li><a href="/tag/viewmodel">viewmodel</a></li>
 			
+			<li><a href="/tag/201-praktikum-7-android">201-praktikum-7-android</a></li>
+			
 			<li><a href="/tag/recyclerview">recyclerview</a></li>
 			
 			<li><a href="/tag/glide">glide</a></li>
 			
 			<li><a href="/tag/circleimageview">circleimageview</a></li>
+			
+			<li><a href="/tag/SharedPreferences">SharedPreferences</a></li>
+			
+			<li><a href="/tag/onActivityResult">onActivityResult</a></li>
+			
+			<li><a href="/tag/ActivityResultContracts">ActivityResultContracts</a></li>
 			
 		</ul>
 	</div>
