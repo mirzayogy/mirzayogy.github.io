@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Praktikum Android Semester 7: Part 2"
-date:   2021-02-14 09:00:00 +0800
+date:   2021-07-17 09:00:00 +0800
 categories: android
 published: true
 comments : true
@@ -12,7 +12,7 @@ tags:
  - 201-praktikum-7-android
 ---
 
-[Praktikum Android Semester 7: Part 1]({% post_url 2021-02-13-android-sem7-part1 %})
+[Praktikum Android Semester 7: Part 1]({% post_url 2021-07-17-android-sem7-part1 %})
 Praktikum Android Semester 7: Part 2
 [Praktikum Android Semester 7: Part 3]({% post_url 2021-02-27-android-sem7-part3 %})
 [Praktikum Android Semester 7: Part 4]({% post_url 2021-03-06-android-sem7-part4 %})
@@ -188,6 +188,7 @@ class UserActivity : AppCompatActivity() {
     }
 
     private fun getListUser() {
+        viewModel.getUsers()
         viewModel.response.observe(this, {
             binding.progressBarUser.visibility = View.INVISIBLE
             list.addAll(it.data)

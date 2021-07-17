@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Praktikum Android Semester 7: Part 1"
-date:   2021-02-13 19:00:00 +0800
+date:   2021-07-17 08:00:00 +0800
 categories: android
 comments : true
 description: Melakukan request data ke web service menggunakan retrofit dan moshi dengan penerapan viewmodel
@@ -14,7 +14,7 @@ tags:
 ---
 
 Praktikum Android Semester 7: Part 1
-[Praktikum Android Semester 7: Part 2]({% post_url 2021-02-14-android-sem7-part2 %})
+[Praktikum Android Semester 7: Part 2]({% post_url 2021-07-17-android-sem7-part2 %})
 [Praktikum Android Semester 7: Part 3]({% post_url 2021-02-27-android-sem7-part3 %})
 [Praktikum Android Semester 7: Part 4]({% post_url 2021-03-06-android-sem7-part4 %})
 [Praktikum Android Semester 7: Part 5]({% post_url 2021-03-08-android-sem7-part5 %})
