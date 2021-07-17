@@ -156,7 +156,7 @@ Buat sebuah `Layout Resource File` dan berikan nama `item_row_jenisbarang` dan i
     android:padding="16dp">
 
     <TextView
-        android:id="@+id/tvNamajenisbarang"
+        android:id="@+id/tvNamaJenisbarang"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="4dp"
@@ -211,7 +211,7 @@ Import dan implementasikan semua method yang diminta oleh interface Adapter Recy
 class ListViewHolder(private val binding: ItemRowJenisbarangBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(jenisbarangData: JenisbarangData) {
             with(binding){
-                tvNamajenisbarang.text = jenisbarangData.namajenisbarang
+                tvNamaJenisbarang.text = jenisbarangData.namajenisbarang
             }
         }
     }
@@ -248,7 +248,7 @@ class ListJenisbarangAdapter(private val listJenisbarang: ArrayList<JenisbarangD
     class ListViewHolder(private val binding: ItemRowJenisbarangBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(jenisbarangData: JenisbarangData) {
             with(binding){
-                tvNamajenisbarang.text = jenisbarangData.namajenisbarang
+                tvNamaJenisbarang.text = jenisbarangData.namajenisbarang
             }
         }
     }
@@ -271,22 +271,15 @@ Buat `JenisbarangViewModel`, isikan dengan
 
 {% highlight  kotlin %}
 class JenisbarangViewModel : ViewModel() {
-    private val _response = MutableLiveData<Jenisbarang>()
+    val response = MutableLiveData<Jenisbarang>()
 
-    val response: LiveData<Jenisbarang>
-        get() = _response
-
-    init {
-        setResponse()
-    }
-
-    private fun setResponse() {
+    fun getJenisbarang() {
         viewModelScope.launch {
             try {
                 val listResult = Api.retrofitService.getJenisbarang()
-                _response.value = listResult
+                response.value = listResult
             } catch (e: Exception) {
-                _response.value = null
+                response.value = null
             }
         }
     }
@@ -319,6 +312,7 @@ class JenisbarangActivity : AppCompatActivity() {
     }
 
     private fun getListJenisbarang() {
+        viewModel.getJenisbarang()
         viewModel.response.observe(this, {
             binding.progressBarJenisbarang.visibility = View.INVISIBLE
             list.addAll(it.data)
