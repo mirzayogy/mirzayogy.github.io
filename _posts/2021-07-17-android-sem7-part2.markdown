@@ -26,7 +26,7 @@ tambahkan pada `build.graddle.app`
     ...
     dependencies{
         ...
-        implementation 'androidx.recyclerview:recyclerview:1.1.0'
+        implementation 'androidx.recyclerview:recyclerview:1.2.1'
     }
 {% endhighlight %}
 

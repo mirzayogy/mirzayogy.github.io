@@ -1,17 +1,17 @@
-I"ªY<p><a href="/2021/02/android-sem7-part1">Praktikum Android Semester 7: Part 1</a><br />
-Praktikum Android Semester 7: Part 2<br />
+I"xZ<p><a href="/2021/07/android-sem7-part1">Praktikum Android Semester 7: Part 1</a><br />
+<a href="/2021/07/android-sem7-part2">Praktikum Android Semester 7: Part 2</a><br />
 <a href="/2021/02/android-sem7-part3">Praktikum Android Semester 7: Part 3</a><br />
 <a href="/2021/03/android-sem7-part4">Praktikum Android Semester 7: Part 4</a><br />
 <a href="/2021/03/android-sem7-part5">Praktikum Android Semester 7: Part 5</a></p>
 
-<p>Pada <a href="/2021/02/android-sem7-part1">Part 1</a> aplikasi sudah dapat melakukan request data namun hanya  menampilkan 1 (satu) field ke TextView. Data dapat ditampilkan dalam bentuk list yang bisa diimplementasikan dalam Android Studio dengan menggunakan ListView atau RecyclerView. Pada part ini akan digunakan <code class="language-plaintext highlighter-rouge">RecyclerView</code> dengan layout sederhana.</p>
+<p>Pada <a href="/2021/07/android-sem7-part1">Part 1</a> aplikasi sudah dapat melakukan request data namun hanya  menampilkan 1 (satu) field ke TextView. Data dapat ditampilkan dalam bentuk list yang bisa diimplementasikan dalam Android Studio dengan menggunakan ListView atau RecyclerView. Pada part ini akan digunakan <code class="language-plaintext highlighter-rouge">RecyclerView</code> dengan layout sederhana.</p>
 
 <p>tambahkan pada <code class="language-plaintext highlighter-rouge">build.graddle.app</code></p>
 
 <figure class="highlight"><pre><code class="language-xml" data-lang="xml">    ...
     dependencies{
         ...
-        implementation 'androidx.recyclerview:recyclerview:1.1.0'
+        implementation 'androidx.recyclerview:recyclerview:1.2.1'
     }</code></pre></figure>
 
 <p>pada layout, buat sebuah <code class="language-plaintext highlighter-rouge">Layout Resource File</code> dan berikan nama <code class="language-plaintext highlighter-rouge">item_row_user</code> dan isikan dengan</p>
@@ -153,6 +153,7 @@ Praktikum Android Semester 7: Part 2<br />
     <span class="p">}</span>
 
     <span class="k">private</span> <span class="k">fun</span> <span class="nf">getListUser</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">viewModel</span><span class="p">.</span><span class="nf">getUsers</span><span class="p">()</span>
         <span class="n">viewModel</span><span class="p">.</span><span class="n">response</span><span class="p">.</span><span class="nf">observe</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="p">{</span>
             <span class="n">binding</span><span class="p">.</span><span class="n">progressBarUser</span><span class="p">.</span><span class="n">visibility</span> <span class="p">=</span> <span class="nc">View</span><span class="p">.</span><span class="nc">INVISIBLE</span>
             <span class="n">list</span><span class="p">.</span><span class="nf">addAll</span><span class="p">(</span><span class="n">it</span><span class="p">.</span><span class="n">data</span><span class="p">)</span>
@@ -180,8 +181,8 @@ Praktikum Android Semester 7: Part 2<br />
 
 <p>Voila ! jadilah data tampil di RecyclerView</p>
 
-<p><a href="/2021/02/android-sem7-part1">Praktikum Android Semester 7: Part 1</a><br />
-Praktikum Android Semester 7: Part 2<br />
+<p><a href="/2021/07/android-sem7-part1">Praktikum Android Semester 7: Part 1</a><br />
+<a href="/2021/07/android-sem7-part2">Praktikum Android Semester 7: Part 2</a><br />
 <a href="/2021/02/android-sem7-part3">Praktikum Android Semester 7: Part 3</a><br />
 <a href="/2021/03/android-sem7-part4">Praktikum Android Semester 7: Part 4</a><br />
 <a href="/2021/03/android-sem7-part5">Praktikum Android Semester 7: Part 5</a></p>

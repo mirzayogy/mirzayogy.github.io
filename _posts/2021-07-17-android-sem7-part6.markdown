@@ -3,7 +3,7 @@ layout: post
 title:  "Praktikum Android Semester 7: Part 6"
 date:   2021-03-08 09:00:00 +0800
 categories: android
-published: false
+published: true
 comments : true
 description: Membuat login backend, login android, dan simpan token pada SharedPreferences
 tags: 

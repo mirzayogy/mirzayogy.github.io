@@ -1,0 +1,301 @@
+I"͇<p><a href="/2021/07/android-sem7-part1">Praktikum Android Semester 7: Part 1</a><br />
+<a href="/2021/07/android-sem7-part2">Praktikum Android Semester 7: Part 2</a><br />
+<a href="/2021/02/android-sem7-part3">Praktikum Android Semester 7: Part 3</a><br />
+<a href="/2021/03/android-sem7-part4">Praktikum Android Semester 7: Part 4</a><br />
+<a href="/2021/03/android-sem7-part5">Praktikum Android Semester 7: Part 5</a></p>
+
+<p>Pada <a href="/2021/03/android-sem7-part4">Praktikum Android Semester 7: Part 4</a> aplikasi sudah dapat menampilkan data dari web service local yang dibangun sendiri menggunakan PHP dengan GET request, pada kali ini akan dijelaskan cara menggunakan <code class="language-plaintext highlighter-rouge">POST request</code> yang diimplementasikan dalam bentuk Login, dan token hasil login akan disimpan menggunakan <code class="language-plaintext highlighter-rouge">SharedPreferences</code>.</p>
+
+<p>Pada project PHP folder <code class="language-plaintext highlighter-rouge">api</code> tambahkan folder <code class="language-plaintext highlighter-rouge">pengguna</code> dan buat file <code class="language-plaintext highlighter-rouge">pengguna.php</code> didalamnya, kemudian isikan dengan</p>
+
+<figure class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<span class="kd">class</span> <span class="nc">Pengguna</span>
+<span class="p">{</span>
+
+  <span class="k">private</span> <span class="nv">$conn</span><span class="p">;</span>
+  <span class="k">public</span> <span class="nv">$id</span><span class="p">;</span>
+  <span class="k">public</span> <span class="nv">$username</span><span class="p">;</span>
+  <span class="k">public</span> <span class="nv">$password</span><span class="p">;</span>
+  <span class="k">public</span> <span class="nv">$namalengkap</span><span class="p">;</span>
+  <span class="k">public</span> <span class="nv">$isadmin</span><span class="p">;</span>
+
+  <span class="k">public</span> <span class="k">function</span> <span class="n">__construct</span><span class="p">(</span><span class="nv">$db</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="nv">$this</span><span class="o">-&gt;</span><span class="n">conn</span> <span class="o">=</span> <span class="nv">$db</span><span class="p">;</span>
+  <span class="p">}</span>
+
+    <span class="k">function</span> <span class="n">find</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="nv">$selectSQL</span> <span class="o">=</span> <span class="s2">"SELECT * FROM pengguna WHERE id = ?"</span><span class="p">;</span>
+        <span class="nv">$stmt</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="n">conn</span><span class="o">-&gt;</span><span class="nf">prepare</span><span class="p">(</span><span class="nv">$selectSQL</span><span class="p">);</span>
+        <span class="nv">$stmt</span><span class="o">-&gt;</span><span class="nf">bindParam</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="n">id</span><span class="p">);</span>
+        <span class="nv">$stmt</span><span class="o">-&gt;</span><span class="nf">execute</span><span class="p">();</span>
+
+        <span class="k">return</span> <span class="nv">$stmt</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">function</span> <span class="n">login</span><span class="p">()</span>
+    <span class="p">{</span>
+
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="n">password</span> <span class="o">=</span> <span class="nb">md5</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="n">password</span><span class="p">);</span>
+
+        <span class="nv">$loginSQL</span> <span class="o">=</span> <span class="s2">"SELECT * FROM pengguna WHERE username = ? AND password = ?"</span><span class="p">;</span>
+        <span class="nv">$stmt</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="n">conn</span><span class="o">-&gt;</span><span class="nf">prepare</span><span class="p">(</span><span class="nv">$loginSQL</span><span class="p">);</span>
+        <span class="nv">$stmt</span><span class="o">-&gt;</span><span class="nf">bindParam</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="n">username</span><span class="p">);</span>
+        <span class="nv">$stmt</span><span class="o">-&gt;</span><span class="nf">bindParam</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="n">password</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nv">$stmt</span><span class="o">-&gt;</span><span class="nf">execute</span><span class="p">())</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nv">$stmt</span><span class="o">-&gt;</span><span class="nf">rowCount</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+                <span class="nv">$row</span> <span class="o">=</span> <span class="nv">$stmt</span><span class="o">-&gt;</span><span class="nf">fetch</span><span class="p">();</span>
+                <span class="k">return</span> <span class="nv">$row</span><span class="p">[</span><span class="s1">'id'</span><span class="p">];</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+
+        <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+<span class="cp">?&gt;</span></code></pre></figure>
+
+<p>Masih pada folder yang sama buat file <code class="language-plaintext highlighter-rouge">login.php</code> dan isikan dengan</p>
+
+<figure class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<span class="k">include_once</span> <span class="s2">"../../config/api-header.php"</span><span class="p">;</span>
+<span class="k">include_once</span> <span class="s2">"pengguna.php"</span><span class="p">;</span>
+
+<span class="k">include_once</span> <span class="s1">'../../config/api-core.php'</span><span class="p">;</span>
+<span class="k">include_once</span> <span class="s1">'../../config/php-jwt-master/src/BeforeValidException.php'</span><span class="p">;</span>
+<span class="k">include_once</span> <span class="s1">'../../config/php-jwt-master/src/ExpiredException.php'</span><span class="p">;</span>
+<span class="k">include_once</span> <span class="s1">'../../config/php-jwt-master/src/SignatureInvalidException.php'</span><span class="p">;</span>
+<span class="k">include_once</span> <span class="s1">'../../config/php-jwt-master/src/JWT.php'</span><span class="p">;</span>
+
+<span class="kn">use</span> <span class="err">\</span><span class="no">Firebase\JWT\JWT</span><span class="p">;</span>
+
+<span class="nv">$pengguna</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Pengguna</span><span class="p">(</span><span class="nv">$db</span><span class="p">);</span>
+<span class="nv">$data</span> <span class="o">=</span> <span class="nb">json_decode</span><span class="p">(</span><span class="nb">file_get_contents</span><span class="p">(</span><span class="s2">"php://input"</span><span class="p">));</span>
+
+<span class="nv">$response</span><span class="p">[</span><span class="s2">"success"</span><span class="p">]</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+<span class="nv">$response</span><span class="p">[</span><span class="s2">"data"</span><span class="p">]</span> <span class="o">=</span> <span class="k">array</span><span class="p">();</span>
+<span class="nv">$response</span><span class="p">[</span><span class="s2">"message"</span><span class="p">]</span> <span class="o">=</span> <span class="s2">""</span><span class="p">;</span>
+
+<span class="k">if</span> <span class="p">(</span>
+    <span class="o">!</span><span class="nb">empty</span><span class="p">(</span><span class="nv">$data</span><span class="o">-&gt;</span><span class="n">username</span><span class="p">)</span> <span class="o">&amp;&amp;</span>
+    <span class="o">!</span><span class="nb">empty</span><span class="p">(</span><span class="nv">$data</span><span class="o">-&gt;</span><span class="n">password</span><span class="p">)</span>
+<span class="p">)</span> <span class="p">{</span>
+    <span class="nv">$pengguna</span><span class="o">-&gt;</span><span class="n">username</span> <span class="o">=</span> <span class="nv">$data</span><span class="o">-&gt;</span><span class="n">username</span><span class="p">;</span>
+    <span class="nv">$pengguna</span><span class="o">-&gt;</span><span class="n">password</span> <span class="o">=</span> <span class="nv">$data</span><span class="o">-&gt;</span><span class="n">password</span><span class="p">;</span>
+    <span class="nv">$pengguna</span><span class="o">-&gt;</span><span class="n">id</span> <span class="o">=</span> <span class="nv">$pengguna</span><span class="o">-&gt;</span><span class="nf">login</span><span class="p">();</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nv">$pengguna</span><span class="o">-&gt;</span><span class="n">id</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+
+        <span class="nv">$stmt</span> <span class="o">=</span> <span class="nv">$pengguna</span><span class="o">-&gt;</span><span class="nf">find</span><span class="p">();</span>
+        <span class="nv">$row</span> <span class="o">=</span> <span class="nv">$stmt</span><span class="o">-&gt;</span><span class="nf">fetch</span><span class="p">();</span>
+        <span class="nv">$token</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
+            <span class="s2">"iat"</span> <span class="o">=&gt;</span> <span class="nv">$issued_at</span><span class="p">,</span>
+            <span class="s2">"exp"</span> <span class="o">=&gt;</span> <span class="nv">$expiration_time</span><span class="p">,</span>
+            <span class="s2">"iss"</span> <span class="o">=&gt;</span> <span class="nv">$issuer</span><span class="p">,</span>
+            <span class="s2">"data"</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span>
+                <span class="s2">"id"</span> <span class="o">=&gt;</span> <span class="nv">$row</span><span class="p">[</span><span class="s2">"id"</span><span class="p">],</span>
+                <span class="s2">"username"</span> <span class="o">=&gt;</span> <span class="nv">$row</span><span class="p">[</span><span class="s2">"username"</span><span class="p">],</span>
+                <span class="s2">"namalengkap"</span> <span class="o">=&gt;</span> <span class="nv">$row</span><span class="p">[</span><span class="s2">"namalengkap"</span><span class="p">],</span>
+                <span class="s2">"isadmin"</span> <span class="o">=&gt;</span> <span class="nv">$row</span><span class="p">[</span><span class="s2">"isadmin"</span><span class="p">]</span>
+            <span class="p">)</span>
+        <span class="p">);</span>
+
+        <span class="nv">$jwt</span> <span class="o">=</span> <span class="no">JWT</span><span class="o">::</span><span class="nf">encode</span><span class="p">(</span><span class="nv">$token</span><span class="p">,</span> <span class="nv">$key</span><span class="p">);</span>
+
+        <span class="nb">http_response_code</span><span class="p">(</span><span class="mi">200</span><span class="p">);</span>
+        <span class="nv">$response</span><span class="p">[</span><span class="s2">"success"</span><span class="p">]</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+        <span class="nv">$response</span><span class="p">[</span><span class="s2">"data"</span><span class="p">]</span> <span class="o">=</span> <span class="nv">$jwt</span><span class="p">;</span>
+        <span class="nv">$response</span><span class="p">[</span><span class="s2">"message"</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"login berhasil"</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="nb">http_response_code</span><span class="p">(</span><span class="mi">503</span><span class="p">);</span>
+        <span class="nv">$response</span><span class="p">[</span><span class="s2">"message"</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"login gagal"</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+
+    <span class="nb">http_response_code</span><span class="p">(</span><span class="mi">400</span><span class="p">);</span>
+    <span class="nv">$response</span><span class="p">[</span><span class="s2">"message"</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"lengkapi data login"</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="k">echo</span> <span class="nb">json_encode</span><span class="p">(</span><span class="nv">$response</span><span class="p">);</span></code></pre></figure>
+
+<p>Terakhir buat file <code class="language-plaintext highlighter-rouge">validate-token.php</code> dan isikan dengan</p>
+
+<figure class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<span class="k">include_once</span> <span class="s2">"../../config/api-header.php"</span><span class="p">;</span>
+<span class="k">include_once</span> <span class="s2">"pengguna.php"</span><span class="p">;</span>
+
+<span class="k">include_once</span> <span class="s1">'../../config/api-core.php'</span><span class="p">;</span>
+<span class="k">include_once</span> <span class="s1">'../../config/php-jwt-master/src/BeforeValidException.php'</span><span class="p">;</span>
+<span class="k">include_once</span> <span class="s1">'../../config/php-jwt-master/src/ExpiredException.php'</span><span class="p">;</span>
+<span class="k">include_once</span> <span class="s1">'../../config/php-jwt-master/src/SignatureInvalidException.php'</span><span class="p">;</span>
+<span class="k">include_once</span> <span class="s1">'../../config/php-jwt-master/src/JWT.php'</span><span class="p">;</span>
+
+<span class="kn">use</span> <span class="err">\</span><span class="no">Firebase\JWT\JWT</span><span class="p">;</span>
+
+<span class="nv">$pengguna</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Pengguna</span><span class="p">(</span><span class="nv">$db</span><span class="p">);</span>
+<span class="nv">$data</span> <span class="o">=</span> <span class="nb">json_decode</span><span class="p">(</span><span class="nb">file_get_contents</span><span class="p">(</span><span class="s2">"php://input"</span><span class="p">));</span>
+<span class="nv">$jwt</span> <span class="o">=</span> <span class="k">isset</span><span class="p">(</span><span class="nv">$data</span><span class="o">-&gt;</span><span class="n">jwt</span><span class="p">)</span> <span class="o">?</span> <span class="nv">$data</span><span class="o">-&gt;</span><span class="n">jwt</span> <span class="o">:</span> <span class="s2">""</span><span class="p">;</span>
+
+<span class="nv">$response</span><span class="p">[</span><span class="s2">"success"</span><span class="p">]</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+<span class="nv">$response</span><span class="p">[</span><span class="s2">"data"</span><span class="p">]</span> <span class="o">=</span> <span class="k">array</span><span class="p">();</span>
+<span class="nv">$response</span><span class="p">[</span><span class="s2">"message"</span><span class="p">]</span> <span class="o">=</span> <span class="s2">""</span><span class="p">;</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="nv">$jwt</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">try</span> <span class="p">{</span>
+        <span class="nv">$decoded</span> <span class="o">=</span> <span class="no">JWT</span><span class="o">::</span><span class="nf">decode</span><span class="p">(</span><span class="nv">$jwt</span><span class="p">,</span> <span class="nv">$key</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span><span class="s1">'HS256'</span><span class="p">));</span>
+
+        <span class="nb">http_response_code</span><span class="p">(</span><span class="mi">200</span><span class="p">);</span>
+        <span class="nv">$response</span><span class="p">[</span><span class="s2">"success"</span><span class="p">]</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+        <span class="nv">$response</span><span class="p">[</span><span class="s2">"message"</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"Access granted."</span><span class="p">;</span>
+        <span class="nv">$response</span><span class="p">[</span><span class="s2">"data"</span><span class="p">]</span> <span class="o">=</span> <span class="nv">$decoded</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nc">Exception</span> <span class="nv">$e</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nb">http_response_code</span><span class="p">(</span><span class="mi">401</span><span class="p">);</span>
+        <span class="nv">$response</span><span class="p">[</span><span class="s2">"message"</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"Access denied."</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="nb">http_response_code</span><span class="p">(</span><span class="mi">401</span><span class="p">);</span>
+    <span class="nv">$response</span><span class="p">[</span><span class="s2">"message"</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"Access denied."</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="k">echo</span> <span class="nb">json_encode</span><span class="p">(</span><span class="nv">$response</span><span class="p">);</span>
+<span class="cp">?&gt;</span></code></pre></figure>
+
+<p>File <code class="language-plaintext highlighter-rouge">login.php</code> dan <code class="language-plaintext highlighter-rouge">validate-token.php</code> keduanya menampung data yang di POST kedalam variable $data, dimana pada login data yang ditampung adalah username dan password yang diteruskan untuk proses login dan generate token untuk user. Sedangkan untuk validate-token data yang ditampung adalah jwt atau token dari hasil login, yang akan diperiksa validitasnya, jika valid maka akan direturn data user, jika tidak maka akan direturn bahwa token sudah tidak valid lagi,</p>
+
+<p>Kembali ke Android Studio, pada package model buat class-class berikut</p>
+
+<figure class="highlight"><pre><code class="language-kotlin" data-lang="kotlin"><span class="kd">data class</span> <span class="nc">JwtPost</span><span class="p">(</span>
+        <span class="kd">val</span> <span class="py">jwt</span><span class="p">:</span> <span class="nc">String</span>
+<span class="p">)</span>
+
+<span class="kd">data class</span> <span class="nc">JwtResponse</span><span class="p">(</span>
+        <span class="kd">val</span> <span class="py">success</span><span class="p">:</span> <span class="nc">Boolean</span><span class="p">,</span>
+        <span class="kd">val</span> <span class="py">data</span> <span class="p">:</span> <span class="nc">PenggunaData</span><span class="p">,</span>
+        <span class="kd">val</span> <span class="py">message</span><span class="p">:</span> <span class="nc">String</span>
+<span class="p">)</span>
+
+<span class="kd">data class</span> <span class="nc">LoginPost</span><span class="p">(</span>
+        <span class="kd">val</span> <span class="py">username</span><span class="p">:</span> <span class="nc">String</span><span class="p">,</span>
+        <span class="kd">val</span> <span class="py">password</span><span class="p">:</span> <span class="nc">String</span>
+<span class="p">)</span>
+
+<span class="kd">data class</span> <span class="nc">LoginResponse</span><span class="p">(</span>
+        <span class="kd">val</span> <span class="py">success</span><span class="p">:</span> <span class="nc">Boolean</span><span class="p">,</span>
+        <span class="kd">val</span> <span class="py">data</span> <span class="p">:</span> <span class="nc">String</span><span class="p">,</span>
+        <span class="kd">val</span> <span class="py">message</span><span class="p">:</span> <span class="nc">String</span>
+<span class="p">)</span>
+
+<span class="kd">data class</span> <span class="nc">Pengguna</span><span class="p">(</span>
+    <span class="kd">val</span> <span class="py">success</span><span class="p">:</span> <span class="nc">Boolean</span><span class="p">,</span>
+    <span class="kd">val</span> <span class="py">data</span> <span class="p">:</span> <span class="nc">PenggunaData</span><span class="p">,</span>
+    <span class="kd">val</span> <span class="py">message</span><span class="p">:</span> <span class="nc">String</span>
+<span class="p">)</span>
+
+<span class="kd">data class</span> <span class="nc">PenggunaData</span><span class="p">(</span>
+        <span class="err">@</span><span class="n">field</span><span class="p">:</span><span class="nc">Json</span><span class="p">(</span><span class="n">name</span> <span class="p">=</span> <span class="s">"@id"</span><span class="p">)</span>
+        <span class="kd">val</span> <span class="py">id</span><span class="p">:</span> <span class="nc">String</span><span class="p">,</span>
+        <span class="err">@</span><span class="n">field</span><span class="p">:</span><span class="nc">Json</span><span class="p">(</span><span class="n">name</span> <span class="p">=</span> <span class="s">"@username"</span><span class="p">)</span>
+        <span class="kd">val</span> <span class="py">username</span><span class="p">:</span> <span class="nc">String</span><span class="p">,</span>
+        <span class="err">@</span><span class="n">field</span><span class="p">:</span><span class="nc">Json</span><span class="p">(</span><span class="n">name</span> <span class="p">=</span> <span class="s">"@namalengkap"</span><span class="p">)</span>
+        <span class="kd">val</span> <span class="py">namalengkap</span><span class="p">:</span> <span class="nc">String</span><span class="p">,</span>
+        <span class="err">@</span><span class="n">field</span><span class="p">:</span><span class="nc">Json</span><span class="p">(</span><span class="n">name</span> <span class="p">=</span> <span class="s">"@isadmin"</span><span class="p">)</span>
+        <span class="kd">val</span> <span class="py">isadmin</span><span class="p">:</span> <span class="nc">String</span>
+<span class="p">)</span></code></pre></figure>
+
+<p>Pada <code class="language-plaintext highlighter-rouge">network/ApiService</code> tambahkan method berikut</p>
+
+<figure class="highlight"><pre><code class="language-kotlin" data-lang="kotlin"><span class="nd">@POST</span><span class="p">(</span><span class="s">"pengguna/login.php"</span><span class="p">)</span>
+<span class="k">fun</span> <span class="nf">login</span><span class="p">(</span><span class="nd">@Body</span> <span class="n">loginPost</span><span class="p">:</span> <span class="nc">LoginPost</span><span class="p">):</span> <span class="nc">Call</span><span class="p">&lt;</span><span class="nc">LoginResponse</span><span class="p">&gt;</span></code></pre></figure>
+
+<p>Buat sebuah empty activity baru didalam package <code class="language-plaintext highlighter-rouge">ui.login</code> dengan nama <code class="language-plaintext highlighter-rouge">LoginActivity</code>, buka file <code class="language-plaintext highlighter-rouge">activity_login.xml</code> dan isikan dengan</p>
+
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="cp">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span>
+<span class="nt">&lt;androidx.constraintlayout.widget.ConstraintLayout</span> <span class="na">xmlns:android=</span><span class="s">"http://schemas.android.com/apk/res/android"</span>
+    <span class="na">xmlns:app=</span><span class="s">"http://schemas.android.com/apk/res-auto"</span>
+    <span class="na">xmlns:tools=</span><span class="s">"http://schemas.android.com/tools"</span>
+    <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+    <span class="na">android:layout_height=</span><span class="s">"match_parent"</span>
+    <span class="na">tools:context=</span><span class="s">".ui.login.LoginActivity"</span><span class="nt">&gt;</span>
+
+    <span class="nt">&lt;ScrollView</span>
+        <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+        <span class="na">android:layout_height=</span><span class="s">"match_parent"</span><span class="nt">&gt;</span>
+
+        <span class="nt">&lt;LinearLayout</span>
+            <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+            <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+            <span class="na">android:layout_gravity=</span><span class="s">"center"</span>
+            <span class="na">android:orientation=</span><span class="s">"vertical"</span> <span class="nt">&gt;</span>
+
+            <span class="nt">&lt;EditText</span>
+                <span class="na">android:id=</span><span class="s">"@+id/etUsername"</span>
+                <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+                <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+                <span class="na">android:hint=</span><span class="s">"Username"</span>
+                <span class="nt">/&gt;</span>
+
+            <span class="nt">&lt;EditText</span>
+                <span class="na">android:id=</span><span class="s">"@+id/etPassword"</span>
+                <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+                <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+                <span class="na">android:inputType=</span><span class="s">"textPassword"</span>
+                <span class="na">android:hint=</span><span class="s">"Password"</span>
+                <span class="nt">/&gt;</span>
+
+            <span class="nt">&lt;Button</span>
+                <span class="na">android:id=</span><span class="s">"@+id/btLogin"</span>
+                <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+                <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+                <span class="na">android:text=</span><span class="s">"Login"</span>
+                <span class="nt">/&gt;</span>
+
+        <span class="nt">&lt;/LinearLayout&gt;</span>
+    <span class="nt">&lt;/ScrollView&gt;</span>
+<span class="nt">&lt;/androidx.constraintlayout.widget.ConstraintLayout&gt;</span></code></pre></figure>
+
+<p>Pada <code class="language-plaintext highlighter-rouge">LoginActivity</code> tambahkan</p>
+
+<figure class="highlight"><pre><code class="language-kotlin" data-lang="kotlin"><span class="kd">class</span> <span class="nc">LoginActivity</span> <span class="p">:</span> <span class="nc">AppCompatActivity</span><span class="p">()</span> <span class="p">{</span>
+
+    <span class="k">private</span> <span class="k">lateinit</span> <span class="kd">var</span> <span class="py">binding</span><span class="p">:</span> <span class="nc">ActivityLoginBinding</span>
+
+    <span class="k">override</span> <span class="k">fun</span> <span class="nf">onCreate</span><span class="p">(</span><span class="n">savedInstanceState</span><span class="p">:</span> <span class="nc">Bundle</span><span class="p">?)</span> <span class="p">{</span>
+        <span class="k">super</span><span class="p">.</span><span class="nf">onCreate</span><span class="p">(</span><span class="n">savedInstanceState</span><span class="p">)</span>
+        <span class="n">binding</span> <span class="p">=</span> <span class="nc">ActivityLoginBinding</span><span class="p">.</span><span class="nf">inflate</span><span class="p">(</span><span class="n">layoutInflater</span><span class="p">)</span>
+        <span class="nf">setContentView</span><span class="p">(</span><span class="n">binding</span><span class="p">.</span><span class="n">root</span><span class="p">)</span>
+
+        <span class="n">binding</span><span class="p">.</span><span class="n">btLogin</span><span class="p">.</span><span class="nf">setOnClickListener</span><span class="p">{</span>
+            <span class="kd">val</span> <span class="py">username</span> <span class="p">=</span> <span class="n">binding</span><span class="p">.</span><span class="n">etUsername</span><span class="p">.</span><span class="n">text</span><span class="p">.</span><span class="nf">toString</span><span class="p">()</span>
+            <span class="kd">val</span> <span class="py">password</span> <span class="p">=</span> <span class="n">binding</span><span class="p">.</span><span class="n">etPassword</span><span class="p">.</span><span class="n">text</span><span class="p">.</span><span class="nf">toString</span><span class="p">()</span>
+
+            <span class="kd">val</span> <span class="py">loginPost</span> <span class="p">=</span> <span class="nc">LoginPost</span><span class="p">(</span><span class="n">username</span><span class="p">,</span><span class="n">password</span><span class="p">)</span>
+
+            <span class="nf">doLogin</span><span class="p">(</span><span class="n">loginPost</span><span class="p">)</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="k">private</span> <span class="k">fun</span> <span class="nf">doLogin</span><span class="p">(</span><span class="n">loginPost</span><span class="p">:</span> <span class="nc">LoginPost</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nc">Api</span><span class="p">.</span><span class="n">retrofitService</span><span class="p">.</span><span class="nf">login</span><span class="p">(</span><span class="n">loginPost</span><span class="p">).</span><span class="nf">enqueue</span><span class="p">(</span>
+                <span class="k">object</span><span class="p">:</span> <span class="nc">Callback</span><span class="p">&lt;</span><span class="nc">LoginResponse</span><span class="p">&gt;</span> <span class="p">{</span>
+                    <span class="k">override</span> <span class="k">fun</span> <span class="nf">onFailure</span><span class="p">(</span><span class="n">call</span><span class="p">:</span> <span class="nc">Call</span><span class="p">&lt;</span><span class="nc">LoginResponse</span><span class="p">&gt;,</span> <span class="n">t</span><span class="p">:</span> <span class="nc">Throwable</span><span class="p">)</span> <span class="p">{</span>
+                        <span class="nc">Toast</span><span class="p">.</span><span class="nf">makeText</span><span class="p">(</span><span class="n">applicationContext</span><span class="p">,</span><span class="s">"Login gagal"</span><span class="p">,</span> <span class="nc">Toast</span><span class="p">.</span><span class="nc">LENGTH_SHORT</span><span class="p">).</span><span class="nf">show</span><span class="p">()</span>
+                    <span class="p">}</span>
+                    <span class="k">override</span> <span class="k">fun</span> <span class="nf">onResponse</span><span class="p">(</span>
+                            <span class="n">call</span><span class="p">:</span> <span class="nc">Call</span><span class="p">&lt;</span><span class="nc">LoginResponse</span><span class="p">&gt;,</span>
+                            <span class="n">response</span><span class="p">:</span> <span class="nc">Response</span><span class="p">&lt;</span><span class="nc">LoginResponse</span><span class="p">&gt;</span>
+                    <span class="p">)</span> <span class="p">{</span>
+                        <span class="k">if</span><span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="nf">body</span><span class="p">()!=</span><span class="k">null</span><span class="p">){</span>
+                            <span class="nc">Toast</span><span class="p">.</span><span class="nf">makeText</span><span class="p">(</span><span class="n">applicationContext</span><span class="p">,</span> <span class="n">response</span><span class="p">.</span><span class="nf">body</span><span class="p">()</span><span class="o">!!</span><span class="p">.</span><span class="n">message</span><span class="p">,</span> <span class="nc">Toast</span><span class="p">.</span><span class="nc">LENGTH_SHORT</span><span class="p">).</span><span class="nf">show</span><span class="p">()</span>
+                        <span class="p">}</span><span class="k">else</span><span class="p">{</span>
+                            <span class="nc">Toast</span><span class="p">.</span><span class="nf">makeText</span><span class="p">(</span><span class="n">applicationContext</span><span class="p">,</span> <span class="s">"Username/Password Salah"</span><span class="p">,</span> <span class="nc">Toast</span><span class="p">.</span><span class="nc">LENGTH_SHORT</span><span class="p">).</span><span class="nf">show</span><span class="p">()</span>
+                        <span class="p">}</span>
+                    <span class="p">}</span>
+                <span class="p">}</span>
+        <span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<p><a href="/2021/07/android-sem7-part1">Praktikum Android Semester 7: Part 1</a><br />
+<a href="/2021/07/android-sem7-part2">Praktikum Android Semester 7: Part 2</a><br />
+<a href="/2021/02/android-sem7-part3">Praktikum Android Semester 7: Part 3</a><br />
+<a href="/2021/03/android-sem7-part4">Praktikum Android Semester 7: Part 4</a><br />
+<a href="/2021/03/android-sem7-part5">Praktikum Android Semester 7: Part 5</a></p>
+:ET
