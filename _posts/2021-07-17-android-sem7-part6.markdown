@@ -14,13 +14,13 @@ tags:
  - 201-praktikum-7-android
 ---
 
-[Praktikum Android Semester 7: Part 1]({% post_url 2021-02-13-android-sem7-part1 %})
-[Praktikum Android Semester 7: Part 2]({% post_url 2021-02-14-android-sem7-part2 %})
-[Praktikum Android Semester 7: Part 3]({% post_url 2021-02-27-android-sem7-part3 %})
-[Praktikum Android Semester 7: Part 4]({% post_url 2021-03-06-android-sem7-part4 %})
-Praktikum Android Semester 7: Part 5
+[Praktikum Android Semester 7: Part 1]({% post_url 2021-07-17-android-sem7-part1 %})
+[Praktikum Android Semester 7: Part 2]({% post_url 2021-07-17-android-sem7-part2 %})
+[Praktikum Android Semester 7: Part 3]({% post_url 2021-07-17-android-sem7-part3 %})
+[Praktikum Android Semester 7: Part 4]({% post_url 2021-07-17-android-sem7-part4 %})
+[Praktikum Android Semester 7: Part 5]({% post_url 2021-07-17-android-sem7-part5 %})
 
-Pada [Praktikum Android Semester 7: Part 4]({% post_url 2021-03-06-android-sem7-part4 %}) aplikasi sudah dapat menampilkan data dari web service local yang dibangun sendiri menggunakan PHP dengan GET request, pada kali ini akan dijelaskan cara menggunakan `POST request` yang diimplementasikan dalam bentuk Login, dan token hasil login akan disimpan menggunakan `SharedPreferences`.
+Pada [Praktikum Android Semester 7: Part 4]({% post_url 2021-07-17-android-sem7-part4 %}) aplikasi sudah dapat menampilkan data dari web service local yang dibangun sendiri menggunakan PHP dengan GET request, pada kali ini akan dijelaskan cara menggunakan `POST request` yang diimplementasikan dalam bentuk Login, dan token hasil login akan disimpan menggunakan `SharedPreferences`.
 
 Pada project PHP folder `api` tambahkan folder `pengguna` dan buat file `pengguna.php` didalamnya, kemudian isikan dengan
 
@@ -330,8 +330,8 @@ class LoginActivity : AppCompatActivity() {
 
 
 
-[Praktikum Android Semester 7: Part 1]({% post_url 2021-02-13-android-sem7-part1 %})
-[Praktikum Android Semester 7: Part 2]({% post_url 2021-02-14-android-sem7-part2 %})
-[Praktikum Android Semester 7: Part 3]({% post_url 2021-02-27-android-sem7-part3 %})
-[Praktikum Android Semester 7: Part 4]({% post_url 2021-03-06-android-sem7-part4 %})
-Praktikum Android Semester 7: Part 5
+[Praktikum Android Semester 7: Part 1]({% post_url 2021-07-17-android-sem7-part1 %})
+[Praktikum Android Semester 7: Part 2]({% post_url 2021-07-17-android-sem7-part2 %})
+[Praktikum Android Semester 7: Part 3]({% post_url 2021-07-17-android-sem7-part3 %})
+[Praktikum Android Semester 7: Part 4]({% post_url 2021-07-17-android-sem7-part4 %})
+[Praktikum Android Semester 7: Part 5]({% post_url 2021-07-17-android-sem7-part5 %})

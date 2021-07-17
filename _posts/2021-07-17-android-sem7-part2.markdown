@@ -13,13 +13,13 @@ tags:
 ---
 
 [Praktikum Android Semester 7: Part 1]({% post_url 2021-07-17-android-sem7-part1 %})
-Praktikum Android Semester 7: Part 2
-[Praktikum Android Semester 7: Part 3]({% post_url 2021-02-27-android-sem7-part3 %})
-[Praktikum Android Semester 7: Part 4]({% post_url 2021-03-06-android-sem7-part4 %})
-[Praktikum Android Semester 7: Part 5]({% post_url 2021-03-08-android-sem7-part5 %})
+[Praktikum Android Semester 7: Part 2]({% post_url 2021-07-17-android-sem7-part2 %})
+[Praktikum Android Semester 7: Part 3]({% post_url 2021-07-17-android-sem7-part3 %})
+[Praktikum Android Semester 7: Part 4]({% post_url 2021-07-17-android-sem7-part4 %})
+[Praktikum Android Semester 7: Part 5]({% post_url 2021-07-17-android-sem7-part5 %})
 
 
-Pada [Part 1]({% post_url 2021-02-13-android-sem7-part1 %}) aplikasi sudah dapat melakukan request data namun hanya  menampilkan 1 (satu) field ke TextView. Data dapat ditampilkan dalam bentuk list yang bisa diimplementasikan dalam Android Studio dengan menggunakan ListView atau RecyclerView. Pada part ini akan digunakan `RecyclerView` dengan layout sederhana.
+Pada [Part 1]({% post_url 2021-07-17-android-sem7-part1 %}) aplikasi sudah dapat melakukan request data namun hanya  menampilkan 1 (satu) field ke TextView. Data dapat ditampilkan dalam bentuk list yang bisa diimplementasikan dalam Android Studio dengan menggunakan ListView atau RecyclerView. Pada part ini akan digunakan `RecyclerView` dengan layout sederhana.
 
 tambahkan pada `build.graddle.app`
 {% highlight  xml %}
@@ -220,8 +220,8 @@ Terakhir pada manifest kita ganti agar UserActivity menjadi Main Launcher
 
 Voila ! jadilah data tampil di RecyclerView
 
-[Praktikum Android Semester 7: Part 1]({% post_url 2021-02-13-android-sem7-part1 %})
-Praktikum Android Semester 7: Part 2
-[Praktikum Android Semester 7: Part 3]({% post_url 2021-02-27-android-sem7-part3 %})
-[Praktikum Android Semester 7: Part 4]({% post_url 2021-03-06-android-sem7-part4 %})
-[Praktikum Android Semester 7: Part 5]({% post_url 2021-03-08-android-sem7-part5 %})
+[Praktikum Android Semester 7: Part 1]({% post_url 2021-07-17-android-sem7-part1 %})
+[Praktikum Android Semester 7: Part 2]({% post_url 2021-07-17-android-sem7-part2 %})
+[Praktikum Android Semester 7: Part 3]({% post_url 2021-07-17-android-sem7-part3 %})
+[Praktikum Android Semester 7: Part 4]({% post_url 2021-07-17-android-sem7-part4 %})
+[Praktikum Android Semester 7: Part 5]({% post_url 2021-07-17-android-sem7-part5 %})

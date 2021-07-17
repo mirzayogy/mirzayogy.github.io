@@ -12,13 +12,13 @@ tags:
  - 201-praktikum-7-android
 ---
 
-[Praktikum Android Semester 7: Part 1]({% post_url 2021-02-13-android-sem7-part1 %})
-[Praktikum Android Semester 7: Part 2]({% post_url 2021-02-14-android-sem7-part2 %})
-[Praktikum Android Semester 7: Part 3]({% post_url 2021-02-27-android-sem7-part3 %})
-Praktikum Android Semester 7: Part 4
-[Praktikum Android Semester 7: Part 5]({% post_url 2021-03-08-android-sem7-part5 %})
+[Praktikum Android Semester 7: Part 1]({% post_url 2021-07-17-android-sem7-part1 %})
+[Praktikum Android Semester 7: Part 2]({% post_url 2021-07-17-android-sem7-part2 %})
+[Praktikum Android Semester 7: Part 3]({% post_url 2021-07-17-android-sem7-part3 %})
+[Praktikum Android Semester 7: Part 4]({% post_url 2021-07-17-android-sem7-part4 %})
+[Praktikum Android Semester 7: Part 5]({% post_url 2021-07-17-android-sem7-part5 %})
 
-Pada [Praktikum Android Semester 7: Part 3]({% post_url 2021-02-27-android-sem7-part3 %}) aplikasi sudah dapat menampilkan gambar berdasarkan url yang terdapat pada data. Part ini akan dibangun web service menggunakan PHP yang akan berjalan secara local. Langkah pertama bisa diunduh dulu [Project Starter]({{ site.url }}/assets/praktikum-penjualan-api-starter.zip).
+Pada [Praktikum Android Semester 7: Part 3]({% post_url 2021-07-17-android-sem7-part3 %}) aplikasi sudah dapat menampilkan gambar berdasarkan url yang terdapat pada data. Part ini akan dibangun web service menggunakan PHP yang akan berjalan secara local. Langkah pertama bisa diunduh dulu [Project Starter]({{ site.url }}/assets/praktikum-penjualan-api-starter.zip).
 
 ![StrukturProject]({{ site.url }}/assets/img/android-7-4/struktur-project.png)
 
@@ -95,7 +95,7 @@ Menggunakan <a href="https://www.postman.com/downloads/" target="_blank">Postman
 
 ![HasilApiRead]({{ site.url }}/assets/img/android-7-4/hasil-api-read.png)
 
-Kembali ke Android Studio untuk menggunakannya bisa digunakan langkah yang serupa dengan [Part 2]({% post_url 2021-02-14-android-sem7-part2 %}).
+Kembali ke Android Studio untuk menggunakannya bisa digunakan langkah yang serupa dengan [Part 2]({% post_url 2021-07-17-android-sem7-part2 %}).
 
 Kembali ke package `model` kemudian didalamnya buat sebuah data class dengan nama `Jenisbarang` dan isikan dengan
 
@@ -349,8 +349,8 @@ Terakhir pada manifest kita ganti agar JenisbarangActivity menjadi Main Launcher
 </application>
 {% endhighlight %}
 
-[Praktikum Android Semester 7: Part 1]({% post_url 2021-02-13-android-sem7-part1 %})
-[Praktikum Android Semester 7: Part 2]({% post_url 2021-02-14-android-sem7-part2 %})
-[Praktikum Android Semester 7: Part 3]({% post_url 2021-02-27-android-sem7-part3 %})
-Praktikum Android Semester 7: Part 4
-[Praktikum Android Semester 7: Part 5]({% post_url 2021-03-08-android-sem7-part5 %})
+[Praktikum Android Semester 7: Part 1]({% post_url 2021-07-17-android-sem7-part1 %})
+[Praktikum Android Semester 7: Part 2]({% post_url 2021-07-17-android-sem7-part2 %})
+[Praktikum Android Semester 7: Part 3]({% post_url 2021-07-17-android-sem7-part3 %})
+[Praktikum Android Semester 7: Part 4]({% post_url 2021-07-17-android-sem7-part4 %})
+[Praktikum Android Semester 7: Part 5]({% post_url 2021-07-17-android-sem7-part5 %})
