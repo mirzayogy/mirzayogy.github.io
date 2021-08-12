@@ -15,6 +15,7 @@ Praktikum Web Semester 8: Part 1
 [Praktikum Web Semester 8: Part 2]({% post_url 2021-07-15-php-sem8-part2 %})
 [Praktikum Web Semester 8: Part 3]({% post_url 2021-07-15-php-sem8-part3 %})
 [Praktikum Web Semester 8: Part 4]({% post_url 2021-07-15-php-sem8-part4 %})
+[Praktikum Web Semester 8: Part 5]({% post_url 2021-08-06-php-sem8-part5 %})
 
 
 Use Case Diagram untuk praktikum ini
@@ -364,3 +365,9 @@ Isi file `home.php` dengan
 Berikut preview hasilnya
 
 ![Preview]({{ site.url }}/assets/img/web-8-1/preview.png)
+
+Praktikum Web Semester 8: Part 1
+[Praktikum Web Semester 8: Part 2]({% post_url 2021-07-15-php-sem8-part2 %})
+[Praktikum Web Semester 8: Part 3]({% post_url 2021-07-15-php-sem8-part3 %})
+[Praktikum Web Semester 8: Part 4]({% post_url 2021-07-15-php-sem8-part4 %})
+[Praktikum Web Semester 8: Part 5]({% post_url 2021-08-06-php-sem8-part5 %})

@@ -15,6 +15,7 @@ tags:
 Praktikum Web Semester 8: Part 2
 [Praktikum Web Semester 8: Part 3]({% post_url 2021-07-15-php-sem8-part3 %})
 [Praktikum Web Semester 8: Part 4]({% post_url 2021-07-15-php-sem8-part4 %})
+[Praktikum Web Semester 8: Part 5]({% post_url 2021-08-06-php-sem8-part5 %})
 
 Buat sebuah database baru di MySQL dengan nama `praktikum_penjualan`, pilih database-nya, buka menu SQL dan jalankan perintah berikut
 
@@ -272,3 +273,9 @@ Berikut halaman create dan hasil setelah create
 
 ![create]({{ site.url }}/assets/img/web-8-2/jenisbarangcreate.png)
 ![readhasil]({{ site.url }}/assets/img/web-8-2/jenisbarangreadhasil.png)
+
+[Praktikum Web Semester 8: Part 1]({% post_url 2021-07-15-php-sem8-part1 %})
+Praktikum Web Semester 8: Part 2
+[Praktikum Web Semester 8: Part 3]({% post_url 2021-07-15-php-sem8-part3 %})
+[Praktikum Web Semester 8: Part 4]({% post_url 2021-07-15-php-sem8-part4 %})
+[Praktikum Web Semester 8: Part 5]({% post_url 2021-08-06-php-sem8-part5 %})

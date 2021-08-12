@@ -1,0 +1,302 @@
+I"w�<p><a href="/2021/07/php-sem8-part1">Praktikum Web Semester 8: Part 1</a><br />
+<a href="/2021/07/php-sem8-part2">Praktikum Web Semester 8: Part 2</a><br />
+<a href="/2021/07/php-sem8-part3">Praktikum Web Semester 8: Part 3</a><br />
+<a href="/2021/07/php-sem8-part4">Praktikum Web Semester 8: Part 4</a><br />
+Praktikum Web Semester 8: Part 5</p>
+
+<p>Tambahkan case keranjangbelanja pada file <code class="language-plaintext highlighter-rouge">routes.php</code></p>
+
+<figure class="highlight"><pre><code class="language-php" data-lang="php"><span class="k">case</span> <span class="s1">'keranjangbelanja'</span><span class="o">:</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nb">file_exists</span><span class="p">(</span><span class="s1">'pages/kasir/keranjangbelanja/keranjangbelanja.php'</span><span class="p">))</span> <span class="p">{</span>
+      <span class="k">include</span> <span class="s1">'pages/kasir/keranjangbelanja/keranjangbelanja.php'</span><span class="p">;</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+      <span class="k">include</span> <span class="s2">"pages/404.php"</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="k">break</span><span class="p">;</span></code></pre></figure>
+
+<p>Buat file baru dalam <code class="language-plaintext highlighter-rouge">pages/kasir/keranjangbelanja/keranjangbelanja.php</code></p>
+
+<figure class="highlight"><pre><code class="language-php" data-lang="php"><span class="nt">&lt;section</span> <span class="na">class=</span><span class="s">"content-header"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"container-fluid"</span><span class="nt">&gt;</span>
+        <span class="cp">&lt;?php</span>
+        <span class="k">include_once</span> <span class="s2">"database/database.php"</span><span class="p">;</span>
+        <span class="nv">$idpengguna</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+        <span class="nv">$tanggal</span> <span class="o">=</span> <span class="nb">Date</span><span class="p">(</span><span class="s1">'Ymd'</span><span class="p">);</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="k">isset</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">[</span><span class="s2">"idpenjualan"</span><span class="p">]))</span> <span class="p">{</span>
+            <span class="nv">$idpenjualan</span> <span class="o">=</span> <span class="nv">$_POST</span><span class="p">[</span><span class="s2">"idpenjualan"</span><span class="p">];</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="nv">$database</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Database</span><span class="p">();</span>
+            <span class="nv">$db</span> <span class="o">=</span> <span class="nv">$database</span><span class="o">-&gt;</span><span class="nf">getConnection</span><span class="p">();</span>
+
+            <span class="nv">$insertSQL</span> <span class="o">=</span> <span class="s2">"INSERT INTO penjualan SET tanggal = ?, idpengguna = ?, status = 'PENDING'"</span><span class="p">;</span>
+            <span class="nv">$stmt</span> <span class="o">=</span> <span class="nv">$db</span><span class="o">-&gt;</span><span class="nf">prepare</span><span class="p">(</span><span class="nv">$insertSQL</span><span class="p">);</span>
+            <span class="nv">$stmt</span><span class="o">-&gt;</span><span class="nf">bindParam</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nv">$tanggal</span><span class="p">);</span>
+            <span class="nv">$stmt</span><span class="o">-&gt;</span><span class="nf">bindParam</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="nv">$idpengguna</span><span class="p">);</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nv">$stmt</span><span class="o">-&gt;</span><span class="nf">execute</span><span class="p">())</span> <span class="p">{</span>
+                <span class="nv">$idpenjualan</span> <span class="o">=</span> <span class="nv">$db</span><span class="o">-&gt;</span><span class="nf">lastInsertId</span><span class="p">();</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="k">isset</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">[</span><span class="s1">'btnTambah'</span><span class="p">]))</span> <span class="p">{</span>
+            <span class="nv">$idpenjualan</span> <span class="o">=</span> <span class="nv">$_POST</span><span class="p">[</span><span class="s1">'idpenjualan'</span><span class="p">];</span>
+            <span class="nv">$idbarang</span> <span class="o">=</span> <span class="nv">$_POST</span><span class="p">[</span><span class="s1">'idbarang'</span><span class="p">];</span>
+            <span class="nv">$hargajual</span> <span class="o">=</span> <span class="nv">$_POST</span><span class="p">[</span><span class="s1">'hargajual'</span><span class="p">];</span>
+            <span class="nv">$jumlah</span> <span class="o">=</span> <span class="nv">$_POST</span><span class="p">[</span><span class="s1">'jumlah'</span><span class="p">];</span>
+
+            <span class="nv">$database</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Database</span><span class="p">();</span>
+            <span class="nv">$db</span> <span class="o">=</span> <span class="nv">$database</span><span class="o">-&gt;</span><span class="nf">getConnection</span><span class="p">();</span>
+
+            <span class="nv">$insertSQL</span> <span class="o">=</span> <span class="s2">"INSERT INTO detailpenjualan SET idpenjualan = ?, idbarang = ?, hargajual = ?, jumlah = ?"</span><span class="p">;</span>
+            <span class="nv">$stmt</span> <span class="o">=</span> <span class="nv">$db</span><span class="o">-&gt;</span><span class="nf">prepare</span><span class="p">(</span><span class="nv">$insertSQL</span><span class="p">);</span>
+            <span class="nv">$stmt</span><span class="o">-&gt;</span><span class="nf">bindParam</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nv">$idpenjualan</span><span class="p">);</span>
+            <span class="nv">$stmt</span><span class="o">-&gt;</span><span class="nf">bindParam</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="nv">$idbarang</span><span class="p">);</span>
+            <span class="nv">$stmt</span><span class="o">-&gt;</span><span class="nf">bindParam</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="nv">$hargajual</span><span class="p">);</span>
+            <span class="nv">$stmt</span><span class="o">-&gt;</span><span class="nf">bindParam</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="nv">$jumlah</span><span class="p">);</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nv">$stmt</span><span class="o">-&gt;</span><span class="nf">execute</span><span class="p">())</span> <span class="p">{</span>
+        <span class="cp">?&gt;</span>
+                <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"alert alert-success alert-dismissible"</span><span class="nt">&gt;</span>
+                    <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"close"</span> <span class="na">data-dismiss=</span><span class="s">"alert"</span> <span class="na">aria-hidden=</span><span class="s">"true"</span><span class="nt">&gt;</span>×<span class="nt">&lt;/button&gt;</span>
+                    <span class="nt">&lt;h5&gt;&lt;i</span> <span class="na">class=</span><span class="s">"icon fas fa-check"</span><span class="nt">&gt;&lt;/i&gt;</span> Berhasil<span class="nt">&lt;/h5&gt;</span>
+                    Tambah data barang berhasil
+                <span class="nt">&lt;/div&gt;</span>
+            <span class="cp">&lt;?php</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+        <span class="k">if</span> <span class="p">(</span><span class="k">isset</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">[</span><span class="s1">'btnHapus'</span><span class="p">]))</span> <span class="p">{</span>
+            <span class="nv">$idpenjualan</span> <span class="o">=</span> <span class="nv">$_POST</span><span class="p">[</span><span class="s1">'idpenjualan'</span><span class="p">];</span>
+            <span class="nv">$id</span> <span class="o">=</span> <span class="nv">$_POST</span><span class="p">[</span><span class="s1">'id'</span><span class="p">];</span>
+
+            <span class="nv">$database</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Database</span><span class="p">();</span>
+            <span class="nv">$db</span> <span class="o">=</span> <span class="nv">$database</span><span class="o">-&gt;</span><span class="nf">getConnection</span><span class="p">();</span>
+
+            <span class="nv">$deleteSQL</span> <span class="o">=</span> <span class="s2">"DELETE FROM detailpenjualan WHERE id = ?"</span><span class="p">;</span>
+            <span class="nv">$stmt</span> <span class="o">=</span> <span class="nv">$db</span><span class="o">-&gt;</span><span class="nf">prepare</span><span class="p">(</span><span class="nv">$deleteSQL</span><span class="p">);</span>
+            <span class="nv">$stmt</span><span class="o">-&gt;</span><span class="nf">bindParam</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nv">$id</span><span class="p">);</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nv">$stmt</span><span class="o">-&gt;</span><span class="nf">execute</span><span class="p">())</span> <span class="p">{</span>
+            <span class="cp">?&gt;</span>
+                <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"alert alert-success alert-dismissible"</span><span class="nt">&gt;</span>
+                    <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"close"</span> <span class="na">data-dismiss=</span><span class="s">"alert"</span> <span class="na">aria-hidden=</span><span class="s">"true"</span><span class="nt">&gt;</span>×<span class="nt">&lt;/button&gt;</span>
+                    <span class="nt">&lt;h5&gt;&lt;i</span> <span class="na">class=</span><span class="s">"icon fas fa-check"</span><span class="nt">&gt;&lt;/i&gt;</span> Berhasil<span class="nt">&lt;/h5&gt;</span>
+                    Hapus Berhasil
+                <span class="nt">&lt;/div&gt;</span>
+            <span class="cp">&lt;?php</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="k">isset</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">[</span><span class="s1">'btnSelesai'</span><span class="p">]))</span> <span class="p">{</span>
+            <span class="nv">$idpenjualan</span> <span class="o">=</span> <span class="nv">$_POST</span><span class="p">[</span><span class="s1">'idpenjualan'</span><span class="p">];</span>
+
+            <span class="nv">$database</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Database</span><span class="p">();</span>
+            <span class="nv">$db</span> <span class="o">=</span> <span class="nv">$database</span><span class="o">-&gt;</span><span class="nf">getConnection</span><span class="p">();</span>
+
+            <span class="nv">$selesaiSQL</span> <span class="o">=</span> <span class="s2">"UPDATE penjualan SET status = 'SELESAI' WHERE id = ?"</span><span class="p">;</span>
+            <span class="nv">$stmt</span> <span class="o">=</span> <span class="nv">$db</span><span class="o">-&gt;</span><span class="nf">prepare</span><span class="p">(</span><span class="nv">$selesaiSQL</span><span class="p">);</span>
+            <span class="nv">$stmt</span><span class="o">-&gt;</span><span class="nf">bindParam</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nv">$idpenjualan</span><span class="p">);</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nv">$stmt</span><span class="o">-&gt;</span><span class="nf">execute</span><span class="p">())</span> <span class="p">{</span>
+            <span class="cp">?&gt;</span>
+                <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"alert alert-success alert-dismissible"</span><span class="nt">&gt;</span>
+                    <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"close"</span> <span class="na">data-dismiss=</span><span class="s">"alert"</span> <span class="na">aria-hidden=</span><span class="s">"true"</span><span class="nt">&gt;</span>×<span class="nt">&lt;/button&gt;</span>
+                    <span class="nt">&lt;h5&gt;&lt;i</span> <span class="na">class=</span><span class="s">"icon fas fa-check"</span><span class="nt">&gt;&lt;/i&gt;</span> Berhasil<span class="nt">&lt;/h5&gt;</span>
+                    Transaksi Selesai
+                <span class="nt">&lt;/div&gt;</span>
+        <span class="cp">&lt;?php</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+
+        <span class="nv">$database</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Database</span><span class="p">();</span>
+        <span class="nv">$db</span> <span class="o">=</span> <span class="nv">$database</span><span class="o">-&gt;</span><span class="nf">getConnection</span><span class="p">();</span>
+
+        <span class="nv">$insertSQL</span> <span class="o">=</span> <span class="s2">"SELECT * FROM penjualan WHERE id = ?"</span><span class="p">;</span>
+        <span class="nv">$stmt</span> <span class="o">=</span> <span class="nv">$db</span><span class="o">-&gt;</span><span class="nf">prepare</span><span class="p">(</span><span class="nv">$insertSQL</span><span class="p">);</span>
+        <span class="nv">$stmt</span><span class="o">-&gt;</span><span class="nf">bindParam</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nv">$idpenjualan</span><span class="p">);</span>
+        <span class="nv">$stmt</span><span class="o">-&gt;</span><span class="nf">execute</span><span class="p">();</span>
+        <span class="nv">$datapenjualan</span> <span class="o">=</span> <span class="nv">$stmt</span><span class="o">-&gt;</span><span class="nf">fetch</span><span class="p">();</span>
+        <span class="nv">$statuspenjualan</span> <span class="o">=</span> <span class="nv">$datapenjualan</span><span class="p">[</span><span class="s1">'status'</span><span class="p">];</span>
+
+        <span class="cp">?&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row mb-2"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-sm-6"</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;h1&gt;</span>Penjualan<span class="nt">&lt;/h1&gt;</span>
+            <span class="nt">&lt;/div&gt;</span>
+            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-sm-6"</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;ol</span> <span class="na">class=</span><span class="s">"breadcrumb float-sm-right"</span><span class="nt">&gt;</span>
+                    <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"breadcrumb-item"</span><span class="nt">&gt;&lt;a</span> <span class="na">href=</span><span class="s">"?page=home"</span><span class="nt">&gt;</span>Home<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+                    <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"breadcrumb-item active"</span><span class="nt">&gt;</span>Penjualan<span class="nt">&lt;/li&gt;</span>
+                <span class="nt">&lt;/ol&gt;</span>
+            <span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/section&gt;</span>
+<span class="nt">&lt;section</span> <span class="na">class=</span><span class="s">"content"</span><span class="nt">&gt;</span>
+    <span class="cp">&lt;?php</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nv">$statuspenjualan</span> <span class="o">==</span> <span class="s2">"PENDING"</span><span class="p">)</span> <span class="p">{</span>
+    <span class="cp">?&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card-header"</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;h3</span> <span class="na">class=</span><span class="s">"card-title"</span><span class="nt">&gt;</span>Cari Barang<span class="nt">&lt;/h3&gt;</span>
+                <span class="nt">&lt;form</span> <span class="na">method=</span><span class="s">"post"</span><span class="nt">&gt;</span>
+                    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"input-group"</span><span class="nt">&gt;</span>
+                        <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">class=</span><span class="s">"form-control"</span> <span class="na">name=</span><span class="s">"keyword"</span> <span class="na">required</span><span class="nt">&gt;</span>
+                        <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"hidden"</span> <span class="na">class=</span><span class="s">"form-control"</span> <span class="na">name=</span><span class="s">"idpenjualan"</span> <span class="na">value=</span><span class="s">"</span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nv">$idpenjualan</span> <span class="cp">?&gt;</span><span class="s">"</span><span class="nt">&gt;</span>
+                        <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"input-group-append"</span><span class="nt">&gt;</span>
+                            <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"submit"</span> <span class="na">class=</span><span class="s">"btn btn-info btn-flat"</span> <span class="na">name=</span><span class="s">"btnCari"</span><span class="nt">&gt;&lt;i</span> <span class="na">class=</span><span class="s">"fa fa-search"</span><span class="nt">&gt;&lt;/i&gt;</span> Cari<span class="nt">&lt;/button&gt;</span>
+                        <span class="nt">&lt;/span&gt;</span>
+                    <span class="nt">&lt;/div&gt;</span>
+                <span class="nt">&lt;/form&gt;</span>
+            <span class="nt">&lt;/div&gt;</span>
+            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card-body"</span><span class="nt">&gt;</span>
+                <span class="cp">&lt;?php</span>
+                <span class="k">if</span> <span class="p">(</span><span class="k">isset</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">[</span><span class="s1">'keyword'</span><span class="p">]))</span> <span class="p">{</span>
+                <span class="cp">?&gt;</span>
+                    <span class="nt">&lt;table</span> <span class="na">id=</span><span class="s">"mytable"</span> <span class="na">class=</span><span class="s">"table table-bordered table-hover"</span><span class="nt">&gt;</span>
+                        <span class="nt">&lt;thead&gt;</span>
+                            <span class="nt">&lt;tr&gt;</span>
+                                <span class="nt">&lt;th&gt;</span>No<span class="nt">&lt;/th&gt;</span>
+                                <span class="nt">&lt;th&gt;</span>Nama Barang<span class="nt">&lt;/th&gt;</span>
+                                <span class="nt">&lt;th&gt;</span>Harga<span class="nt">&lt;/th&gt;</span>
+                                <span class="nt">&lt;th&gt;</span>Jumlah Beli<span class="nt">&lt;/th&gt;</span>
+                            <span class="nt">&lt;/tr&gt;</span>
+                        <span class="nt">&lt;/thead&gt;</span>
+                        <span class="nt">&lt;tbody&gt;</span>
+                            <span class="cp">&lt;?php</span>
+
+                            <span class="nv">$database</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Database</span><span class="p">();</span>
+                            <span class="nv">$db</span> <span class="o">=</span> <span class="nv">$database</span><span class="o">-&gt;</span><span class="nf">getConnection</span><span class="p">();</span>
+
+                            <span class="nv">$selectSql</span> <span class="o">=</span> <span class="s2">"SELECT B.*
+                                    FROM barang B
+                                    WHERE namabarang like ?"</span><span class="p">;</span>
+
+                            <span class="nv">$keyword</span> <span class="o">=</span>   <span class="s2">"%"</span> <span class="mf">.</span> <span class="nv">$_POST</span><span class="p">[</span><span class="s1">'keyword'</span><span class="p">]</span> <span class="mf">.</span> <span class="s2">"%"</span><span class="p">;</span>
+                            <span class="nv">$stmt</span> <span class="o">=</span> <span class="nv">$db</span><span class="o">-&gt;</span><span class="nf">prepare</span><span class="p">(</span><span class="nv">$selectSql</span><span class="p">);</span>
+                            <span class="nv">$stmt</span><span class="o">-&gt;</span><span class="nf">bindParam</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nv">$keyword</span><span class="p">);</span>
+                            <span class="nv">$stmt</span><span class="o">-&gt;</span><span class="nf">execute</span><span class="p">();</span>
+                            <span class="k">if</span> <span class="p">(</span><span class="nv">$stmt</span><span class="o">-&gt;</span><span class="nf">rowCount</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+                                <span class="nv">$no</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+                                <span class="k">while</span> <span class="p">(</span><span class="nv">$row</span> <span class="o">=</span> <span class="nv">$stmt</span><span class="o">-&gt;</span><span class="nf">fetch</span><span class="p">(</span><span class="no">PDO</span><span class="o">::</span><span class="no">FETCH_ASSOC</span><span class="p">))</span> <span class="p">{</span>
+                            <span class="cp">?&gt;</span>
+                                    <span class="nt">&lt;tr&gt;</span>
+                                        <span class="nt">&lt;td&gt;</span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nv">$no</span><span class="o">++</span> <span class="cp">?&gt;</span><span class="nt">&lt;/td&gt;</span>
+                                        <span class="nt">&lt;td&gt;</span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nv">$row</span><span class="p">[</span><span class="s1">'namabarang'</span><span class="p">]</span> <span class="cp">?&gt;</span><span class="nt">&lt;/td&gt;</span>
+                                        <span class="nt">&lt;td</span> <span class="na">style=</span><span class="s">"text-align:right"</span><span class="nt">&gt;</span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nv">$row</span><span class="p">[</span><span class="s1">'harga'</span><span class="p">]</span> <span class="cp">?&gt;</span><span class="nt">&lt;/td&gt;</span>
+                                        <span class="nt">&lt;td&gt;</span>
+                                            <span class="nt">&lt;form</span> <span class="na">action</span> <span class="na">method=</span><span class="s">"POST"</span><span class="nt">&gt;</span>
+                                                <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"hidden"</span> <span class="na">name=</span><span class="s">"id"</span> <span class="na">value=</span><span class="s">"</span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nv">$row</span><span class="p">[</span><span class="s1">'id'</span><span class="p">]</span> <span class="cp">?&gt;</span><span class="s">"</span><span class="nt">&gt;</span>
+                                                <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"input-group input-group-sm"</span><span class="nt">&gt;</span>
+                                                    <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"hidden"</span> <span class="na">class=</span><span class="s">"form-control"</span> <span class="na">name=</span><span class="s">"idbarang"</span> <span class="na">value=</span><span class="s">"</span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nv">$row</span><span class="p">[</span><span class="s1">'id'</span><span class="p">]</span> <span class="cp">?&gt;</span><span class="s">"</span><span class="nt">&gt;</span>
+                                                    <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"hidden"</span> <span class="na">class=</span><span class="s">"form-control"</span> <span class="na">name=</span><span class="s">"idpenjualan"</span> <span class="na">value=</span><span class="s">"</span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nv">$idpenjualan</span> <span class="cp">?&gt;</span><span class="s">"</span><span class="nt">&gt;</span>
+                                                    <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"number"</span> <span class="na">class=</span><span class="s">"form-control"</span> <span class="na">name=</span><span class="s">"jumlah"</span> <span class="na">required</span><span class="nt">&gt;</span>
+                                                    <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"hidden"</span> <span class="na">name=</span><span class="s">"hargajual"</span> <span class="na">value=</span><span class="s">"</span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nv">$row</span><span class="p">[</span><span class="s1">'harga'</span><span class="p">]</span> <span class="cp">?&gt;</span><span class="s">"</span><span class="nt">&gt;</span>
+                                                    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"input-group-append"</span><span class="nt">&gt;</span>
+                                                        <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"submit"</span> <span class="na">class=</span><span class="s">"btn btn-info btn-flat"</span> <span class="na">name=</span><span class="s">"btnTambah"</span><span class="nt">&gt;&lt;i</span> <span class="na">class=</span><span class="s">"fa fa-cart-plus"</span><span class="nt">&gt;&lt;/i&gt;</span> <span class="nt">&lt;/button&gt;</span>
+                                                    <span class="nt">&lt;/span&gt;</span>
+                                                <span class="nt">&lt;/div&gt;</span>
+                                            <span class="nt">&lt;/form&gt;</span>
+                                        <span class="nt">&lt;/td&gt;</span>
+                                    <span class="nt">&lt;/tr&gt;</span>
+                            <span class="cp">&lt;?</span>
+                                <span class="p">}</span>
+                            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                                <span class="k">echo</span> <span class="s1">'&lt;p&gt;Data tidak ditemukan&lt;/p&gt;'</span><span class="p">;</span>
+                            <span class="p">}</span>
+
+                            <span class="cp">?&gt;</span>
+                        <span class="nt">&lt;/tbody&gt;</span>
+                    <span class="nt">&lt;/table&gt;</span>
+                <span class="cp">&lt;?php</span>
+                <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                    <span class="k">echo</span> <span class="s2">"&lt;p&gt;Cari dengan kata kunci&lt;/p&gt;"</span><span class="p">;</span>
+                <span class="p">}</span>
+                <span class="cp">?&gt;</span>
+            <span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+    <span class="cp">&lt;?php</span>
+    <span class="p">}</span>
+    <span class="cp">?&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card-header"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;h3</span> <span class="na">class=</span><span class="s">"card-title"</span><span class="nt">&gt;&lt;i</span> <span class="na">class=</span><span class="s">"fa fa-shopping-cart"</span><span class="nt">&gt;&lt;/i&gt;</span> Keranjang Belanja<span class="nt">&lt;/h3&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card-body"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;table</span> <span class="na">id=</span><span class="s">"mytable"</span> <span class="na">class=</span><span class="s">"table table-bordered table-hover"</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;thead&gt;</span>
+                    <span class="nt">&lt;tr&gt;</span>
+                        <span class="nt">&lt;th&gt;</span>No<span class="nt">&lt;/th&gt;</span>
+                        <span class="nt">&lt;th&gt;</span>Nama Barang<span class="nt">&lt;/th&gt;</span>
+                        <span class="nt">&lt;th&gt;</span>Harga<span class="nt">&lt;/th&gt;</span>
+                        <span class="nt">&lt;th&gt;</span>Jumlah<span class="nt">&lt;/th&gt;</span>
+                        <span class="nt">&lt;th&gt;</span>Total<span class="nt">&lt;/th&gt;</span>
+                        <span class="nt">&lt;th&gt;</span>Opsi<span class="nt">&lt;/th&gt;</span>
+                    <span class="nt">&lt;/tr&gt;</span>
+                <span class="nt">&lt;/thead&gt;</span>
+                <span class="nt">&lt;tbody&gt;</span>
+                    <span class="cp">&lt;?php</span>
+                    <span class="k">include_once</span> <span class="s2">"database/database.php"</span><span class="p">;</span>
+                    <span class="nv">$database</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Database</span><span class="p">();</span>
+                    <span class="nv">$db</span> <span class="o">=</span> <span class="nv">$database</span><span class="o">-&gt;</span><span class="nf">getConnection</span><span class="p">();</span>
+
+                    <span class="nv">$selectSql</span> <span class="o">=</span> <span class="s2">"SELECT D.*, B.namabarang
+                                    FROM detailpenjualan D
+                                    LEFT JOIN barang B ON B.id = D.idbarang
+                                    WHERE idpenjualan = ?
+                                    "</span><span class="p">;</span>
+
+                    <span class="nv">$stmt</span> <span class="o">=</span> <span class="nv">$db</span><span class="o">-&gt;</span><span class="nf">prepare</span><span class="p">(</span><span class="nv">$selectSql</span><span class="p">);</span>
+                    <span class="nv">$stmt</span><span class="o">-&gt;</span><span class="nf">bindParam</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nv">$idpenjualan</span><span class="p">);</span>
+                    <span class="nv">$stmt</span><span class="o">-&gt;</span><span class="nf">execute</span><span class="p">();</span>
+
+                    <span class="nv">$no</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+                    <span class="nv">$grand_total</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+                    <span class="k">while</span> <span class="p">(</span><span class="nv">$row</span> <span class="o">=</span> <span class="nv">$stmt</span><span class="o">-&gt;</span><span class="nf">fetch</span><span class="p">(</span><span class="no">PDO</span><span class="o">::</span><span class="no">FETCH_ASSOC</span><span class="p">))</span> <span class="p">{</span>
+                        <span class="nv">$grand_total</span> <span class="o">+=</span> <span class="nv">$row</span><span class="p">[</span><span class="s1">'jumlah'</span><span class="p">]</span> <span class="o">*</span> <span class="nv">$row</span><span class="p">[</span><span class="s1">'hargajual'</span><span class="p">];</span>
+                    <span class="cp">?&gt;</span>
+                        <span class="nt">&lt;tr&gt;</span>
+                            <span class="nt">&lt;td&gt;</span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nv">$no</span><span class="o">++</span> <span class="cp">?&gt;</span><span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td&gt;</span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nv">$row</span><span class="p">[</span><span class="s1">'namabarang'</span><span class="p">]</span> <span class="cp">?&gt;</span><span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">style=</span><span class="s">"text-align:right"</span><span class="nt">&gt;</span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nv">$row</span><span class="p">[</span><span class="s1">'hargajual'</span><span class="p">]</span> <span class="cp">?&gt;</span><span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">style=</span><span class="s">"text-align:right"</span><span class="nt">&gt;</span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nv">$row</span><span class="p">[</span><span class="s1">'jumlah'</span><span class="p">]</span> <span class="cp">?&gt;</span><span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">style=</span><span class="s">"text-align:right"</span><span class="nt">&gt;</span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nv">$row</span><span class="p">[</span><span class="s1">'jumlah'</span><span class="p">]</span> <span class="o">*</span> <span class="nv">$row</span><span class="p">[</span><span class="s1">'hargajual'</span><span class="p">]</span> <span class="cp">?&gt;</span><span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td&gt;</span>
+                                <span class="cp">&lt;?php</span>
+                                <span class="k">if</span> <span class="p">(</span><span class="nv">$statuspenjualan</span> <span class="o">==</span> <span class="s2">"PENDING"</span><span class="p">)</span> <span class="p">{</span>
+                                <span class="cp">?&gt;</span>
+                                    <span class="nt">&lt;form</span> <span class="na">action</span> <span class="na">method=</span><span class="s">"POST"</span><span class="nt">&gt;</span>
+                                        <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"hidden"</span> <span class="na">name=</span><span class="s">"id"</span> <span class="na">value=</span><span class="s">"</span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nv">$row</span><span class="p">[</span><span class="s1">'id'</span><span class="p">]</span> <span class="cp">?&gt;</span><span class="s">"</span><span class="nt">&gt;</span>
+                                        <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"hidden"</span> <span class="na">name=</span><span class="s">"idpenjualan"</span> <span class="na">value=</span><span class="s">"</span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nv">$idpenjualan</span> <span class="cp">?&gt;</span><span class="s">"</span><span class="nt">&gt;</span>
+                                        <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"submit"</span> <span class="na">name=</span><span class="s">"btnHapus"</span> <span class="na">class=</span><span class="s">"btn btn-danger btn-sm"</span><span class="nt">&gt;&lt;i</span> <span class="na">class=</span><span class="s">"fa fa-trash"</span><span class="nt">&gt;&lt;/i&gt;</span> Hapus<span class="nt">&lt;/button&gt;</span>
+                                    <span class="nt">&lt;/form&gt;</span>
+                                <span class="cp">&lt;?php</span>
+                                <span class="p">}</span>
+                                <span class="cp">?&gt;</span>
+                            <span class="nt">&lt;/td&gt;</span>
+                        <span class="nt">&lt;/tr&gt;</span>
+                    <span class="cp">&lt;?</span>
+                    <span class="p">}</span>
+                    <span class="cp">?&gt;</span>
+                    <span class="nt">&lt;tr&gt;</span>
+                        <span class="nt">&lt;td</span> <span class="na">colspan=</span><span class="s">"4"</span><span class="nt">&gt;</span>Grand Total<span class="nt">&lt;/td&gt;</span>
+                        <span class="nt">&lt;td</span> <span class="na">style=</span><span class="s">"text-align:right"</span><span class="nt">&gt;</span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nv">$grand_total</span> <span class="cp">?&gt;</span><span class="nt">&lt;/td&gt;</span>
+                        <span class="nt">&lt;td&gt;</span>
+                            <span class="cp">&lt;?php</span>
+                            <span class="k">if</span> <span class="p">(</span><span class="nv">$statuspenjualan</span> <span class="o">==</span> <span class="s2">"PENDING"</span><span class="p">)</span> <span class="p">{</span>
+                            <span class="cp">?&gt;</span>
+                                <span class="nt">&lt;form</span> <span class="na">method=</span><span class="s">"POST"</span><span class="nt">&gt;</span>
+                                    <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"hidden"</span> <span class="na">class=</span><span class="s">"form-control"</span> <span class="na">name=</span><span class="s">"idpenjualan"</span> <span class="na">value=</span><span class="s">"</span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nv">$idpenjualan</span> <span class="cp">?&gt;</span><span class="s">"</span><span class="nt">&gt;</span>
+                                    <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"submit"</span> <span class="na">name=</span><span class="s">"btnSelesai"</span> <span class="na">class=</span><span class="s">"btn btn-success btn-sm"</span><span class="nt">&gt;&lt;i</span> <span class="na">class=</span><span class="s">"fa fa-check"</span><span class="nt">&gt;&lt;/i&gt;</span> Selesai<span class="nt">&lt;/button&gt;</span>
+                                <span class="nt">&lt;/form&gt;</span>
+                            <span class="cp">&lt;?php</span>
+                            <span class="p">}</span>
+                            <span class="cp">?&gt;</span>
+                        <span class="nt">&lt;/td&gt;</span>
+                    <span class="nt">&lt;/tr&gt;</span>
+                <span class="nt">&lt;/tbody&gt;</span>
+            <span class="nt">&lt;/table&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/section&gt;</span>
+
+<span class="cp">&lt;?php</span> <span class="k">include_once</span> <span class="s2">"components/scripts.php"</span> <span class="cp">?&gt;</span></code></pre></figure>
+
+<p>Dengan mengikuti pola pada part2 dan part3 buat fitur CRUD untuk dua tabel tersebut</p>
+:ET

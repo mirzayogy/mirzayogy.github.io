@@ -3,7 +3,7 @@ layout: post
 title:  "Praktikum Web (PHP) Semester 8: Part 5"
 date:   2021-08-06 03:00:00 +0800
 categories: php
-comments : true
+comments : false
 description: Transaksi Penjualan
 tags: 
  - php 
@@ -14,7 +14,8 @@ tags:
 [Praktikum Web Semester 8: Part 1]({% post_url 2021-07-15-php-sem8-part1 %})
 [Praktikum Web Semester 8: Part 2]({% post_url 2021-07-15-php-sem8-part2 %})
 [Praktikum Web Semester 8: Part 3]({% post_url 2021-07-15-php-sem8-part3 %})
-Praktikum Web Semester 8: Part 4
+[Praktikum Web Semester 8: Part 4]({% post_url 2021-07-15-php-sem8-part4 %})
+Praktikum Web Semester 8: Part 5
 
 Tambahkan case keranjangbelanja pada file `routes.php`
 
@@ -316,4 +317,28 @@ Buat file baru dalam `pages/kasir/keranjangbelanja/keranjangbelanja.php`
 <?php include_once "components/scripts.php" ?>
 {% endhighlight %}
 
-Dengan mengikuti pola pada part2 dan part3 buat fitur CRUD untuk dua tabel tersebut
+Berikut tampilan keranjang belanja
+
+![keranjangbelanja]({{ site.url }}/assets/img/web-8-5/keranjangbelanja.png)
+
+Proses menambahkan barang ke keranjang belanja bisa dilakukan dengan melakukan pencarian data barang, yang berikutnya akan muncul daftar barang beserta kolom untuk mengisi jumlah barang yang dibeli, dan tombol tambahkan ke keranjang belanja
+
+![keranjangbelanjapencarian]({{ site.url }}/assets/img/web-8-5/keranjangbelanjapencarian.png)
+
+Setelah ditambahkan ke keranjang belanja, maka barang tersebut masuk di tabel keranjang belanja, dan fitur pencarian siap digunakan kembali
+
+![keranjangbelanjahasiltambah]({{ site.url }}/assets/img/web-8-5/keranjangbelanjahasiltambah.png)
+
+Penghapusan barang di keranjang belanja bisa dilakukan dengan menekan tombol hapus
+
+![keranjangbelanjahasilhapus]({{ site.url }}/assets/img/web-8-5/keranjangbelanjahasilhapus.png)
+
+Setelah transaksi selesai klik tombol selesai dan keranjang belanja tidak lagi bisa diubah isinya
+
+![keranjangbelanjaselesai]({{ site.url }}/assets/img/web-8-5/keranjangbelanjaselesai.png)
+
+[Praktikum Web Semester 8: Part 1]({% post_url 2021-07-15-php-sem8-part1 %})
+[Praktikum Web Semester 8: Part 2]({% post_url 2021-07-15-php-sem8-part2 %})
+[Praktikum Web Semester 8: Part 3]({% post_url 2021-07-15-php-sem8-part3 %})
+[Praktikum Web Semester 8: Part 4]({% post_url 2021-07-15-php-sem8-part4 %})
+Praktikum Web Semester 8: Part 5

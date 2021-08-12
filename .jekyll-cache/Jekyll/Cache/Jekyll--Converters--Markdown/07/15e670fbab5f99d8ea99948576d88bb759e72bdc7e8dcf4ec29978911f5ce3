@@ -1,0 +1,117 @@
+I"ùA<p><a href="/2021/07/php-sem8-part1">Praktikum Web Semester 8: Part 1</a><br />
+<a href="/2021/07/php-sem8-part2">Praktikum Web Semester 8: Part 2</a><br />
+<a href="/2021/07/php-sem8-part3">Praktikum Web Semester 8: Part 3</a><br />
+Praktikum Web Semester 8: Part 4<br />
+<a href="/2021/08/php-sem8-part5">Praktikum Web Semester 8: Part 5</a></p>
+
+<p>Buat table <code class="language-plaintext highlighter-rouge">barang</code> yang memiliki relasi one to many terhadap jenisbarang, ditandai dengan adanya <code class="language-plaintext highlighter-rouge">idjenisbarang</code> sebagai foreign key</p>
+
+<figure class="highlight"><pre><code class="language-sql" data-lang="sql"><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="nv">`barang`</span> <span class="p">(</span>
+<span class="nv">`id`</span> <span class="nb">INT</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="n">AUTO_INCREMENT</span> <span class="p">,</span>
+<span class="nv">`idjenisbarang`</span> <span class="nb">int</span><span class="p">(</span><span class="mi">11</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+<span class="nv">`namabarang`</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">200</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+<span class="nv">`harga`</span> <span class="nb">double</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+<span class="k">PRIMARY</span> <span class="k">KEY</span> <span class="p">(</span><span class="nv">`id`</span><span class="p">))</span> <span class="n">ENGINE</span> <span class="o">=</span> <span class="n">InnoDB</span><span class="p">;</span>
+
+<span class="k">INSERT</span> <span class="k">INTO</span> <span class="nv">`barang`</span> <span class="p">(</span><span class="nv">`id`</span><span class="p">,</span> <span class="nv">`idjenisbarang`</span><span class="p">,</span> <span class="nv">`namabarang`</span><span class="p">,</span> <span class="nv">`harga`</span><span class="p">)</span> <span class="k">VALUES</span>
+<span class="p">(</span><span class="k">NULL</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">'Celana Kargo'</span><span class="p">,</span> <span class="mi">300000</span><span class="p">),</span>
+<span class="p">(</span><span class="k">NULL</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">'Kemeja Pantai'</span><span class="p">,</span> <span class="mi">250000</span><span class="p">),</span>
+<span class="p">(</span><span class="k">NULL</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">'Blouse Putih'</span><span class="p">,</span> <span class="mi">270000</span><span class="p">),</span>
+<span class="p">(</span><span class="k">NULL</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">'Rok Panjang'</span><span class="p">,</span> <span class="mi">350000</span><span class="p">)</span></code></pre></figure>
+
+<p>Hint untuk Data Barang:<br />
+Gunakan Query berikut untuk menampilkan table barang</p>
+
+<figure class="highlight"><pre><code class="language-sql" data-lang="sql"><span class="k">SELECT</span> <span class="n">B</span><span class="p">.</span><span class="o">*</span><span class="p">,</span> <span class="n">JB</span><span class="p">.</span><span class="n">namajenisbarang</span>
+<span class="k">FROM</span> <span class="n">barang</span> <span class="n">B</span>
+<span class="k">LEFT</span> <span class="k">JOIN</span> <span class="n">jenisbarang</span> <span class="n">JB</span> <span class="k">ON</span> <span class="n">B</span><span class="p">.</span><span class="n">idjenisbarang</span> <span class="o">=</span> <span class="n">JB</span><span class="p">.</span><span class="n">id</span></code></pre></figure>
+
+<p><img src="/assets/img/web-8-4/barangread.png" alt="read" /></p>
+
+<p>Gunakan komponen berikut pada halaman <code class="language-plaintext highlighter-rouge">tambah data barang</code>, untuk menampilkan pilihan jenis barang</p>
+
+<figure class="highlight"><pre><code class="language-php" data-lang="php"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"form-group"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"namajenisbarang"</span><span class="nt">&gt;</span>Jenis Barang<span class="nt">&lt;/label&gt;</span>
+    <span class="nt">&lt;select</span> <span class="na">class=</span><span class="s">"form-control"</span> <span class="na">name=</span><span class="s">"idjenisbarang"</span><span class="nt">&gt;</span>
+        <span class="cp">&lt;?php</span>
+        <span class="k">include_once</span> <span class="s2">"database/database.php"</span><span class="p">;</span>
+        <span class="nv">$database</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Database</span><span class="p">();</span>
+        <span class="nv">$db</span> <span class="o">=</span> <span class="nv">$database</span><span class="o">-&gt;</span><span class="nf">getConnection</span><span class="p">();</span>
+
+        <span class="nv">$selectSQL</span> <span class="o">=</span> <span class="s2">"SELECT * FROM jenisbarang"</span><span class="p">;</span>
+        <span class="nv">$stmt</span> <span class="o">=</span> <span class="nv">$db</span><span class="o">-&gt;</span><span class="nf">prepare</span><span class="p">(</span><span class="nv">$selectSQL</span><span class="p">);</span>
+        <span class="nv">$stmt</span><span class="o">-&gt;</span><span class="nf">execute</span><span class="p">();</span>
+
+        <span class="k">while</span> <span class="p">(</span><span class="nv">$row</span> <span class="o">=</span> <span class="nv">$stmt</span><span class="o">-&gt;</span><span class="nf">fetch</span><span class="p">(</span><span class="no">PDO</span><span class="o">::</span><span class="no">FETCH_ASSOC</span><span class="p">))</span> <span class="p">{</span>
+            <span class="k">echo</span> <span class="s2">"&lt;option value=</span><span class="se">\"</span><span class="s2">"</span><span class="mf">.</span><span class="nv">$row</span><span class="p">[</span><span class="s2">"id"</span><span class="p">]</span><span class="mf">.</span><span class="s2">"</span><span class="se">\"</span><span class="s2">&gt;"</span> <span class="mf">.</span> <span class="nv">$row</span><span class="p">[</span><span class="s2">"namajenisbarang"</span><span class="p">]</span> <span class="mf">.</span> <span class="s2">"&lt;/option&gt;"</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="cp">?&gt;</span>
+    <span class="nt">&lt;/select&gt;</span>
+<span class="nt">&lt;/div&gt;</span></code></pre></figure>
+
+<p><img src="/assets/img/web-8-4/barangtambah.png" alt="create" /></p>
+
+<p>Gunakan komponen berikut pada halaman <code class="language-plaintext highlighter-rouge">ubah data barang</code>, untuk menampilkan pilihan jenis barang</p>
+
+<figure class="highlight"><pre><code class="language-php" data-lang="php"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"form-group"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"namajenisbarang"</span><span class="nt">&gt;</span>Nama Jenis Barang<span class="nt">&lt;/label&gt;</span>
+    <span class="nt">&lt;select</span> <span class="na">class=</span><span class="s">"form-control"</span> <span class="na">name=</span><span class="s">"idjenisbarang"</span><span class="nt">&gt;</span>
+        <span class="cp">&lt;?php</span>
+        <span class="k">include_once</span> <span class="s2">"database/database.php"</span><span class="p">;</span>
+        <span class="nv">$database</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Database</span><span class="p">();</span>
+        <span class="nv">$db</span> <span class="o">=</span> <span class="nv">$database</span><span class="o">-&gt;</span><span class="nf">getConnection</span><span class="p">();</span>
+
+        <span class="nv">$selectSQL</span> <span class="o">=</span> <span class="s2">"SELECT * FROM jenisbarang"</span><span class="p">;</span>
+        <span class="nv">$stmt</span> <span class="o">=</span> <span class="nv">$db</span><span class="o">-&gt;</span><span class="nf">prepare</span><span class="p">(</span><span class="nv">$selectSQL</span><span class="p">);</span>
+        <span class="nv">$stmt</span><span class="o">-&gt;</span><span class="nf">execute</span><span class="p">();</span>
+
+        <span class="k">while</span> <span class="p">(</span><span class="nv">$rowSelect</span> <span class="o">=</span> <span class="nv">$stmt</span><span class="o">-&gt;</span><span class="nf">fetch</span><span class="p">(</span><span class="no">PDO</span><span class="o">::</span><span class="no">FETCH_ASSOC</span><span class="p">))</span> <span class="p">{</span>
+            <span class="nv">$selected</span> <span class="o">=</span> <span class="s2">""</span><span class="p">;</span>
+            <span class="k">if</span><span class="p">(</span><span class="nv">$row</span><span class="p">[</span><span class="s2">"idjenisbarang"</span><span class="p">]</span> <span class="o">==</span> <span class="nv">$rowSelect</span><span class="p">[</span><span class="s2">"id"</span><span class="p">]){</span>
+                <span class="nv">$selected</span> <span class="o">=</span> <span class="s2">" selected"</span><span class="p">;</span>
+            <span class="p">}</span>
+            <span class="k">echo</span> <span class="s2">"&lt;option value=</span><span class="se">\"</span><span class="s2">"</span> <span class="mf">.</span> <span class="nv">$rowSelect</span><span class="p">[</span><span class="s2">"id"</span><span class="p">]</span> <span class="mf">.</span> <span class="s2">"</span><span class="se">\"</span><span class="s2">  </span><span class="nv">$selected</span><span class="s2">&gt;"</span> <span class="mf">.</span> <span class="nv">$rowSelect</span><span class="p">[</span><span class="s2">"namajenisbarang"</span><span class="p">]</span> <span class="mf">.</span> <span class="s2">"&lt;/option&gt;"</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="cp">?&gt;</span>
+    <span class="nt">&lt;/select&gt;</span>
+<span class="nt">&lt;/div&gt;</span></code></pre></figure>
+
+<p><img src="/assets/img/web-8-4/barangubah.png" alt="create" /></p>
+
+<p>Buat table <code class="language-plaintext highlighter-rouge">pengguna</code> yang digunakan dalam proses otentifikasi pengguna dan pemilahan fitur</p>
+
+<figure class="highlight"><pre><code class="language-sql" data-lang="sql"><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="nv">`pengguna`</span> <span class="p">(</span>
+  <span class="nv">`id`</span> <span class="nb">INT</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="n">AUTO_INCREMENT</span> <span class="p">,</span>
+  <span class="nv">`username`</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">25</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+  <span class="nv">`password`</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">200</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+  <span class="nv">`namalengkap`</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">200</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+  <span class="nv">`isadmin`</span> <span class="nb">tinyint</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+<span class="k">PRIMARY</span> <span class="k">KEY</span> <span class="p">(</span><span class="nv">`id`</span><span class="p">))</span> <span class="n">ENGINE</span> <span class="o">=</span> <span class="n">InnoDB</span><span class="p">;</span>
+
+<span class="o">!</span><span class="p">[</span><span class="n">read_pengguna</span><span class="p">](</span><span class="o">/</span><span class="n">assets</span><span class="o">/</span><span class="n">img</span><span class="o">/</span><span class="n">web</span><span class="o">-</span><span class="mi">8</span><span class="o">-</span><span class="mi">4</span><span class="o">/</span><span class="n">penggunaread</span><span class="p">.</span><span class="n">png</span><span class="p">)</span>
+
+
+<span class="k">INSERT</span> <span class="k">INTO</span> <span class="nv">`pengguna`</span> <span class="p">(</span><span class="nv">`id`</span><span class="p">,</span> <span class="nv">`username`</span><span class="p">,</span> <span class="nv">`password`</span><span class="p">,</span> <span class="nv">`namalengkap`</span><span class="p">,</span> <span class="nv">`isadmin`</span><span class="p">)</span> <span class="k">VALUES</span>
+<span class="p">(</span><span class="k">NULL</span><span class="p">,</span> <span class="s1">'admin'</span><span class="p">,</span> <span class="n">md5</span><span class="p">(</span><span class="nv">"admin"</span><span class="p">),</span> <span class="s1">'Nama Admin'</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+<span class="p">(</span><span class="k">NULL</span><span class="p">,</span> <span class="s1">'user'</span><span class="p">,</span> <span class="n">md5</span><span class="p">(</span><span class="nv">"user"</span><span class="p">),</span> <span class="s1">'Nama User'</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span></code></pre></figure>
+
+<p>Gunakan komponen berikut pada halaman <code class="language-plaintext highlighter-rouge">tambah data pengguna</code>, untuk menampilkan switch</p>
+
+<figure class="highlight"><pre><code class="language-php" data-lang="php"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"form-group"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"custom-control custom-switch"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"checkbox"</span> <span class="na">class=</span><span class="s">"custom-control-input"</span> <span class="na">id=</span><span class="s">"isadmin"</span> <span class="na">name=</span><span class="s">"isadmin"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;label</span> <span class="na">class=</span><span class="s">"custom-control-label"</span> <span class="na">for=</span><span class="s">"isadmin"</span><span class="nt">&gt;</span>Admin<span class="nt">&lt;/label&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span></code></pre></figure>
+
+<p>Gunakan komponen berikut pada halaman <code class="language-plaintext highlighter-rouge">ubah data pengguna</code>, untuk menampilkan switch</p>
+
+<figure class="highlight"><pre><code class="language-php" data-lang="php"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"form-group"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"custom-control custom-switch"</span><span class="nt">&gt;</span>
+        <span class="cp">&lt;?php</span> <span class="nv">$checked</span> <span class="o">=</span> <span class="nv">$row</span><span class="p">[</span><span class="s1">'isadmin'</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span> <span class="o">?</span> <span class="s2">" checked"</span> <span class="o">:</span> <span class="s2">""</span>  <span class="cp">?&gt;</span>
+        <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"checkbox"</span> <span class="na">class=</span><span class="s">"custom-control-input"</span> <span class="na">id=</span><span class="s">"isadmin"</span> <span class="na">name=</span><span class="s">"isadmin"</span> <span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nv">$checked</span> <span class="cp">?&gt;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;label</span> <span class="na">class=</span><span class="s">"custom-control-label"</span> <span class="na">for=</span><span class="s">"isadmin"</span><span class="nt">&gt;</span>Admin<span class="nt">&lt;/label&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span></code></pre></figure>
+
+:ET
