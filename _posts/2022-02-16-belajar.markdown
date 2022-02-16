@@ -3,7 +3,7 @@ layout: post
 title:  "Belajar React, Install Python3, dan NLTK"
 date:   2022-02-16 16:00:00 +0800
 categories: belajar
-comments : false
+comments : true
 description: Log belajar hari ini, terlalu random belajar dua hal yang tidak begitu berhubungan yaitu React JS dan NLP menggunakan Python3, NLTK, dan Jupylab
 tags: 
  - react 
