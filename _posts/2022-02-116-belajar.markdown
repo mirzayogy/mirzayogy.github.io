@@ -1,0 +1,22 @@
+---
+layout: post
+title:  "Belajar React, Install Python3, dan NLTK"
+date:   2022-02-16 16:00:00 +0800
+categories: belajar
+comments : false
+description: Log belajar hari ini, terlalu random belajar dua hal yang tidak begitu berhubungan yaitu React JS dan NLP menggunakan Python3, NLTK, dan Jupylab
+tags: 
+ - react 
+ - python3
+ - nltk
+---
+
+Hari ini cukup santai, pekerjaan yang menunggu tinggal memeriksa beberapa laporan PKL Mahasiswa yang sudah lewat deadline, entahlah kalo lupa ada pekerjaan lain.. hihi.. Saya sempat untuk duduk untuk belajar hal-hal yang sudah lama ingin Saya pelajari tapi selalu belum ketemu waktunya, kalaupun ada waktu luang bawaannya pengen hiburan melulu haha..
+
+Sebagai programmer yang berangkat dari pemrograman desktop yang kemudian beralih ke web sambil melipir ke mobile, Saya sangat tertarik dengan konsep satu codebase untuk semua platform. Karena belajar desktopnya Delphi dengan bahasa Pascal, mengembangkan web lebih banyak di PHP yang mana ga suka nyenggol frontend kecuali makai template gratisan, mobilenya Android dengan Kotlin, dan mengajar menggunakan Java, rasanya kepala ini penuh dengan sintaks yang berbeda-beda sehingga tidak jarang tabrakan sintaks ketika mengajar. Setelah baca sana sini jatuhlah kesimpulan ada 2 jalur yang bisa dipilih untuk mewujudkan satu codebase tadi yaitu jalur Flutter atau Javascript. 
+
+Javascript menarik buat Saya karena *sepertinya* bisa styling dengan template yang sudah ada dan familiar di komponen web ketimbang Flutter yang harus styling dari nol dan terlalu banyak yang harus dipelajari. Javascript bisa untuk berbagai macam platform, desktop menggunakan Electron JS, frontend dengan berbagai macam jurus, bisa menggunakan React, Vue, Meteor, di backend bisa menggunakan Node JS. Awalnya sudah beberapa kali implementasi menggunakan vanilla JS, ada beberapa latihan menggunakan Vue, entah kenapa rasanya pengen banget belajar React, akhirnya hari ini berbekal [video dari channel freeCodeCamp.org]({https://www.youtube.com/watch?v=bMknfKXIFA8}) 11 Jam 55 Menit 27 detik Woi !! Hari ini sudah selesai section 1, belajar banyak hal tentang komponen, JSX, ES6, daaaaan... banyak CSS. Cara mengajarnya keren banget, ada pause, ada latihan repetitif sebagai pembiasaan, ada quiz, ada challenge, andaikan bisa menyusun materi sematang ini ya...
+
+Setelah istirahat dari section 1, tetiba teringat kenapa ga belajar bikin sesuatu yang bisa untuk penelitian aja ya. Kan pekerjaan utamanya scientist, bukan engineering, kalopun disuruh milih antara scientist dan engineering sebenernya ya lebih tertarik di engineering, tapi ya kadung sudah kecemplung, maka belajar lah sesuatu yang nanti bisa dipakai buat research. Karena lagi tertarik sama NLP, Natural Language Processing loh ya bukan Neuro-Linguistic Programming, entah apa pula itu, maka seperti programmer pada umumnya memulai dengan cari tutorialnya. Kali ini nemu [video dari freeCodeCamp.org]({https://www.youtube.com/watch?v=X2vAabgKiuM}) lagi tentang NLP menggunakan Python dan NLTK. Mulailah menginstall Python3 karena bawaan yang sudah terinstall adanya Python2, kemudian NLTK dan Jupylab, fiuh... padahal kalo pakai Google Colab cepet aja nih, tapi gapapa lah for the sake of learning, 
+
+Mungkin di tulisan berikutnya aja kali ya detail tentang apa aja yang dikerjakan, hari ini sekian dulu, pegel lah lama ga nulis. Semoga tulisan ini bisa jadi pengingat Saya pribadi tentang proses belajar yang dijalani, sekaligus sebagai catatan kalo pas ada yang kelupaan. Sukur sukur kalo ada yang baca dan bisa mengambil hikmahnya.
