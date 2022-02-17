@@ -1,0 +1,82 @@
+---
+layout: post
+title:  "React JS Section 1"
+date:   2022-02-16 16:00:00 +0800
+categories: belajar
+comments : true
+description: Catatan pertama dari apa saja yang sudah dipelajari dari React Course - Beginner's Tutorial for React JavaScript Library [2022]
+tags: 
+ - react 
+---
+
+[Video dari channel freeCodeCamp.org]({https://www.youtube.com/watch?v=bMknfKXIFA8}) membahas tentang React untuk pemula, diawal video membahas tentang bagaimana menggunakan React dalam cara yang singkat, tanpa install macam macam hanya dengan menggunakan CDN sesuai dengan instruksi di website React itu sendiri. 
+
+{% highlight bash%}
+https://reactjs.org/docs/add-react-to-a-website.html#add-react-in-one-minute
+{% endhighlight %}
+
+Namun juga disampaikan bahwa ini bukan cara yang dipakai pengguna React pada umumnya, hanya sekedar untuk mencoba berbagai macam fitur React. Course-nya sendiri mengarahkan penonton untuk menggunkan Scrimba, sebuah platform interaktif yang membantu proses pembelajaran pada video tersebut.
+
+<iframe width="560" height="315" src="https://www.youtube.com/watch?v=bMknfKXIFA8" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
+
+Dijelaskan juga bahwa diantara alasan kenapa menggunakan React adalah karena React Composable dan dianalogikan dengan membangun patung raksasa dengan Lego, ketimbang dari sebuah batu raksasa yang dipahat sedikit demi sedikit. Disebutkan juga penulisan React bersifat Declarative ketimbang Imperative, dimana untuk membangun sesuatu pengembang tinggal menuliskan apa yang harus dikerjakan oleh komputer ketimbang Imperative yang harus menuliskan bagaimana suatu tugas harus dikerjakan. Sebagaimana membandingkan React yang declarative dan vanilla JS yang imperative.
+
+React menggunakan perintah ReactDOM.render(par1, par2) untuk menampilkan komponen, dimana par1 adalah elemen yang akan ditampilkan dan par2 adalah lokasi elemen tersebut akan muncul, par1 juga harus hanya mengandung 1 (satu) elemen, jika ada beberapa elemen maka bisa dibungkus dalam sebuah div. Contohnya seperti berikut
+
+{% highlight php %}
+
+ReactDOM.render(
+  <div>
+    <h1>Title</h1>
+    <p>Paragraf</p>
+  </div>
+  ,
+  document.getElementById('root')
+);
+
+{% endhighlight %}
+
+
+React Component atau yang biasa disebut JSX adalah sebuah function yang me-return React Element berikut contohnya
+
+{% highlight php %}
+export default function Header() {
+    return (
+        <header>
+            <nav className="nav">
+                <img src="logo192.png" className="nav-logo" alt="logo" />
+                <ul className="nav-items">
+                    <li>Pricing</li>
+                    <li>About</li>
+                    <li>Contact</li>
+                </ul>
+            </nav>
+        </header>
+    )
+}
+{% endhighlight %}
+
+
+Komponen tersebut secara default me-return Header, perhatikan bahwa penulisan komponen React diawali dengan huruf besar. Class pada React ditulis menggunakan className yang mana berbeda dengan elemen html biasa karena memang React Component pada dasarnya adalah sebuah JavaScript Object.
+
+Pemanggilan React Component sedikit berbeda dengan pemanggilan function pada umumnya, berikut contohnya
+
+{% highlight php %}
+import React from 'react';
+import ReactDOM from 'react-dom';
+
+ReactDOM.render(<Header />, document.getElementById('root'));
+{% endhighlight %}
+
+Penggunaan React dengan lebih terintegrasi bisa menggunakan npm, tentunya perlu install NodeJS terlebih dahulu, kemudian jika sudah bisa menjalankan npm, maka jalankan perintah berikut untuk project React
+
+{% highlight bash%}
+npx create-react-app my-app
+cd my-app
+npm start
+{% endhighlight %}
+
+Struktur Project yang dihasilkan akan jauh lebih mudah dimengerti ketika sudah mengerti konsep React Component dan cara pemanggilannya.
+
+Dah dulu ah, belajar NLP lagi aja buat riset soalnya...

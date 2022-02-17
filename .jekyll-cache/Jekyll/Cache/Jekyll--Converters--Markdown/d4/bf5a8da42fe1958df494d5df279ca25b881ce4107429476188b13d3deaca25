@@ -1,0 +1,53 @@
+I"4<p><a href="{https://www.youtube.com/watch?v=bMknfKXIFA8}">Video dari channel freeCodeCamp.org</a> membahas tentang React untuk pemula, diawal video membahas tentang bagaimana menggunakan React dalam cara yang singkat, tanpa install macam macam hanya dengan menggunakan CDN sesuai dengan instruksi di website React itu sendiri. Namun juga disampaikan bahwa ini bukan cara yang dipakai pengguna React pada umumnya, hanya sekedar untuk mencoba berbagai macam fitur React. Course-nya sendiri mengarahkan penonton untuk menggunkan Scrimba, sebuah platform interaktif yang membantu proses pembelajaran pada video tersebut.</p>
+
+<iframe width="560" height="315" src="https://www.youtube.com/watch?v=bMknfKXIFA8" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen=""></iframe>
+
+<p>Dijelaskan juga bahwa diantara alasan kenapa menggunakan React adalah karena React Composable dan dianalogikan dengan membangun patung raksasa dengan Lego, ketimbang dari sebuah batu raksasa yang dipahat sedikit demi sedikit. Disebutkan juga penulisan React bersifat Declarative ketimbang Imperative, dimana untuk membangun sesuatu pengembang tinggal menuliskan apa yang harus dikerjakan oleh komputer ketimbang Imperative yang harus menuliskan bagaimana suatu tugas harus dikerjakan. Sebagaimana membandingkan React yang declarative dan vanilla JS yang imperative.</p>
+
+<p>React menggunakan perintah ReactDOM.render(par1, par2) untuk menampilkan komponen, dimana par1 adalah elemen yang akan ditampilkan dan par2 adalah lokasi elemen tersebut akan muncul, par1 juga harus hanya mengandung 1 (satu) elemen, jika ada beberapa elemen maka bisa dibungkus dalam sebuah div. Contohnya seperti berikut</p>
+
+<figure class="highlight"><pre><code class="language-php" data-lang="php"><span class="nc">ReactDOM</span><span class="mf">.</span><span class="nf">render</span><span class="p">(</span>
+  <span class="o">&lt;</span><span class="n">div</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">h1</span><span class="o">&gt;</span><span class="nc">Title</span><span class="o">&lt;/</span><span class="n">h1</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="nc">Paragraf</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+  <span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
+  <span class="p">,</span>
+  <span class="n">document</span><span class="mf">.</span><span class="nf">getElementById</span><span class="p">(</span><span class="s1">'root'</span><span class="p">)</span>
+<span class="p">);</span></code></pre></figure>
+
+<p>React Component atau yang biasa disebut JSX adalah sebuah function yang me-return React Element berikut contohnya</p>
+
+<figure class="highlight"><pre><code class="language-php" data-lang="php"><span class="n">export</span> <span class="k">default</span> <span class="k">function</span> <span class="n">Header</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">(</span>
+        <span class="o">&lt;</span><span class="n">header</span><span class="o">&gt;</span>
+            <span class="o">&lt;</span><span class="n">nav</span> <span class="n">className</span><span class="o">=</span><span class="s2">"nav"</span><span class="o">&gt;</span>
+                <span class="o">&lt;</span><span class="n">img</span> <span class="n">src</span><span class="o">=</span><span class="s2">"logo192.png"</span> <span class="n">className</span><span class="o">=</span><span class="s2">"nav-logo"</span> <span class="n">alt</span><span class="o">=</span><span class="s2">"logo"</span> <span class="o">/&gt;</span>
+                <span class="o">&lt;</span><span class="n">ul</span> <span class="n">className</span><span class="o">=</span><span class="s2">"nav-items"</span><span class="o">&gt;</span>
+                    <span class="o">&lt;</span><span class="n">li</span><span class="o">&gt;</span><span class="nc">Pricing</span><span class="o">&lt;/</span><span class="n">li</span><span class="o">&gt;</span>
+                    <span class="o">&lt;</span><span class="n">li</span><span class="o">&gt;</span><span class="nc">About</span><span class="o">&lt;/</span><span class="n">li</span><span class="o">&gt;</span>
+                    <span class="o">&lt;</span><span class="n">li</span><span class="o">&gt;</span><span class="nc">Contact</span><span class="o">&lt;/</span><span class="n">li</span><span class="o">&gt;</span>
+                <span class="o">&lt;/</span><span class="n">ul</span><span class="o">&gt;</span>
+            <span class="o">&lt;/</span><span class="n">nav</span><span class="o">&gt;</span>
+        <span class="o">&lt;/</span><span class="n">header</span><span class="o">&gt;</span>
+    <span class="p">)</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>Komponen tersebut secara default me-return Header, perhatikan bahwa penulisan komponen React diawali dengan huruf besar. Class pada React ditulis menggunakan className yang mana berbeda dengan elemen html biasa karena memang React Component pada dasarnya adalah sebuah JavaScript Object.</p>
+
+<p>Pemanggilan React Component sedikit berbeda dengan pemanggilan function pada umumnya, berikut contohnya</p>
+
+<figure class="highlight"><pre><code class="language-php" data-lang="php"><span class="n">import</span> <span class="nc">React</span> <span class="n">from</span> <span class="s1">'react'</span><span class="p">;</span>
+<span class="n">import</span> <span class="nc">ReactDOM</span> <span class="n">from</span> <span class="s1">'react-dom'</span><span class="p">;</span>
+
+<span class="nc">ReactDOM</span><span class="mf">.</span><span class="nf">render</span><span class="p">(</span><span class="o">&lt;</span><span class="nc">Header</span> <span class="o">/&gt;</span><span class="p">,</span> <span class="n">document</span><span class="mf">.</span><span class="nf">getElementById</span><span class="p">(</span><span class="s1">'root'</span><span class="p">));</span></code></pre></figure>
+
+<p>Penggunaan React dengan lebih terintegrasi bisa menggunakan npm, tentunya perlu install NodeJS terlebih dahulu, kemudian jika sudah bisa menjalankan npm, maka jalankan perintah berikut untuk project React</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">npx create-react-app my-app
+<span class="nb">cd </span>my-app
+npm start</code></pre></figure>
+
+<p>Struktur Project yang dihasilkan akan jauh lebih mudah dimengerti ketika sudah mengerti konsep React Component dan cara pemanggilannya.</p>
+
+<p>Dah dulu ah, belajar NLP lagi aja buat riset soalnya…</p>
+:ET
