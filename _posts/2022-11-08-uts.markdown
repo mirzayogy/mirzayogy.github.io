@@ -1,8 +1,8 @@
 ---
 layout: post
-title:  "UTS Pemrograman Terstruktur 1"
+title:  "UTS Pemrograman Terstruktur 2"
 date:   2022-11-08 07:00:00 +0800
 description: ""
 ---
 
-Silahkan di Download [File]({{ site.url }}/assets/docs/soal 1.docx) langsung.
+Silahkan di Download [File]({{ site.url }}/assets/docs/soal 2.docx) langsung.
