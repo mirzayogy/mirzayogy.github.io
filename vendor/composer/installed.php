@@ -3,7 +3,7 @@
         'name' => 'username/jigsaw-blog',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => '12c2bf9ca8ca1c64530928bdd02f00cf884657dd',
+        'reference' => 'cb89f8c1ba10be6b9433594ed3ab039dc53a2161',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -688,7 +688,7 @@
         'username/jigsaw-blog' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => '12c2bf9ca8ca1c64530928bdd02f00cf884657dd',
+            'reference' => 'cb89f8c1ba10be6b9433594ed3ab039dc53a2161',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

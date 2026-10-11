@@ -15,4 +15,5 @@
  */
 
 $events->afterBuild(App\Listeners\GenerateSitemap::class);
-$events->afterBuild(App\Listeners\GenerateIndex::class);
+// Indeks pencarian dari template lama (butuh helper getExcerpt), tidak dipakai:
+// $events->afterBuild(App\Listeners\GenerateIndex::class);

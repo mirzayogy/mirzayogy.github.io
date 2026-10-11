@@ -1,6 +1,7 @@
 ---
 permalink: 404.html
 title: Halaman tidak ditemukan
+sidebar: false
 ---
 @extends('_layouts.main')
 

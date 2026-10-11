@@ -19,9 +19,18 @@
 <body>
     @include('_partials.header')
 
-    <main class="container">
-        @yield('body')
-    </main>
+    @if ($page->sidebar === false)
+        <main class="container">
+            @yield('body')
+        </main>
+    @else
+        <div class="container layout">
+            <main class="content">
+                @yield('body')
+            </main>
+            @include('_partials.sidebar')
+        </div>
+    @endif
 
     @include('_partials.footer')
 

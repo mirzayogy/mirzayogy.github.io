@@ -41,7 +41,7 @@ a:hover { text-decoration-thickness: 2px; }
 
 .container {
     width: 100%;
-    max-width: 720px;
+    max-width: 1080px;
     margin: 0 auto;
     padding: 0 16px;
 }
@@ -192,3 +192,78 @@ main.container { padding-top: 2.5rem; padding-bottom: 4rem; }
     text-decoration: none;
 }
 .pagination a.current { background: var(--accent); color: var(--bg); border-color: var(--accent); }
+
+/* Layout dua kolom + sidebar ------------------------------------- */
+main.container { max-width: 760px; }
+.layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 300px;
+    gap: 3rem;
+    align-items: start;
+    padding-top: 2.5rem;
+    padding-bottom: 4rem;
+}
+.sidebar {
+    position: sticky;
+    top: 1.5rem;
+    display: grid;
+    gap: 1.25rem;
+}
+.widget {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.1rem 1.25rem;
+}
+.widget-title {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--accent);
+    margin: 0 0 0.75rem;
+}
+.featured-list { list-style: none; margin: 0; padding: 0; counter-reset: fitur; }
+.featured-list li {
+    counter-increment: fitur;
+    position: relative;
+    padding: 0.75rem 0 0.75rem 2rem;
+    border-top: 1px solid var(--border);
+}
+.featured-list li:first-child { border-top: 0; padding-top: 0; }
+.featured-list li::before {
+    content: counter(fitur);
+    position: absolute;
+    left: 0;
+    font-weight: 700;
+    font-size: 1.25rem;
+    line-height: 1.4;
+    color: var(--accent);
+}
+.featured-list a {
+    color: var(--text);
+    text-decoration: none;
+    font-weight: 600;
+    line-height: 1.35;
+    display: block;
+}
+.featured-list a:hover { color: var(--accent); }
+.featured-list .meta { font-size: 0.8rem; margin-top: 0.2rem; }
+.featured-desc { font-size: 0.875rem; color: var(--muted); margin: 0.3rem 0 0; line-height: 1.5; }
+.widget-about p { margin: 0 0 0.5rem; font-size: 0.925rem; }
+.widget-about a { font-size: 0.925rem; font-weight: 600; text-decoration: none; }
+
+.badge {
+    display: inline-block;
+    margin-left: 0.5rem;
+    padding: 0 8px;
+    border-radius: 999px;
+    background: var(--accent-soft);
+    color: var(--accent);
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+@media (max-width: 900px) {
+    .layout { grid-template-columns: 1fr; gap: 2rem; }
+    .sidebar { position: static; }
+}
