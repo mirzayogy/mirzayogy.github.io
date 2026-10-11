@@ -1,57 +1,68 @@
-Jekyll Clean Dark
-============
+# Blog Jigsaw untuk GitHub Pages
 
-[![Gem Version](https://badge.fury.io/rb/jekyll-clean-dark.svg)](https://badge.fury.io/rb/jekyll-clean-dark)
+## Menjalankan di lokal
 
-This theme was created on top of Jekyll Clean theme by Scotte, you can view the original version in action [on his blog](https://scotte.github.io).
+```bash
+composer install
+composer serve        # build + server di http://localhost:8000
+```
 
-* Get it from [github](https://github.com/streetturtle/jekyll-clean-dark).
-* See the [live demo](http://pavelmakhov.com/jekyll-clean-dark).
-* See it [in action on my own blog](http://pavelmakhov.com).
+## Struktur
 
-This theme uses some parts of Twitter Bootstrap, which allows it to look nice on a mobile devices using a collapsable nav bar and hiding the
-sidebar.
+```
+source/
+├── _layouts/
+│   ├── main.blade.php     # kerangka HTML (head, header, footer)
+│   ├── post.blade.php     # tampilan satu tulisan
+│   └── page.blade.php     # halaman statis Markdown (mis. Tentang)
+├── _partials/
+│   ├── header.blade.php   # navigasi
+│   ├── footer.blade.php
+│   └── post-card.blade.php
+├── _posts/                # tulisan blog (.md) -> /blog/{nama-file}
+├── assets/css/main.css    # gaya (otomatis mode gelap)
+├── index.blade.php        # beranda: 5 tulisan terbaru
+├── blog.blade.php         # daftar tulisan + paginasi (5 per halaman)
+├── tentang.md             # halaman Tentang
+└── 404.blade.php
+```
 
-Optionally you can use:
+## Menambah halaman statis baru
 
- - [Disqus](http://disqus.com) as a comments system;
- - [Google Analytics](http://www.google.com/analytics/);
- - [Yandex Metrica](http://metrica.yandex.com);
- - Blog tags - check the section below;
- - Share buttons.
+Buat `source/nama-halaman.md`:
 
-All these features could be set up in `_config.yml`. Also you can have social icons which could lead to your social profiles. It uses [font-awesome](http://fontawesome.io/), so you can have any icon you want to any social profile. Out-of-the box it has: LinkedIn, GitHub, StackOverflow, LastFm, Instagram. And you can easily add more by adding new style in `theme.css` and setting it in `_config.yml`.
+```yaml
+---
+extends: _layouts.page
+section: content
+title: Judul Halaman
+---
+```
 
-Installation
-============
+Lalu tambahkan tautannya di `source/_partials/header.blade.php`.
 
-If you dont't have your own blog you can clone this repository and put your articles in a `_posts` folder.
-If you already have your own blog then I think you can clone this repository and copy-paste content keeping your `_posts` folder.
+## Deploy
 
-After you will have to set up your `_config.yml`
+1. Ubah `baseUrl` di `config.production.php`.
+2. Push ke branch `main`.
+3. Di GitHub: **Settings → Pages → Source: GitHub Actions**.
 
-Blog tags
-=========
+Workflow `.github/workflows/deploy.yml` akan build dan deploy otomatis.
 
-To use this feature you simply will need to create a markdown file for each tag which you are using in you site in **tag** folder. To simplify this procedure there is an [/admin](http://pavelmakhov.com/jekyll-clean-dark/admin.html) page, which outputs the bash command which you just need to run inside **tag** folder of your site. Also don't forget to rerun it when you add a post with new tag.
+```bash
+cd ~/JigsawProjects/Ujicoba
 
-License
-=======
+# vendor ikut ter-commit sebelumnya; keluarkan dari git (file lokal tetap ada)
+git rm -r --cached vendor -q
+git add -A
+git commit -m "Blog Jigsaw + deploy GitHub Pages"
 
-The content of this theme is distributed and licensed under a
-[Creative Commons Attribution 4.0 License](https://creativecommons.org/licenses/by/4.0/legalcode)
+git remote add origin https://github.com/mirzayogy/Ujicoba.git
+git fetch origin
 
-    This license lets others distribute, remix, tweak, and build upon your work,
-    even commercially, as long as they credit you for the original creation. This
-    is the most accommodating of licenses offered. Recommended for maximum
-    dissemination and use of licensed materials.
+# (opsional) simpan isi lama di branch cadangan, untuk jaga-jaga
+git push origin origin/main:refs/heads/backup-lama
 
-In other words: you can do anything you want with this theme on any site, just please
-provide a link to the original theme on github.
-
-This theme includes the following files which are the properties of their
-respective owners:
-
-* js/bootstrap.min.js - [bootstrap](http://getbootstrap.com)
-* css/bootstrap.min.css - [bootstrap](http://getbootstrap.com)
-* js/jquery.min.js - [jquery](https://jquery.com)
+# timpa isi lama dengan proyek ini
+git push -f origin main
+```

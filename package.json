@@ -1,19 +1,17 @@
 {
-  "name": "Jekyll-Gulp-Sass-Autoprefixer-Imagemin-BrowserSync",
-  "version": "1.0.0",
-  "description": "A starter project for Jekyll",
-  "main": "index.js",
-  "repository": "https://github.com/artemsheludko/Jekyll-Gulp-Sass-Autoprefixer-Imagemin-BrowserSync",
-  "author": "Artem Sheludko",
-  "license": "MIT",
-  "dependencies": {
-    "browser-sync": "^2.18.13",
-    "child_process": "^1.0.2",
-    "gulp": "^3.9.1",
-    "gulp-autoprefixer": "^4.0.0",
-    "gulp-cache": "^0.4.6",
-    "gulp-imagemin": "^3.2.0",
-    "gulp-sass": "^3.1.0",
-    "imagemin-pngquant": "^5.0.0"
-  }
+    "private": true,
+    "type": "module",
+    "scripts": {
+        "dev": "vite",
+        "build": "vite build",
+        "prod": "vite build --mode production"
+    },
+    "devDependencies": {
+        "fuse.js": "^6.4.6",
+        "@tighten/jigsaw-vite-plugin": "^1.0.0",
+        "vite": "^6.2.1",
+        "tailwindcss": "^4.1.0",
+        "@tailwindcss/vite": "^4.1.8",
+        "alpinejs": "^3.14.1"
+    }
 }

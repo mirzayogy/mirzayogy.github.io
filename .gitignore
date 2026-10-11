@@ -1,6 +1,6 @@
-_cache
-_site
-.idea
+/build_*/
+/node_modules/
+/source/assets/build/
+/vendor/
 .DS_Store
-assets/.DS_Store
-assets/img/.DS_Store
+hot
