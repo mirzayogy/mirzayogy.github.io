@@ -48,3 +48,21 @@ Lalu tambahkan tautannya di `source/_partials/header.blade.php`.
 3. Di GitHub: **Settings → Pages → Source: GitHub Actions**.
 
 Workflow `.github/workflows/deploy.yml` akan build dan deploy otomatis.
+
+```bash
+cd ~/JigsawProjects/Ujicoba
+
+# vendor ikut ter-commit sebelumnya; keluarkan dari git (file lokal tetap ada)
+git rm -r --cached vendor -q
+git add -A
+git commit -m "Blog Jigsaw + deploy GitHub Pages"
+
+git remote add origin https://github.com/USER/REPO.git
+git fetch origin
+
+# (opsional) simpan isi lama di branch cadangan, untuk jaga-jaga
+git push origin origin/main:refs/heads/backup-lama
+
+# timpa isi lama dengan proyek ini
+git push -f origin main
+```
