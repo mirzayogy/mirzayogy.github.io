@@ -57,7 +57,7 @@ git rm -r --cached vendor -q
 git add -A
 git commit -m "Blog Jigsaw + deploy GitHub Pages"
 
-git remote add origin https://github.com/USER/REPO.git
+git remote add origin https://github.com/mirzayogy/Ujicoba.git
 git fetch origin
 
 # (opsional) simpan isi lama di branch cadangan, untuk jaga-jaga
