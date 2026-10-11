@@ -2,6 +2,7 @@
     <p class="meta">
         <time datetime="{{ $post->getDate()->format('Y-m-d') }}">{{ $post->tanggal() }}</time>
         · {{ $post->readingTime() }} menit baca
+        @if ($post->draft)<span class="badge badge-draft">DRAFT</span>@endif
         @if ($post->featured)<span class="badge">★ Pilihan</span>@endif
     </p>
     <h2><a href="{{ $post->getUrl() }}">{{ $post->title }}</a></h2>

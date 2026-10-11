@@ -9,4 +9,15 @@
 return [
     'production' => true,
     'baseUrl' => 'https://mirzayogy.github.io',
+
+    // Gabungkan pengaturan collection di bawah dengan yang ada di config.php
+    'merge_collection_configs' => true,
+
+    'collections' => [
+        'posts' => [
+            // Post dengan "draft: true" tidak ikut di-build untuk produksi
+            // (tetap terlihat saat preview lokal dengan `jigsaw serve`)
+            'filter' => fn ($post) => ! $post->draft,
+        ],
+    ],
 ];

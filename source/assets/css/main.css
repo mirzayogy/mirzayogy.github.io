@@ -300,3 +300,26 @@ main.container { max-width: 760px; }
 .tag-group ul { margin: 0; padding-left: 1.1rem; }
 .tag-group li { margin: 0.25rem 0; }
 .tag-group:target h2 { color: var(--accent); }
+
+/* Seri tulisan ---------------------------------------------------- */
+.series-box {
+    margin-top: 1.25rem;
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--accent);
+    border-radius: var(--radius);
+    background: var(--surface);
+    padding: 0.8rem 1rem;
+    font-size: 0.925rem;
+}
+.post-footer .series-box { margin: 0 0 1.5rem; }
+.series-label { margin: 0 0 0.25rem; color: var(--muted); }
+.series-label strong { color: var(--text); }
+.series-box summary { cursor: pointer; color: var(--accent); font-weight: 600; }
+.series-list { margin: 0.6rem 0 0; padding-left: 1.6rem; }
+.series-list li { margin: 0.2rem 0; }
+.series-list a { text-decoration: none; }
+.series-list li.current { font-weight: 700; }
+
+/* Draft (hanya terlihat saat preview lokal) */
+.badge-draft { background: #fdecc8; color: #8a5a00; }
+@media (prefers-color-scheme: dark) { .badge-draft { background: #4a3a12; color: #ffd27a; } }

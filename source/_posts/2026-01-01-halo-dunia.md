@@ -1,9 +1,9 @@
 ---
 title: Halo, Dunia!
 description: Tulisan pertama di blog Jigsaw yang di-host di GitHub Pages.
-date: 2026-10-11
+date: 2026-01-01
 featured: true
-tags: [jigsaw, php]
+tags: [jigsaw]
 ---
 
 Ini adalah tulisan pertama. File ini berada di `source/_posts/` dan ditulis dengan **Markdown**.

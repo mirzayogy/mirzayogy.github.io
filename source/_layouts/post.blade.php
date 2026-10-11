@@ -6,6 +6,7 @@
         <p class="meta">
             <time datetime="{{ $page->getDate()->format('Y-m-d') }}">{{ $page->tanggal() }}</time>
             · {{ $page->readingTime() }} menit baca
+            @if ($page->draft)<span class="badge badge-draft">DRAFT, tidak tampil di situs</span>@endif
         </p>
         <h1>{{ $page->title }}</h1>
         @if ($page->description)
@@ -18,6 +19,9 @@
                 @endforeach
             </ul>
         @endif
+        @if ($page->series)
+            @include('_partials.series-nav')
+        @endif
     </header>
 
     <div class="prose">
@@ -25,6 +29,10 @@
     </div>
 
     <footer class="post-footer">
+        @if ($page->series)
+            @include('_partials.series-nav', ['open' => true])
+        @endif
+
         <p class="byline">Ditulis oleh <strong>{{ $page->author }}</strong></p>
 
         <nav class="post-nav" aria-label="Navigasi tulisan">

@@ -14,7 +14,15 @@ return [
     // Tag yang ditampilkan di sidebar (urutan sesuai daftar ini).
     // Tag yang belum dipakai di post mana pun otomatis disembunyikan.
     // Kosongkan ([]) untuk menampilkan 8 tag yang paling sering dipakai.
-    'recommendedTags' => ['jigsaw', 'php', 'catatan'],
+    'recommendedTags' => ['laravel', 'perkuliahan', 'jigsaw', 'php', 'catatan'],
+
+    // Info seri tulisan (dipakai post yang punya frontmatter "series: ...")
+    'seriesInfo' => [
+        'laravel-simtikum' => [
+            'title' => 'Laravel: Membangun SIMTIKUM',
+            'mataKuliah' => 'PBO 2',  // ganti sesuai nama mata kuliah
+        ],
+    ],
 
     'collections' => [
         'posts' => [
