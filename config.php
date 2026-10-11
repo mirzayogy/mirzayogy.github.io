@@ -6,7 +6,7 @@ return [
 
     // Identitas situs (jangan pakai key "title"/"description" di sini,
     // karena keduanya dipakai oleh frontmatter tiap halaman/post)
-    'siteName' => 'Blog Saya',
+    'siteName' => 'Biar Ingat',
     'siteDescription' => 'Catatan tentang pemrograman, riset, dan hal-hal lain.',
     'siteAuthor' => 'Nama Anda',
     'locale' => 'id',
@@ -14,7 +14,8 @@ return [
     // Tag yang ditampilkan di sidebar (urutan sesuai daftar ini).
     // Tag yang belum dipakai di post mana pun otomatis disembunyikan.
     // Kosongkan ([]) untuk menampilkan 8 tag yang paling sering dipakai.
-    'recommendedTags' => ['laravel', 'perkuliahan', 'jigsaw', 'php', 'catatan'],
+    // 'recommendedTags' => ['laravel', 'perkuliahan', 'jigsaw', 'php', 'catatan'],
+    'recommendedTags' => ['laravel'],
 
     // Info seri tulisan (dipakai post yang punya frontmatter "series: ...")
     'seriesInfo' => [

@@ -1,6 +1,6 @@
 ---
-title: "Pertemuan 2: Routing dan Controller"
-description: "Mendefinisikan route, mengirim parameter, dan memindahkan logika ke controller."
+title: "Laravel 2: Instalasi dan Struktur (Proyek Routing dan Controller)"
+description: "menyiapkan lingkungan kerja, dan membuat proyek SIMTIKUM pertama. Mendefinisikan route, mengirim parameter, dan memindahkan logika ke controller."
 date: 2026-10-18
 series: laravel-simtikum
 pertemuan: 2
@@ -25,6 +25,47 @@ Setelah pertemuan ini, mahasiswa mampu:
 - …
 
 ## Materi
+
+
+### Membuat proyek SIMTIKUM
+
+Buat proyek baru lalu jalankan server pengembangan.
+
+Pada project ini menggunakan contoh kelas yang mengerjakan adalah kelas 5A, kelas lain silakan menyesuaikan. 
+
+Jalankan perintah berikut untuk membuat project Laravel, sesuaikan dengan kelas masing-masing.
+
+```bash
+composer create-project laravel/laravel laravel5A
+```
+
+```bash
+laravel new simtikum
+cd simtikum
+php artisan serve
+```
+
+### Struktur folder
+
+Bahas fungsi `app/`, `routes/`, `resources/views/`, `database/`, `config/`, `public/`, dan file `.env`.
+
+## Praktik: SIMTIKUM
+
+1. Instal Laravel dan buat proyek `simtikum`
+2. Atur koneksi database MySQL di file `.env`
+3. Jalankan `php artisan migrate` untuk memastikan koneksi berhasil
+4. Buka `http://localhost:8000` dan pastikan halaman awal Laravel tampil
+
+## Latihan / tugas
+
+- Tangkap layar halaman awal Laravel yang berjalan di komputer Anda
+- Tuliskan fungsi lima folder utama Laravel dengan bahasa Anda sendiri
+
+Batas pengumpulan: …
+
+## Rangkuman
+
+- …
 
 ### Dasar routing
 

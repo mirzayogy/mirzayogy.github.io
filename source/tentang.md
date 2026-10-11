@@ -7,8 +7,10 @@ description: Siapa di balik blog ini.
 
 # Tentang
 
-Halo! Saya **Nama Anda**. Tulis perkenalan singkat di sini: apa yang Anda kerjakan,
-topik yang sering Anda tulis, dan cara menghubungi Anda.
+Halo! Saya **Mirza Yogy Kurniawan**. Saya seorang programmer sekaligus dosen di [Universitas Islam Kalimantan Muhammad Arsyad Al Banjari Banjarmasin](https://uniska-bjm.ac.id). Blog ini akan saya jadikan tempat memposting materi mengajar dan riset yang saya kerjakan. 
 
-- GitHub: [github.com/username](https://github.com/username)
-- Email: nama@contoh.com
+Tertarik kerja sama? bisa hubungi:
+
+- Email: mirza.yogy@gmail.com
+- GitHub: [github.com/mirzayogy](https://github.com/mirzayogy)
+

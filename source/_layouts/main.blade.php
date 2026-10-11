@@ -13,7 +13,10 @@
     <meta property="og:type" content="{{ $page->date ? 'article' : 'website' }}">
     <meta property="og:url" content="{{ $page->getUrl() }}">
 
-    <link rel="stylesheet" href="{{ $page->baseUrl }}/assets/css/main.css">
+    {{-- ?v=... memaksa browser mengambil CSS terbaru setiap build --}}
+    <link rel="stylesheet" href="{{ $page->baseUrl }}/assets/css/main.css?v={{ time() }}">
+    {{-- Auto-refresh saat `npm run dev`; tidak menghasilkan apa-apa di build biasa/produksi --}}
+    @viteRefresh()
     @stack('head')
 </head>
 <body>
