@@ -14,7 +14,7 @@
         @if ($page->tags)
             <ul class="tags">
                 @foreach ($page->tags as $tag)
-                    <li>#{{ $tag }}</li>
+                    <li><a href="{{ $page->baseUrl }}/tags#{{ $page->tagSlug($tag) }}">#{{ $tag }}</a></li>
                 @endforeach
             </ul>
         @endif

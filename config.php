@@ -11,6 +11,11 @@ return [
     'siteAuthor' => 'Nama Anda',
     'locale' => 'id',
 
+    // Tag yang ditampilkan di sidebar (urutan sesuai daftar ini).
+    // Tag yang belum dipakai di post mana pun otomatis disembunyikan.
+    // Kosongkan ([]) untuk menampilkan 8 tag yang paling sering dipakai.
+    'recommendedTags' => ['jigsaw', 'php', 'catatan'],
+
     'collections' => [
         'posts' => [
             'path' => 'blog/{filename}',
@@ -56,6 +61,11 @@ return [
 
     // Menandai menu aktif: '/' hanya aktif di beranda,
     // '/blog' aktif di daftar blog, halaman paginasi, dan semua post
+    // Slug tag untuk anchor di halaman /tags, mis. "Machine Learning" -> "machine-learning"
+    'tagSlug' => function ($page, $tag) {
+        return \Illuminate\Support\Str::slug($tag);
+    },
+
     'isActive' => function ($page, $path) {
         $current = trim($page->getPath(), '/');
         $path = trim($path, '/');

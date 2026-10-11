@@ -267,3 +267,36 @@ main.container { max-width: 760px; }
     .layout { grid-template-columns: 1fr; gap: 2rem; }
     .sidebar { position: static; }
 }
+
+/* Tag ------------------------------------------------------------- */
+.tags a { color: inherit; text-decoration: none; }
+.tag-cloud { list-style: none; margin: 0 0 0.75rem; padding: 0; display: flex; flex-wrap: wrap; gap: 0.4rem; }
+.tag-cloud a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 3px 10px;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    font-size: 0.85rem;
+    color: var(--text);
+    text-decoration: none;
+    background: var(--bg);
+}
+.tag-cloud a:hover { border-color: var(--accent); color: var(--accent); }
+.tag-cloud .count {
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: var(--accent);
+    background: var(--accent-soft);
+    border-radius: 999px;
+    padding: 0 6px;
+}
+.widget-more { font-size: 0.85rem; font-weight: 600; text-decoration: none; }
+
+.tag-group { padding: 1.25rem 0; border-bottom: 1px solid var(--border); scroll-margin-top: 1.5rem; }
+.tag-group h2 { margin: 0 0 0.5rem; font-size: 1.25rem; }
+.tag-group h2 .count { color: var(--muted); font-weight: 400; font-size: 0.95rem; }
+.tag-group ul { margin: 0; padding-left: 1.1rem; }
+.tag-group li { margin: 0.25rem 0; }
+.tag-group:target h2 { color: var(--accent); }
