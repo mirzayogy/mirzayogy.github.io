@@ -7,6 +7,7 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'voku\\' => array($vendorDir . '/voku/portable-ascii/src/voku'),
+    'samdark\\sitemap\\' => array($vendorDir . '/samdark/sitemap'),
     'Whoops\\' => array($vendorDir . '/filp/whoops/src/Whoops'),
     'TightenCo\\Jigsaw\\' => array($vendorDir . '/tightenco/jigsaw/src'),
     'Termwind\\' => array($vendorDir . '/nunomaduro/termwind/src'),
@@ -71,4 +72,5 @@ return array(
     'Carbon\\Doctrine\\' => array($vendorDir . '/carbonphp/carbon-doctrine-types/src/Carbon/Doctrine'),
     'Carbon\\' => array($vendorDir . '/nesbot/carbon/src/Carbon'),
     'Brick\\Math\\' => array($vendorDir . '/brick/math/src'),
+    'App\\Listeners\\' => array($baseDir . '/listeners', $vendorDir . '/tightenco/jigsaw-blog-template/listeners'),
 );

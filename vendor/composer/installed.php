@@ -1,9 +1,9 @@
 <?php return array(
     'root' => array(
         'name' => '__root__',
-        'pretty_version' => '1.0.0+no-version-set',
-        'version' => '1.0.0.0',
-        'reference' => null,
+        'pretty_version' => 'dev-main',
+        'version' => 'dev-main',
+        'reference' => '74927d457b829a4fadf2d5d89b6e711444509a1e',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -11,9 +11,9 @@
     ),
     'versions' => array(
         '__root__' => array(
-            'pretty_version' => '1.0.0+no-version-set',
-            'version' => '1.0.0.0',
-            'reference' => null,
+            'pretty_version' => 'dev-main',
+            'version' => 'dev-main',
+            'reference' => '74927d457b829a4fadf2d5d89b6e711444509a1e',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
@@ -403,6 +403,15 @@
                 0 => '4.9.4',
             ),
         ),
+        'samdark/sitemap' => array(
+            'pretty_version' => '2.5.0',
+            'version' => '2.5.0.0',
+            'reference' => '9f8e1d051e128f64f5efeeef5b0f5ff17eb3d27a',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../samdark/sitemap',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
         'spatie/backtrace' => array(
             'pretty_version' => '1.8.2',
             'version' => '1.8.2.0',
@@ -673,6 +682,15 @@
             'reference' => '0157e3f96a189ce02076ecb7a09393f6fb3de881',
             'type' => 'library',
             'install_path' => __DIR__ . '/../tightenco/jigsaw',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'tightenco/jigsaw-blog-template' => array(
+            'pretty_version' => 'v1.4.1',
+            'version' => '1.4.1.0',
+            'reference' => 'd652a9f9b6db87135daaae23e0e89ce98ac0b549',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../tightenco/jigsaw-blog-template',
             'aliases' => array(),
             'dev_requirement' => false,
         ),

@@ -42,6 +42,10 @@ class ComposerStaticInita156558c27f87174846435825862ad95
         array (
             'voku\\' => 5,
         ),
+        's' =>
+        array (
+            'samdark\\sitemap\\' => 16,
+        ),
         'W' =>
         array (
             'Whoops\\' => 7,
@@ -145,12 +149,20 @@ class ComposerStaticInita156558c27f87174846435825862ad95
         array (
             'Brick\\Math\\' => 11,
         ),
+        'A' =>
+        array (
+            'App\\Listeners\\' => 14,
+        ),
     );
 
     public static $prefixDirsPsr4 = array (
         'voku\\' =>
         array (
             0 => __DIR__ . '/..' . '/voku/portable-ascii/src/voku',
+        ),
+        'samdark\\sitemap\\' =>
+        array (
+            0 => __DIR__ . '/..' . '/samdark/sitemap',
         ),
         'Whoops\\' =>
         array (
@@ -414,6 +426,11 @@ class ComposerStaticInita156558c27f87174846435825862ad95
         'Brick\\Math\\' =>
         array (
             0 => __DIR__ . '/..' . '/brick/math/src',
+        ),
+        'App\\Listeners\\' =>
+        array (
+            0 => __DIR__ . '/../..' . '/listeners',
+            1 => __DIR__ . '/..' . '/tightenco/jigsaw-blog-template/listeners',
         ),
     );
 
