@@ -8,5 +8,5 @@
 
 return [
     'production' => true,
-    'baseUrl' => 'https://mirzayogy.github.io/Ujicoba',
+    'baseUrl' => 'https://mirzayogy.github.io',
 ];
