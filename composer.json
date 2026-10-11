@@ -1,12 +1,14 @@
 {
+    "name": "username/jigsaw-blog",
+    "description": "Blog statis dengan Jigsaw untuk GitHub Pages",
+    "type": "project",
     "require": {
-        "tightenco/jigsaw": "^1.8",
-        "tightenco/jigsaw-blog-template": "^1.4",
-        "samdark/sitemap": "^2.2.1"
+        "php": "^8.1",
+        "tightenco/jigsaw": "^1.7"
     },
-    "autoload": {
-        "psr-4": {
-            "App\\Listeners\\": "listeners/"
-        }
+    "scripts": {
+        "build": "jigsaw build",
+        "prod": "jigsaw build production",
+        "serve": "jigsaw serve"
     }
 }

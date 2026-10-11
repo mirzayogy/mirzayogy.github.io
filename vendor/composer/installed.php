@@ -1,24 +1,15 @@
 <?php return array(
     'root' => array(
-        'name' => '__root__',
+        'name' => 'username/jigsaw-blog',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => '74927d457b829a4fadf2d5d89b6e711444509a1e',
-        'type' => 'library',
+        'reference' => '12c2bf9ca8ca1c64530928bdd02f00cf884657dd',
+        'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
         'dev' => true,
     ),
     'versions' => array(
-        '__root__' => array(
-            'pretty_version' => 'dev-main',
-            'version' => 'dev-main',
-            'reference' => '74927d457b829a4fadf2d5d89b6e711444509a1e',
-            'type' => 'library',
-            'install_path' => __DIR__ . '/../../',
-            'aliases' => array(),
-            'dev_requirement' => false,
-        ),
         'brick/math' => array(
             'pretty_version' => '1.0.0',
             'version' => '1.0.0.0',
@@ -691,6 +682,15 @@
             'reference' => 'd652a9f9b6db87135daaae23e0e89ce98ac0b549',
             'type' => 'library',
             'install_path' => __DIR__ . '/../tightenco/jigsaw-blog-template',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'username/jigsaw-blog' => array(
+            'pretty_version' => 'dev-main',
+            'version' => 'dev-main',
+            'reference' => '12c2bf9ca8ca1c64530928bdd02f00cf884657dd',
+            'type' => 'project',
+            'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
             'dev_requirement' => false,
         ),

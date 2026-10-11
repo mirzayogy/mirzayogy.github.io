@@ -1,17 +1,34 @@
----
-extends: _layouts.post
-section: content
-title: Getting Started
-date: 2022-08-03
-description: Getting started with the Jigsaw blog starter template
-cover_image: /assets/img/post-cover-image-2.png
-featured: true
-categories: [configuration]
+# Jigsaw Blog Starter Template
+
+This is a starter template for creating a beautiful, customizable blog in Jigsaw with minimal effort. You’ll only have to change a few settings and you’re ready to go.
+
+[View a preview of the blog template.](http://jigsaw-blog-template.tighten.co/)
+
+## Installation
+
+After installing Jigsaw, run the following command from your project directory:
+
+```bash
+./vendor/bin/jigsaw init blog
+```
+
+This starter template includes samples of common page types, and comes pre-configured with:
+
+- A fully responsive navigation bar
+- [Tailwind CSS](https://tailwindcss.com/), a utility CSS framework that allows you to customize your design without touching a line of CSS
+- Syntax highlighting using [Prism](https://prismjs.com/)
+- A script that automatically generates a `sitemap.xml` file
+- A custom 404 page
+- A sample contact form
+- A search bar powered by [Fuse.js](http://fusejs.io/) and [Alpine.js](https://alpinejs.dev/), which indexes your content automatically and requires zero configuration
+
 ---
 
-This is a starter template for creating a beautiful, customizable blog with minimal effort. You’ll only have to change a few settings and you’re ready to go.<!-- more -->
+![Blog starter template screenshot](/.github/screenshots/template-blog.png)
 
-## Configuration
+---
+
+### Configuring your new site
 
 As with all Jigsaw sites, configuration settings can be found in `config.php`; you can update the variables in that file with settings specific to your site. You can also add new configuration variables there to use across your site; take a look at the [Jigsaw documentation](http://jigsaw.tighten.co/docs/site-variables/) to learn more.
 
@@ -48,6 +65,8 @@ featured: true
 ---
 ```
 
+---
+
 ### Adding Assets
 
 Any assets that need to be compiled, such as JavaScript or CSS using Tailwind, can be added to the `source/_assets/` directory. Vite will process them when running `npm run dev` or `npm run build`, and the processed assets will be stored in `/build_local` or `/build_production`, respectively.
@@ -58,7 +77,7 @@ Files that don't require processing (such as images and fonts) can be added dire
 
 ---
 
-## Building Your Site {#getting-started-building-your-site}
+## Building Your Site
 
 Now that you’ve edited your configuration variables and know how to customize your styles and content, let’s build the site.
 

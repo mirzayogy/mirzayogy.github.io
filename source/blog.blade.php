@@ -1,50 +1,33 @@
 ---
 title: Blog
-description: The list of blog posts for the site
+description: Semua tulisan, dari yang terbaru.
 pagination:
     collection: posts
-    perPage: 4
+    perPage: 5
 ---
 @extends('_layouts.main')
 
 @section('body')
-    <h1>Blog</h1>
+<h1>Blog</h1>
 
-    <hr class="border-b my-6">
+@foreach ($pagination->items as $post)
+    @include('_partials.post-card', ['post' => $post])
+@endforeach
 
-    @foreach ($pagination->items as $post)
-        @include('_components.post-preview-inline')
-
-        @if ($post != $pagination->items->last())
-            <hr class="border-b my-6">
+@if ($pagination->totalPages > 1)
+    <nav class="pagination" aria-label="Halaman">
+        @if ($pagination->previous)
+            <a href="{{ $page->baseUrl }}{{ $pagination->previous }}">← Sebelumnya</a>
         @endif
-    @endforeach
 
-    @if ($pagination->pages->count() > 1)
-        <nav class="flex text-base my-8">
-            @if ($previous = $pagination->previous)
-                <a
-                    href="{{ $previous }}"
-                    title="Previous Page"
-                    class="bg-gray-200 hover:bg-gray-400 rounded mr-3 px-5 py-3"
-                >&LeftArrow;</a>
-            @endif
+        @foreach ($pagination->pages as $number => $path)
+            <a href="{{ $page->baseUrl }}{{ $path }}"
+               @class(['current' => $pagination->currentPage == $number])>{{ $number }}</a>
+        @endforeach
 
-            @foreach ($pagination->pages as $pageNumber => $path)
-                <a
-                    href="{{ $path }}"
-                    title="Go to Page {{ $pageNumber }}"
-                    class="bg-gray-200 hover:bg-gray-400 rounded mr-3 px-5 py-3 {{ $pagination->currentPage == $pageNumber ? 'text-blue-600' : 'text-blue-700' }}"
-                >{{ $pageNumber }}</a>
-            @endforeach
-
-            @if ($next = $pagination->next)
-                <a
-                    href="{{ $next }}"
-                    title="Next Page"
-                    class="bg-gray-200 hover:bg-gray-400 rounded mr-3 px-5 py-3"
-                >&RightArrow;</a>
-            @endif
-        </nav>
-    @endif
-@stop
+        @if ($pagination->next)
+            <a href="{{ $page->baseUrl }}{{ $pagination->next }}">Berikutnya →</a>
+        @endif
+    </nav>
+@endif
+@endsection

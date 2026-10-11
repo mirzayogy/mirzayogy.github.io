@@ -429,8 +429,7 @@ class ComposerStaticInita156558c27f87174846435825862ad95
         ),
         'App\\Listeners\\' =>
         array (
-            0 => __DIR__ . '/../..' . '/listeners',
-            1 => __DIR__ . '/..' . '/tightenco/jigsaw-blog-template/listeners',
+            0 => __DIR__ . '/..' . '/tightenco/jigsaw-blog-template/listeners',
         ),
     );
 

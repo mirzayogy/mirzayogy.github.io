@@ -1,63 +1,65 @@
 <?php
 
-use Illuminate\Support\Str;
-
 return [
-    'baseUrl' => '',
     'production' => false,
-    'siteName' => 'Blog Starter Template',
-    'siteDescription' => 'Generate an elegant blog with Jigsaw',
-    'siteAuthor' => 'Author Name',
+    'baseUrl' => '',
 
-    // collections
+    // Identitas situs (jangan pakai key "title"/"description" di sini,
+    // karena keduanya dipakai oleh frontmatter tiap halaman/post)
+    'siteName' => 'Blog Saya',
+    'siteDescription' => 'Catatan tentang pemrograman, riset, dan hal-hal lain.',
+    'siteAuthor' => 'Nama Anda',
+    'locale' => 'id',
+
     'collections' => [
         'posts' => [
-            'author' => 'Author Name', // Default author, if not provided in a post
-            'sort' => '-date',
             'path' => 'blog/{filename}',
-        ],
-        'categories' => [
-            'path' => '/blog/categories/{filename}',
-            'posts' => function ($page, $allPosts) {
-                return $allPosts->filter(function ($post) use ($page) {
-                    return $post->categories ? in_array($page->getFilename(), $post->categories, true) : false;
-                });
-            },
+            'sort' => '-date',
+            'extends' => '_layouts.post',
+            'section' => 'content',
+            'author' => 'Nama Anda',
         ],
     ],
 
-    // helpers
+    // ---------------------------------------------------------------
+    // Helper: dipanggil di template sebagai $page->namaHelper(...)
+    // ---------------------------------------------------------------
+
     'getDate' => function ($page) {
-        return Datetime::createFromFormat('U', $page->date);
+        return \DateTime::createFromFormat('U', $page->date);
     },
-    'getExcerpt' => function ($page, $length = 255) {
-        if ($page->excerpt) {
-            return $page->excerpt;
-        }
 
-        $content = preg_split('/<!-- more -->/m', $page->getContent(), 2);
-        $cleaned = trim(
-            strip_tags(
-                preg_replace(['/<pre>[\w\W]*?<\/pre>/', '/<h\d>[\w\W]*?<\/h\d>/'], '', $content[0]),
-                '<code>'
-            )
-        );
+    // Tanggal berformat Indonesia, mis. "11 Oktober 2026"
+    'tanggal' => function ($page) {
+        $bulan = [
+            1 => 'Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni',
+            'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember',
+        ];
+        $d = $page->getDate();
 
-        if (count($content) > 1) {
-            return $cleaned;
-        }
-
-        $truncated = substr($cleaned, 0, $length);
-
-        if (substr_count($truncated, '<code>') > substr_count($truncated, '</code>')) {
-            $truncated .= '</code>';
-        }
-
-        return strlen($cleaned) > $length
-            ? preg_replace('/\s+?(\S+)?$/', '', $truncated) . '...'
-            : $cleaned;
+        return $d->format('j') . ' ' . $bulan[(int) $d->format('n')] . ' ' . $d->format('Y');
     },
+
+    'excerpt' => function ($page, $length = 180) {
+        $text = trim(preg_replace('/\s+/', ' ', strip_tags($page->getContent())));
+
+        return mb_strlen($text) > $length
+            ? rtrim(mb_substr($text, 0, $length)) . '…'
+            : $text;
+    },
+
+    'readingTime' => function ($page) {
+        $words = str_word_count(strip_tags($page->getContent()));
+
+        return max(1, (int) ceil($words / 200));
+    },
+
+    // Menandai menu aktif: '/' hanya aktif di beranda,
+    // '/blog' aktif di daftar blog, halaman paginasi, dan semua post
     'isActive' => function ($page, $path) {
-        return Str::endsWith(trimPath($page->getPath()), trimPath($path));
+        $current = trim($page->getPath(), '/');
+        $path = trim($path, '/');
+
+        return $path === '' ? $current === '' : str_starts_with($current, $path);
     },
 ];
