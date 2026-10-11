@@ -17,7 +17,7 @@ Setelah pertemuan ini, mahasiswa mampu:
 
 - Menjelaskan apa itu framework dan pola MVC pada Laravel
 - Menyiapkan PHP, Composer, dan database di komputer sendiri
-- Membuat proyek Laravel baru dan menjalankannya di browser
+
 
 ## Persiapan
 

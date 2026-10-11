@@ -2,7 +2,6 @@
 title: Halo, Dunia!
 description: Tulisan pertama di blog Jigsaw yang di-host di GitHub Pages.
 date: 2026-01-01
-featured: true
 tags: [jigsaw]
 ---
 

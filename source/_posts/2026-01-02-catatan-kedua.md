@@ -1,7 +1,6 @@
 ---
 title: Catatan Kedua
 date: 2026-01-02
-featured: true
 tags: [catatan]
 ---
 

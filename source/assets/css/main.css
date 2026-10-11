@@ -6,6 +6,8 @@
     --border: #e4e2dc;
     --accent: #0b6e69;
     --accent-soft: #e3f1ef;
+    --accent-2: #b4441a;        /* warna alternatif: oranye bata */
+    --accent-2-soft: #fbe8dd;
     --code-bg: #f3f1ec;
     --radius: 10px;
     --font: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
@@ -21,6 +23,8 @@
         --border: #2c3137;
         --accent: #5cc8bf;
         --accent-soft: #1d3331;
+        --accent-2: #f4a07a;
+        --accent-2-soft: #3a241a;
         --code-bg: #22272d;
     }
 }
@@ -179,7 +183,12 @@ main.container { padding-top: 2.5rem; padding-bottom: 4rem; }
     overflow-x: auto;
     line-height: 1.5;
 }
-.prose pre code { background: none; padding: 0; }
+/* Kode inline (`...`): hijau mengikuti warna tema */
+.prose :not(pre) > code {
+    color: var(--accent);
+    background: var(--accent-soft);
+}
+.prose pre code { background: none; padding: 0; color: inherit; }
 .prose table { width: 100%; border-collapse: collapse; display: block; overflow-x: auto; }
 .prose th, .prose td { border: 1px solid var(--border); padding: 0.5rem 0.75rem; text-align: left; }
 
@@ -323,3 +332,16 @@ main.container { max-width: 760px; }
 /* Draft (hanya terlihat saat preview lokal) */
 .badge-draft { background: #fdecc8; color: #8a5a00; }
 @media (prefers-color-scheme: dark) { .badge-draft { background: #4a3a12; color: #ffd27a; } }
+
+/* Warna teks alternatif (oranye bata) ------------------------------
+   <span class="alt">teks</span>      -> teks berwarna oranye
+   <code class="alt">kode</code>      -> kode inline oranye
+   <mark>teks</mark>                  -> teks disorot latar oranye muda */
+.alt { color: var(--accent-2); }
+.prose code.alt { color: var(--accent-2); background: var(--accent-2-soft); }
+.prose mark {
+    color: var(--accent-2);
+    background: var(--accent-2-soft);
+    padding: 0.05em 0.3em;
+    border-radius: 4px;
+}

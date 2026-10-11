@@ -21,6 +21,7 @@ Situs: **https://mirzayogy.github.io**
   - [Menulis post baru](#menulis-post-baru)
     - [Frontmatter yang tersedia](#frontmatter-yang-tersedia)
     - [Gambar dan file unduhan](#gambar-dan-file-unduhan)
+    - [Warna teks](#warna-teks)
   - [Draft: menyembunyikan post](#draft-menyembunyikan-post)
   - [Post pilihan (featured)](#post-pilihan-featured)
   - [Tag dan tag rekomendasi](#tag-dan-tag-rekomendasi)
@@ -199,6 +200,23 @@ Di Markdown, selalu pakai path yang diawali `/` (bukan `../../`):
 ```
 
 Teks di dalam `![...]` adalah teks alternatif (tampil jika gambar gagal dimuat dan dibaca oleh pembaca layar). Ukuran file per file di GitHub maksimal 100 MB; sebaiknya kompres foto besar sebelum dimasukkan.
+
+### Warna teks
+
+| Penulisan di Markdown | Hasil |
+|---|---|
+| `` `kode` `` | Kode inline berwarna **hijau** (warna tema) |
+| `<code class="alt">kode</code>` | Kode inline berwarna **oranye bata** |
+| `<span class="alt">teks</span>` | Teks biasa berwarna oranye bata |
+| `<mark>teks</mark>` | Teks disorot dengan latar oranye muda |
+
+Contoh:
+
+```markdown
+Jalankan `php artisan serve`, lalu <mark>jangan lupa</mark> mengatur file <code class="alt">.env</code>.
+```
+
+Warna diatur di bagian atas `source/assets/css/main.css`: `--accent` / `--accent-soft` (hijau) dan `--accent-2` / `--accent-2-soft` (oranye). Keduanya punya versi mode gelap di blok `@media (prefers-color-scheme: dark)`.
 
 ## Draft: menyembunyikan post
 

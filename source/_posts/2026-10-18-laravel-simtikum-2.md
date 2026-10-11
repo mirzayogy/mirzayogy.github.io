@@ -1,11 +1,11 @@
 ---
-title: "Laravel 2: Instalasi dan Struktur (Proyek Routing dan Controller)"
-description: "menyiapkan lingkungan kerja, dan membuat proyek SIMTIKUM pertama. Mendefinisikan route, mengirim parameter, dan memindahkan logika ke controller."
-date: 2026-10-18
+title: "Laravel 2: Instalasi dan Struktur Proyek"
+description: "Menyiapkan lingkungan kerja, membuat proyek SIMTIKUM pertama, dan Memahami setiap folder Laravel."
+date: 2026-09-22
 series: laravel-simtikum
 pertemuan: 2
 draft: false
-tags: [laravel, perkuliahan, routing]
+tags: [laravel, perkuliahan, struktur proyek, routing]
 ---
 
 <!-- TEMPLATE: ganti bagian bertanda … dan lengkapi penjelasan sebelum dipublikasikan. -->
@@ -14,114 +14,78 @@ tags: [laravel, perkuliahan, routing]
 
 Setelah pertemuan ini, mahasiswa mampu:
 
-- Membuat route GET dan POST
-- Menggunakan parameter route dan named route
-- Membuat controller dengan Artisan
-- Mengelompokkan route dengan prefix dan name
+- Membuat proyek Laravel baru dan menjalankannya di browser
+- Memahami struktur proyek Laravel dan fungsinya
 
-## Persiapan
-
-- Proyek SIMTIKUM dari pertemuan sebelumnya sudah berjalan.
-- …
 
 ## Materi
 
 
-### Membuat proyek SIMTIKUM
-
-Buat proyek baru lalu jalankan server pengembangan.
+### Membuat proyek laravel5A (SIMTIKUM)
 
 Pada project ini menggunakan contoh kelas yang mengerjakan adalah kelas 5A, kelas lain silakan menyesuaikan. 
 
-Jalankan perintah berikut untuk membuat project Laravel, sesuaikan dengan kelas masing-masing.
+Jalankan perintah berikut pada command-prompt/terminal untuk membuat project Laravel, sesuaikan dengan kelas masing-masing.
 
 ```bash
 composer create-project laravel/laravel laravel5A
 ```
 
+### Konten Laravel
+
+Buka folder menggunakan [Visual Studio Code](https://code.visualstudio.com), perhatikan masing-masing folder:
+
+- `app/` : Inti logika aplikasi yang mengikuti pola MVC — tempat sebagian besar kode custom Anda berada.
+  - <mark>Http/Controllers/</mark> : Menangani request pengguna dan menyiapkan response.
+  - <mark>Models</mark> : Merepresentasikan tabel database melalui Eloquent ORM.
+  - <mark>Http/Middleware/</mark> : (Tambahan) Menyaring request sebelum diproses oleh controller.
+  - `Providers/` : Mendaftarkan service dan melakukan bootstrapping aplikasi.
+- `bootstrap/` : Berisi file yang menginisialisasi (bootstrapping) framework Laravel pada setiap request masuk.
+  - `cache/` : Menyimpan file hasil optimisasi seperti route cache dan config cache.
+  - `app.php` : Membuat dan mengonfigurasi instance aplikasi Laravel.
+- `config/` : Kumpulan seluruh berkas konfigurasi aplikasi, dari nama aplikasi hingga koneksi database.
+  - `app.php` : Nama aplikasi, timezone, locale, dan pengaturan umum.
+  - `database.php` : Konfigurasi koneksi database (MySQL, SQLite, dll).
+  - `auth.php` : Konfigurasi guard dan provider autentikasi.
+  - `mail.php, filesystems.php` : Konfigurasi pengiriman email dan penyimpanan file.
+- `database/` : Menyimpan segala sesuatu yang berkaitan dengan struktur dan isi awal database aplikasi.
+  - <mark>migrations/</mark> : Skema tabel database yang version-controlled.
+  - <mark>seeders/</mark> : Mengisi data awal ke dalam tabel database.
+  - <mark>factories/</mark> : Membuat data dummy untuk keperluan testing.
+- <mark>public/</mark> : Satu-satunya folder yang diakses langsung oleh web server — document root aplikasi.
+- `resources/` : Tempat file-file mentah sebelum diproses atau dikompilasi menjadi aset akhir.
+  - `css/ , js/` : Aset mentah (Sass/JS) sebelum dikompilasi oleh Vite.
+  - <mark>views/</mark> : Template Blade (.blade.php) untuk tampilan aplikasi.
+- `routes/` : Kumpulan berkas yang mendefinisikan seluruh rute (endpoint) yang dimiliki aplikasi.
+  - `console.php` : Definisi closure-based Artisan command.
+  - <mark>web.php</mark> : Rute untuk aplikasi web — mendukung sesi, cookie, dan CSRF.
+- `storage/` : Lokasi penyimpanan berbagai file yang dihasilkan aplikasi selama berjalan.
+  - `app/` : File yang diunggah oleh pengguna aplikasi.
+  - `framework/` : Cache, session, dan compiled view Blade.
+  - `logs/` : Catatan error aplikasi (laravel.log).
+- `tests` : Tempat menulis seluruh pengujian otomatis untuk menjaga kualitas aplikasi.
+  - <mark>Feature/</mark> : Pengujian yang melibatkan beberapa komponen sekaligus (HTTP, database).
+  - <mark>Unit/</mark> : Pengujian unit kecil dan terisolasi, misalnya satu method saja.
+- `vendor/` : Berisi seluruh pustaka (dependency) pihak ketiga yang digunakan aplikasi.
+
+Perhatikan bagian yang berwarna jingga yang akan digunakan dan ditambahkan.
+
+Selain itu terdapat juga beberapa file yang biasa digunakan untuk pengeolaan proyak yang dikerjakan: 
+
+- `.env` : Variabel environment aktif: koneksi database, API key, dll. Biasanya tidak diikutkan dalam GitHub.
+- `.env.example` : Contoh/template variabel environment untuk disalin menjadi .env. dan ikut di push di GitHub.
+- `composer.json` : Mendefinisikan dependency PHP beserta metadata proyek.
+- `package.json` : Mendefinisikan dependency & script build JavaScript (npm).
+- `README.md` : Dokumentasi umum: deskripsi, instalasi, dan cara penggunaan proyek. Ditulis oleh programmer.
+
+
+### Menjalankan proyek laravel5A
+
+Jalankan perintah berikut pada command-prompt/terminal sebelumnya:
+
 ```bash
-laravel new simtikum
-cd simtikum
+cd laravel5A
 php artisan serve
 ```
 
-### Struktur folder
-
-Bahas fungsi `app/`, `routes/`, `resources/views/`, `database/`, `config/`, `public/`, dan file `.env`.
-
-## Praktik: SIMTIKUM
-
-1. Instal Laravel dan buat proyek `simtikum`
-2. Atur koneksi database MySQL di file `.env`
-3. Jalankan `php artisan migrate` untuk memastikan koneksi berhasil
-4. Buka `http://localhost:8000` dan pastikan halaman awal Laravel tampil
-
-## Latihan / tugas
-
-- Tangkap layar halaman awal Laravel yang berjalan di komputer Anda
-- Tuliskan fungsi lima folder utama Laravel dengan bahasa Anda sendiri
-
-Batas pengumpulan: …
-
-## Rangkuman
-
-- …
-
-### Dasar routing
-
-Jelaskan file `routes/web.php` dan cara kerja route.
-
-```php
-Route::get('/', fn () => view('welcome'));
-Route::get('/praktikum/{id}', fn ($id) => "Praktikum $id");
-```
-
-### Named route
-
-Gunakan nama route agar URL mudah diubah.
-
-```php
-Route::get('/periode', [PeriodeController::class, 'index'])->name('periode.index');
-
-// di Blade: route('periode.index')
-```
-
-### Controller
-
-Buat controller dan pindahkan logika dari closure ke method.
-
-```bash
-php artisan make:controller PeriodeController
-```
-
-### Route group
-
-Kelompokkan route admin dengan `prefix` dan `name`.
-
-```php
-Route::prefix('admin')->name('admin.')->group(function () {
-    Route::get('/periode', [PeriodeController::class, 'index'])->name('periode.index');
-});
-```
-
-## Praktik: SIMTIKUM
-
-1. Buat `DashboardController` dengan method `index`
-2. Buat route `/dashboard` yang memanggil controller tersebut
-3. Buat `PeriodeController` dan route `/admin/periode`
-4. Cek semua route dengan `php artisan route:list`
-
-## Latihan / tugas
-
-- Buat route dan controller untuk halaman `/praktikum` dan `/pengajar` (cukup mengembalikan teks)
-
-Batas pengumpulan: …
-
-## Rangkuman
-
-- …
-
-## Referensi
-
-- [Routing](https://laravel.com/docs/routing)
-- [Controllers](https://laravel.com/docs/controllers)
+Buka `http://localhost:8000` dan pastikan halaman awal Laravel tampil
