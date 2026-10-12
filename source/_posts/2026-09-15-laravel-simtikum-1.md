@@ -1,37 +1,34 @@
 ---
 title: "Laravel 1: Pengenalan Laravel"
-description: "Rencana Perkuliahan, Penilaian, dan Tugas Akhir. Mengenal Laravel, dan pola MVC."
+description: "Mengenal framework Laravel, ekosistemnya, dan alur pola MVC, serta menyiapkan perangkat lunak untuk perkuliahan."
 date: 2026-09-15
 series: laravel-simtikum
 pertemuan: 1
 draft: false
-tags: [laravel, perkuliahan, php, instalasi]
+tags: [laravel, perkuliahan, php, mvc]
 featured: true
 ---
-
-<!-- TEMPLATE: ganti bagian bertanda … dan lengkapi penjelasan sebelum dipublikasikan. -->
 
 ## Capaian pembelajaran
 
 Setelah pertemuan ini, mahasiswa mampu:
 
 - Menjelaskan apa itu framework dan pola MVC pada Laravel
-- Menyiapkan PHP, Composer, dan database di komputer sendiri
-
+- Menyiapkan perangkat lunak yang dibutuhkan (XAMPP/Laragon, Composer, Node.js)
 
 ## Persiapan
 
-Matakuliah Pemrograman Berorientasi Objek 2 akan menggunakan Laravel, berikut adalah beberapa file yang perlu dipersiapkan:
+Mata kuliah Pemrograman Berorientasi Objek 2 akan menggunakan Laravel, berikut adalah beberapa perangkat lunak yang perlu dipersiapkan:
 
 - Download [XAMPP](https://www.apachefriends.org/download.html) atau [Laragon](https://laragon.org/download).
-- Download [NodeJS](https://nodejs.org/en/download). Boleh yang current maupun yang LTS.
-- Download [composer](https://getcomposer.org/download/).
-
-
+- Download [NodeJS](https://nodejs.org/en/download). Boleh yang current maupun yang LTS, untuk Vite/kompilasi CSS dan JS.
+- Download [Composer](https://getcomposer.org/download/).
 
 ## Materi
 
 ### Apa itu Laravel?
+
+Framework adalah kerangka kerja siap pakai yang menyediakan struktur proyek, kumpulan pustaka, dan aturan penulisan kode untuk membangun aplikasi web. Contohnya Laravel, Symfony, dan CodeIgniter. Laravel adalah framework PHP yang paling populer saat ini, dan dipakai di mata kuliah ini.
 
 Framework PHP siap pakai yang menyediakan struktur proyek, kumpulan pustaka, dan aturan penulisan kode untuk membangun aplikasi web. Contohnya Laravel, Symfony, dan CodeIgniter. Di mata kuliah ini kita memakai Laravel, yang saat ini paling populer.
 
@@ -53,7 +50,7 @@ Kekurangannya, framework butuh waktu belajar dan terasa berlebihan untuk skrip k
 
 ### Pola MVC
 
-Alur MVC yang dilalui bisa dilihat lewat pada gambar berikut:
+Alur MVC yang dilalui dapat dilihat pada gambar berikut:
 
 ![Alur MVC pada Laravel](/assets/image/mvc.png)
 
@@ -85,8 +82,3 @@ return view('mahasiswa.index', compact('data'));
 Pembagian tugasnya: Route menentukan arah, Controller mengatur alur, Model mengurus data, dan View mengurus tampilan. Pemisahan ini yang membuat kode lebih rapi dan mudah dipelihara.
 
 Untuk request yang mengirim data (seperti form tambah), alurnya sama. Bedanya ada validasi di Controller, dan Model menyimpan data ke database. Setelah itu Controller biasanya mengarahkan pengguna ke halaman lain (redirect) ketimbang menampilkan view langsung.
-
-## Referensi
-
-- [Installation](https://laravel.com/docs/installation)
-- [Directory Structure](https://laravel.com/docs/structure)

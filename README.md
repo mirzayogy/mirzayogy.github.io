@@ -304,7 +304,7 @@ Catatan:
 
 | # | Topik | # | Topik |
 |---|---|---|---|
-| 1 | Pengenalan Laravel dan instalasi | 9 | Autentikasi |
+| 1 | Pengenalan Laravel | 9 | Autentikasi |
 | 2 | Routing dan controller | 10 | Otorisasi: role, middleware, Gate, Policy |
 | 3 | Blade templating dan layout | 11 | Penugasan pengajar dan jadwal |
 | 4 | Migration dan seeder | 12 | Presensi pengajar dan mahasiswa |

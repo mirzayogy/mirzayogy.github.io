@@ -8,7 +8,7 @@ return [
     // karena keduanya dipakai oleh frontmatter tiap halaman/post)
     'siteName' => 'Biar Ingat',
     'siteDescription' => 'Catatan tentang pemrograman, riset, dan hal-hal lain.',
-    'siteAuthor' => 'Nama Anda',
+    'siteAuthor' => 'Mirza Y. Kurniawan',  // ganti sesuai nama Anda
     'locale' => 'id',
 
     // Tag yang ditampilkan di sidebar (urutan sesuai daftar ini).
@@ -31,7 +31,7 @@ return [
             'sort' => '-date',
             'extends' => '_layouts.post',
             'section' => 'content',
-            'author' => 'Nama Anda',
+            'author' => 'Mirza Y. Kurniawan',  // ganti sesuai nama Anda
         ],
     ],
 

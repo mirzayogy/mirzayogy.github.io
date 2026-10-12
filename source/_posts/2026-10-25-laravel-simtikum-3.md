@@ -1,159 +1,199 @@
 ---
-title: "Pertemuan 3: Routing dan Controller, Blade Templating dan Layout"
-description: "Mendefinisikan route, mengirim parameter, dan memindahkan logika ke controller. Membuat tampilan dengan Blade: layout utama, komponen, dan menampilkan data dari controller."
-date: 2026-10-25
+title: "Laravel 3: Koneksi Database, Migration, dan Seeder"
+description: "Menghubungkan Laravel ke MySQL, membuat model, migration, controller, dan seeder sekaligus untuk tabel periode, lalu mengisi data awal."
+tags: [laravel, perkuliahan, database, migration]
+date: 2026-09-29
 series: laravel-simtikum
 pertemuan: 3
-draft: true
-tags: [laravel, perkuliahan, blade]
+draft: false
 ---
 
-<!-- TEMPLATE: ganti bagian bertanda … dan lengkapi penjelasan sebelum dipublikasikan. -->
 
 ## Capaian pembelajaran
 
 Setelah pertemuan ini, mahasiswa mampu:
 
-- Membuat route GET dan POST
-- Menggunakan parameter route dan named route
-- Membuat controller dengan Artisan
-- Mengelompokkan route dengan prefix dan name
-- Mengirim data dari controller ke view
-- Membuat layout utama dan memakainya di banyak halaman
-- Menggunakan direktif Blade (`@if`, `@foreach`, `@include`)
-- Membuat komponen Blade sederhana
+- Mengatur koneksi database di file `.env`
+- Membuat model, migration, controller, dan seeder dengan satu perintah Artisan
+- Membuat tabel dengan migration
+- Mengisi data awal dengan seeder
 
 ## Persiapan
 
-- Proyek SIMTIKUM dari pertemuan sebelumnya sudah berjalan.
-- …
+- Proyek dari pertemuan sebelumnya sudah berjalan.
 
 ## Materi
 
-2. Atur koneksi database MySQL di file `.env`
-3. Jalankan `php artisan migrate` untuk memastikan koneksi berhasil
-4. 
+- Atur koneksi database MySQL di file `.env`
+- Jalankan `php artisan migrate` untuk memastikan koneksi berhasil
 
-## Latihan / tugas
+## Pengaturan .env
 
-- Tangkap layar halaman awal Laravel yang berjalan di komputer Anda
-- Tuliskan fungsi lima folder utama Laravel dengan bahasa Anda sendiri
-
-Batas pengumpulan: …
-
-## Rangkuman
-
-- …
-
-### Dasar routing
-
-Jelaskan file `routes/web.php` dan cara kerja route.
-
-```php
-Route::get('/', fn () => view('welcome'));
-Route::get('/praktikum/{id}', fn ($id) => "Praktikum $id");
-```
-
-### Named route
-
-Gunakan nama route agar URL mudah diubah.
-
-```php
-Route::get('/periode', [PeriodeController::class, 'index'])->name('periode.index');
-
-// di Blade: route('periode.index')
-```
-
-### Controller
-
-Buat controller dan pindahkan logika dari closure ke method.
+- Buka file `.env` pada root proyek Laravel.
+- Cari `DB_CONNECTION=sqlite` ganti dengan `DB_CONNECTION=mysql`
+- Hapus tanda komentar `#` pada baris-baris konfigurasi database di bawahnya.
+- Ganti `DB_DATABASE` menjadi `db_pbo2_5A`, lalu simpan file.
+- Jalankan:
 
 ```bash
-php artisan make:controller PeriodeController
+php artisan migrate
 ```
 
-### Route group
+- Konfirmasi ketika ditanyakan akan dibuat database
+- Periksa pada `phpMyAdmin` atau `HeidiSQL`
 
-Kelompokkan route admin dengan `prefix` dan `name`.
+atau jika ingin menghapus semua tabel berisinya dan mengulang pembuatan database, gunakan:
 
-```php
-Route::prefix('admin')->name('admin.')->group(function () {
-    Route::get('/periode', [PeriodeController::class, 'index'])->name('periode.index');
-});
+```bash
+php artisan migrate:fresh
 ```
 
-## Praktik: SIMTIKUM
+## Membuat Paket untuk Tabel
 
-1. Buat `DashboardController` dengan method `index`
-2. Buat route `/dashboard` yang memanggil controller tersebut
-3. Buat `PeriodeController` dan route `/admin/periode`
-4. Cek semua route dengan `php artisan route:list`
+Jalankan perintah berikut untuk membuat `model`, `migration`, `controller` (`resource`), dan `seeder`
 
-## Latihan / tugas
+```bash
+php artisan make:model Periode -mcrs
+```
 
-- Buat route dan controller untuk halaman `/praktikum` dan `/pengajar` (cukup mengembalikan teks)
+Resource di sini dimaksudkan untuk membuat method `resource` yang berisikan index, create, store, show, edit, update, dan destroy pada `controller`.
 
-Batas pengumpulan: …
+### Mengubah Model
 
-## Rangkuman
-
-- …
-
-## Referensi
-
-- [Routing](https://laravel.com/docs/routing)
-- [Controllers](https://laravel.com/docs/controllers)
-
-
-### Mengirim data ke view
+Pada file model pada `app/Models/Periode.php` yang dihasilkan, tuliskan:
 
 ```php
-return view('periode.index', [
-    'periode' => ['2025/2026 Ganjil', '2025/2026 Genap'],
+protected $table = 'periode';
+protected $guarded = [];
+```
+
+Di sini dinyatakan nama tabel karena kita menggunakan tabel dengan Bahasa Indonesia. Sedangkan perintah `guarded = []` digunakan agar seluruh kolom bisa kita kelola.
+
+### Mengubah Migration
+
+Pada file `database/migrations/~_create_periodes_table.php` yang dihasilkan, perhatikan function `up`:
+
+```php
+public function up(): void
+{
+    Schema::create('periode', function (Blueprint $table) {
+        $table->id();
+        $table->string('periode');
+        $table->string('singkatan');
+        $table->boolean('status')->default(false);
+        $table->timestamps();
+    });
+}
+```
+
+Pastikan mengganti `periodes` menjadi `periode` dan tambahkan field yang akan digunakan.
+
+Ganti juga pada function `down`: 
+
+```php
+public function down(): void
+{
+    Schema::dropIfExists('periode');
+}
+```
+
+Jalankan kembali perintah berikut agar tabel dibuat pada database
+
+```bash
+php artisan migrate
+```
+
+### Perhatikan Controller
+
+Perhatikan pada folder `app/Http/Controllers/PeriodeController.php`. Pada file tersebut sudah terdapat beberapa method untuk memanipulasi data yang merupakan bagian dari `resource`.
+
+
+### Mengubah Seeder
+
+Tambahkan pada file seeder `database/seeders/PeriodeSeeder.php`:
+
+```php
+use App\Models\Periode;
+```
+
+Isi function `run`. Ada beberapa contoh pembuatan seeder diantaranya yang `pertama`:
+
+```php
+Periode::create([
+    'periode' => 'GANJIL 2025/2026',
+    'singkatan' => '251',
+]);
+Periode::create([
+    'periode' => 'GENAP 2025/2026',
+    'singkatan' => '252',
+]);
+Periode::create([
+    'periode' => 'GANJIL 2026/2027',
+    'singkatan' => '261',
+]);
+Periode::create([
+    'periode' => 'GENAP 2026/2027',
+    'singkatan' => '262',
 ]);
 ```
 
-### Layout dengan komponen
+`atau` yang kedua:
 
-Buat `resources/views/components/layouts/app.blade.php` berisi kerangka HTML, navbar, dan `{{ $slot }}`.
+```php
+$now = now();
 
-```blade
-<x-layouts.app title="Periode">
-    <h1>Daftar Periode</h1>
-</x-layouts.app>
+Periode::insert([
+    ['periode' => 'GANJIL 2025/2026', 'singkatan' => '251', 'created_at' => $now, 'updated_at' => $now],
+    ['periode' => 'GENAP 2025/2026', 'singkatan' => '252', 'created_at' => $now, 'updated_at' => $now],
+    ['periode' => 'GANJIL 2026/2027', 'singkatan' => '261', 'created_at' => $now, 'updated_at' => $now],
+    ['periode' => 'GENAP 2026/2027', 'singkatan' => '262', 'created_at' => $now, 'updated_at' => $now],
+]);
 ```
 
-### Direktif Blade
+`atau` yang ketiga:
 
-```blade
-@forelse ($periode as $item)
-    <li>{{ $item }}</li>
-@empty
-    <p>Belum ada data.</p>
-@endforelse
+```php
+$now = now();
+
+$data = collect([
+    ['GANJIL 2025/2026', '251'],
+    ['GENAP 2025/2026', '252'],
+    ['GANJIL 2026/2027', '261'],
+    ['GENAP 2026/2027', '262'],
+])->map(fn($item) => [
+    'periode' => $item[0],
+    'singkatan' => $item[1],
+    'created_at' => $now,
+    'updated_at' => $now,
+])->toArray();
+
+Periode::insert($data);
 ```
 
-### Aset CSS
+Pilih yang menurut anda paling mudah.
 
-Pilih Tailwind (bawaan Vite) atau Bootstrap via CDN. Jelaskan perbedaan `{{ }}` dan `{!! !!}`.
+Panggil seeder yang sudah kita buat dalam function `run` pada file `database/seeders/DatabaseSeeder.php`:
 
-## Praktik: SIMTIKUM
+```php
+public function run(): void
+{
+    $this->call(PeriodeSeeder::class);
+}
+```
 
-1. Buat layout utama SIMTIKUM dengan navbar: Dashboard, Periode, Praktikum, Pengajar
-2. Ubah halaman `/dashboard` dan `/admin/periode` agar memakai layout tersebut
-3. Tampilkan daftar periode (data array) dalam tabel
+Jalankan dengan perintah:
 
-## Latihan / tugas
+```bash
+php artisan migrate:fresh --seed
+```
 
-- Buat komponen `<x-alert>` untuk menampilkan pesan sukses/gagal dan gunakan di dashboard
+alternatif migration untuk menyertakan seeder bisa menggunakan:
 
-Batas pengumpulan: …
+```bash
+php artisan migrate:fresh --seed --seeder=PeriodeSeeder
+```
+atau jika satu seeder saja yang ingin dieksekusi bisa menggunakan:
 
-## Rangkuman
-
-- …
-
-## Referensi
-
-- [Blade Templates](https://laravel.com/docs/blade)
-- [Views](https://laravel.com/docs/views)
+```bash
+php artisan db:seed --class=PeriodeSeeder
+```
