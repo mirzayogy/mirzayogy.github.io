@@ -30,11 +30,9 @@ return [
     // Selama keduanya kosong, kotak komentar tidak ditampilkan.
     'giscus' => [
         'repo' => 'mirzayogy/mirzayogy.github.io',
-        'repoId' => '',
+        'repoId' => 'MDEwOlJlcG9zaXRvcnk3NzEzODU2Ng==',
         'category' => 'Komentar',
-        'categoryId' => '',
-        'data-repo-id' => "MDEwOlJlcG9zaXRvcnk3NzEzODU2Ng==",
-        'data-category-id' => "DIC_kwDOBJkKhs4DIamZ",
+        'categoryId' => 'DIC_kwDOBJkKhs4DIamZ',
     ],
 
     'collections' => [
