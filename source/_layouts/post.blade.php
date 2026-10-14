@@ -50,5 +50,7 @@
             @endif
         </nav>
     </footer>
+
+    @include('_partials.comments')
 </article>
 @endsection

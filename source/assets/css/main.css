@@ -273,7 +273,7 @@ main.container { max-width: 760px; }
 }
 
 @media (max-width: 900px) {
-    .layout { grid-template-columns: 1fr; gap: 2rem; }
+    .layout { grid-template-columns: minmax(0, 1fr); gap: 2rem; }
     .sidebar { position: static; }
 }
 
@@ -413,3 +413,73 @@ main.container { max-width: 760px; }
         border-color: #30363d;
     }
 }
+
+/* ==================================================================
+   Mobile friendly
+   ================================================================== */
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+
+/* Kolom isi tidak boleh melebar mengikuti blok kode / kata panjang */
+.content, .post, .prose { min-width: 0; }
+.prose { overflow-wrap: break-word; }
+.prose a, .prose :not(pre) > code { overflow-wrap: anywhere; }
+.prose pre { max-width: 100%; -webkit-overflow-scrolling: touch; }
+.prose img, .prose video, .prose iframe { max-width: 100%; height: auto; }
+
+@media (max-width: 600px) {
+    body { font-size: 1rem; line-height: 1.65; }
+
+    main.container, .layout { padding-top: 1.5rem; padding-bottom: 2.5rem; }
+
+    /* Header: brand di atas, menu di bawah, area sentuh lebih besar */
+    .header-inner { min-height: 56px; padding-top: 0.5rem; padding-bottom: 0.25rem; row-gap: 0; }
+    .site-nav { gap: 0.25rem; width: 100%; margin: 0 -0.6rem; }
+    .site-nav a { padding: 0.6rem; }
+
+    .hero { padding: 0.25rem 0 1.25rem; }
+    .lead { font-size: 1.05rem; }
+
+    .post-header { margin-bottom: 1.5rem; }
+    .post-card { padding: 1.1rem 0; }
+    .post-card h2 { font-size: 1.2rem; }
+
+    .prose h2 { font-size: 1.35rem; margin-top: 1.75rem; }
+    .prose h3 { font-size: 1.15rem; margin-top: 1.4rem; }
+    .prose ul, .prose ol { padding-left: 1.25rem; }
+
+    /* Blok kode: font lebih kecil, melebar sampai tepi layar */
+    .prose pre {
+        font-size: 0.8rem;
+        margin-left: -16px;
+        margin-right: -16px;
+        max-width: none;
+        border-radius: 0;
+        border-left-width: 0;
+        border-right-width: 0;
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+    .prose pre:has(> code.language-php),
+    .prose pre:has(> code.language-blade) { border-left: 4px solid var(--accent); }
+
+    .prose table { font-size: 0.9rem; }
+    .prose blockquote { margin: 1.25rem 0; }
+
+    /* Area sentuh untuk tag, paginasi, dan navigasi */
+    .tags li a, .tag-cloud a { display: inline-block; padding-top: 4px; padding-bottom: 4px; }
+    .pagination a { padding: 0.5rem 0.85rem; }
+    .series-box { padding: 0.75rem 0.85rem; }
+    .series-list { padding-left: 1.3rem; }
+    .series-list li { margin: 0.4rem 0; }
+    .post-nav a { padding: 0.8rem 0.9rem; }
+
+    .sidebar { gap: 1rem; }
+    .widget { padding: 1rem; }
+
+    .site-footer { font-size: 0.85rem; }
+}
+
+/* Komentar (Giscus) ------------------------------------------------ */
+.comments { margin-top: 2.5rem; padding-top: 1.5rem; border-top: 1px solid var(--border); }
+.comments-title { font-size: 1.25rem; margin: 0 0 0.25rem; }
+.comments-note { color: var(--muted); font-size: 0.9rem; margin: 0 0 1rem; }

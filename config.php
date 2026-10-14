@@ -25,6 +25,18 @@ return [
         ],
     ],
 
+    // Komentar dengan Giscus (GitHub Discussions).
+    // Isi repoId dan categoryId dari https://giscus.app (lihat readme.md).
+    // Selama keduanya kosong, kotak komentar tidak ditampilkan.
+    'giscus' => [
+        'repo' => 'mirzayogy/mirzayogy.github.io',
+        'repoId' => '',
+        'category' => 'Komentar',
+        'categoryId' => '',
+        'data-repo-id' => "MDEwOlJlcG9zaXRvcnk3NzEzODU2Ng==",
+        'data-category-id' => "DIC_kwDOBJkKhs4DIamZ",
+    ],
+
     'collections' => [
         'posts' => [
             'path' => 'blog/{filename}',

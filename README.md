@@ -27,6 +27,7 @@ Situs: **https://mirzayogy.github.io**
   - [Tag dan tag rekomendasi](#tag-dan-tag-rekomendasi)
   - [Seri tulisan (materi perkuliahan)](#seri-tulisan-materi-perkuliahan)
     - [Seri `laravel-simtikum`](#seri-laravel-simtikum)
+  - [Komentar (Giscus)](#komentar-giscus)
   - [Halaman statis](#halaman-statis)
   - [Pengaturan situs (`config.php`)](#pengaturan-situs-configphp)
   - [Publikasi dengan GitHub Desktop](#publikasi-dengan-github-desktop)
@@ -180,6 +181,7 @@ URL post mengikuti nama file: `https://mirzayogy.github.io/blog/2026-10-20-belaj
 | `featured` | tidak | `true` = tampil di "Tulisan pilihan" dan diberi badge ★. |
 | `series` | tidak | Kode seri, mis. `laravel-simtikum`. |
 | `pertemuan` | tidak | Nomor urut di dalam seri (1, 2, 3, ...). |
+| `comments` | tidak | `false` = sembunyikan kotak komentar di post ini. |
 
 ### Gambar dan file unduhan
 
@@ -332,6 +334,46 @@ Alur yang disarankan per pertemuan:
 2. Cek di lokal dengan `vendor/bin/jigsaw serve`.
 3. Ubah `draft: true` menjadi `draft: false` (atau hapus barisnya).
 4. Commit dan push.
+
+## Komentar (Giscus)
+
+Komentar memakai [Giscus](https://giscus.app): setiap post terhubung ke satu thread di **GitHub Discussions** repo ini. Gratis, tanpa iklan, dan tanpa server. Pengunjung perlu login dengan akun GitHub untuk berkomentar; semua orang tetap bisa membaca.
+
+### Pengaturan awal (sekali saja)
+
+1. **Aktifkan Discussions**: repo → **Settings → General → Features** → centang **Discussions**.
+2. **Buat kategori** di tab **Discussions** → ikon pensil di samping *Categories* → **New category**: nama `Komentar`, format **Announcement** (hanya Anda dan Giscus yang bisa membuat thread baru; pengunjung tetap bisa membalas).
+3. **Pasang aplikasi Giscus**: buka https://github.com/apps/giscus → **Install** → pilih *Only select repositories* → `mirzayogy.github.io`.
+4. **Ambil ID**: buka https://giscus.app, isi repository `mirzayogy/mirzayogy.github.io`, pilih kategori `Komentar`. Di bagian *Enable giscus* akan muncul `data-repo-id` dan `data-category-id`.
+5. Salin kedua nilai itu ke `config.php`:
+
+```php
+'giscus' => [
+    'repo' => 'mirzayogy/mirzayogy.github.io',
+    'repoId' => 'R_kgDO...',
+    'category' => 'Komentar',
+    'categoryId' => 'DIC_kwDO...',
+],
+```
+
+6. Commit dan push. Kotak komentar muncul di bawah setiap post.
+
+Selama `repoId` atau `categoryId` masih kosong, kotak komentar tidak ditampilkan.
+
+### Mematikan komentar pada post tertentu
+
+Tambahkan di frontmatter:
+
+```yaml
+comments: false
+```
+
+### Catatan
+
+- Thread dibuat otomatis saat komentar pertama, dengan judul = path URL post. Karena itu **jangan mengganti nama file post yang sudah ada komentarnya**, atau komentarnya tidak akan tersambung lagi.
+- Moderasi (hapus, sembunyikan, kunci thread) dilakukan langsung di tab **Discussions** repo.
+- Notifikasi komentar baru masuk ke notifikasi/email GitHub Anda.
+- Kotak komentar otomatis mengikuti mode terang/gelap perangkat. Pengaturan lain ada di `source/_partials/comments.blade.php`.
 
 ## Halaman statis
 
