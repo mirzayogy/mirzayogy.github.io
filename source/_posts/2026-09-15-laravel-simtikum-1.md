@@ -5,6 +5,7 @@ date: 2026-09-15
 series: laravel-simtikum
 pertemuan: 1
 draft: false
+comments: true
 tags: [laravel, perkuliahan, php, mvc]
 featured: true
 ---

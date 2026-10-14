@@ -5,6 +5,7 @@ date: 2026-09-22
 series: laravel-simtikum
 pertemuan: 2
 draft: false
+comments: true
 tags: [laravel, perkuliahan, instalasi, struktur-proyek]
 ---
 

@@ -6,6 +6,7 @@ date: 2026-09-29
 series: laravel-simtikum
 pertemuan: 3
 draft: false
+comments: true
 ---
 
 
