@@ -345,3 +345,71 @@ main.container { max-width: 760px; }
     padding: 0.05em 0.3em;
     border-radius: 4px;
 }
+
+/* Blok kode per bahasa ---------------------------------------------
+   ```bash  -> gaya terminal gelap, label TERMINAL
+   ```php   -> gaya editor terang + garis hijau, label PHP
+   ```blade -> sama seperti PHP, label BLADE
+   Bahasa lain memakai gaya bawaan .prose pre */
+.prose pre:has(> code[class*="language-"]) {
+    position: relative;
+    padding-top: 2rem;
+}
+.prose pre:has(> code[class*="language-"])::before {
+    position: absolute;
+    top: 0.45rem;
+    right: 0.8rem;
+    font-family: var(--font);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+}
+
+/* Terminal (bash/shell) */
+.prose pre:has(> code.language-bash),
+.prose pre:has(> code.language-sh),
+.prose pre:has(> code.language-shell) {
+    background: #1f2430;
+    color: #e6edf3;
+    border: 1px solid #2d3340;
+}
+.prose pre:has(> code.language-bash)::before,
+.prose pre:has(> code.language-sh)::before,
+.prose pre:has(> code.language-shell)::before {
+    content: "Terminal";
+    color: #8b949e;
+}
+/* titik merah-kuning-hijau seperti jendela terminal */
+.prose pre:has(> code.language-bash)::after,
+.prose pre:has(> code.language-sh)::after,
+.prose pre:has(> code.language-shell)::after {
+    content: "";
+    position: absolute;
+    top: 0.75rem;
+    left: 0.9rem;
+    width: 0.55rem;
+    height: 0.55rem;
+    border-radius: 50%;
+    background: #ff5f57;
+    box-shadow: 0.9rem 0 0 #febc2e, 1.8rem 0 0 #28c840;
+}
+
+/* PHP dan Blade */
+.prose pre:has(> code.language-php),
+.prose pre:has(> code.language-blade) {
+    background: var(--accent-soft);
+    border-left: 4px solid var(--accent);
+}
+.prose pre:has(> code.language-php)::before { content: "PHP"; color: var(--accent); }
+.prose pre:has(> code.language-blade)::before { content: "Blade"; color: var(--accent); }
+
+@media (prefers-color-scheme: dark) {
+    .prose pre:has(> code.language-bash),
+    .prose pre:has(> code.language-sh),
+    .prose pre:has(> code.language-shell) {
+        background: #0d1117;
+        border-color: #30363d;
+    }
+}

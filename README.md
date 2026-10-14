@@ -216,6 +216,15 @@ Contoh:
 Jalankan `php artisan serve`, lalu <mark>jangan lupa</mark> mengatur file <code class="alt">.env</code>.
 ```
 
+**Blok kode per bahasa.** Bahasa ditulis setelah tiga backtick pembuka:
+
+| Penulisan | Tampilan |
+|---|---|
+| ` ```bash ` (juga `sh`, `shell`) | Gaya terminal gelap dengan tiga titik jendela dan label **TERMINAL** |
+| ` ```php ` | Latar hijau muda, garis hijau di kiri, label **PHP** |
+| ` ```blade ` | Seperti PHP, label **BLADE** |
+| bahasa lain / tanpa bahasa | Latar abu-abu biasa |
+
 Warna diatur di bagian atas `source/assets/css/main.css`: `--accent` / `--accent-soft` (hijau) dan `--accent-2` / `--accent-2-soft` (oranye). Keduanya punya versi mode gelap di blok `@media (prefers-color-scheme: dark)`.
 
 ## Draft: menyembunyikan post
