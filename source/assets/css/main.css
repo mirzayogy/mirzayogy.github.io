@@ -483,3 +483,32 @@ html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
 .comments { margin-top: 2.5rem; padding-top: 1.5rem; border-top: 1px solid var(--border); }
 .comments-title { font-size: 1.25rem; margin: 0 0 0.25rem; }
 .comments-note { color: var(--muted); font-size: 0.9rem; margin: 0 0 1rem; }
+
+/* Ukuran & posisi gambar -------------------------------------------
+   ![Teks](/assets/image/a.png){.w-50}           -> lebar 50%, di tengah
+   ![Teks](/assets/image/a.png){.w-50 .kiri}     -> rata kiri
+   ![Teks](/assets/image/a.png){.w-30 .kanan}    -> rata kanan            */
+.prose img[class*="w-"] { display: block; height: auto; margin: 1rem auto; }
+.prose img.w-10 { width: 10%; }
+.prose img.w-20 { width: 20%; }
+.prose img.w-25 { width: 25%; }
+.prose img.w-30 { width: 30%; }
+.prose img.w-40 { width: 40%; }
+.prose img.w-50 { width: 50%; }
+.prose img.w-60 { width: 60%; }
+.prose img.w-70 { width: 70%; }
+.prose img.w-75 { width: 75%; }
+.prose img.w-80 { width: 80%; }
+.prose img.w-90 { width: 90%; }
+.prose img.w-100 { width: 100%; }
+.prose img.kiri { margin-left: 0; margin-right: auto; }
+.prose img.kanan { margin-left: auto; margin-right: 0; }
+.prose img.bingkai { border: 1px solid var(--border); padding: 4px; background: var(--surface); }
+
+/* Di HP, gambar kecil diperbesar agar tetap terbaca */
+@media (max-width: 600px) {
+    .prose img.w-10, .prose img.w-20, .prose img.w-25,
+    .prose img.w-30, .prose img.w-40 { width: 60%; }
+    .prose img.w-50, .prose img.w-60, .prose img.w-70 { width: 85%; }
+    .prose img.w-75, .prose img.w-80, .prose img.w-90 { width: 100%; }
+}

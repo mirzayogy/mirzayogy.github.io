@@ -21,6 +21,7 @@ Situs: **https://mirzayogy.github.io**
   - [Menulis post baru](#menulis-post-baru)
     - [Frontmatter yang tersedia](#frontmatter-yang-tersedia)
     - [Gambar dan file unduhan](#gambar-dan-file-unduhan)
+    - [Ukuran gambar](#ukuran-gambar)
     - [Warna teks](#warna-teks)
   - [Draft: menyembunyikan post](#draft-menyembunyikan-post)
   - [Post pilihan (featured)](#post-pilihan-featured)
@@ -202,6 +203,27 @@ Di Markdown, selalu pakai path yang diawali `/` (bukan `../../`):
 ```
 
 Teks di dalam `![...]` adalah teks alternatif (tampil jika gambar gagal dimuat dan dibaca oleh pembaca layar). Ukuran file per file di GitHub maksimal 100 MB; sebaiknya kompres foto besar sebelum dimasukkan.
+
+### Ukuran gambar
+
+Tambahkan kelas di dalam `{...}` tepat setelah gambar (tanpa spasi):
+
+```markdown
+![Alur MVC](/assets/image/mvc.png){.w-50}
+![Alur MVC](/assets/image/mvc.png){.w-30 .kiri}
+![Alur MVC](/assets/image/mvc.png){.w-75 .bingkai}
+```
+
+| Kelas | Fungsi |
+|---|---|
+| `.w-10` `.w-20` `.w-25` `.w-30` `.w-40` `.w-50` `.w-60` `.w-70` `.w-75` `.w-80` `.w-90` `.w-100` | Lebar gambar dalam persen terhadap lebar kolom isi |
+| (tanpa kelas posisi) | Gambar di tengah |
+| `.kiri` / `.kanan` | Rata kiri / kanan |
+| `.bingkai` | Diberi garis tepi tipis |
+
+Di layar HP (di bawah 600px), gambar kecil otomatis diperbesar (≤40% → 60%, 50–70% → 85%, ≥75% → 100%) agar tetap terbaca. Gambar tanpa kelas tetap tampil dengan ukuran aslinya, maksimal selebar kolom.
+
+Untuk ukuran lain yang tidak ada di daftar, pakai HTML langsung: `<img src="/assets/image/mvc.png" alt="Alur MVC" style="width:45%">`.
 
 ### Warna teks
 

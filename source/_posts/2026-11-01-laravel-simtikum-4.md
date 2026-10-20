@@ -43,7 +43,7 @@ Unduh template AdminLTE deri URL berikut:
 
 Letakkan folder `dist` ke dalam folder `public/`. 
 
-![Folder dist](/assets/image/folder-dist.png)
+![Folder dist](/assets/image/folder-dist.png){.w-50 .bingkai .kiri}
 
 Unduh file berikut:
 
@@ -51,15 +51,19 @@ Unduh file berikut:
 
 Letakkan file-file tersebut ke dalam folder `resources/views`
 
-![File Template](/assets/image/file-template.png)
+![File Template](/assets/image/file-template.png){.w-50 .bingkai .kiri}
 
 File-file ini digunakan sebagai template hasil kustomisasi dari AdminLTE yang sudah disesuaikan untuk pelajaran ini.
+
+Buka file `routes/web.php` dan ganti isinya menjadi:
+
+![web1](/assets/image/web-1.png){.w-75 .bingkai .kiri}
 
 ### Mengatur Layout
 
 Buat folder `layouts` pada `resources/views`
 
-![layouts](/assets/image/resource-views-layouts.png)
+![layouts](/assets/image/resource-views-layouts.png){.w-50 .bingkai .kiri}
 
 Buat file `app.blade.php` dalam folder `resources/views/layouts`, kemudian salin isinya dari file `dashboard.blade.php`.
 
@@ -81,4 +85,4 @@ Kembali ke file `dashboard.blade.php`, Tambahkan perintah berikut pada baris 431
 
 ![Scripts include](/assets/image/scripts-include.png)
 
-Masih file `dashboard.blade.php`, cut dari baris 431-481:
+Masih file `dashboard.blade.php`, cut dari baris 416-428:
