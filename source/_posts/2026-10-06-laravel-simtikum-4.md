@@ -1,7 +1,7 @@
 ---
 title: "Pertemuan 4: Menggunakan Template AdminLTE"
 description: "Merancang tabel SIMTIKUM dengan migration dan mengisi data awal dengan seeder."
-date: 2026-11-01
+date: 2026-10-06
 series: laravel-simtikum
 pertemuan: 4
 draft: false
@@ -57,7 +57,25 @@ File-file ini digunakan sebagai template hasil kustomisasi dari AdminLTE yang su
 
 Buka file `routes/web.php` dan ganti isinya menjadi:
 
+```php
+Route::get('/', function () {
+    return view('dashboard');
+});
+
+Route::view('/tables', 'tables')->name('tables');
+Route::view('/edit', 'edit')->name('edit');
+Route::view('/datatables', 'datatables')->name('datatables');
+```
+
 ![web1](/assets/image/web-1.png){.w-75 .bingkai .kiri}
+
+Perhatikan isinya pada laman `/`
+
+![awal-d](/assets/image/awal-dashboard.png)
+
+Pada laman `/tables`
+
+![awal-t1](/assets/image/awal-table.png)
 
 ### Mengatur Layout
 
