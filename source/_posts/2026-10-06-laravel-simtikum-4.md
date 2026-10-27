@@ -1,20 +1,21 @@
 ---
-title: "Pertemuan 4: Menggunakan Template AdminLTE"
-description: "Merancang tabel SIMTIKUM dengan migration dan mengisi data awal dengan seeder."
+title: "Laravel 4: Menggunakan Template AdminLTE"
+description: "Memasang template AdminLTE dan memecahnya menjadi layout Blade dengan @extends, @section, @yield, dan @include."
 date: 2026-10-06
 series: laravel-simtikum
 pertemuan: 4
 draft: false
-tags: [laravel, perkuliahan, database]
+tags: [laravel, perkuliahan, blade, adminlte]
 ---
 
 ## Capaian pembelajaran
 
 Setelah pertemuan ini, mahasiswa mampu:
 
-- Menggunakan template [AdminLTE](https://github.com/ColorlibHQ/AdminLTE/archive/refs/tags/v4.10.1.zip)
-
-
+- Memasang template AdminLTE ke proyek Laravel
+- Memecah template menjadi komponen dengan `@include`
+- Membuat layout utama dengan `@extends`, `@section`, dan `@yield`
+- Memanggil file CSS/JS dari folder `public` dengan `asset()`
 
 ## Persiapan
 
@@ -22,10 +23,9 @@ Setelah pertemuan ini, mahasiswa mampu:
 
 ## Materi
 
+### Mengunduh Template AdminLTE
 
-### Mendownload Template AdminLTE
-
-Unduh template AdminLTE deri URL berikut:
+Unduh template AdminLTE dari URL berikut:
 
 [Template AdminLTE](https://github.com/ColorlibHQ/AdminLTE/archive/refs/tags/v4.10.1.zip)
 
@@ -85,6 +85,8 @@ Buat folder `layouts` pada `resources/views`
 
 Buat file `app.blade.php` dalam folder `resources/views/layouts`, kemudian salin isinya dari file `dashboard.blade.php`.
 
+> **Kerjakan langkah berikut secara berurutan.** Nomor baris mengacu pada isi `dashboard.blade.php` asli. Pemotongan dimulai dari bagian bawah file agar nomor baris di atasnya tidak bergeser.
+
 ![File app.blade.php](/assets/image/file-app-1.png)
 
 Pada file `app.blade.php`, <mark>cut</mark> dari baris `431-481`:
@@ -95,9 +97,9 @@ Buat folder `components` pada `resources/views/layouts` dan di dalamnya buat fil
 
 ![File script.blade.php](/assets/image/file-scripts.png)
 
-Kembali ke file `app.blade.php`, Tambahkan perintah berikut pada baris `431`:
+Kembali ke file `app.blade.php`, tambahkan perintah berikut pada baris `431`:
 
-```php
+```blade
 @include('layouts.components.scripts')
 ```
 
@@ -107,13 +109,13 @@ Masih file `app.blade.php`, <mark>cut</mark> dari baris `415-428`:
 
 ![Potong Footer Awal](/assets/image/potong-footer-awal.png){.w-70 .bingkai .kiri}
 
-Pada folder `resources/views/layouts/component` Tambahkan file `footer.blade.php`, <mark>paste</mark> dari sebelumnya:
+Pada folder `resources/views/layouts/components`, tambahkan file `footer.blade.php`, <mark>paste</mark> dari sebelumnya:
 
 ![Potong Footer File](/assets/image/potong-footer-file.png){.w-70 .bingkai .kiri}
 
-Kembali ke file `app.blade.php`, Tambahkan perintah berikut pada baris `415`:
+Kembali ke file `app.blade.php`, tambahkan perintah berikut pada baris `415`:
 
-```php
+```blade
 @include('layouts.components.footer')
 ```
 
@@ -126,13 +128,13 @@ Masih pada file `app.blade.php`, <mark>cut</mark> dari baris `336-406`:
 
 ![badge 1](/assets/image/badge-1.png){.w-70 .bingkai .kiri}
 
-Pada folder `resources/views/layouts/component` Tambahkan file `badges.blade.php`, <mark>paste</mark> dari sebelumnya.
+Pada folder `resources/views/layouts/components`, tambahkan file `badges.blade.php`, <mark>paste</mark> dari sebelumnya.
 
 ![badge 2](/assets/image/badge-2.png){.w-70 .bingkai .kiri}
 
-Kembali ke file `app.blade.php`, Tambahkan perintah berikut pada baris `336`:
+Kembali ke file `app.blade.php`, tambahkan perintah berikut pada baris `336`:
 
-```php
+```blade
 @include('layouts.components.badges')
 ```
 
@@ -142,13 +144,13 @@ Kembali pada file `app.blade.php`, <mark>cut</mark> dari baris `314-327`:
 
 ![breadcrumb 1](/assets/image/breadcrumb-1.png){.w-70 .bingkai .kiri}
 
-Pada folder `resources/views/layouts/component` Tambahkan file `breadcrumb.blade.php`, <mark>paste</mark> dari sebelumnya.
+Pada folder `resources/views/layouts/components`, tambahkan file `breadcrumb.blade.php`, <mark>paste</mark> dari sebelumnya.
 
 ![breadcrumb 2](/assets/image/breadcrumb-2.png){.w-70 .bingkai .kiri}
 
-Kembali ke file `app.blade.php`, Tambahkan perintah berikut pada baris `314`:
+Kembali ke file `app.blade.php`, tambahkan perintah berikut pada baris `314`:
 
-```php
+```blade
 @include('layouts.components.breadcrumb')
 ```
 
@@ -158,97 +160,147 @@ Kembali pada file `app.blade.php`, <mark>cut</mark> dari baris `223-307`:
 
 ![sidebar 1](/assets/image/sidebar-1.png){.w-70 .bingkai .kiri}
 
-Pada folder `resources/views/layouts/component` Tambahkan file `sidebar.blade.php`, <mark>paste</mark> dari sebelumnya.
+Pada folder `resources/views/layouts/components`, tambahkan file `sidebar.blade.php`, <mark>paste</mark> dari sebelumnya.
 
 ![sidebar 2](/assets/image/sidebar-2.png){.w-70 .bingkai .kiri}
 
-Kembali ke file `app.blade.php`, Tambahkan perintah berikut pada baris `223`:
+Kembali ke file `app.blade.php`, tambahkan perintah berikut pada baris `223`:
 
-```php
+```blade
 @include('layouts.components.sidebar')
 ```
 
 ![sidebar 3](/assets/image/sidebar-3.png){.w-70 .bingkai .kiri}
 
-
 Kembali pada file `app.blade.php`, <mark>cut</mark> dari baris `99-222`:
 
 ![nav 1](/assets/image/nav-1.png){.w-70 .bingkai .kiri}
 
-Pada folder `resources/views/layouts/component` Tambahkan file `nav.blade.php`, <mark>paste</mark> dari sebelumnya.
+Pada folder `resources/views/layouts/components`, tambahkan file `nav.blade.php`, <mark>paste</mark> dari sebelumnya.
 
 ![nav 2](/assets/image/nav-2.png){.w-70 .bingkai .kiri}
 
-Kembali ke file `app.blade.php`, Tambahkan perintah berikut pada baris `99`:
+Kembali ke file `app.blade.php`, tambahkan perintah berikut pada baris `99`:
 
-```php
+```blade
 @include('layouts.components.nav')
 ```
 
 ![nav 3](/assets/image/nav-3.png){.w-70 .bingkai .kiri}
 
-
 Kembali pada file `app.blade.php`, <mark>cut</mark> dari baris `3-93`:
 
 ![head 1](/assets/image/head-1.png){.w-70 .bingkai .kiri}
 
-Pada folder `resources/views/layouts/component` Tambahkan file `head.blade.php`, <mark>paste</mark> dari sebelumnya.
+Pada folder `resources/views/layouts/components`, tambahkan file `head.blade.php`, <mark>paste</mark> dari sebelumnya.
 
 ![head 2](/assets/image/head-2.png){.w-70 .bingkai .kiri}
 
-Kembali ke file `app.blade.php`, Tambahkan perintah berikut pada baris `3`:
+Kembali ke file `app.blade.php`, tambahkan perintah berikut pada baris `3`:
 
-```php
+```blade
 @include('layouts.components.head')
 ```
 
 ![head 3](/assets/image/head-3.png){.w-70 .bingkai .kiri}
 
-Hapus komentar jika ingin tidak ada komentar menjadi seperti berikut
+Komentar HTML boleh dihapus agar file lebih ringkas (opsional), sehingga menjadi seperti berikut:
 
 ![clean 1](/assets/image/clean-1.png){.w-70 .bingkai .kiri}
 
-Ada beberapa hal yang perlu diperhatikan agar template berjalan normal terkait dengan <mark>css</mark> dan <mark>javascript</mark> yang digunakan. Pada file `resource/views/layouts/components/head.blade.php` ganti href dari link pada baris 67 dan 88
+Ada beberapa hal yang perlu diperhatikan agar template berjalan normal terkait dengan file **CSS** dan **JavaScript** yang digunakan. Pada file `resources/views/layouts/components/head.blade.php` ganti `href` pada baris `67` dan `88`
 
 ![head 4](/assets/image/head-4.png){.w-70 .bingkai .kiri}
 
 Menjadi:
 
-```php
+```blade
 {{ asset('dist/css/adminlte.css') }}
 ```
 
 ![head 5](/assets/image/head-5.png){.w-70 .bingkai .kiri}
 
-Lakukan hal yang sama pada `resource/views/layouts/components/scripts.blade.php` baris `11`
+
+
+Lakukan hal yang sama pada `resources/views/layouts/components/nav.blade.php` baris `78` dan `85`
+
+![nav 4](/assets/image/nav-4.png){.w-70 .bingkai .kiri}
+
+Menjadi:
+
+```blade
+{{ asset('dist/assets/img/user2-160x160.jpg') }}
+```
+
+![nav 5](/assets/image/nav-5.png){.w-70 .bingkai .kiri}
+
+
+Lakukan hal yang sama pada `resources/views/layouts/components/scripts.blade.php` baris `11`
 
 ![scripts 1](/assets/image/scripts-1.png){.w-70 .bingkai .kiri}
 
 Menjadi:
 
-```php
+```blade
 {{ asset('dist/js/adminlte.js') }}
 ```
 
 ![scripts 2](/assets/image/scripts-2.png){.w-70 .bingkai .kiri}
 
+Lakukan hal yang sama pada `resources/views/layouts/components/sidebar.blade.php` baris `11`
+
+![sidebar 4](/assets/image/sidebar-4.png){.w-70 .bingkai .kiri}
+
+Menjadi:
+
+```blade
+{{ asset('dist/assets/img/AdminLTELogo.png') }}
+```
+
+![sidebar 5](/assets/image/sidebar-5.png){.w-70 .bingkai .kiri}
+
+
 ### Penggunaan Layout
 
-Buka `resource/views/dashboard.blade.php` ganti isinya menjadi seperti berikut:
+Buka `resources/views/dashboard.blade.php`, ganti isinya menjadi seperti berikut:
 
-```php
+```blade
 @extends('layouts.app')
 ```
 
 ![dashboard 1](/assets/image/dashboard-1.png){.w-70 .bingkai .kiri}
 
-Hal ini menandakan dashboard melakukan extends dari file `resource/views/layouts/app.blade.php`.
+Hal ini menandakan dashboard melakukan extends dari file `resources/views/layouts/app.blade.php`.
 
-Buka `resource/views/layouts/app.blade.php` ganti baris `12` dan `17` menjadi seperti berikut:
+Buka `resources/views/layouts/app.blade.php`, ganti baris `12` menjadi `@yield('breadcrumb')` dan baris `17` menjadi `@yield('content')`:
+
+```blade
+<div class="app-content-header">
+    <div class="container-fluid">
+        @yield('breadcrumb')
+    </div>
+</div>
+<div class="app-content">
+    <div class="container-fluid">
+        @yield('content')
+    </div>
+</div>
+```
 
 ![dashboard 2](/assets/image/dashboard-2.png){.w-70 .bingkai .kiri}
 
-Sehingga dashboard perlu diperbarui menjadi:
+`@yield` adalah "slot" kosong di layout. Halaman yang memakai layout mengisinya dengan `@section`. Karena itu `dashboard.blade.php` diperbarui menjadi:
+
+```blade
+@extends('layouts.app')
+
+@section('breadcrumb')
+    @include('layouts.components.breadcrumb')
+@endsection
+
+@section('content')
+    @include('layouts.components.badges')
+@endsection
+```
 
 ![dashboard 3](/assets/image/dashboard-3.png){.w-70 .bingkai .kiri}
-

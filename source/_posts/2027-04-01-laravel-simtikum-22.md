@@ -2,7 +2,7 @@
 title: "Pertemuan 6: CRUD Periode dan Validasi"
 description: "Membangun fitur tambah, ubah, hapus data periode dengan resource controller dan Form Request."
 date: 2026-11-15
-series: laravel-simtikum
+series: laravel-lanjutan
 pertemuan: 6
 draft: true
 tags: [laravel, perkuliahan, crud]

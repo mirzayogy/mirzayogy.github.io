@@ -2,7 +2,7 @@
 title: "Pertemuan 7: CRUD Praktikum, Pencarian, dan Paginasi"
 description: "CRUD data praktikum yang berelasi dengan periode, dilengkapi pencarian dan paginasi."
 date: 2026-11-22
-series: laravel-simtikum
+series: laravel-lanjutan
 pertemuan: 7
 draft: true
 tags: [laravel, perkuliahan, crud]

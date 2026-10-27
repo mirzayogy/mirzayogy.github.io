@@ -2,7 +2,7 @@
 title: "Pertemuan 11: Penugasan Pengajar dan Jadwal Praktikum"
 description: "Relasi many-to-many untuk menugaskan pengajar ke praktikum, lalu menyusun jadwalnya."
 date: 2026-12-20
-series: laravel-simtikum
+series: laravel-lanjutan
 pertemuan: 11
 draft: true
 tags: [laravel, perkuliahan, relasi]

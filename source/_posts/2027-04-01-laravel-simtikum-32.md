@@ -1,8 +1,8 @@
 ---
-title: "Pertemuan 16: Ujian Akhir Semester (UAS): Presentasi Proyek"
+title: "Pertemuan 32: Ujian Akhir Semester (UAS): Presentasi Proyek"
 description: "Ujian akhir semester berupa presentasi dan demo proyek SIMTIKUM yang telah dibangun."
-date: 2027-01-24
-series: laravel-simtikum
+date: 2027-04-01
+series: laravel-lanjutan
 pertemuan: 16
 draft: true
 tags: [laravel, perkuliahan, ujian]

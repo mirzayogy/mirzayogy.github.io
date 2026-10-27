@@ -2,7 +2,7 @@
 title: "Pertemuan 5: Eloquent ORM dan Relasi"
 description: "Mengakses database lewat model Eloquent dan menghubungkan tabel dengan relasi."
 date: 2026-11-08
-series: laravel-simtikum
+series: laravel-lanjutan
 pertemuan: 5
 draft: true
 tags: [laravel, perkuliahan, eloquent]

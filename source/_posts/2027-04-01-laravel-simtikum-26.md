@@ -2,7 +2,7 @@
 title: "Pertemuan 10: Otorisasi: Role, Middleware, Gate, dan Policy"
 description: "Membedakan hak akses admin dan pengajar dengan middleware, Gate, dan Policy."
 date: 2026-12-13
-series: laravel-simtikum
+series: laravel-lanjutan
 pertemuan: 10
 draft: true
 tags: [laravel, perkuliahan, otorisasi]

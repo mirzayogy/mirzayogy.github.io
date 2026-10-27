@@ -2,7 +2,7 @@
 title: "Pertemuan 9: Autentikasi"
 description: "Menambahkan login, registrasi, dan logout memakai starter kit Laravel."
 date: 2026-12-06
-series: laravel-simtikum
+series: laravel-lanjutan
 pertemuan: 9
 draft: true
 tags: [laravel, perkuliahan, auth]

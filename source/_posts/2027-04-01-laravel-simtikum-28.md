@@ -2,7 +2,7 @@
 title: "Pertemuan 12: Presensi Pengajar dan Mahasiswa"
 description: "Mencatat kehadiran pengajar (diisi sendiri) dan kehadiran mahasiswa per pertemuan."
 date: 2026-12-27
-series: laravel-simtikum
+series: laravel-lanjutan
 pertemuan: 12
 draft: true
 tags: [laravel, perkuliahan, presensi]

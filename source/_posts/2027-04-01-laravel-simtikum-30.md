@@ -2,7 +2,7 @@
 title: "Pertemuan 14: Laporan dan Ekspor PDF/Excel"
 description: "Menyusun laporan rekap dan mengekspornya ke PDF dan Excel."
 date: 2027-01-10
-series: laravel-simtikum
+series: laravel-lanjutan
 pertemuan: 14
 draft: true
 tags: [laravel, perkuliahan, laporan]

@@ -1,8 +1,8 @@
 ---
-title: "Pertemuan 15: Testing dan Deployment"
+title: "Pertemuan 31: Testing dan Deployment"
 description: "Menguji fitur utama SIMTIKUM dan menyiapkan aplikasi untuk dijalankan di server."
-date: 2027-01-17
-series: laravel-simtikum
+date: 2027-04-01
+series: laravel-lanjutan
 pertemuan: 15
 draft: true
 tags: [laravel, perkuliahan, deployment]

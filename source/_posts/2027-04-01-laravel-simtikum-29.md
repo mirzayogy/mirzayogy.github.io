@@ -2,7 +2,7 @@
 title: "Pertemuan 13: Upload File: Laporan Kegiatan dengan Foto"
 description: "Mengunggah dan menampilkan foto kegiatan pada laporan pengajar menggunakan Storage Laravel."
 date: 2027-01-03
-series: laravel-simtikum
+series: laravel-lanjutan
 pertemuan: 13
 draft: true
 tags: [laravel, perkuliahan, storage]

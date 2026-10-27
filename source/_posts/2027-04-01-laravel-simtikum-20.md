@@ -2,7 +2,7 @@
 title: "Pertemuan 4: Migration dan Seeder"
 description: "Merancang tabel SIMTIKUM dengan migration dan mengisi data awal dengan seeder."
 date: 2026-11-01
-series: laravel-simtikum
+series: laravel-lanjutan
 pertemuan: 4
 draft: true
 tags: [laravel, perkuliahan, database]
