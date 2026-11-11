@@ -4,7 +4,7 @@ description: "Membuat laporan data periode dalam format PDF lengkap dengan kop, 
 date: 2026-10-20
 series: laravel-simtikum
 pertemuan: 6
-draft: true
+draft: false
 comments: true
 tags: [laravel, perkuliahan, laporan, pdf]
 ---
