@@ -288,6 +288,22 @@ Buat file `resources/views/periode/create.blade.php`:
 ```blade
 @extends('layouts.app')
 
+@section('breadcrumb')
+    <div class="row">
+        <div class="col-sm-6">
+            <h1 class="mb-0 fs-3">Periode</h1>
+        </div>
+        <div class="col-sm-6">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb float-sm-end">
+                    <li class="breadcrumb-item" aria-current="page"><a href="{{ route('periode.index') }}">Periode</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Tambah</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+@endsection
+
 @section('content')
     <div class="row">
         <div class="col-md-12">
@@ -401,6 +417,22 @@ Buat file `resources/views/periode/edit.blade.php`. Isinya hampir sama dengan `c
 ```blade
 @extends('layouts.app')
 
+@section('breadcrumb')
+    <div class="row">
+        <div class="col-sm-6">
+            <h1 class="mb-0 fs-3">Periode</h1>
+        </div>
+        <div class="col-sm-6">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb float-sm-end">
+                    <li class="breadcrumb-item" aria-current="page"><a href="{{ route('periode.index') }}">Periode</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Ubah</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+@endsection
+
 @section('content')
     <div class="row">
         <div class="col-md-12">
@@ -421,16 +453,14 @@ Buat file `resources/views/periode/edit.blade.php`. Isinya hampir sama dengan `c
                     </div>
                 </div>
                 <div class="card-body">
-                    {{-- action ke periode.update dan membawa data $periode --}}
                     <form action="{{ route('periode.update', $periode) }}" method="POST">
                         @csrf
-                        @method('PUT') {{-- form HTML tidak mengenal PUT --}}
+                        @method('PUT')
 
                         <div class="mb-3">
                             <label for="periode" class="form-label">Periode</label>
-                            {{-- old('periode', $periode->periode): pakai isian sebelumnya, jika tidak ada pakai data di database --}}
-                            <input type="text" class="form-control @error('periode') is-invalid @enderror"
-                                id="periode" name="periode" value="{{ old('periode', $periode->periode) }}" />
+                            <input type="text" class="form-control @error('periode') is-invalid @enderror" id="periode"
+                                name="periode" value="{{ old('periode', $periode->periode) }}" />
                             @error('periode')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
@@ -446,8 +476,8 @@ Buat file `resources/views/periode/edit.blade.php`. Isinya hampir sama dengan `c
                         </div>
 
                         <div class="form-check form-switch mb-3">
-                            <input class="form-check-input" type="checkbox" role="switch" id="status"
-                                name="status" value="1" @checked(old('status', $periode->status)) />
+                            <input class="form-check-input" type="checkbox" role="switch" id="status" name="status"
+                                value="1" @checked(old('status', $periode->status)) />
                             <label class="form-check-label" for="status">Aktif</label>
                         </div>
 
@@ -486,7 +516,7 @@ Buka `resources/views/layouts/components/sidebar.blade.php`. Cari bagian `<ul cl
         <li class="nav-item">
             <a href="{{ route('periode.index') }}"
                 class="nav-link {{ request()->routeIs('periode.*') ? 'active' : '' }}">
-                <i class="nav-icon bi bi-calendar3"></i>
+                <i class="nav-icon bi bi-circle"></i>
                 <p>Periode</p>
             </a>
         </li>

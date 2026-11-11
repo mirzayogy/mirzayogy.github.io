@@ -4,3 +4,6 @@
 /vendor/
 .DS_Store
 hot
+
+# Soal ujian & kunci (jangan di-push)
+/_ujian/
