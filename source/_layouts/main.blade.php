@@ -37,6 +37,7 @@
 
     @include('_partials.footer')
 
+    <script src="{{ $page->baseUrl }}/assets/js/salin-kode.js?v={{ time() }}" defer></script>
     @stack('scripts')
 </body>
 </html>

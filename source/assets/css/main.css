@@ -512,3 +512,47 @@ html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
     .prose img.w-50, .prose img.w-60, .prose img.w-70 { width: 85%; }
     .prose img.w-75, .prose img.w-80, .prose img.w-90 { width: 100%; }
 }
+
+/* Tombol salin pada blok kode ------------------------------------- */
+.code-wrap { position: relative; margin: 1rem 0; }
+.code-wrap > pre { margin: 0; }
+.code-wrap > pre:has(> code[class*="language-"])::before { right: 5.4rem; }
+.copy-btn {
+    position: absolute;
+    top: 0.35rem;
+    right: 0.45rem;
+    z-index: 1;
+    font-family: var(--font);
+    font-size: 0.75rem;
+    font-weight: 600;
+    line-height: 1;
+    padding: 0.35rem 0.6rem;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    color: var(--text);
+    cursor: pointer;
+    opacity: 0.85;
+}
+.copy-btn:hover, .copy-btn:focus-visible { opacity: 1; border-color: var(--accent); color: var(--accent); }
+.copy-btn.copied { opacity: 1; background: var(--accent); border-color: var(--accent); color: #ffffff; }
+/* Di blok terminal (latar gelap) */
+.code-wrap:has(> pre > code.language-bash) .copy-btn,
+.code-wrap:has(> pre > code.language-sh) .copy-btn,
+.code-wrap:has(> pre > code.language-shell) .copy-btn {
+    background: #2d3340;
+    border-color: #444c5c;
+    color: #e6edf3;
+}
+.code-wrap:has(> pre > code.language-bash) .copy-btn.copied,
+.code-wrap:has(> pre > code.language-sh) .copy-btn.copied,
+.code-wrap:has(> pre > code.language-shell) .copy-btn.copied {
+    background: #28c840;
+    border-color: #28c840;
+    color: #0d1117;
+}
+@media (max-width: 600px) {
+    .code-wrap { margin-left: -16px; margin-right: -16px; }
+    .code-wrap > pre { margin: 0; }
+    .copy-btn { right: 16px; }
+}

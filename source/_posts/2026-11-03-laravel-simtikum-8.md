@@ -2,7 +2,7 @@
 title: "Pertemuan 8: Ujian Tengah Semester (UTS)"
 description: "Ujian tengah semester: membangun CRUD lengkap berdasarkan materi pertemuan 1–7."
 date: 2026-11-03
-series: laravel-lanjutan
+series: laravel-simtikum
 pertemuan: 8
 draft: false
 tags: [laravel, perkuliahan, ujian]
