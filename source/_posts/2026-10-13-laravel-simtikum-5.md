@@ -43,9 +43,10 @@ File view yang akan dibuat:
 
 ```
 resources/views/periode/
-├── index.blade.php
 ├── create.blade.php
-└── edit.blade.php
+├── edit.blade.php
+├── index.blade.php
+└── modal-hapus.blade.php
 ```
 
 ### Menambahkan route
@@ -60,11 +61,16 @@ use App\Http\Controllers\PeriodeController;
 Route::resource('periode', PeriodeController::class)->except('show');
 ```
 
+![01-periode-controller](/assets/image/laravel1-5/01-periode-controller.png){.w-80 .bingkai .kiri}
+
 `->except('show')` membuang route detail karena tidak kita pakai. Periksa daftar route yang terbentuk dengan:
 
 ```bash
 php artisan route:list --name=periode
 ```
+
+![02-route-detail](/assets/image/laravel1-5/02-route-detail.png){.w-80 .bingkai .kiri}
+
 
 ### Halaman index
 
@@ -78,6 +84,8 @@ public function index()
     return view('periode.index', compact('semua_periode'));
 }
 ```
+
+![03-route-index](/assets/image/laravel1-5/03-route-index.png){.w-80 .bingkai .kiri}
 
 Perintah `Periode::all();` berarti menampilkan seluruh data dari tabel periode, jika ingin mengubah urutannya bisa diganti dengan menggunakan perintah berikut `Periode::orderBy('id', 'desc')->get();` yang artinya menampilkan dengan urutan dari id yang terbesar terlebih dahulu.
 
