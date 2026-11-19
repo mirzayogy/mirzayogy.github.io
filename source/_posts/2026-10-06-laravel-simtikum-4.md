@@ -304,3 +304,65 @@ Buka `resources/views/layouts/app.blade.php`, ganti baris `12` menjadi `@yield('
 ```
 
 ![dashboard 3](/assets/image/dashboard-3.png){.w-70 .bingkai .kiri}
+
+Buka kembali `http://localhost:8000`. Tampilan dashboard harus sama persis seperti sebelum dipecah. Bedanya, sekarang kerangkanya ada di satu layout yang bisa dipakai ulang oleh halaman lain.
+
+## Struktur akhir
+
+```
+resources/views/
+├── dashboard.blade.php          ← @extends('layouts.app')
+├── layouts/
+│   ├── app.blade.php            ← kerangka halaman + @yield
+│   └── components/
+│       ├── head.blade.php       ← <head>, CSS
+│       ├── nav.blade.php        ← navbar atas
+│       ├── sidebar.blade.php    ← menu kiri
+│       ├── breadcrumb.blade.php ← judul halaman
+│       ├── badges.blade.php     ← isi dashboard
+│       ├── footer.blade.php     ← footer
+│       └── scripts.blade.php    ← JavaScript
+├── tables.blade.php             ← contoh tabel (dipakai Pertemuan 5)
+├── edit.blade.php               ← contoh form (dipakai Pertemuan 5)
+└── datatables.blade.php         ← contoh tabel lanjutan
+```
+
+## Ringkasan directive Blade
+
+| Directive | Ditulis di | Fungsi |
+|---|---|---|
+| `@include('layouts.components.nav')` | layout atau halaman | Menyisipkan isi file lain di tempat itu |
+| `@extends('layouts.app')` | halaman (baris pertama) | Memakai file layout sebagai kerangka |
+| `@yield('content')` | layout | Menyediakan "slot" kosong |
+| `@section('content') ... @endsection` | halaman | Mengisi slot dengan nama yang sama |
+| `{{ asset('dist/css/adminlte.css') }}` | mana saja | Membuat alamat lengkap ke file di folder `public` |
+
+Nama di `@yield` dan `@section` harus **sama persis**. Jika `@section('konten')` dipakai untuk mengisi `@yield('content')`, isinya tidak akan tampil dan tidak ada pesan error.
+
+## Rangkuman
+
+- File AdminLTE (`dist`) diletakkan di folder `public`, dan dipanggil dari Blade dengan `asset()`.
+- Template HTML yang panjang dipecah menjadi komponen kecil di `layouts/components` lalu digabung dengan `@include`.
+- `layouts/app.blade.php` menjadi kerangka bersama. Setiap halaman cukup `@extends('layouts.app')` dan mengisi `@section('breadcrumb')` serta `@section('content')`.
+- Jika ingin mengubah navbar, sidebar, atau footer, cukup ubah satu file komponen, dan semua halaman ikut berubah.
+
+## Latihan
+
+1. Ganti tulisan **AdminLTE 4** di sidebar (`sidebar.blade.php`) menjadi **SIMTIKUM**.
+2. Ubah teks di `footer.blade.php` menjadi nama dan NIM Anda.
+3. Buat halaman baru `resources/views/tentang.blade.php` yang memakai `@extends('layouts.app')`, dengan breadcrumb bertuliskan **Tentang** dan isi satu paragraf deskripsi SIMTIKUM. Daftarkan dengan `Route::view('/tentang', 'tentang');` lalu buka `http://localhost:8000/tentang`.
+
+## Persiapan Pertemuan 5
+
+Pada Pertemuan 5 kita membuat halaman daftar, tambah, ubah, dan hapus data periode di dalam layout ini. Pastikan:
+
+- dashboard tampil dengan layout baru (`@extends('layouts.app')`);
+- halaman `/tables` dan `/edit` masih bisa dibuka, karena tampilan tabel dan form-nya akan dijadikan contoh;
+- tabel `periode` masih berisi data dari seeder Pertemuan 3.
+
+## Referensi
+
+- [AdminLTE 4](https://adminlte.io)
+- [Laravel: Blade Templates](https://laravel.com/docs/blade)
+- [Laravel: Layouts Using Template Inheritance](https://laravel.com/docs/blade#layouts-using-template-inheritance)
+- [Laravel: URL Generation (`asset`)](https://laravel.com/docs/helpers#method-asset)

@@ -31,7 +31,7 @@ Jalankan perintah berikut pada command-prompt/terminal yang sama untuk membuat p
 composer create-project laravel/laravel laravel5
 ```
 
-![composer](/assets/image/laravel01-02/composer.png)
+![composer](/assets/image/laravel01-02/composer.png){.w-80 .bingkai .kiri}
 
 ### Konten Laravel
 
@@ -92,8 +92,35 @@ cd laravel5
 php artisan serve
 ```
 
-![running](/assets/image/laravel01-02/running.png)
+![running](/assets/image/laravel01-02/running.png){.w-60 .bingkai .kiri}
 
 Buka `http://localhost:8000` dan pastikan halaman awal Laravel tampil
 
 ![web](/assets/image/laravel01-02/web.png)
+
+Biarkan terminal tersebut tetap terbuka selama aplikasi dipakai. Untuk menghentikan server, tekan **Ctrl + C** di terminal. Setiap kali ingin membuka aplikasi lagi, masuk ke folder proyek lalu jalankan kembali `php artisan serve`.
+
+## Rangkuman
+
+- Proyek Laravel dibuat dengan `composer create-project laravel/laravel nama-proyek`, dan dijalankan dengan `php artisan serve` di `http://localhost:8000`.
+- Folder yang paling sering kita ubah: `app/Http/Controllers`, `app/Models`, `database/migrations`, `database/seeders`, `resources/views`, `routes/web.php`, dan `public`.
+- `.env` berisi pengaturan yang berbeda di setiap komputer (misalnya koneksi database) dan tidak ikut diunggah ke GitHub; `.env.example` adalah contohnya.
+- `vendor/` berisi pustaka pihak ketiga dan dibuat ulang dengan `composer install`, jadi tidak perlu disalin atau diunggah.
+
+## Latihan
+
+1. Hentikan server dengan **Ctrl + C**, lalu jalankan kembali dengan port lain: `php artisan serve --port=8080`. Buka `http://localhost:8080`.
+2. Buka file `routes/web.php` dan `resources/views/welcome.blade.php`. Tuliskan dengan bahasa sendiri: file mana yang menentukan **alamat** halaman awal, dan file mana yang menentukan **isi tampilannya**? Hubungkan dengan pola MVC di Pertemuan 1.
+
+## Persiapan Pertemuan 3
+
+Pada Pertemuan 3, proyek `laravel5` akan dihubungkan ke database MySQL. Pastikan:
+
+- proyek `laravel5` dari pertemuan ini bisa dijalankan;
+- **MySQL** di XAMPP/Laragon bisa dinyalakan;
+- phpMyAdmin atau HeidiSQL bisa dibuka untuk melihat isi database.
+
+## Referensi
+
+- [Laravel: Installation](https://laravel.com/docs/installation)
+- [Laravel: Directory Structure](https://laravel.com/docs/structure)

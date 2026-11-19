@@ -31,9 +31,15 @@ Setelah pertemuan ini, mahasiswa mampu:
 ## Pengaturan .env
 
 - Buka file `.env` pada root proyek Laravel.
+
+![env](/assets/image/laravel01-03/env.png)
+
 - Cari `DB_CONNECTION=sqlite` ganti dengan `DB_CONNECTION=mysql`
 - Hapus tanda komentar `#` pada baris-baris konfigurasi database di bawahnya.
-- Ganti `DB_DATABASE` menjadi `db_pbo2_5A`, lalu simpan file.
+- Ganti `DB_DATABASE` menjadi `db_pbo2_5`, lalu simpan file.
+  
+![db_database](/assets/image/laravel01-03/db_database.png){.w-30 .bingkai .kiri}
+
 - Jalankan:
 
 ```bash
@@ -41,6 +47,11 @@ php artisan migrate
 ```
 
 - Konfirmasi ketika ditanyakan akan dibuat database
+
+![confirmation_1](/assets/image/laravel01-03/confirmation_1.png){.w-70 .bingkai .kiri}
+
+![confirmation_2](/assets/image/laravel01-03/confirmation_2.png){.bingkai .kiri}
+
 - Periksa pada `phpMyAdmin` atau `HeidiSQL`
 
 atau jika ingin menghapus semua tabel berisinya dan mengulang pembuatan database, gunakan:
@@ -57,6 +68,8 @@ Jalankan perintah berikut untuk membuat `model`, `migration`, `controller` (`res
 php artisan make:model Periode -mcrs
 ```
 
+![make_mcrs](/assets/image/laravel01-03/make_mcrs.png){.bingkai .kiri}
+
 Resource di sini dimaksudkan untuk membuat method `resource` yang berisikan index, create, store, show, edit, update, dan destroy pada `controller`.
 
 ### Mengubah Model
@@ -67,6 +80,8 @@ Pada file model pada `app/Models/Periode.php` yang dihasilkan, tuliskan:
 protected $table = 'periode';
 protected $guarded = [];
 ```
+
+![model](/assets/image/laravel01-03/model.png){.w-60 .bingkai .kiri}
 
 Di sini dinyatakan nama tabel karena kita menggunakan tabel dengan Bahasa Indonesia. Sedangkan perintah `guarded = []` digunakan agar seluruh kolom bisa kita kelola.
 
@@ -87,6 +102,8 @@ public function up(): void
 }
 ```
 
+![migrations_periode](/assets/image/laravel01-03/migrations_periode.png){.bingkai .kiri}
+
 Pastikan mengganti `periodes` menjadi `periode` dan tambahkan field yang akan digunakan.
 
 Ganti juga pada function `down`: 
@@ -104,10 +121,14 @@ Jalankan kembali perintah berikut agar tabel dibuat pada database
 php artisan migrate
 ```
 
+![migrate_2](/assets/image/laravel01-03/migrate_2.png){.w-60 .bingkai .kiri}
+
+
 ### Perhatikan Controller
 
 Perhatikan pada folder `app/Http/Controllers/PeriodeController.php`. Pada file tersebut sudah terdapat beberapa method untuk memanipulasi data yang merupakan bagian dari `resource`.
 
+![controller_1](/assets/image/laravel01-03/controller_1.png){.w-70 .bingkai .kiri}
 
 ### Mengubah Seeder
 
@@ -116,6 +137,8 @@ Tambahkan pada file seeder `database/seeders/PeriodeSeeder.php`:
 ```php
 use App\Models\Periode;
 ```
+
+![seeder_1](/assets/image/laravel01-03/seeder_1.png){.w-70 .bingkai .kiri}
 
 Isi function `run`. Ada beberapa contoh pembuatan seeder diantaranya yang `pertama`:
 
@@ -173,6 +196,8 @@ Periode::insert($data);
 
 Pilih yang menurut anda paling mudah.
 
+![seeder_2](/assets/image/laravel01-03/seeder_2.png){.w-50 .bingkai .kiri}
+
 Panggil seeder yang sudah kita buat dalam function `run` pada file `database/seeders/DatabaseSeeder.php`:
 
 ```php
@@ -182,11 +207,15 @@ public function run(): void
 }
 ```
 
+![seeder_3](/assets/image/laravel01-03/seeder_3.png){.w-80 .bingkai .kiri}
+
 Jalankan dengan perintah:
 
 ```bash
 php artisan migrate:fresh --seed
 ```
+
+![seeder_4](/assets/image/laravel01-03/seeder_4.png){ .bingkai .kiri}
 
 alternatif migration untuk menyertakan seeder bisa menggunakan:
 
@@ -198,3 +227,41 @@ atau jika satu seeder saja yang ingin dieksekusi bisa menggunakan:
 ```bash
 php artisan db:seed --class=PeriodeSeeder
 ```
+
+## Ringkasan perintah
+
+| Perintah | Fungsi | Data lama |
+|---|---|---|
+| `php artisan migrate` | Membuat tabel dari migration yang **belum** pernah dijalankan | Tetap ada |
+| `php artisan migrate:fresh` | Menghapus **semua** tabel, lalu membuat ulang dari awal | **Hilang** |
+| `php artisan migrate:fresh --seed` | Seperti di atas, lalu menjalankan `DatabaseSeeder` | **Hilang**, diganti data seeder |
+| `php artisan db:seed --class=PeriodeSeeder` | Hanya menjalankan satu seeder | Tetap ada, data seeder ditambahkan |
+
+Gunakan `migrate:fresh` hanya selama pengembangan. Perintah ini menghapus seluruh data di database, termasuk data yang dimasukkan lewat aplikasi.
+
+## Rangkuman
+
+- Koneksi database diatur di `.env` (`DB_CONNECTION=mysql`, `DB_DATABASE`, dan seterusnya), lalu diuji dengan `php artisan migrate`.
+- `php artisan make:model Periode -mcrs` membuat model, migration, resource controller, dan seeder sekaligus.
+- Karena nama tabel memakai Bahasa Indonesia (`periode`, bukan `periodes`), nama tabel ditulis di migration dan di model dengan `protected $table`.
+- `protected $guarded = []` membuat semua kolom boleh diisi lewat `create()` dan `update()`.
+- Seeder mengisi data awal; `create()` mengisi `created_at` dan `updated_at` otomatis, sedangkan `insert()` tidak.
+
+## Latihan
+
+1. Tambahkan dua periode lagi di `PeriodeSeeder` (misalnya **GANJIL 2027/2028** dan **GENAP 2027/2028**), lalu jalankan `php artisan migrate:fresh --seed`. Periksa hasilnya di phpMyAdmin/HeidiSQL.
+2. Ubah salah satu periode di seeder menjadi berstatus aktif dengan menambahkan `'status' => true`. Jalankan ulang seeder dan pastikan kolom `status` bernilai `1`. Petunjuk: gunakan cara pertama (`Periode::create`); pada `insert()`, setiap baris harus memiliki kolom yang sama.
+
+## Persiapan Pertemuan 4
+
+Pada Pertemuan 4, proyek akan diberi tampilan admin menggunakan template **AdminLTE**. Pastikan:
+
+- tabel `periode` sudah terisi data dari seeder;
+- koneksi internet tersedia untuk mengunduh template AdminLTE dan file proyek pendukung.
+
+## Referensi
+
+- [Laravel: Database Configuration](https://laravel.com/docs/database#configuration)
+- [Laravel: Migrations](https://laravel.com/docs/migrations)
+- [Laravel: Eloquent Model Conventions](https://laravel.com/docs/eloquent#eloquent-model-conventions)
+- [Laravel: Seeding](https://laravel.com/docs/seeding)
