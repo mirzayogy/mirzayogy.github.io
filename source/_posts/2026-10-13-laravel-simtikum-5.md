@@ -61,7 +61,7 @@ use App\Http\Controllers\PeriodeController;
 Route::resource('periode', PeriodeController::class)->except('show');
 ```
 
-![01-periode-controller](/assets/image/laravel1-5/01-periode-controller.png){.w-80 .bingkai .kiri}
+![01-periode-controller](/assets/image/laravel01-05/01-periode-controller.png){.w-80 .bingkai .kiri}
 
 `->except('show')` membuang route detail karena tidak kita pakai. Periksa daftar route yang terbentuk dengan:
 
@@ -69,7 +69,7 @@ Route::resource('periode', PeriodeController::class)->except('show');
 php artisan route:list --name=periode
 ```
 
-![02-route-detail](/assets/image/laravel1-5/02-route-detail.png){.w-80 .bingkai .kiri}
+![02-route-detail](/assets/image/laravel01-05/02-route-detail.png){.w-80 .bingkai .kiri}
 
 
 ### Halaman index
@@ -85,7 +85,7 @@ public function index()
 }
 ```
 
-![03-route-index](/assets/image/laravel1-5/03-route-index.png){.w-80 .bingkai .kiri}
+![03-route-index](/assets/image/laravel01-05/03-route-index.png){.w-80 .bingkai .kiri}
 
 Perintah `Periode::all();` berarti menampilkan seluruh data dari tabel periode, jika ingin mengubah urutannya bisa diganti dengan menggunakan perintah berikut `Periode::orderBy('id', 'desc')->get();` yang artinya menampilkan dengan urutan dari id yang terbesar terlebih dahulu.
 

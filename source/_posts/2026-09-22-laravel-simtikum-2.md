@@ -21,17 +21,21 @@ Setelah pertemuan ini, mahasiswa mampu:
 ## Materi
 
 
-### Membuat proyek laravel5A (SIMTIKUM)
+### Membuat proyek laravel5 (SIMTIKUM)
 
-Pada project ini menggunakan contoh kelas yang mengerjakan adalah kelas 5A, kelas lain silakan menyesuaikan. 
+Pada project ini menggunakan contoh kelas yang mengerjakan adalah semester 5, kelas lain silakan menyesuaikan. 
 
 Jalankan perintah berikut pada command-prompt/terminal yang sama untuk membuat project Laravel, sesuaikan dengan kelas masing-masing.
 
 ```bash
-composer create-project laravel/laravel laravel5A
+composer create-project laravel/laravel laravel5
 ```
 
+![composer](/assets/image/laravel01-02/composer.png)
+
 ### Konten Laravel
+
+![awal](/assets/image/laravel01-02/awal.png)
 
 Buka folder menggunakan [Visual Studio Code](https://code.visualstudio.com), perhatikan masing-masing folder:
 
@@ -79,13 +83,17 @@ Selain itu terdapat juga beberapa file yang biasa digunakan untuk pengelolaan pr
 - `README.md` : Dokumentasi umum: deskripsi, instalasi, dan cara penggunaan proyek. Ditulis oleh programmer.
 
 
-### Menjalankan proyek laravel5A
+### Menjalankan proyek laravel5
 
 Jalankan perintah berikut pada command-prompt/terminal sebelumnya:
 
 ```bash
-cd laravel5A
+cd laravel5
 php artisan serve
 ```
 
+![running](/assets/image/laravel01-02/running.png)
+
 Buka `http://localhost:8000` dan pastikan halaman awal Laravel tampil
+
+![web](/assets/image/laravel01-02/web.png)
