@@ -40,14 +40,14 @@ Ada beberapa cara membuat laporan PDF di Laravel. Semuanya mengubah sesuatu (bia
 | **spipu/html2pdf** | HTML + tag khusus → TCPDF, murni PHP | Tidak ada (cukup ekstensi `gd` & `mbstring`) |
 | barryvdh/laravel-dompdf | HTML + CSS → Dompdf, murni PHP | Tidak ada |
 | mPDF | HTML + CSS, murni PHP | Tidak ada, ukuran paket lebih besar |
-| barryvdh/laravel-snappy | HTML → program `wkhtmltopdf` | Harus memasang program `wkhtmltopdf` di server; proyek ini sudah tidak dikembangkan lagi |
+| barryvdh/laravel-snappy | HTML → program `wkhtmltopdf` | Harus memasang program `wkhtmltopdf` di server; `wkhtmltopdf` sudah tidak dikembangkan lagi sejak 2023 |
 | spatie/browsershot | HTML → Google Chrome (Puppeteer) | Harus ada Node.js dan Chrome di server |
 
 Kelebihan **spipu/html2pdf** dibanding pilihan lain:
 
 1. **Murni PHP, tanpa program tambahan.** Berbeda dengan Snappy dan Browsershot, tidak perlu memasang `wkhtmltopdf`, Node.js, atau Chrome. Karena itu bisa langsung berjalan di XAMPP/Laragon maupun shared hosting yang tidak mengizinkan program eksternal.
 2. **Kop dan footer setiap halaman cukup dengan tag.** Tag `<page_header>` dan `<page_footer>` otomatis diulang di setiap halaman. Di Dompdf, hal yang sama harus diakali dengan CSS `position: fixed` atau script.
-3. **Nomor halaman siap pakai.** Cukup tulis `[[page_cu]]` (halaman saat ini) dan `[[page_nb]]` (jumlah halaman), misalnya "Halaman 2 dari 3". Di Dompdf nomor halaman perlu ditulis lewat script PHP di dalam view.
+3. **Nomor halaman siap pakai.** Cukup tulis `[[page_cu]]` (halaman saat ini) dan `[[page_nb]]` (jumlah halaman), misalnya "Halaman 2 dari 3". Di Dompdf, nomor halaman saat ini bisa dibuat dengan CSS, tetapi **jumlah halaman total** harus ditambahkan lewat kode PHP setelah PDF dirender.
 4. **QR code dan barcode bawaan.** Tag `<qrcode>` dan `<barcode>` langsung tersedia tanpa paket tambahan. Cocok untuk laporan yang perlu tautan verifikasi.
 5. **Pengaturan kertas dalam milimeter.** Ukuran kertas, orientasi, dan margin diatur dalam satuan mm, sehingga mudah disesuaikan dengan format surat resmi.
 6. **Berbasis TCPDF yang matang.** Mendukung UTF-8, gambar, dan tabel panjang yang otomatis berlanjut ke halaman berikutnya beserta judul kolomnya.
@@ -68,6 +68,8 @@ Jalankan di folder proyek:
 composer require spipu/html2pdf
 ```
 
+![composer-html2pdf](/assets/image/laravel01-06/composer-html2pdf.png){.bingkai .kiri}
+
 Perintah ini juga otomatis memasang `tecnickcom/tcpdf` yang menjadi mesin pembuat PDF-nya.
 
 ### Menambahkan route
@@ -78,6 +80,8 @@ Buka `routes/web.php`, tambahkan route laporan:
 Route::get('/laporan/periode', [PeriodeController::class, 'cetak'])->name('laporan.periode');
 ```
 
+![route-laporan](/assets/image/laravel01-06/route-laporan.png){.bingkai .kiri}
+
 Nama route sengaja diawali `laporan.` (bukan `periode.`) agar nanti bisa dikelompokkan di menu **Laporan** pada sidebar.
 
 ### Method cetak di controller
@@ -87,6 +91,8 @@ Buka `app/Http/Controllers/PeriodeController.php`. Tambahkan `use` di bagian ata
 ```php
 use Spipu\Html2Pdf\Html2Pdf;
 ```
+
+![controller-01](/assets/image/laravel01-06/controller-01.png){.w-50 .bingkai .kiri}
 
 Lalu tambahkan method `cetak`:
 
@@ -111,6 +117,8 @@ public function cetak()
         ->header('Content-Disposition', 'inline; filename="laporan-periode.pdf"');
 }
 ```
+
+![controller-02](/assets/image/laravel01-06/controller-02.png){.bingkai .kiri}
 
 Penjelasan parameter `new Html2Pdf(...)`:
 
@@ -212,6 +220,8 @@ Buat file `resources/views/periode/cetak.blade.php`.
 </page>
 ```
 
+![cetak](/assets/image/laravel01-06/cetak.png){.bingkai .kiri}
+
 Bagian-bagian khusus html2pdf:
 
 | Tag / kode | Fungsi |
@@ -245,6 +255,8 @@ Buka `resources/views/periode/index.blade.php`. Di bagian card header, tambahkan
 </div>
 ```
 
+![tombol-cetak](/assets/image/laravel01-06/tombol-cetak.png){.bingkai .kiri}
+
 `target="_blank"` membuka PDF di tab baru, sehingga halaman aplikasi tetap terbuka.
 
 ### Menu Laporan di sidebar
@@ -261,14 +273,28 @@ Buka `resources/views/layouts/components/sidebar.blade.php`, tambahkan menu **La
 </li>
 ```
 
+![menu-cetak](/assets/image/laravel01-06/menu-cetak.png){.bingkai .kiri}
+
 `nav-header` adalah judul kelompok menu pada AdminLTE. Menu ini tidak diberi penanda aktif karena laporan selalu dibuka di tab baru.
 
 ### Uji coba
 
 1. Buka `/periode`, klik **Cetak PDF**. PDF tampil di tab baru dengan kop, tabel, tanda tangan, dan QR code.
-2. Tambahkan beberapa data periode (minimal 30) lewat seeder atau form, lalu cetak ulang. Pastikan:
+2. Tambahkan minimal 30 data periode agar laporan lebih dari satu halaman. Cara cepatnya lewat tinker:
+
+   ```bash
+   php artisan tinker
+   ```
+
+   ```php
+   for ($i = 1; $i <= 30; $i++) { \App\Models\Periode::create(['periode' => 'GANJIL ' . (2030 + $i) . '/' . (2031 + $i), 'singkatan' => 300 + $i]); }
+   ```
+
+   Ketik `exit` untuk keluar dari tinker, lalu cetak ulang laporan. Pastikan:
    - kop dan judul kolom tabel muncul di **setiap** halaman;
    - footer menunjukkan "Halaman 1 dari 2", "Halaman 2 dari 2", dan seterusnya.
+
+   Data uji ini akan hilang saat menjalankan `php artisan migrate:fresh --seed`.
 3. Pindai QR code dengan HP, pastikan mengarah ke halaman periode.
 4. Ganti `inline` menjadi `attachment` di controller, pastikan PDF terunduh.
 
@@ -294,6 +320,10 @@ Buka `resources/views/layouts/components/sidebar.blade.php`, tambahkan menu **La
 - `<page_header>`, `<page_footer>`, `[[page_cu]]`, dan `[[page_nb]]` memudahkan kop dan nomor halaman.
 - View laporan disusun dengan `<table>` dan CSS sederhana, tanpa layout Bootstrap.
 - Controller merender view menjadi HTML, menuliskannya ke PDF, lalu mengirimnya dengan `response()`.
+
+## Persiapan Pertemuan 7
+
+Pertemuan 7 merangkum Pertemuan 3–6 menjadi satu alur cepat sambil membuat menu **Program Studi**. Pastikan CRUD periode dan laporan PDF periode sudah berjalan, karena keduanya menjadi contoh yang diikuti.
 
 ## Referensi
 
