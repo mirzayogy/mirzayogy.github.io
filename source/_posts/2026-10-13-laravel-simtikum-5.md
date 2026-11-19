@@ -71,7 +71,6 @@ php artisan route:list --name=periode
 
 ![02-route-detail](/assets/image/laravel01-05/02-route-detail.png){.w-80 .bingkai .kiri}
 
-
 ### Halaman index
 
 Buka `app/Http/Controllers/PeriodeController.php`, isi method `index`:
@@ -88,7 +87,6 @@ public function index()
 ![03-route-index](/assets/image/laravel01-05/03-route-index.png){.w-80 .bingkai .kiri}
 
 Perintah `Periode::all();` berarti menampilkan seluruh data dari tabel periode, jika ingin mengubah urutannya bisa diganti dengan menggunakan perintah berikut `Periode::orderBy('id', 'desc')->get();` yang artinya menampilkan dengan urutan dari id yang terbesar terlebih dahulu.
-
 
 Buat folder `resources/views/periode`, lalu buat file `index.blade.php`. Tampilan tabelnya diambil dari contoh pada `tables.blade.php`:
 
@@ -193,14 +191,13 @@ Buat folder `resources/views/periode`, lalu buat file `index.blade.php`. Tampila
 
 Hal yang perlu diperhatikan:
 
+- Halaman ini **belum bisa dibuka** sebelum file `periode/modal-hapus.blade.php` dibuat, karena dipanggil oleh `@include('periode.modal-hapus')`. File tersebut dibuat pada langkah berikutnya.
 - `@forelse ... @empty ... @endforelse` menampilkan pesan jika tabel masih kosong.
 - `$loop->iteration` menghasilkan nomor urut 1, 2, 3, dan seterusnya, tidak bergantung pada `id`.
 - Kolom `status` bertipe boolean, jadi ditampilkan sebagai badge **Aktif** atau **Tidak aktif**, bukan angka `1` atau `0`.
 - `route('periode.edit', $periode)` otomatis menghasilkan URL `/periode/{id}/edit`.
 - Tombol **Tambah Data** sekarang berupa link biasa ke halaman create, **tanpa** `data-bs-toggle="modal"`.
 - Blok `session('success')` menampilkan pesan setelah data berhasil ditambah, diubah, atau dihapus.
-
-Buka `http://localhost:8000/periode` dan pastikan data hasil seeder tampil.
 
 ### Konfirmasi hapus
 
@@ -241,7 +238,7 @@ Buat file `resources/views/periode/modal-hapus.blade.php`:
 - Form HTML hanya mengenal method `GET` dan `POST`. `@method('DELETE')` menambahkan input tersembunyi agar Laravel memperlakukannya sebagai request `DELETE`.
 - `@csrf` wajib ada di setiap form `POST` agar tidak ditolak dengan error **419 Page Expired**.
 
-Isi method `destroy` di `PeriodeController`:
+Buka `app/Http/Controllers/PeriodeController.php`, isi method `destroy`:
 
 ```php
 public function destroy(Periode $periode)
@@ -255,41 +252,20 @@ public function destroy(Periode $periode)
 
 `Periode $periode` adalah **route model binding**: Laravel otomatis mencari data periode berdasarkan `{periode}` di URL. Jika tidak ditemukan, halaman 404 ditampilkan.
 
+Buka `http://localhost:8000/periode`, pastikan data hasil seeder tampil, lalu uji coba menghapus salah satu data.
+
 ### Halaman tambah (create)
 
 Halaman tambah **tidak memakai modal**, melainkan halaman sendiri. Tampilannya diambil dari contoh form pada `edit.blade.php`.
 
-Isi method `create` dan `store`:
+Buka `app/Http/Controllers/PeriodeController.php`, isi method `create`:
 
 ```php
 public function create()
 {
     return view('periode.create');
 }
-
-public function store(Request $request)
-{
-    $data = $request->validate([
-        'periode' => ['required', 'string', 'max:50'],
-        'singkatan' => ['required', 'string', 'max:10', 'unique:periode,singkatan'],
-    ], [
-        'periode.required' => 'Nama periode wajib diisi.',
-        'singkatan.required' => 'Singkatan wajib diisi.',
-        'singkatan.unique' => 'Singkatan sudah dipakai periode lain.',
-    ]);
-
-    $data['status'] = $request->boolean('status');
-
-    Periode::create($data);
-
-    return redirect()->route('periode.index')
-        ->with('success', 'Periode berhasil ditambahkan.');
-}
 ```
-
-- `$request->validate()` memeriksa input. Jika gagal, pengguna otomatis dikembalikan ke form beserta pesan error dan isian sebelumnya.
-- `unique:periode,singkatan` artinya singkatan tidak boleh sama dengan data lain di tabel `periode`.
-- Checkbox yang tidak dicentang tidak ikut terkirim, karena itu nilai `status` diambil dengan `$request->boolean('status')` yang menghasilkan `true` atau `false`.
 
 Buat file `resources/views/periode/create.blade.php`:
 
@@ -377,6 +353,39 @@ Buat file `resources/views/periode/create.blade.php`:
 @endsection
 ```
 
+Buka `app/Http/Controllers/PeriodeController.php`, isi method `store`:
+
+```php
+public function store(Request $request)
+{
+    $data = $request->validate([
+        'periode' => ['required', 'string', 'min:15', 'max:16', 'unique:periode,periode'],
+        'singkatan' => ['required', 'digits:3', 'unique:periode,singkatan'],
+    ], [
+        'periode.required' => 'Nama periode wajib diisi.',
+        'periode.min' => 'Periode minimal 15 karakter.',
+        'periode.max' => 'Periode maksimal 16 karakter.',
+        'periode.unique' => 'Periode sudah ada.',
+        'singkatan.required' => 'Singkatan wajib diisi.',
+        'singkatan.digits' => 'Singkatan harus 3 digit angka.',
+        'singkatan.unique' => 'Singkatan sudah dipakai periode lain.',
+    ]);
+
+    $data['status'] = $request->boolean('status');
+
+    Periode::create($data);
+
+    return redirect()->route('periode.index')
+        ->with('success', 'Periode berhasil ditambahkan.');
+}
+```
+
+- `$request->validate()` memeriksa input. Jika gagal, pengguna otomatis dikembalikan ke form beserta pesan error dan isian sebelumnya.
+- `min:15` dan `max:16` membatasi panjang nama periode. "GENAP 2025/2026" panjangnya 15 karakter dan "GANJIL 2025/2026" 16 karakter.
+- `digits:3` artinya singkatan harus berupa **angka tepat 3 digit**, misalnya `251`. Jangan memakai `numeric` + `size:3`: untuk angka, `size:3` berarti nilainya harus sama dengan 3, sehingga `251` justru ditolak.
+- `unique:periode,periode` dan `unique:periode,singkatan` artinya nama periode dan singkatan tidak boleh sama dengan data lain di tabel `periode`.
+- Checkbox yang tidak dicentang tidak ikut terkirim, karena itu nilai `status` diambil dengan `$request->boolean('status')` yang menghasilkan `true` atau `false`.
+
 Perbedaan dengan contoh pada `edit.blade.php`:
 
 - `<form>` diberi `action="{{ route('periode.store') }}"` dan `method="POST"`, ditambah `@csrf`.
@@ -390,35 +399,14 @@ Coba tambahkan data baru, lalu coba juga kirim form dalam keadaan kosong untuk m
 
 ### Halaman ubah (edit)
 
-Isi method `edit` dan `update`:
+Buka `app/Http/Controllers/PeriodeController.php`, isi method `edit`:
 
 ```php
 public function edit(Periode $periode)
 {
     return view('periode.edit', compact('periode'));
 }
-
-public function update(Request $request, Periode $periode)
-{
-    $data = $request->validate([
-        'periode' => ['required', 'string', 'max:50'],
-        'singkatan' => ['required', 'string', 'max:10', 'unique:periode,singkatan,' . $periode->id],
-    ], [
-        'periode.required' => 'Nama periode wajib diisi.',
-        'singkatan.required' => 'Singkatan wajib diisi.',
-        'singkatan.unique' => 'Singkatan sudah dipakai periode lain.',
-    ]);
-
-    $data['status'] = $request->boolean('status');
-
-    $periode->update($data);
-
-    return redirect()->route('periode.index')
-        ->with('success', 'Periode berhasil diubah.');
-}
 ```
-
-Perhatikan aturan `unique:periode,singkatan,' . $periode->id`. Angka `id` di akhir membuat data yang sedang diubah **dikecualikan** dari pengecekan, sehingga menyimpan tanpa mengganti singkatan tidak dianggap duplikat.
 
 Buat file `resources/views/periode/edit.blade.php`. Isinya hampir sama dengan `create.blade.php`, dengan perbedaan yang ditandai komentar:
 
@@ -505,6 +493,35 @@ Buat file `resources/views/periode/edit.blade.php`. Isinya hampir sama dengan `c
 @endsection
 ```
 
+Buka `app/Http/Controllers/PeriodeController.php`, isi method `update`:
+
+```php
+public function update(Request $request, Periode $periode)
+{
+    $data = $request->validate([
+        'periode' => ['required', 'string', 'min:15', 'max:16', 'unique:periode,periode,' . $periode->id],
+        'singkatan' => ['required', 'digits:3', 'unique:periode,singkatan,' . $periode->id],
+    ], [
+        'periode.required' => 'Nama periode wajib diisi.',
+        'periode.min' => 'Periode minimal 15 karakter.',
+        'periode.max' => 'Periode maksimal 16 karakter.',
+        'periode.unique' => 'Periode sudah ada.',
+        'singkatan.required' => 'Singkatan wajib diisi.',
+        'singkatan.digits' => 'Singkatan harus 3 digit angka.',
+        'singkatan.unique' => 'Singkatan sudah dipakai periode lain.',
+    ]);
+
+    $data['status'] = $request->boolean('status');
+
+    $periode->update($data);
+
+    return redirect()->route('periode.index')
+        ->with('success', 'Periode berhasil diubah.');
+}
+```
+
+Perhatikan aturan `unique:periode,periode,' . $periode->id` dan `unique:periode,singkatan,' . $periode->id`. Angka `id` di akhir membuat data yang sedang diubah **dikecualikan** dari pengecekan, sehingga menyimpan tanpa mengganti nama periode atau singkatan tidak dianggap duplikat.
+
 Klik ikon pensil pada salah satu baris di halaman index, ubah datanya, lalu simpan.
 
 ### Menu sidebar
@@ -532,29 +549,33 @@ Buka `resources/views/layouts/components/sidebar.blade.php`. Cari bagian `<ul cl
 </li>
 ```
 
+![04-sidebar](/assets/image/laravel01-05/04-sidebar.png){.bingkai .kiri}
+
 Ubah juga menu **Dashboard** agar tidak selalu aktif:
 
 ```blade
 <a href="/" class="nav-link {{ request()->is('/') ? 'active' : '' }}">
 ```
 
+![05-dashboard](/assets/image/laravel01-05/05-dashboard.png){.bingkai .kiri}
+
 - `request()->routeIs('periode.*')` bernilai `true` di semua halaman yang nama route-nya diawali `periode.`, yaitu index, create, dan edit.
 - `menu-open` membuat menu Data Master terbuka otomatis, dan `active` memberi warna sorot pada menu yang sedang dibuka.
-- Menu lain (misalnya Praktikum di pertemuan berikutnya) cukup ditambahkan sebagai `<li class="nav-item">` baru di dalam `<ul class="nav nav-treeview">`, dan kondisinya diganti menjadi `request()->routeIs('periode.*', 'praktikum.*')`.
 
 ### Uji coba
 
 1. Buka `/periode`, pastikan data tampil dan menu **Data Master → Periode** tersorot.
 2. Tambah periode baru, pastikan muncul pesan **Periode berhasil ditambahkan.**
 3. Kirim form tambah dalam keadaan kosong, pastikan pesan validasi muncul di bawah input.
-4. Tambah periode dengan singkatan yang sudah ada, pastikan ditolak.
-5. Ubah salah satu periode tanpa mengganti singkatannya, pastikan tetap tersimpan.
-6. Klik ikon tempat sampah, klik **Batal**, pastikan data tidak terhapus. Ulangi dan klik **Hapus**.
+4. Tambah periode dengan singkatan yang sudah ada, atau singkatan yang bukan 3 digit angka (misalnya `25` atau `abc`), pastikan ditolak.
+5. Tambah periode dengan nama yang sudah ada, atau kurang dari 15 karakter (misalnya `GANJIL 25/26`), pastikan ditolak.
+6. Ubah salah satu periode tanpa mengganti nama dan singkatannya, pastikan tetap tersimpan.
+7. Klik ikon tempat sampah, klik **Batal**, pastikan data tidak terhapus. Ulangi dan klik **Hapus**.
 
 ## Latihan
 
 - Tampilkan jumlah data periode di samping judul **Periode** pada card header, misalnya `Periode (4)`.
-- Tambahkan aturan validasi agar `singkatan` hanya boleh berisi angka (petunjuk: aturan `digits:3`).
+- Tambahkan aturan agar nama periode harus diawali GANJIL atau GENAP (petunjuk: aturan `starts_with:GANJIL,GENAP`), lengkap dengan pesan error berbahasa Indonesia.
 
 ## Rangkuman
 
@@ -563,6 +584,13 @@ Ubah juga menu **Dashboard** agar tidak selalu aktif:
 - `$request->validate()`, `old()`, dan `@error` bekerja sama untuk validasi dan menampilkan pesan error.
 - `redirect()->with()` mengirim pesan sekali tampil yang dibaca dengan `session('success')`.
 - `request()->routeIs()` dipakai untuk menandai menu sidebar yang sedang aktif.
+
+## Persiapan Pertemuan 6
+
+Pada Pertemuan 6 kita membuat laporan data periode dalam format PDF. Pastikan:
+
+- CRUD periode sudah berjalan: daftar, tambah, ubah, dan hapus;
+- ekstensi PHP **gd** aktif. Periksa dengan `php -m`; jika `gd` tidak ada, buka `php.ini`, hapus tanda `;` di depan `extension=gd`, lalu restart Apache dan terminal.
 
 ## Referensi
 
