@@ -30,6 +30,9 @@ Post ini merangkum Pertemuan 3–6 menjadi **satu alur cepat**. Gunakan sebagai 
 php artisan make:model Prodi -mcrs
 ```
 
+![01-artisan](/assets/image/laravel01-07/01-artisan.png){.w-90 .bingkai .kiri}
+
+
 `-m` migration, `-c` controller, `-r` resource (7 method CRUD), `-s` seeder.
 
 ## 2. Migration
@@ -49,9 +52,15 @@ public function up(): void
 }
 ```
 
+![02-migration](/assets/image/laravel01-07/02-migration.png){.bingkai .kiri}
+
+
 ```bash
 php artisan migrate
 ```
+
+![03-migrate](/assets/image/laravel01-07/03-migrate.png){.bingkai .kiri}
+
 
 ## 3. Model
 
@@ -68,6 +77,8 @@ class Prodi extends Model
     protected $guarded = [];
 }
 ```
+
+![04-model-prodi](/assets/image/laravel01-07/04-model-prodi.png){.bingkai .kiri}
 
 ## 4. Seeder
 
@@ -90,11 +101,21 @@ class ProdiSeeder extends Seeder
 }
 ```
 
-Tambahkan `ProdiSeeder::class` ke daftar `$this->call([...])` di `DatabaseSeeder.php`, lalu:
+![05-seeder](/assets/image/laravel01-07/05-seeder.png){.bingkai .kiri}
+
+
+Tambahkan `ProdiSeeder::class` ke daftar `$this->call([...])` di `DatabaseSeeder.php`
+
+![06-database-seeder](/assets/image/laravel01-07/06-database-seeder.png){.bingkai .kiri}
+
+
+Jalankan perintah:
 
 ```bash
 php artisan db:seed --class=ProdiSeeder
 ```
+![07-cmd-seed](/assets/image/laravel01-07/07-cmd-seed.png){.bingkai .kiri}
+
 
 ## 5. Route
 
@@ -104,6 +125,9 @@ Di `routes/web.php`, tambahkan `use App\Http\Controllers\ProdiController;` di at
 Route::resource('prodi', ProdiController::class)->except('show');
 Route::get('/laporan/prodi', [ProdiController::class, 'cetak'])->name('laporan.prodi');
 ```
+
+![08-route](/assets/image/laravel01-07/08-route.png){.bingkai .kiri}
+
 
 Cek dengan `php artisan route:list --name=prodi`.
 
@@ -482,6 +506,9 @@ Di `sidebar.blade.php`, tambahkan `'prodi.*'` ke kondisi menu **Data Master**:
 request()->routeIs('periode.*', 'prodi.*')
 ```
 
+![09-sidebar](/assets/image/laravel01-07/09-sidebar.png){.bingkai .kiri}
+
+
 Tambahkan submenu di dalam **Data Master**, di bawah submenu **Periode**:
 
 ```blade
@@ -494,6 +521,9 @@ Tambahkan submenu di dalam **Data Master**, di bawah submenu **Periode**:
 </li>
 ```
 
+![10-sidebar](/assets/image/laravel01-07/10-sidebar.png){.bingkai .kiri}
+
+
 Dan di bawah menu **Laporan Periode**:
 
 ```blade
@@ -504,6 +534,9 @@ Dan di bawah menu **Laporan Periode**:
     </a>
 </li>
 ```
+
+![11-sidebar](/assets/image/laravel01-07/11-sidebar.png){.bingkai .kiri}
+
 
 ## Daftar periksa
 
