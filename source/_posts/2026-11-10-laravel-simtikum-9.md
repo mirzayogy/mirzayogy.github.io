@@ -64,6 +64,9 @@ Seperti pada Pertemuan 3, buat semuanya dengan satu perintah:
 php artisan make:model Praktikum -mcrs
 ```
 
+![01-cmd](/assets/image/laravel01-09/01-cmd.png){.w-90 .bingkai .kiri}
+
+
 ### 2. Migration
 
 Buka `database/migrations/xxxx_create_praktikums_table.php`. Ganti nama tabel `praktikums` menjadi `praktikum` (di `up` dan `down`), lalu isi kolomnya:
@@ -82,6 +85,7 @@ public function up(): void
     });
 }
 ```
+![02-migration](/assets/image/laravel01-09/02-migration.png){.w-100 .bingkai .kiri}
 
 | Kode | Arti |
 |---|---|
@@ -96,6 +100,9 @@ Jangan lupa ubah juga `down()` menjadi `Schema::dropIfExists('praktikum');`, lal
 ```bash
 php artisan migrate
 ```
+
+![03-migrate](/assets/image/laravel01-09/03-migrate.png){.w-100 .bingkai .kiri}
+
 
 > Tabel `praktikum` harus dibuat **setelah** tabel `periode`, karena foreign key-nya menunjuk ke tabel `periode`. Laravel menjalankan migration berurutan sesuai tanggal pada nama file, jadi migration yang dibuat belakangan otomatis berjalan belakangan.
 
@@ -126,7 +133,10 @@ class Praktikum extends Model
     }
 }
 ```
+![04-model](/assets/image/laravel01-09/04-model.png){.w-70 .bingkai .kiri}
 
+
+- Tambahkan `use Illuminate\Database\Eloquent\Relations\BelongsTo;` untuk bisa menggunakan BelongsTo
 - `SEMESTER` dan `SIFAT` adalah **konstanta** berisi daftar pilihan. Daftar ini dipakai di dua tempat: untuk menampilkan pilihan di form dan untuk validasi di controller. Jika suatu saat pilihannya berubah, cukup diubah di sini.
 - `belongsTo(Periode::class)` artinya setiap praktikum **dimiliki oleh** satu periode. Laravel otomatis memakai kolom `periode_id`.
 
@@ -151,6 +161,9 @@ class Periode extends Model
     }
 }
 ```
+
+![05-periode](/assets/image/laravel01-09/05-periode.png){.w-60 .bingkai .kiri}
+
 
 `hasMany` artinya satu periode **memiliki banyak** praktikum.
 
@@ -207,6 +220,9 @@ class PraktikumSeeder extends Seeder
 }
 ```
 
+![06-seeder](/assets/image/laravel01-09/06-seeder.png){.w-60 .bingkai .kiri}
+
+
 `periode_id` diambil dari periode yang sudah ada (`singkatan` 251), bukan ditulis angka langsung, agar seeder tetap benar walaupun `id` periode berbeda.
 
 Daftarkan di `database/seeders/DatabaseSeeder.php`, **setelah** `PeriodeSeeder`:
@@ -219,11 +235,14 @@ $this->call([
 ]);
 ```
 
+![07-database](/assets/image/laravel01-09/07-database.png){.w-60 .bingkai .kiri}
+
 Jalankan hanya seeder praktikum:
 
 ```bash
 php artisan db:seed --class=PraktikumSeeder
 ```
+![08-seed](/assets/image/laravel01-09/08-seed.png){.w-100 .bingkai .kiri}
 
 ### 5. Route dan sidebar
 
@@ -238,6 +257,9 @@ Lalu tambahkan resource route di bawah route prodi:
 ```php
 Route::resource('praktikum', PraktikumController::class)->except('show');
 ```
+
+![09-web](/assets/image/laravel01-09/09-web.png){.w-100 .bingkai .kiri}
+
 
 Di `resources/views/layouts/components/sidebar.blade.php`, menu **Data Master** perlu terbuka untuk halaman periode, program studi, **dan** praktikum. Ubah kondisinya:
 
@@ -257,6 +279,9 @@ Lalu tambahkan submenu **Praktikum** di bawah submenu **Program Studi**:
     </a>
 </li>
 ```
+
+![10-sidebar](/assets/image/laravel01-09/10-sidebar.png){.w-100 .bingkai .kiri}
+
 
 ### 6. Controller
 
@@ -370,7 +395,6 @@ Isi form untuk halaman tambah dan ubah sama, jadi dibuat satu file lalu dipanggi
 Buat `resources/views/praktikum/form.blade.php`:
 
 ```blade
-{{-- 1. Combobox dari tabel lain: periode --}}
 <div class="mb-3">
     <label for="periode_id" class="form-label">Periode</label>
     <select id="periode_id" name="periode_id" class="form-select @error('periode_id') is-invalid @enderror">
@@ -406,7 +430,6 @@ Buat `resources/views/praktikum/form.blade.php`:
     </div>
 </div>
 
-{{-- 2. Combobox dengan pilihan tetap: semester --}}
 <div class="mb-3">
     <label for="semester" class="form-label">Semester</label>
     <select id="semester" name="semester" class="form-select @error('semester') is-invalid @enderror">
@@ -422,7 +445,6 @@ Buat `resources/views/praktikum/form.blade.php`:
     @enderror
 </div>
 
-{{-- 3. Radiobutton: sifat --}}
 <div class="mb-3">
     <label class="form-label d-block">Sifat</label>
     @foreach (\App\Models\Praktikum::SIFAT as $sifat)
@@ -754,6 +776,8 @@ public function destroy(Periode $periode)
         ->with('success', 'Periode berhasil dihapus.');
 }
 ```
+
+![11-periode](/assets/image/laravel01-09/11-periode.png){.w-100 .bingkai .kiri}
 
 Lalu tambahkan alert merah di `resources/views/periode/index.blade.php`, tepat di bawah alert `session('success')`:
 
