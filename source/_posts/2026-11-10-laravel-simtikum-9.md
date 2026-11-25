@@ -4,7 +4,7 @@ description: "Membuat halaman data praktikum dengan combobox berisi pilihan teta
 date: 2026-11-10
 series: laravel-simtikum
 pertemuan: 9
-draft: true
+draft: false
 comments: true
 tags: [laravel, perkuliahan, form, relasi]
 ---
